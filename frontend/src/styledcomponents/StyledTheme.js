@@ -1,15 +1,23 @@
 export const darkTheme = {
-    backgroundColor: "#544f49",
-    primary: "#d11904",
-    secondary: "#ccccc4",
-    textColor: "#fff",
-    drawer: "#9FA8D6",
-  };
+  backgroundColor: "#536162",
+  primary: "#bb2205",
+  secondary: "#ccccc4",
+  textColor: "#fff",
+  hover: "#9FA8D6",
+};
     
-  export const lightTheme = {
-    backgroundColor: "#ede6cc",
-    primary: "#8c5c32",
-    secondary: "#68825f",
-    textColor: "#000",
-    drawer: "#E3625B",
-  };
+export const lightTheme = {
+  backgroundColor: "#e3cdc1",
+  primary: "#85603f",
+  secondary: "#68825f",
+  textColor: "#000",
+  hover: "#E3625B",
+};
+
+export const blackTheme = {
+  backgroundColor: "#000",
+  primary: "#000",
+  secondary: "#1c1c1c",
+  textColor: "#fff",
+  hover: "#3c415c"
+};
