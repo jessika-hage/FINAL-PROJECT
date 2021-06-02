@@ -19,7 +19,7 @@ export const Profile = () => {
       </ImageNameContainer>
         <DaysContainer>
           <DaysText>Days on ship: 4</DaysText>
-          <DaysText>Time to destination: <Countdown date={moment().add(3500, 'day')} /></DaysText>
+          <DaysText>Days to destination: <Countdown date={moment().add(3500, 'day')} /></DaysText>
         </DaysContainer>
       </TopContainer>
       <BottomContainer>

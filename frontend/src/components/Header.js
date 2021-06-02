@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import moment from 'moment'
 import Drawer from "@material-ui/core/Drawer";
 import { Tooltip } from "@material-ui/core";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserAstronaut } from "react-icons/fa";
 
 import { Profile } from '../pages/Profile';
 
@@ -18,7 +18,7 @@ export const Header = () => {
         <Date>{today}</Date>
       </TitleDate>
       <Tooltip title="My Profile">
-        <ProfilImg onClick={() => setOpenForm(true)}><FaUserCircle /></ProfilImg>
+        <ProfilImg onClick={() => setOpenForm(true)}><FaUserAstronaut /></ProfilImg>
       </Tooltip>
       <Drawer 
         anchor="bottom"

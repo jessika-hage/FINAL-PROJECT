@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaUtensils, FaTree, FaShoppingCart, FaCalculator } from "react-icons/fa";
+import { FaUtensils, FaSeedling, FaShoppingCart, FaCalculator } from "react-icons/fa";
 import { Tooltip } from "@material-ui/core";
 
 export const Map = () => {
@@ -14,7 +14,7 @@ export const Map = () => {
         <CircleRoom><Icon><FaUtensils /></Icon></CircleRoom>
       </Tooltip>
       <Tooltip title="GARDEN! grow flowers and earn points!">
-        <RoomThree><Icon><FaTree /></Icon></RoomThree>
+        <RoomThree><Icon><FaSeedling /></Icon></RoomThree>
       </Tooltip>
       <Tooltip title="STORE!">
         <RoomFour><Icon><FaShoppingCart /></Icon></RoomFour>

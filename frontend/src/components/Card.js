@@ -3,7 +3,16 @@ import styled from 'styled-components/macro'
 
 
 
-export const Card = ({ title, secundaryText, thumbnailUrl, coverImage, className, children}) =>[
+export const Card = ({ 
+    title, 
+    secundaryText,
+    icon,
+    thirdText, 
+    fourthText,
+    thumbnailUrl, 
+    coverImage, 
+    className, 
+    children }) =>[
   <Container className={className}>
     {coverImage && <CoverImage src={coverImage} />}
     <Content>
@@ -11,7 +20,16 @@ export const Card = ({ title, secundaryText, thumbnailUrl, coverImage, className
         {thumbnailUrl && <Thumbnail url={thumbnailUrl} />}
         <div>
             {title && <Title>{title}</Title>}
-            {secundaryText && <SecundaryText>{secundaryText}</SecundaryText>}
+            <div>
+              {secundaryText && <SecundaryText>{secundaryText}</SecundaryText>}
+            </div>
+            <TextIconContainer>
+              {thirdText && <ThirdText>{thirdText}</ThirdText>}
+              {icon && <Icon>{icon}</Icon>}
+            </TextIconContainer>
+            <div> 
+              {fourthText && <FourthText>{fourthText}</FourthText>}
+            </div>         
         </div>
     </TitleBar>
     {children && <ChildrenContent>{children}</ChildrenContent>}
@@ -22,7 +40,6 @@ export const Card = ({ title, secundaryText, thumbnailUrl, coverImage, className
 const Container = styled.div`
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
   margin: 10px;
-  // border: 2px solid ${props => props.theme.textColor};
   border-radius: 6px;
   background: ${props => props.theme.backgroundColor};
   :last-of-type {
@@ -32,13 +49,33 @@ const Container = styled.div`
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
+  text-transform: uppercase;
   color: ${props => props.theme.textColor};
 `;
 
 const SecundaryText = styled.p`
   margin: 0;
   color: #6b6b6b;
+`;
+
+const TextIconContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+`;
+
+const ThirdText = styled(SecundaryText)`
+`;
+
+const Icon = styled.p`
+  margin: 0;
+  font-size: 22px;
+  color: ${props => props.theme.textColor};
+`;
+
+const FourthText = styled(SecundaryText)`
 `;
 
 const Thumbnail = styled.div`

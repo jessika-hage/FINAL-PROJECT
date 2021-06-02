@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import { Header } from '../components/Header'
-import { Camera } from '../components/Camera'
-import { Card } from '../components/Card'
+import { Header } from '../components/Header';
+import { Camera } from '../components/Camera';
+import { Card } from '../components/Card';
 import { Map } from '../components/Map';
+import { WeatherCard } from '../components/descriptioncards/WeatherCard';
+import { EntertainmentCard } from '../components/descriptioncards/EntertainmentCard';
+import { NutritionCard } from '../components/descriptioncards/NutritionCard';
+import { CurrencyCard } from '../components/descriptioncards/CurrencyCard';
 
 
 
@@ -15,9 +19,9 @@ export const Main = () => {
       <Header />
       <Camera />
       <Container>
-          <MapContainer>
-            <Map />
-          </MapContainer>
+        <MapContainer>
+          <Map />
+        </MapContainer>
         <RightContainer>
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
@@ -32,30 +36,16 @@ export const Main = () => {
             title="Classroom" 
             secundaryText="This is secundaryText" />
         </RightContainer>
-        </Container>
-        <BottomContainer>
-          <ThinnerCard
-            
-            title="Weather at Destination" 
-            secundaryText="This is secundaryText" />
-            <ThinnerCard
-            
-            title="Nutrition Served" 
-            secundaryText="This is secundaryText" />
-            <ThinnerCard
-            
-            title="Entertainment" 
-            secundaryText="This is secundaryText" />
-            <ThinnerCard
-            
-            title="Currency" 
-            secundaryText="This is secundaryText" />
-       
-        </BottomContainer>
-      
+      </Container>
+      <BottomContainer>
+        <WeatherCard />
+        <NutritionCard />
+        <EntertainmentCard />
+        <CurrencyCard />
+      </BottomContainer>
     </MainContainer>
   )
-}
+};
 
 const MainContainer = styled.main`
   display: flex;
@@ -73,6 +63,11 @@ const Container = styled.section`
   display: flex;
   width: 100%;
   padding: 0 20px;
+  @media (min-width: 768px) {
+    padding: 0 40px;
+    height: 75%;
+    margin-top: 40px;
+  }
 `;
 
 const MapContainer = styled.div`
@@ -93,6 +88,8 @@ const BottomContainer = styled.div`
   @media (min-width: 768px) {
       flex-direction: row;
       margin-top: 40px;
+      padding: 0 40px;
+      height: 25%;
   }
 `
 
