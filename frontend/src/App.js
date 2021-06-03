@@ -1,27 +1,32 @@
-import React from 'react'
-import { Provider } from "react-redux";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { themes } from "reducers/themes";
+import { themes } from 'reducers/themes';
 import { Theme } from './components/Theme';
 import { Main } from './pages/Main';
-// import { SignUp } from './pages/SignUp';
-// import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
+import { SignIn } from './pages/SignIn';
 
 const reducer = combineReducers({
-  themes: themes.reducer
-})
+	themes: themes.reducer,
+});
 
-const store = configureStore({ reducer })
+const store = configureStore({ reducer });
 
 export const App = () => {
-  return (
-    <Provider store={store}>
-      <Theme>
-        {/* <SignIn /> */}
-        {/* <SignUp /> */}
-        <Main />
-      </Theme>
-    </Provider>
-  )
-}
+	return (
+		<Provider store={store}>
+			<Theme>
+				<BrowserRouter>
+					<Switch>
+						<Route exact path='/' component={Main} />
+						<Route path='/signin' component={SignIn} />
+						<Route path='/signup' component={SignUp} />
+					</Switch>
+				</BrowserRouter>
+			</Theme>
+		</Provider>
+	);
+};
