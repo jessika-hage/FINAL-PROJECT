@@ -20,7 +20,6 @@ const Main = styled.div`
   position: relative;
   margin: 0 auto 30px auto;
   @media (min-width: 768px) {
-      height: 105px;
       border-bottom: 6px solid ${props => props.theme.secondary};
   }
 
