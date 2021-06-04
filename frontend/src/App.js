@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { themes } from "reducers/themes";
+import { themes } from 'reducers/themes';
 import { Theme } from './components/Theme';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
@@ -11,10 +11,10 @@ import { SignIn } from './pages/SignIn';
 import { MathGame } from "./pages/MathGame";
 
 const reducer = combineReducers({
-  themes: themes.reducer
-})
+	themes: themes.reducer,
+});
 
-const store = configureStore({ reducer })
+const store = configureStore({ reducer });
 
 export const App = () => {
   return (
