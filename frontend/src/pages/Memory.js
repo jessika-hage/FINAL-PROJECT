@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import ReactCardFlip from 'react-card-flip';
 import './stylesMemory.css';
-
+import styled from 'styled-components';
 const url = 'https://pokeres.bastionbot.org/images/pokemon';
 
 export const Memory = () => {
 	const [openedCard, setOpenedCard] = useState([]);
 	const [matched, setMatched] = useState([]);
+	const [flipped, setFlipped] = useState(true);
+	const [finished, setFinished] = useState(false);
 
 	const pokemons = [
 		{ id: 1, name: 'balbasaur' },
@@ -20,6 +23,7 @@ export const Memory = () => {
 
 	function flipCard(index) {
 		setOpenedCard((opened) => [...opened, index]);
+		setFlipped(true);
 	}
 
 	useEffect(() => {
@@ -33,11 +37,15 @@ export const Memory = () => {
 		}
 
 		if (openedCard.length === 2) setTimeout(() => setOpenedCard([]), 1000);
+
+		if (openedCard.lenght === 8) {
+			setFinished(true);
+		}
 	}, [openedCard]);
 
 	return (
-		<div className='main'>
-			<div className='cards'>
+		<Main>
+			<Cards>
 				{pairOfPokemons.map((pokemon, index) => {
 					//lets flip the card
 
@@ -46,25 +54,64 @@ export const Memory = () => {
 					if (openedCard.includes(index)) isFlipped = true;
 					if (matched.includes(pokemon.id)) isFlipped = true;
 					return (
-						<div
-							className={`pokemon-card ${isFlipped ? 'flipped' : ''} `}
-							key={index}
-							onClick={() => flipCard(index)}
-						>
-							<div className='inner'>
-								<div className='front'>
-									<img
-										src={`${url}/${pokemon.id}.png`}
-										alt='pokemon-name'
-										width='100'
-									/>
-								</div>
-								<div className='back'></div>
-							</div>
-						</div>
+						<ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
+							<PokemonCard
+								flippCard={isFlipped}
+								key={index}
+								onClick={() => flipCard(index)}
+							>
+								{' '}
+							</PokemonCard>
+							<img
+								src={`${url}/${pokemon.id}.png`}
+								alt='pokemon-name'
+								onClick={() => flipCard(index)}
+								width='100'
+							/>
+						</ReactCardFlip>
 					);
 				})}
-			</div>
-		</div>
+			</Cards>
+			{finished && <FinishedText>You win</FinishedText>}
+		</Main>
 	);
 };
+
+const FinishedText = styled.p`
+	font-size: 20px;
+`;
+
+const PokemonCard = styled.div`
+	height: 150px;
+	width: 150px;
+	position: relative;
+	&::after {
+		content: '';
+		background: ${(props) => props.theme.secondary};
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		border-radius: 8px;
+		top: 0;
+		left: 0;
+		transform: rotateY(0) perspective(100px);
+		transition: 0.4s;
+		backface-visibility: hidden;
+	}
+`;
+
+const Main = styled.div`
+	background-color: ${(props) => props.theme.backgroundColor};
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+	line-height: 1;
+`;
+
+const Cards = styled.div`
+	display: grid;
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+	gap: 10px;
+`;

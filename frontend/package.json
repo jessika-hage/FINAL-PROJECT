@@ -17,6 +17,7 @@
     "node-sass": "^6.0.0",
     "npm": "^7.15.1",
     "react": "^16.14.0",
+    "react-card-flip": "^1.1.1",
     "react-countdown": "^2.3.2",
     "react-dom": "^16.14.0",
     "react-icons": "^4.2.0",
