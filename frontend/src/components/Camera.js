@@ -21,9 +21,10 @@ const Main = styled.div`
   margin: 0 auto 30px auto;
   @media (min-width: 768px) {
       border-bottom: 6px solid ${props => props.theme.secondary};
+      height: 105px;
   }
+`;
 
-`
 const recording = keyframes`
   from { transform: scale(1) }
   to { transform: scale(1.2) }
