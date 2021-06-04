@@ -65,8 +65,8 @@ const Container = styled.section`
   padding: 0 20px;
   @media (min-width: 768px) {
     padding: 0 40px;
-    height: 75%;
-    margin-top: 40px;
+    // height: 75%;
+    margin-top: 30px;
   }
 `;
 

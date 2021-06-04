@@ -8,7 +8,7 @@ import { Card } from "../Card"
 export const CurrencyCard = () => {
   return (
     <ThinnerCard
-      title="Currency Currency"
+      title="Currency"
       secundaryText="Current exchange rate"
       thirdText="273 C"
       icon={<FaMoneyBill />} />
