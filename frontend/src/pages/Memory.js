@@ -33,22 +33,23 @@ export const Memory = () => {
 		const secondMatched = pairOfPokemons[openedCard[1]];
 
 		if (secondMatched && firstMatched.id === secondMatched.id) {
-			setMatched([...matched, firstMatched.id]);
+			setMatched([...matched, firstMatched.id, secondMatched.id]);
 		}
 
-		if (openedCard.length === 2) setTimeout(() => setOpenedCard([]), 1000);
-
-		if (openedCard.lenght === 8) {
-			setFinished(true);
-		}
+		if (openedCard.length === 2) setTimeout(() => setOpenedCard([]), 600);
 	}, [openedCard]);
+
+	useEffect(() => {
+		if (matched.lenght > 0 && matched.length === pokemons.length) {
+			setFinished(true);
+			console.log(setFinished);
+		}
+	}, [matched]);
 
 	return (
 		<Main>
 			<Cards>
 				{pairOfPokemons.map((pokemon, index) => {
-					//lets flip the card
-
 					let isFlipped = false;
 
 					if (openedCard.includes(index)) isFlipped = true;
@@ -79,6 +80,7 @@ export const Memory = () => {
 
 const FinishedText = styled.p`
 	font-size: 20px;
+	color: #fff;
 `;
 
 const PokemonCard = styled.div`
