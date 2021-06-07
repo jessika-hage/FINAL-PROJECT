@@ -56,7 +56,6 @@ const MainContainer = styled.main`
   height: 100vh;
   position: relative;
   overflow: auto;
-  margin: 0 0 200px 0;  
 `;
 
 const Container = styled.section`
@@ -64,9 +63,8 @@ const Container = styled.section`
   width: 100%;
   padding: 0 20px;
   @media (min-width: 768px) {
+    margin-top: 20px;
     padding: 0 40px;
-    // height: 75%;
-    margin-top: 30px;
   }
 `;
 
@@ -82,24 +80,32 @@ const MapContainer = styled.div`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
   width: 100%;
-  padding: 0 20px;
+  margin: 20px;
+  background-color: ${props => props.theme.backgroundColor};
+  border: 2px solid ${props => props.theme.primary};
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
   @media (min-width: 768px) {
-      flex-direction: row;
-      margin-top: 40px;
-      padding: 0 40px;
-      height: 25%;
+    flex-direction: row;
+    padding: 0;
+    width: fit-content;
+    height: 120px;
+    margin: 40px;
   }
-`
+`;
 
 const RightContainer = styled.div`
   width: 100%;
+  margin: 0;
+  background-color: ${props => props.theme.backgroundColor};
+  border: 2px solid ${props => props.theme.primary};
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
   @media (min-width: 768px) {
-    width: 30%;
+    width: 35%;
   }
 `;
 
 const ThinnerCard = styled(Card)`
   width: 100%;
+  margin: 0;
 `;

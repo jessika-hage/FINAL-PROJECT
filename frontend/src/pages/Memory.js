@@ -15,6 +15,8 @@ export const Memory = () => {
 		{ id: 8, name: 'wartotle' },
 		{ id: 9, name: 'blastoise' },
 		{ id: 6, name: 'charizard' },
+        { id: 2, name: 'hello' },
+        { id: 12, name: 'hell' },
 	];
 
 	//currently there are 4 pokemons but we need the pair
@@ -40,11 +42,11 @@ export const Memory = () => {
 	}, [openedCard]);
 
 	useEffect(() => {
-		if (matched.lenght > 0 && matched.length === pokemons.length) {
+		if (openedCard.lenght === pokemons.length) {
 			setFinished(true);
 			console.log(setFinished);
 		}
-	}, [matched]);
+	}, [openedCard.length, pokemons.length]);
 
 	return (
 		<Main>
@@ -57,7 +59,7 @@ export const Memory = () => {
 					return (
 						<ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
 							<PokemonCard
-								flippCard={isFlipped}
+								flipped={isFlipped}
 								key={index}
 								onClick={() => flipCard(index)}
 							>
@@ -66,7 +68,6 @@ export const Memory = () => {
 							<img
 								src={`${url}/${pokemon.id}.png`}
 								alt='pokemon-name'
-								onClick={() => flipCard(index)}
 								width='100'
 							/>
 						</ReactCardFlip>
@@ -114,6 +115,6 @@ const Main = styled.div`
 
 const Cards = styled.div`
 	display: grid;
-	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+	grid-template: repeat(4, 1fr) / repeat(4, 1fr);
 	gap: 10px;
 `;

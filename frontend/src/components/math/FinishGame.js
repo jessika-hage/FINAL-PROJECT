@@ -1,54 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import { Dialog, DialogActions, DialogTitle } from "@material-ui/core";
 
 import { ResetButton } from "./ResetButton";
 
-export const FinishGame = ({ overlayVisible, endText, resetButton, onClick }) => {
-    return (
-        <FinishOverlay overlayVisible={overlayVisible}>
-          <InnerOverLay>
-            <EndMessage>
-              {endText}
-            </EndMessage>
-            <ResetButton resetButton={resetButton} onClick={onClick} />
-          </InnerOverLay>
-        </FinishOverlay>
-    )
+export const FinishGame = ({ open, endText, resetButton, onClick }) => {
+  return (
+    <Dialog open={open}>
+      <DialogContainer>
+        <DialogTitle>You earned {endText} points! </DialogTitle>
+        <DialogActions>
+          <ResetButton resetButton={resetButton} onClick={onClick} />
+        </DialogActions>
+      </DialogContainer>
+    </Dialog>
+  )
 };
 
-const FinishOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: ${props => props.theme.backgroundColor};
+const DialogContainer = styled.div`
+  padding: 20px;
   display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-directioN: column;
   align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .33s ease-out;
-  transform: scale(1.2);
-  ${props =>
-    props.overlayVisible ? 
-    ` opacity: 1;
-      visibility: visible;
-      transform: scale(1);`
-    : ` opacity: 0;
-      visibility: hidden;
-      transition: all .33s ease-out;
-      transform: scale(1.2);`
-  }
-  `;
-
-const InnerOverLay = styled.div`
-  text-align: center;
-  max-width: 700px;
-`;
-
-const EndMessage = styled.p`
-  font-size: 16px;
-  margin-top: 0;
+  background-color: ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
+  text-transform: uppercase;
+  font-family: "Trispace";
+  border: 4px solid ${props => props.theme.hover};
 `;

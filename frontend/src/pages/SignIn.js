@@ -20,7 +20,7 @@ const MainContainer = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.backgroundColor};
 `;
 
 const Title = styled.h1`
@@ -99,7 +99,7 @@ const input = keyframes`
 const NameInput = styled.input`
   padding: 10px;
   outline: none;
-  border-bottom: 3px solid ${props => props.theme.secondary};
+  border-bottom: 3px solid ${props => props.theme.primary};
   border-left: none;
   border-top: none;
   border-right: none;
@@ -110,6 +110,9 @@ const NameInput = styled.input`
   animation: ${input} 3.5s linear;
   width: 300px;
   font-family: "Trispace";
+  :focus {
+    background-color: ${props => props.theme.primary};
+  }
 `;
 
 const Button = styled.button`
@@ -121,7 +124,7 @@ const Button = styled.button`
   animation: ${input} 3.7s linear;
   text-transform: uppercase;
   font-family: "Trispace";
-  margin-top: 20px;
+  margin: 20px 0 5px 0;
   cursor: pointer;
   :hover {
     opacity: 0.7;

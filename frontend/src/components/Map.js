@@ -1,25 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaUtensils, FaSeedling, FaShoppingCart, FaCalculator } from "react-icons/fa";
 import { Tooltip } from "@material-ui/core";
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import HotelIcon from '@material-ui/icons/Hotel';
+import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import Icon from '@material-ui/core/Icon';
 
 export const Map = () => {
   return (
     <GridContainer>
       <Tooltip title="CLASSROM! Solve mathematical problems and earn points!">
-        <RoomOne><Icon><FaCalculator /></Icon></RoomOne>
+        <RoomOne><Icons><Icon className="fa fa-calculator" /></Icons></RoomOne>
       </Tooltip>
-      <RoomTwo></RoomTwo>
+      <RoomTwo><Icons><HotelIcon fontSize ="large" /></Icons></RoomTwo>
       <Tooltip title="RESTAURANT! see todays menu and upgrade meal!">
-        <CircleRoom><Icon><FaUtensils /></Icon></CircleRoom>
+        <CircleRoom><Icons><RestaurantIcon fontSize="large" /></Icons></CircleRoom>
       </Tooltip>
       <Tooltip title="GARDEN! grow flowers and earn points!">
-        <RoomThree><Icon><FaSeedling /></Icon></RoomThree>
+        <RoomThree><Icons><LocalFloristIcon fontSize="large" /></Icons></RoomThree>
       </Tooltip>
       <Tooltip title="STORE!">
-        <RoomFour><Icon><FaShoppingCart /></Icon></RoomFour>
+        <RoomFour><Icons><LocalGroceryStoreIcon fontSize="large" /></Icons></RoomFour>
       </Tooltip>
-      <RoomFive></RoomFive>
+      <RoomFive><Icons><FitnessCenterIcon fontSize="large" /></Icons></RoomFive>
       <RoomSix></RoomSix>
       <RoomSeven></RoomSeven>
     </GridContainer>
@@ -52,7 +57,14 @@ const RoomTwo = styled.div`
   grid-row: 4 / span 3;
   border: 2px solid white;
   border-bottom-left-radius: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   background-color: ${props => props.theme.secondary};
+  :hover {
+    background-color: ${props => props.theme.hover};
+  }
 `;
 
 const RoomThree = styled.div`
@@ -87,12 +99,19 @@ const RoomFive = styled.div`
   grid-column: 5 / span 2;
   grid-row: 1 / span 3;
   border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   background-color: ${props => props.theme.secondary};
+  :hover {
+    background-color: ${props => props.theme.hover};
+  }
 `;
 
 const RoomSix = styled.div`
   grid-column: 5 / span 2;
-  grid-row: 3 / span 4;
+  grid-row: 4 / span 3;
   border: 2px solid white;
   background-color: ${props => props.theme.secondary};
 `;
@@ -120,7 +139,7 @@ const RoomSeven = styled.div`
   
 `;
 
-const Icon = styled.button`
+const Icons = styled.button`
   color: ${props => props.theme.textColor};
   font-size: 44px;
   background-color: transparent;

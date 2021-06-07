@@ -4,7 +4,7 @@ import { Tooltip } from "@material-ui/core";
 import styled from 'styled-components';
 
 import { themes } from '../reducers/themes';
-import { darkTheme, lightTheme, blackTheme } from '../styledcomponents/StyledTheme';
+import { darkTheme, lightTheme, blackTheme, grayTheme } from '../styledcomponents/StyledTheme';
 
 export const ThemeButtons = ({ text }) => {
   const dispatch = useDispatch();
@@ -20,6 +20,9 @@ export const ThemeButtons = ({ text }) => {
       </Tooltip>
       <Tooltip title="Grey">
         <GreyButton onClick={() => dispatch(themes.actions.changeTheme(darkTheme))}></GreyButton>
+      </Tooltip>
+      <Tooltip title="Gray">
+        <GrayButton onClick={() => dispatch(themes.actions.changeTheme(grayTheme))}></GrayButton>
       </Tooltip>
     </ButtonContainer>
   )
@@ -60,4 +63,8 @@ const BlackButton = styled(Button)`
 
 const GreyButton = styled(Button)`
   background-color: grey;
+`;
+
+const GrayButton = styled(Button)`
+  background-color: #424242;
 `;

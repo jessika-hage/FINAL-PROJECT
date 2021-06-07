@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { darkTheme } from "../styledcomponents/StyledTheme";
+import { grayTheme } from "../styledcomponents/StyledTheme";
 
 export const themes = createSlice({
     name: "themes",
-    initialState: { theme: darkTheme },
+    initialState: { theme: grayTheme },
     reducers: {
       changeTheme: (state, action) => {
           state.theme = action.payload;

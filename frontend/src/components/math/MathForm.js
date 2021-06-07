@@ -36,10 +36,6 @@ const NumberInput = styled.input`
   outline: none;
   font-size: 14px;
   font-family: "Trispace";
-  margin-right: 10px;
-  ::placeholder {
-    // color: ${props => props.theme.textColor};
-  }
   :focus {
     background-color: ${props => props.theme.secondary};
   }

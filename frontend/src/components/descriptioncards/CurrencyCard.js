@@ -10,15 +10,16 @@ export const CurrencyCard = () => {
     <ThinnerCard
       title="Currency"
       secundaryText="Current exchange rate"
-      thirdText="273 C"
       icon={<FaMoneyBill />} />
   )
 };
 
 const ThinnerCard = styled(Card)`
   width: 100%;
-  height: fit-content;
+  height: 120px;
+  margin: 0;
   @media (min-width: 768px) {
     width: 25%;
+    border-right: 2px solid ${props => props.theme.primary};
   }
 `;

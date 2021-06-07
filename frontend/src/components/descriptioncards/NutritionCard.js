@@ -9,7 +9,6 @@ export const NutritionCard = () => {
 		<ThinnerCard
 			title='Nutrition served'
 			secundaryText='Pasta'
-			thirdText='300 kcal'
 			icon={<FaUtensils />}
 		/>
 	);
@@ -17,8 +16,10 @@ export const NutritionCard = () => {
 
 const ThinnerCard = styled(Card)`
 	width: 100%;
-	height: fit-content;
+	height: 120px;
+  margin: 0;
 	@media (min-width: 768px) {
 		width: 25%;
+    border-right: 2px solid ${props => props.theme.primary};
 	}
 `;

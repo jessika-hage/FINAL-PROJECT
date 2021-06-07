@@ -21,3 +21,11 @@ export const blackTheme = {
   textColor: "#fff",
   hover: "#3c415c"
 };
+
+export const grayTheme = {
+    backgroundColor: "#212121",
+    primary: "#333333",
+    secondary: "#424242",
+    textColor: "#fff",
+    hover: "#1A90FF"
+};

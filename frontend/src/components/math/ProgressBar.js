@@ -47,7 +47,6 @@ export const ProgressBar = ({ score }) => {
       bottom: 0;
       width: 100%;
       background-color: ${props => props.theme.hover};
-      opacity: 0.57;
       transform: scaleX(0);
       transform-origin: center left;
       transition: transform .4s ease-out;

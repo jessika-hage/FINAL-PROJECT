@@ -26,7 +26,7 @@ const MainContainer = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.backgroundColor};
 `;
 
 const Title = styled.h1`
@@ -41,7 +41,7 @@ const Title = styled.h1`
 const NameInput = styled.input`
   padding: 10px;
   outline: none;
-  border-bottom: 3px solid ${props => props.theme.secondary};
+  border-bottom: 3px solid ${props => props.theme.primary};
   border-left: none;
   border-top: none;
   border-right: none;
@@ -51,6 +51,9 @@ const NameInput = styled.input`
   margin-bottom: 20px;
   width: 300px;
   font-family: "Trispace";
+  :focus {
+    background-color: ${props => props.theme.primary};
+  }
 `;
 
 const ChooseText = styled.p`

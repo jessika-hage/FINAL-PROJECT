@@ -10,6 +10,7 @@ import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { Memory } from './pages/Memory';
+import { MemoryGame } from './pages/secondmemory/MemoryGame';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -28,6 +29,7 @@ export const App = () => {
 						<Route path='/signup' component={SignUp} />
 						<Route path='/memory' component={Memory} />
 						<Route path='/mathgame' component={MathGame} />
+            <Route path='/memorygame' component={MemoryGame} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>

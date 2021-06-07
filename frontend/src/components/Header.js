@@ -4,6 +4,7 @@ import moment from 'moment';
 import Drawer from '@material-ui/core/Drawer';
 import { Tooltip } from '@material-ui/core';
 import { FaUserAstronaut } from 'react-icons/fa';
+import CommentIcon from '@material-ui/icons/Comment';
 
 import { Profile } from '../pages/Profile';
 
@@ -17,11 +18,16 @@ export const Header = () => {
 				<Title>Citizen Ship</Title>
 				<Date>{today}</Date>
 			</TitleDate>
-			<Tooltip title='My Profile'>
+            <IconsContainer>
+                <MessageIcon>
+                    <CommentIcon fontSize="large" />
+                </MessageIcon>
+			  <Tooltip title='My Profile'>
 				<ProfilImg onClick={() => setOpenForm(true)}>
-					<FaUserAstronaut />
+				  <FaUserAstronaut />
 				</ProfilImg>
-			</Tooltip>
+			  </Tooltip>
+            </IconsContainer>
 			<Drawer
 				anchor='bottom'
 				open={openForm}
@@ -39,7 +45,7 @@ const Main = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 100px;
+	height: 80px;
 	background-color: ${(props) => props.theme.primary};
 	position: fixed;
 	margin: 0;
@@ -73,20 +79,43 @@ const Date = styled.p`
   font-family: "Trispace";
 `;
 
+const IconsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.theme.textColor};
+`;
+
+const MessageIcon = styled.button`
+font-size: 10px;
+border: none;
+outline: none;
+background-color: transparent;
+color: ${props => props.theme.textColor};
+cursor: pointer;
+display: flex;
+align-items: center;
+cursor: pointer;
+:hover {
+    color: ${props => props.theme.hover};
+}`;
+
 const ProfilImg = styled.button`
-	font-size: 38px;
+	font-size: 32px;
 	border: none;
 	outline: none;
-	background-color: transparent;
-	color: ${(props) => props.theme.textColor};
+    border-radius: 50%;
+    padding: 10px;
+	background-color: ${props => props.theme.secondary};
+	color: ${props => props.theme.textColor};
 	margin-right: 20px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
+    margin-left: 5px;
 	cursor: pointer;
-	z-index: 5;
 	:hover {
-		opacity: 0.7;
+		background-color: ${props => props.theme.hover};
+        transform: scale(1.05);
 	}
 `;
 

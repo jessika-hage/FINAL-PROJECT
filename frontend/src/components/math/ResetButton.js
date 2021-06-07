@@ -12,15 +12,16 @@ export const ResetButton = ({ resetButton, onClick }) => {
 };
 
 const Button = styled.button`
-  padding: 12px 20px;
-  background-color: ${props => props.theme.secondary};
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.hover};
   color: ${props => props.theme.textColor};
-  outline: none;
-  border: 1px solid ${props => props.theme.primary};
   font-size: 16px;
-  cursor: pointer; 
+  text-transform: uppercase;
   font-family: "Trispace";
+  cursor: pointer;
   :hover {
-    opacity: 0.7;
- }
-  `
+    background-color: ${props => props.theme.hover};
+  }
+`;
