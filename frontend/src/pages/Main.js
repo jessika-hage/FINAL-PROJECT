@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/macro'
+import { useSelector } from "react-redux";
+import { useHistory, Link } from "react-router-dom";
 
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
@@ -14,6 +16,16 @@ import { CurrencyCard } from '../components/descriptioncards/CurrencyCard';
 
 
 export const Main = () => {
+    const accessToken = useSelector((store) => store.profile.accessToken);
+
+    const history = useHistory();
+
+    // useEffect(() => {
+    //     if (!accessToken) {
+    //       history.push("/signin");
+    //     }
+    //   }, [accessToken, history]);
+      
   return(
     <MainContainer>
       <Header />
@@ -23,18 +35,24 @@ export const Main = () => {
           <Map />
         </MapContainer>
         <RightContainer>
+          <Link to='/memorygame'>
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Memory" 
             secundaryText="This is secundaryText" />
+            </Link>
+          <Link to='/memorygame'>  
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Garden" 
             secundaryText="This is secundaryText" />
+          </Link>
+          <Link to="/classroom">
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Classroom" 
             secundaryText="This is secundaryText" />
+          </Link>
         </RightContainer>
       </Container>
       <BottomContainer>
@@ -108,4 +126,8 @@ const RightContainer = styled.div`
 const ThinnerCard = styled(Card)`
   width: 100%;
   margin: 0;
+  cursor: pointer;
+  :hover {
+    background-color: ${props => props.theme.primary};
+  }
 `;

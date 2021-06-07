@@ -11,9 +11,11 @@ import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { Memory } from './pages/Memory';
 import { MemoryGame } from './pages/secondmemory/MemoryGame';
+import { profile } from 'reducers/profile';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
+  profile: profile.reducer
 });
 
 const store = configureStore({ reducer });
@@ -28,7 +30,7 @@ export const App = () => {
 						<Route path='/signin' component={SignIn} />
 						<Route path='/signup' component={SignUp} />
 						<Route path='/memory' component={Memory} />
-						<Route path='/mathgame' component={MathGame} />
+						<Route path='/classroom' component={MathGame} />
             <Route path='/memorygame' component={MemoryGame} />
 					</Switch>
 				</BrowserRouter>

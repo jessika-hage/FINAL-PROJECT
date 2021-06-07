@@ -1,23 +1,96 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch, batch } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 
 import { ThemeButtons } from '../components/ThemeButtons';
+import { CITIZEN_URL } from '../reusable/Urls';
+import { profile } from '../reducers/profile'
 
 export const SignUp = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [mode, setMode] = useState(null);
+  const accessToken = useSelector((store) => store.profile.accessToken);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (accessToken) {
+      history.push("/");
+    }
+  }, [accessToken, history]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+      const options = {
+        method: 'POST',
+        headers: {
+              'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      };
+      fetch(CITIZEN_URL(mode), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          batch(() => {
+            dispatch(profile.actions.setUsername(data.username));
+            dispatch(profile.actions.setEmail(data.email));
+            dispatch(profile.actions.setAccessToken(data.accessToken));
+          });
+        } else{
+          console.log(data)
+        }
+      }
+    )
+    .catch();
+  }
+
   return (
     <MainContainer>
         <Title>Citizen Ship</Title>
-        <NameInput type="text" placeholder="username"></NameInput>
-        <NameInput type="text" placeholder="password"></NameInput>
+        <Form onSubmit= {handleFormSubmit}>
+        <NameInput 
+        type="text" 
+        placeholder="username"
+        value={username}
+		onChange={(e) => setUsername(e.target.value)}
+        ></NameInput>
+        <NameInput 
+        type="password" 
+        placeholder="password"
+        value={password}
+		onChange={(e) => setPassword(e.target.value)}
+        ></NameInput>
+        <NameInput
+        type="email" 
+        placeholder="email"
+        value={email}
+		onChange={(e) => setEmail(e.target.value)}></NameInput>
         <ChooseText>Choose your avatar:</ChooseText>
         <ThemeButtons />
         <ChooseText>Color your spaceship:</ChooseText>
         <ThemeButtons />
-        <Button>become a citizen</Button>
-        <SignIn>Already a citizen? Board ship here!</SignIn>
+        <Button 
+        type='submit'
+        onClick={()=> setMode('signup')}
+        >become a citizen</Button>
+        <SignIn>Already a citizen? <Link to='/signin'>Board ship here!</Link></SignIn>
+        </Form>
     </MainContainer>
   )
 };
+
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
 
 const MainContainer = styled.main`
   width: 100%;
@@ -47,12 +120,15 @@ const NameInput = styled.input`
   border-right: none;
   background-color: transparent;
   font-size: 16px;
-  text-transform: uppercase;
+  color: ${props => props.theme.textColor};
   margin-bottom: 20px;
   width: 300px;
   font-family: "Trispace";
   :focus {
     background-color: ${props => props.theme.primary};
+  }
+  ::placeholder {
+    text-transform: uppercase;
   }
 `;
 

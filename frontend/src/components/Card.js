@@ -40,9 +40,6 @@ const Container = styled.div`
 //   border-radius: 6px;
   border-bottom: 2px solid ${props => props.theme.primary};
   background: ${props => props.theme.backgroundColor};
-  :last-of-type {
-    margin-bottom: 100px;
-  }
 `;
 
 const TitleIconBox = styled.div`

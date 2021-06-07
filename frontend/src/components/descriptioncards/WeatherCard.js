@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { WEATHER_API } from '../../reusable/Urls';
 import { FaMeteor } from 'react-icons/fa';
 import { Card } from '../Card';
 
 export const WeatherCard = () => {
-	const [weather, setWeather] = useState([]);
-
-	useEffect(() => {
-		fetch(`${WEATHER_API}`)
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				setWeather(data);
-			});
-	}, [weather]);
 
 	// const getWeatherData = (data) => {
 	//     const cityName = data.name;
@@ -31,15 +20,12 @@ export const WeatherCard = () => {
 
 	return (
 		<>
-			{weather && (
 				<ThinnerCard
 					// key={weather.}
 					title='Weather at Destination'
 					secundaryText='Jupiter'
-					thirdText={weather.name}
 					icon={<FaMeteor />}
 				/>
-			)}
 		</>
 	);
 };
