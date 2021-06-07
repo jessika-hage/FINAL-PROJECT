@@ -18,9 +18,7 @@ export const Memory = () => {
         { id: 2, name: 'hello' },
         { id: 12, name: 'hell' },
 	];
-
 	//currently there are 4 pokemons but we need the pair
-
 	const pairOfPokemons = [...pokemons, ...pokemons];
 
 	function flipCard(index) {
