@@ -48,6 +48,15 @@ const Citizen = mongoose.model('Citizen', {
 	},
 });
 
+const CitizenMessage = mongoose.model('CitizenMessage', {
+	message: String,
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+})
+
+// Authorization
 const authenticateCitizen = async (req, res, next) => {
 	const accessToken = req.header('Authorization');
 
@@ -106,7 +115,7 @@ app.post('/citizen/:id/badges', async (req, res) => {
 });
 
 // GET all citizens
-// app.get('/citizens', authenticateCitizen);
+app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
 	const { sort } = req.query;
 	const sortCitizens = (sort) => {
@@ -181,6 +190,24 @@ app.post('/signin', async (req, res) => {
 		res
 			.status(400)
 			.json({ success: false, message: 'Blä!!Invalid request', error });
+	}
+});
+
+app.get('/citizenmessage', authenticateCitizen);
+app.get('/citizenmessage', async (req, res) => {
+	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 }).limit(2);
+	res.json({ success: true, citizenMessage })
+});
+
+app.post('/citizenmessage', authenticateCitizen);
+app.post('/citizenmessage', async (req, res) => {
+	const { message } = req.body;
+
+	try {
+		const newCitizenMessage = await new CitizenMessage({ message }).save();
+		res.json({ success: true, newCitizenMessage });
+	} catch (error) {
+		res.status(400).json({ success: false, message: 'Invalid request', error })
 	}
 });
 
