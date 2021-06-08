@@ -6,6 +6,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
+import AppsIcon from '@material-ui/icons/Apps';
 import Icon from '@material-ui/core/Icon';
 import { Link } from 'react-router-dom';
 
@@ -46,13 +47,19 @@ export const Map = () => {
 					</Icons>
 				</RoomFour>
 			</Tooltip>
-			<RoomFive>
-				<Icons>
-					<FitnessCenterIcon fontSize='large' />
-				</Icons>
-			</RoomFive>
-			<Tooltip>
-				<RoomSix to='/memorygame'></RoomSix>
+			<Tooltip title='GYM!'>
+				<RoomFive>
+					<Icons>
+						<FitnessCenterIcon fontSize='large' />
+					</Icons>
+				</RoomFive>
+			</Tooltip>
+			<Tooltip title='MEMORY'>
+				<RoomSix to='/memorygame'>
+					<Icons>
+						<AppsIcon fontSize='large' />
+					</Icons>
+				</RoomSix>
 			</Tooltip>
 			<RoomSeven></RoomSeven>
 		</GridContainer>
@@ -141,7 +148,14 @@ const RoomSix = styled(Link)`
 	grid-column: 5 / span 2;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 	background-color: ${(props) => props.theme.secondary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 const CircleRoom = styled.div`
