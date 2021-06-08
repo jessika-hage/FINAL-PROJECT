@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
@@ -13,6 +13,7 @@ export const Profile = () => {
 //   const [badges, setBadges] = useState();
 //   const accessToken = useSelector((store) => store.profile.accessToken);
   const username = useSelector((store) => store.profile.username);
+//   const badges = useSelector((store) => store.profile.badges);
 
 //   useEffect(() => {
 //     fetch (CITIZEN_URL('citizens'))

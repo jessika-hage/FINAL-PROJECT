@@ -38,7 +38,7 @@ export const SignIn = () => {
             dispatch(profile.actions.setUsername(data.username));
             dispatch(profile.actions.setAccessToken(data.accessToken));
           });
-        } else{
+        } else {
           console.log(data)
         }
       }

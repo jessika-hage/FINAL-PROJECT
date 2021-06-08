@@ -39,27 +39,29 @@ export const Main = () => {
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Memory" 
-            secundaryText="This is secundaryText" />
+            secondaryText="This is secundaryText" />
             </Link>
           <Link to='/memorygame'>  
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Garden" 
-            secundaryText="This is secundaryText" />
+            secondaryText="This is secundaryText" />
           </Link>
           <Link to="/classroom">
           <ThinnerCard
             thumbnailUrl="https://www.fillmurray.com/100/100"
             title="Classroom" 
-            secundaryText="This is secundaryText" />
+            secondaryText="This is secundaryText" />
           </Link>
         </RightContainer>
       </Container>
-      <BottomContainer>
-        <WeatherCard />
-        <NutritionCard />
-        <EntertainmentCard />
-        <CurrencyCard />
+        <BottomContainer>
+        <CardContainer>
+          <WeatherCard />
+          <NutritionCard />
+          <EntertainmentCard />
+          <CurrencyCard />
+        </CardContainer>
       </BottomContainer>
     </MainContainer>
   )
@@ -81,7 +83,7 @@ const Container = styled.section`
   width: 100%;
   padding: 0 20px;
   @media (min-width: 768px) {
-    margin-top: 20px;
+    margin-top: 80px;
     padding: 0 40px;
   }
 `;
@@ -96,19 +98,26 @@ const MapContainer = styled.div`
 `;
 
 const BottomContainer = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  margin: 40px 0 100px 0;
+  @media (min-width: 768px) {
+    padding: 0 40px;
+    margin: 40px 0;
+  }
+`;
+
+const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 20px;
+  max-width: 100%;
   background-color: ${props => props.theme.backgroundColor};
   border: 2px solid ${props => props.theme.primary};
   box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
   @media (min-width: 768px) {
     flex-direction: row;
+    flex-wrap: wrap;
     padding: 0;
-    width: fit-content;
-    height: 120px;
-    margin: 40px;
   }
 `;
 
@@ -127,6 +136,7 @@ const ThinnerCard = styled(Card)`
   width: 100%;
   margin: 0;
   cursor: pointer;
+  border-bottom: 2px solid ${props => props.theme.primary};
   :hover {
     background-color: ${props => props.theme.primary};
   }

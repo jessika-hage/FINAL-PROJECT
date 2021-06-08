@@ -21,4 +21,11 @@ code {
 a {
   text-decoration: none;
   outline: none;
+  font-family: "Trispace", serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }

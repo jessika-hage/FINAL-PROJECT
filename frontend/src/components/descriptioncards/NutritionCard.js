@@ -8,8 +8,9 @@ export const NutritionCard = () => {
 	return (
 		<ThinnerCard
 			title='Nutrition served'
-			secundaryText='Pasta'
+			secondaryText='Pasta'
 			icon={<FaUtensils />}
+      button='See more'
 		/>
 	);
 };
@@ -18,8 +19,14 @@ const ThinnerCard = styled(Card)`
 	width: 100%;
 	height: 120px;
   margin: 0;
+  border-bottom: 2px solid ${props => props.theme.primary};
 	@media (min-width: 768px) {
-		width: 25%;
+		width: 50%;
     border-right: 2px solid ${props => props.theme.primary};
+    height: 160px;
 	}
+  @media (min-width: 1200px) {
+    width: 25%;
+    border-bottom: none;
+  }
 `;

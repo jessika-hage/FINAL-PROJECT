@@ -17,11 +17,11 @@ export const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    if (accessToken) {
-      history.push("/");
-    }
-  }, [accessToken, history]);
+//   useEffect(() => {
+//     if (accessToken) {
+//       history.push("/");
+//     }
+//   }, [accessToken, history]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ export const SignUp = () => {
             dispatch(profile.actions.setEmail(data.email));
             dispatch(profile.actions.setAccessToken(data.accessToken));
           });
-        } else{
+        } else {
           console.log(data)
         }
       }

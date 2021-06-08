@@ -5,16 +5,20 @@ import styled from 'styled-components/macro'
 
 export const Card = ({ 
     title, 
-    secundaryText,
+    secondaryText,
     icon,
     thirdText, 
-    fourthText,
+    secondaryTextTwo,
     thumbnailUrl, 
+    thumbnailTwo,
     coverImage, 
     className, 
-    children }) =>[
+    button,
+    onClick }) =>[
   <Container className={className}>
     {coverImage && <CoverImage src={coverImage} />}
+    <ContentIcon>
+    {thumbnailTwo && <ThumbnailTwo src={thumbnailTwo} />}
     <Content>
       <TitleBar>
         {thumbnailUrl && <Thumbnail url={thumbnailUrl} />}
@@ -23,23 +27,32 @@ export const Card = ({
             {title && <Title>{title}</Title>}
             {icon && <Icon>{icon}</Icon>}
           </TitleIconBox>
-          {secundaryText && <SecundaryText>{secundaryText}</SecundaryText>}
+          <SmallTextContainer>
+            {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
+            {secondaryTextTwo && <SecondaryText>{secondaryTextTwo}</SecondaryText>}
+          </SmallTextContainer>
           {thirdText && <ThirdText>{thirdText}</ThirdText>}
-          {fourthText && <FourthText>{fourthText}</FourthText>}
         </TextBox>     
       
     </TitleBar>
-    {children && <ChildrenContent>{children}</ChildrenContent>}
+    {button && <Button onClick={onClick}>{button}</Button>}
     </Content>     
+    </ContentIcon>
   </Container>
 ]
 
 const Container = styled.div`
-//   box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
   margin: 10px;
-//   border-radius: 6px;
-  border-bottom: 2px solid ${props => props.theme.primary};
   background: ${props => props.theme.backgroundColor};
+  position: relative;
+`;
+
+const ContentIcon = styled.div`
+  display: flex;
+`;
+
+const SmallTextContainer = styled.div`
+display: flex;
 `;
 
 const TitleIconBox = styled.div`
@@ -62,13 +75,13 @@ const Title = styled.h1`
   color: ${props => props.theme.textColor};
 `;
 
-const SecundaryText = styled.p`
-  margin: 0;
+const SecondaryText = styled.p`
+  margin: 0 5px 0 0;
   color: #6b6b6b;
   font-size: 14px;
 `;
 
-const ThirdText = styled(SecundaryText)`
+const ThirdText = styled(SecondaryText)`
 `;
 
 const Icon = styled.p`
@@ -77,16 +90,24 @@ const Icon = styled.p`
   color: ${props => props.theme.textColor};
 `;
 
-const FourthText = styled(SecundaryText)`
-`;
-
 const Thumbnail = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background-image: url(${(props) => props.url});
   background-size: cover;
-  margin-right: 10px;
+  margin-right: 10px
+`;
+
+const ThumbnailTwo = styled.img`
+  width: 78px;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  @media (min-width: 768px) {
+      width: 105px;
+  }
 `;
 
 const TitleBar = styled.div`
@@ -103,7 +124,20 @@ const Content = styled.div`
   padding: 20px;
 `;
 
-const ChildrenContent = styled.div`
-  background: #f1f1f1;
+const Button = styled.button`
+  background-color: ${props => props.theme.primary};
+  color: ${props => props.theme.textColor};
   padding: 10px;
+  outline: none;
+  border: ${props => props.theme.secondary};
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Trispace", serif;
+  :hover {
+    background-color: ${props => props.theme.secondary};
+  }
 `;
