@@ -5,18 +5,18 @@ import { useHistory, Link } from 'react-router-dom';
 
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
-import { Card } from '../components/Card';
+// import { Card } from '../components/Card';
 import { Map } from '../components/Map';
-import { WeatherCard } from '../components/descriptioncards/WeatherCard';
+// import { WeatherCard } from '../components/descriptioncards/WeatherCard';
 import { EntertainmentCard } from '../components/descriptioncards/EntertainmentCard';
 import { NutritionCard } from '../components/descriptioncards/NutritionCard';
-import { CurrencyCard } from '../components/descriptioncards/CurrencyCard';
+// import { CurrencyCard } from '../components/descriptioncards/CurrencyCard';
 import { LeaderBoard } from '../components/LeaderBoard';
 
 export const Main = () => {
-	const accessToken = useSelector((store) => store.profile.accessToken);
+  const accessToken = useSelector((store) => store.profile.accessToken);
 
-	const history = useHistory();
+  const history = useHistory();
 
 	// useEffect(() => {
 	// 	if (!accessToken) {
@@ -24,64 +24,64 @@ export const Main = () => {
 	// 	}
 	// }, [accessToken, history]);
 
-	return (
-		<MainContainer>
-			<Header />
-			<Camera />
-			<Container>
-				<MapContainer>
-					<Map />
-				</MapContainer>
-				{/* <RightContainer>
-					<Link to='/memorygame'>
-						<ThinnerCard
-							thumbnailUrl='https://www.fillmurray.com/100/100'
-							title='Memory'
-							secondaryText='This is secundaryText'
-						/>
-					</Link>
-					<Link to='/memorygame'>
-						<ThinnerCard
-							thumbnailUrl='https://www.fillmurray.com/100/100'
-							title='Garden'
-							secondaryText='This is secundaryText'
-						/>
-					</Link>
-					<Link to='/classroom'>
-						<ThinnerCard
-							thumbnailUrl='https://www.fillmurray.com/100/100'
-							title='Classroom'
-							secondaryText='This is secundaryText'
-						/>
-					</Link>
-				</RightContainer> */}
-			</Container>
-			<BottomContainer>
-				<Wrapper>
-					<CardTitle>Today on the ship</CardTitle>
-					<CardContainer>
-						{/* <WeatherCard /> */}
-						<NutritionCard />
-						<EntertainmentCard />
-						{/* <CurrencyCard /> */}
-					</CardContainer>
-				</Wrapper>
-				<Wrapper>
-					<CardTitle>Citizens Leaderboard</CardTitle>
-					<CitizensContainer>
-						<LeaderBoard />
-					</CitizensContainer>
-				</Wrapper>
-			</BottomContainer>
-		</MainContainer>
-	);
+  return (
+	<MainContainer>
+	  <Header />
+	  <Camera />
+	  <Container>
+		<MapContainer>
+		  <Map />
+		</MapContainer>
+		{/* <RightContainer>
+		  <Link to='/memorygame'>
+			<ThinnerCard
+			  thumbnailUrl='https://www.fillmurray.com/100/100'
+			  title='Memory'
+			  secondaryText='This is secundaryText'
+			/>
+		  </Link>
+		  <Link to='/memorygame'>
+			<ThinnerCard
+			  thumbnailUrl='https://www.fillmurray.com/100/100'
+			  title='Garden'
+			  secondaryText='This is secundaryText'
+		  />
+		  </Link>
+		  <Link to='/classroom'>
+			<ThinnerCard
+				thumbnailUrl='https://www.fillmurray.com/100/100'
+				title='Classroom'
+				secondaryText='This is secundaryText'
+			/>
+		  </Link>
+		</RightContainer> */}
+		</Container>
+		<BottomContainer>
+		  <Wrapper>
+			<CardTitle>Today on the ship</CardTitle>
+			<CardContainer>
+			  {/* <WeatherCard /> */}
+			  <NutritionCard />
+			  <EntertainmentCard />
+			  {/* <CurrencyCard /> */}
+			</CardContainer>
+		  </Wrapper>
+		  <Wrapper>
+			<CardTitle>Citizens Leaderboard</CardTitle>
+			<CitizensContainer>
+				<LeaderBoard />
+			</CitizensContainer>
+		  </Wrapper>
+		</BottomContainer>
+	</MainContainer>
+  );
 };
 
 const MainContainer = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${props => props.theme.backgroundColor};
 	width: 100%;
 	height: 100vh;
 	position: relative;
@@ -131,7 +131,7 @@ const Wrapper = styled.div`
 
 const CardTitle = styled.h4`
 	text-transform: uppercase;
-	color: ${(props) => props.theme.textColor};
+	color: ${props => props.theme.textColor};
 	padding-left: 5px;
 `;
 
@@ -139,8 +139,8 @@ const CardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 100%;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${props => props.theme.backgroundColor};
+	border: 2px solid ${props => props.theme.primary};
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
@@ -153,8 +153,8 @@ const CitizensContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 100%;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${props => props.theme.backgroundColor};
+	border: 2px solid ${props => props.theme.primary};
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
@@ -163,23 +163,23 @@ const CitizensContainer = styled.div`
 	}
 `;
 
-const RightContainer = styled.div`
-	width: 100%;
-	margin: 0;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
-	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
-	@media (min-width: 768px) {
-		width: 35%;
-	}
-`;
+// const RightContainer = styled.div`
+// 	width: 100%;
+// 	margin: 0;
+// 	background-color: ${props => props.theme.backgroundColor};
+// 	border: 2px solid ${props => props.theme.primary};
+// 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
+// 	@media (min-width: 768px) {
+// 		width: 35%;
+// 	}
+// `;
 
-const ThinnerCard = styled(Card)`
-	width: 100%;
-	margin: 0;
-	cursor: pointer;
-	border-bottom: 2px solid ${(props) => props.theme.primary};
-	:hover {
-		background-color: ${(props) => props.theme.primary};
-	}
-`;
+// const ThinnerCard = styled(Card)`
+// 	width: 100%;
+// 	margin: 0;
+// 	cursor: pointer;
+// 	border-bottom: 2px solid ${props => props.theme.primary};
+// 	:hover {
+// 		background-color: ${props => props.theme.primary};
+// 	}
+// `;
