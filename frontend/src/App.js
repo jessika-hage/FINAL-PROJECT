@@ -10,7 +10,6 @@ import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
-import { Hidden } from './pages/Hidden';
 import { MemoryGame } from './pages/secondmemory/MemoryGame';
 import { profile } from 'reducers/profile';
 
@@ -31,7 +30,6 @@ export const App = () => {
 						<Route path='/signin' component={SignIn} />
 						<Route path='/leaderboard' component={LeaderBoard} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/hidden' component={Hidden} />
 						<Route path='/classroom' component={MathGame} />
 						<Route path='/memorygame' component={MemoryGame} />
 					</Switch>

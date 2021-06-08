@@ -28,9 +28,9 @@ export const LeaderBoard = () => {
 			{leaderBoard.map((citizen) => (
 				<CitizensList>
 					<Citizen>{citizen.username}</Citizen>
+					<Citizen></Citizen>
 					<Citizen>{citizen.badges}</Citizen>
 					<Citizen>{citizen.badges}</Citizen>
-					<Citizen>hej</Citizen>
 				</CitizensList>
 			))}
 		</TableContainer>

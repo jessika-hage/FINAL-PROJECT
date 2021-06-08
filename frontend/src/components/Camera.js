@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { Hidden } from '/Hidden';
+
 export const Camera = () => {
+	const [background, setBackground] = useState(false);
+	const getBackground = () => {
+		setBackground(true);
+		setTimeout(() => {
+			setBackground(false);
+		}, 1000);
+	};
 	return (
 		<Main>
 			<Link to='/hidden'>
-				<Circle>
+				<Circle onClick={getBackground}>
 					<InnerCircle></InnerCircle>
 				</Circle>
 			</Link>
@@ -51,6 +60,7 @@ const Circle = styled.div`
 	position: fixed;
 	top: 20px;
 	z-index: 2;
+	cursor: pointer;
 	border: 4px solid ${(props) => props.theme.backgroundColor};
 	@media (min-width: 768px) {
 		top: 65px;
