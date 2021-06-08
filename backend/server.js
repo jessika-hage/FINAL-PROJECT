@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
 });
 
 // GET for logged in citizen
-app.get('/citizen', authenticateCitizen);
+// app.get('/citizen', authenticateCitizen);
 app.get('/citizen', async (req, res) => {
 	const profile = await Citizen.findById({ username, createdAt, badges });
 
@@ -115,7 +115,7 @@ app.post('/citizen/:id/badges', async (req, res) => {
 });
 
 // GET all citizens
-app.get('/citizens', authenticateCitizen);
+// app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
 	const { sort } = req.query;
 	const sortCitizens = (sort) => {
@@ -161,10 +161,23 @@ app.post('/signup', async (req, res) => {
 			createdAt: newCitizen.createdAt,
 		});
 	} catch (error) {
-		res
-			.status(400)
-			.json({ success: false, message: 'Blä blä,Invalid request', error });
-	}
+		if (error.code === 11000) {
+		  if (error.keyValue.username) {
+			res.status(400).json({
+			  success: false,
+			  message: "Username already taken, sorry! :)",
+			  error,
+			});
+		  } else if (error.keyValue.email) {
+			res.status(400).json({
+			  success: false,
+			  message: "Email already taken, sorry! :)",
+			  error,
+			});
+		  }
+		}
+		res.status(400).json({ success: false, message: "Invalid request", error });
+	  }
 });
 
 // POST for signing in
@@ -193,13 +206,15 @@ app.post('/signin', async (req, res) => {
 	}
 });
 
-app.get('/citizenmessage', authenticateCitizen);
+// GET Messages for messageboard
+// app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
-	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 }).limit(2);
+	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 });
 	res.json({ success: true, citizenMessage })
 });
 
-app.post('/citizenmessage', authenticateCitizen);
+// POST message on messageboard
+// app.post('/citizenmessage', authenticateCitizen);
 app.post('/citizenmessage', async (req, res) => {
 	const { message } = req.body;
 
