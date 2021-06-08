@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { CITIZEN_URL } from '../reusable/Urls';
+
 export const LeaderBoard = () => {
+	const [leaderBoard, setLeaderBoard] = useState([]);
+
+	useEffect(() => {
+		fetchCitizens();
+	}, []);
+
+	const fetchCitizens = () => {
+		fetch(CITIZEN_URL('citizens'))
+			.then((res) => res.json())
+			.then((data) => setLeaderBoard(data.allCitizens))
+			.catch((err) => console.error(err));
+	};
 	return (
 		<TableContainer>
 			<TableHead>
 				<TableCell>Citizen</TableCell>
 				<TableCell>Status</TableCell>
 				<TableCell>Days on Ship</TableCell>
-				<TableCell>Carbs&nbsp;(g)</TableCell>
-				<TableCell>Protein&nbsp;(g)</TableCell>
+				<TableCell>Badges</TableCell>
 			</TableHead>
-			{/* {rows.map((row) => ( */}
-			<CitizensList>
-				<Citizen></Citizen>
-				<Citizen>hej</Citizen>
-				<Citizen>hej</Citizen>
-				<Citizen>hej</Citizen>
-				<Citizen>hej</Citizen>
-			</CitizensList>
-			{/* ))} */}
+			{leaderBoard.map((citizen) => (
+				<CitizensList>
+					<Citizen>{citizen.username}</Citizen>
+					<Citizen>{citizen.badges}</Citizen>
+					<Citizen>{citizen.badges}</Citizen>
+					<Citizen>hej</Citizen>
+				</CitizensList>
+			))}
 		</TableContainer>
 	);
 };
@@ -32,6 +44,7 @@ const TableContainer = styled.div`
 	padding: 20px;
 	background-color: ${(props) => props.theme.primary};
 	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${(props) => props.theme.textColor};
 `;
 
 const TableHead = styled.div`
@@ -40,9 +53,19 @@ const TableHead = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
-const TableCell = styled.h5``;
+const TableCell = styled.h5`
+	width: 25%;
+	padding: 5px;
+	margin: 0;
+	text-transform: uppercase;
+`;
 
-const Citizen = styled.p``;
+const Citizen = styled.p`
+	width: 25%;
+	padding: 10px 0 10px 5px;
+	margin: 0;
+	font-size: 14px;
+`;
 
 const CitizensList = styled.div`
 	display: flex;

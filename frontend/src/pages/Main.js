@@ -57,15 +57,21 @@ export const Main = () => {
 				</RightContainer> */}
 			</Container>
 			<BottomContainer>
-				<CardContainer>
-					{/* <WeatherCard /> */}
-					<NutritionCard />
-					<EntertainmentCard />
-					{/* <CurrencyCard /> */}
-				</CardContainer>
-				<CitizensContainer>
-					<LeaderBoard />
-				</CitizensContainer>
+				<Wrapper>
+					<CardTitle>Today on the ship</CardTitle>
+					<CardContainer>
+						{/* <WeatherCard /> */}
+						<NutritionCard />
+						<EntertainmentCard />
+						{/* <CurrencyCard /> */}
+					</CardContainer>
+				</Wrapper>
+				<Wrapper>
+					<CardTitle>Citizens Leaderboard</CardTitle>
+					<CitizensContainer>
+						<LeaderBoard />
+					</CitizensContainer>
+				</Wrapper>
 			</BottomContainer>
 		</MainContainer>
 	);
@@ -116,6 +122,19 @@ const BottomContainer = styled.div`
 	}
 `;
 
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: 0 10px;
+`;
+
+const CardTitle = styled.h4`
+	text-transform: uppercase;
+	color: ${(props) => props.theme.textColor};
+	padding-left: 5px;
+`;
+
 const CardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -125,9 +144,8 @@ const CardContainer = styled.div`
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
-		width: 50%;
 		padding: 0;
-		margin-right: 10px;
+		width: 100%;
 	}
 `;
 
@@ -140,9 +158,8 @@ const CitizensContainer = styled.div`
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
-		width: 50%;
 		padding: 0;
-		margin-left: 10px;
+		width: 100%;
 	}
 `;
 
