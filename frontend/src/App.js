@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { themes } from 'reducers/themes';
 import { Theme } from './components/Theme';
+import { Store } from './pages/Store';
 import { LeaderBoard } from './components/LeaderBoard';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
@@ -32,6 +33,7 @@ export const App = () => {
 						<Route path='/signup' component={SignUp} />
 						<Route path='/classroom' component={MathGame} />
 						<Route path='/memorygame' component={MemoryGame} />
+						<Route path='/store' component={Store} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>
