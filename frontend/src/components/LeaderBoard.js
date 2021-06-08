@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { CITIZEN_URL } from '../reusable/Urls';
 
@@ -17,6 +16,7 @@ export const LeaderBoard = () => {
 			.then((data) => setLeaderBoard(data.allCitizens))
 			.catch((err) => console.error(err));
 	};
+	
 	return (
 		<TableContainer>
 			<TableHead>
@@ -43,7 +43,6 @@ const TableContainer = styled.div`
 	justify-content: space-between;
 	padding: 20px;
 	background-color: ${(props) => props.theme.primary};
-	border: 2px solid ${(props) => props.theme.secondary};
 	color: ${(props) => props.theme.textColor};
 `;
 

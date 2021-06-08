@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
-// import { Card } from '../components/Card';
 import { Map } from '../components/Map';
 // import { WeatherCard } from '../components/descriptioncards/WeatherCard';
 import { EntertainmentCard } from '../components/descriptioncards/EntertainmentCard';
@@ -18,11 +17,11 @@ export const Main = () => {
 
   const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
   return (
 	<MainContainer>
@@ -125,14 +124,22 @@ const BottomContainer = styled.div`
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	width: 100%;
 	margin: 0 10px;
+	@media (min-width: 768px) {
+		flex-wrap: wrap;
+		padding: 0;
+		width: 50%;
+	}
 `;
 
 const CardTitle = styled.h4`
 	text-transform: uppercase;
 	color: ${props => props.theme.textColor};
-	padding-left: 5px;
+	padding: 7px 10px;
+	margin: 0;
+	width: fit-content;
+	background-color: ${props => props.theme.primary};
 `;
 
 const CardContainer = styled.div`

@@ -8,9 +8,11 @@ import CommentIcon from '@material-ui/icons/Comment';
 import { Link } from 'react-router-dom';
 
 import { Profile } from '../pages/Profile';
+import { MessageBoard } from './MessageBoard';
 
 export const Header = () => {
 	const [openForm, setOpenForm] = useState(false);
+	const [openMessageBoard, setOpenMessageBoard] = useState(false);
 	const today = moment().add(60, 'year').format('DD/MM YYYY');
 
 	return (
@@ -20,7 +22,7 @@ export const Header = () => {
 				<Date>{today}</Date>
 			</TitleDate>
 			<IconsContainer>
-				<MessageIcon>
+				<MessageIcon onClick={() => setOpenMessageBoard(true)}>
 					<CommentIcon fontSize='large' />
 				</MessageIcon>
 				<Tooltip title='My Profile'>
@@ -29,6 +31,9 @@ export const Header = () => {
 					</ProfilImg>
 				</Tooltip>
 			</IconsContainer>
+			<Drawer anchor='bottom' open={openMessageBoard} onClose={() => setOpenMessageBoard(false)}>
+				<MessageBoard />
+			</Drawer>
 			<Drawer anchor='bottom' open={openForm} onClose={() => setOpenForm(false)}>
 				<DrawerContainer>
 					<Profile />
