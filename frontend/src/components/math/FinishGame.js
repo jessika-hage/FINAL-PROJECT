@@ -1,32 +1,32 @@
-import React from "react";
-import styled from "styled-components";
-import { Dialog, DialogActions, DialogTitle } from "@material-ui/core";
+import React from 'react';
+import styled from 'styled-components';
+import { Dialog, DialogActions, DialogTitle } from '@material-ui/core';
 
-import { ResetButton } from "./ResetButton";
+import { ResetButton } from './ResetButton';
 
 export const FinishGame = ({ open, endText, resetButton, onClick }) => {
-  return (
-    <Dialog open={open}>
-      <DialogContainer>
-        <DialogTitle>You earned {endText} points! </DialogTitle>
-        <DialogActions>
-          <ResetButton resetButton={resetButton} onClick={onClick} />
-        </DialogActions>
-      </DialogContainer>
-    </Dialog>
-  )
+	return (
+		<Dialog open={open}>
+			<DialogContainer>
+				<DialogTitle>You earned {endText} points! </DialogTitle>
+				<DialogActions>
+					<ResetButton resetButton={resetButton} onClick={onClick} />
+				</DialogActions>
+			</DialogContainer>
+		</Dialog>
+	);
 };
 
 const DialogContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-directioN: column;
-  align-items: center;
-  background-color: ${props => props.theme.primary};
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-family: "Trispace";
-  border: 4px solid ${props => props.theme.hover};
+	padding: 20px;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	text-transform: uppercase;
+	font-family: 'Trispace';
+	border: 4px solid ${(props) => props.theme.hover};
 `;

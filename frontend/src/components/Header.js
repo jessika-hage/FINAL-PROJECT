@@ -11,7 +11,7 @@ import { Profile } from '../pages/Profile';
 
 export const Header = () => {
 	const [openForm, setOpenForm] = useState(false);
-	const today = moment().add(1500, 'year').format('DD/MM YYYY');
+	const today = moment().add(60, 'year').format('DD/MM YYYY');
 
 	return (
 		<Main>

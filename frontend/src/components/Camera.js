@@ -25,6 +25,7 @@ const Main = styled.div`
 	@media (min-width: 768px) {
 		border-bottom: 6px solid ${(props) => props.theme.secondary};
 		height: 85px;
+		margin: 0 auto 30px auto;
 	}
 `;
 

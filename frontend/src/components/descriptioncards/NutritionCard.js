@@ -10,7 +10,7 @@ export const NutritionCard = () => {
 			title='Nutrition served'
 			secondaryText='Pasta'
 			icon={<FaUtensils />}
-      button='See more'
+			button='See more'
 		/>
 	);
 };
@@ -18,15 +18,13 @@ export const NutritionCard = () => {
 const ThinnerCard = styled(Card)`
 	width: 100%;
 	height: 120px;
-  margin: 0;
-  border-bottom: 2px solid ${props => props.theme.primary};
+	margin: 0;
+	border-bottom: 2px solid ${(props) => props.theme.primary};
 	@media (min-width: 768px) {
-		width: 50%;
-    border-right: 2px solid ${props => props.theme.primary};
-    height: 160px;
+		border-right: 2px solid ${(props) => props.theme.primary};
+		height: 160px;
 	}
-  @media (min-width: 1200px) {
-    width: 25%;
-    border-bottom: none;
-  }
+	@media (min-width: 1200px) {
+		border-bottom: none;
+	}
 `;

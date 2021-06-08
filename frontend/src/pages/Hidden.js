@@ -6,11 +6,18 @@ export const Hidden = () => {
 		<Main>
 			<Wrapper>
 				<iframe
+					src='https://gfycat.com/ifr/FrailSelfreliantCopepod'
+					frameborder='0'
+					scrolling='no'
+					width='100%'
+					height='100%'
+				></iframe>
+				{/* <iframe
 					src='https://giphy.com/embed/A06UFEx8jxEwU'
 					width='100%'
 					height='100%'
 					frameBorder='0'
-				></iframe>
+				></iframe> */}
 			</Wrapper>
 		</Main>
 	);

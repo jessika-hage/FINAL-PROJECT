@@ -1,149 +1,164 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-
-import { ProgressBar } from "../components/math/ProgressBar";
-import { MathForm } from "../components/math/MathForm";
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { profile, updateBadges } from '../reducers/profile';
+import { ProgressBar } from '../components/math/ProgressBar';
+import { MathForm } from '../components/math/MathForm';
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
-import { FinishGame } from "../components/math/FinishGame";
-
+import { FinishGame } from '../components/math/FinishGame';
 
 export const MathGame = () => {
-  const [open, setOpen] = useState(false);
-  const [score, setScore] = useState(0);
-  const [mistakes, setMistakes] = useState(0);
-  const [currentProblem, setCurrentProblem] = useState(generateProblem());
-  const [userAnswer, setUserAnswer] = useState("");
-  const [showError, setShowError] = useState(false);
-  const answerField = useRef(null);
-  const resetButton = useRef(null);
+	const [open, setOpen] = useState(false);
+	const [score, setScore] = useState(0);
+	const [mistakes, setMistakes] = useState(0);
+	const [currentProblem, setCurrentProblem] = useState(generateProblem());
+	const [userAnswer, setUserAnswer] = useState('');
+	const [showError, setShowError] = useState(false);
+	const answerField = useRef(null);
+	const resetButton = useRef(null);
+	const accessToken = useSelector((store) => store.profile.accessToken);
+	const badges = useSelector((store) => store.profile.badges);
 
-  // Opens dialog when game is finished
-  useEffect(() => {
-    if (score === 10 || mistakes === 3) {
-      setOpen(true);
-    }
-  }, [score, mistakes]);
+	const dispatch = useDispatch();
+	const history = useHistory();
 
-  function generateNumber(max) {
-    return Math.floor(Math.random() * (max + 1))
-  };
-    
-  function generateProblem() {
-    return {
-      numberOne: generateNumber(20),
-      numberTwo: generateNumber(20),
-      operator: ["+", "-", "x"][generateNumber(2)]
-    }
-  };
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [accessToken, history]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let correctAnswer;
+	// Opens dialog when game is finished
+	useEffect(() => {
+		if (score === 10 || mistakes === 3) {
+			setOpen(true);
+		}
+	}, [score, mistakes]);
 
-    if (currentProblem.operator === "+")
-      correctAnswer = currentProblem.numberOne + currentProblem.numberTwo;
-    if (currentProblem.operator === "-")
-      correctAnswer = currentProblem.numberOne - currentProblem.numberTwo;
-    if (currentProblem.operator === "x")
-      correctAnswer = currentProblem.numberOne * currentProblem.numberTwo;
+	function generateNumber(max) {
+		return Math.floor(Math.random() * (max + 1));
+	}
 
-    if (correctAnswer === parseInt(userAnswer, 10)) {
-      setScore((prev) => prev + 1)
-      setCurrentProblem(generateProblem())
-      setUserAnswer("")
-    } else {
-      setMistakes((prev) => prev + 1)
-      setShowError(true)
-      setTimeout(() => setShowError(false), 401)
-    }
-  };
-    
-  const resetGame = () => {
-    setScore(0)
-    setMistakes(0)
-    setUserAnswer("")
-    setCurrentProblem(generateProblem())
-    setOpen(false);
-  };
+	function generateProblem() {
+		return {
+			numberOne: generateNumber(20),
+			numberTwo: generateNumber(20),
+			operator: ['+', '-', 'x'][generateNumber(2)],
+		};
+	}
 
-  return (
-      <MainContainer>
-      <Header />
-      <Camera />
-      <MathTitle>Classroom</MathTitle>
-        <MathContainer blurred={mistakes === 3 || score === 10}>
-          <MathProblem wrongAnswer={showError}>
-            {currentProblem.numberOne} {currentProblem.operator}{" "}
-            {currentProblem.numberTwo}
-          </MathProblem>
-          <MathForm 
-            handleSubmit={handleSubmit} 
-            answerField={answerField}
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)} />
-          <StatusText>
-            You need {10 - score} more points, and are allowed to make{" "}
-            {2 - mistakes} more mistakes.
-          </StatusText>
-          <ProgressBar score={score} />
-        </MathContainer>
-        <FinishGame 
-          open={open}
-          endText={score} 
-          resetButton={resetButton} 
-          onClick={resetGame} />
-      </MainContainer>
-  )
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		let correctAnswer;
+
+		if (currentProblem.operator === '+')
+			correctAnswer = currentProblem.numberOne + currentProblem.numberTwo;
+		if (currentProblem.operator === '-')
+			correctAnswer = currentProblem.numberOne - currentProblem.numberTwo;
+		if (currentProblem.operator === 'x')
+			correctAnswer = currentProblem.numberOne * currentProblem.numberTwo;
+
+		if (correctAnswer === parseInt(userAnswer, 10)) {
+			setScore((prev) => prev + 1);
+			setCurrentProblem(generateProblem());
+			setUserAnswer('');
+		} else {
+			setMistakes((prev) => prev + 1);
+			setShowError(true);
+			setTimeout(() => setShowError(false), 401);
+		}
+	};
+
+	const resetGame = () => {
+		setScore(0);
+		setMistakes(0);
+		setUserAnswer('');
+		setCurrentProblem(generateProblem());
+		setOpen(false);
+		// if (score > 0) {
+		// 	updateBadges(score);
+		// }
+	};
+
+	return (
+		<MainContainer>
+			<Header />
+			<Camera />
+			<MathTitle>Classroom</MathTitle>
+			<MathContainer blurred={mistakes === 3 || score === 10}>
+				<MathProblem wrongAnswer={showError}>
+					{currentProblem.numberOne} {currentProblem.operator}{' '}
+					{currentProblem.numberTwo}
+				</MathProblem>
+				<MathForm
+					handleSubmit={handleSubmit}
+					answerField={answerField}
+					value={userAnswer}
+					onChange={(e) => setUserAnswer(e.target.value)}
+				/>
+				<StatusText>
+					You need {10 - score} more points, and are allowed to make {2 - mistakes}{' '}
+					more mistakes.
+				</StatusText>
+				<ProgressBar score={score} />
+			</MathContainer>
+			<FinishGame
+				open={open}
+				endText={score}
+				resetButton={resetButton}
+				onClick={resetGame}
+			/>
+		</MainContainer>
+	);
 };
 
 const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${props => props.theme.backgroundColor};
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: auto;
-  margin: 0 0 200px 0;  
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: ${(props) => props.theme.backgroundColor};
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	overflow: auto;
+	margin: 0 0 200px 0;
 `;
 
 const MathTitle = styled.h1`
-  font-size: 30px;
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
+	font-size: 30px;
+	color: ${(props) => props.theme.textColor};
+	text-transform: uppercase;
 `;
 
 const MathContainer = styled.div`
-  margin: 10px 20px;
-  background-color: ${props => props.theme.primary};
-  color: ${props => props.theme.textColor};
-  background-color: ${props => props.theme.primary};
-  border: 4px solid ${props => props.theme.hover};
-  padding: 20px;
-  @media (min-width: 768px) {
-    max-width: 85%;
-    padding: 30px;
-    margin-top: 30px;
-  }
-  @media (min-width: 1400px) {
-    max-width: 70%;
-  }
-  ${props => props.blurred ? 
-    `filter: blur(4px);`
-  : `filter: none;`}
+	margin: 10px 20px;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	background-color: ${(props) => props.theme.primary};
+	border: 4px solid ${(props) => props.theme.hover};
+	padding: 20px;
+	@media (min-width: 768px) {
+		max-width: 85%;
+		padding: 30px;
+		margin-top: 30px;
+	}
+	@media (min-width: 1400px) {
+		max-width: 70%;
+	}
+	${(props) => (props.blurred ? `filter: blur(4px);` : `filter: none;`)}
 `;
 
 const MathProblem = styled.h2`
-  color: ${props => props.theme.textColor};
-  text-align: center;
-  font-size: 32px;
-  ${props => props.wrongAnswer ? `color: red; transform: scale(1.2)` : ``}
+	color: ${(props) => props.theme.textColor};
+	text-align: center;
+	font-size: 32px;
+	${(props) => (props.wrongAnswer ? `color: red; transform: scale(1.2)` : ``)}
 `;
 
 const StatusText = styled.p`
-  color: ${props => props.theme.textColor};
-  text-align: center;
-  font-size: 14px;
+	color: ${(props) => props.theme.textColor};
+	text-align: center;
+	font-size: 14px;
 `;
