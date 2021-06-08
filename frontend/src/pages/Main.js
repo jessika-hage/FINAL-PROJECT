@@ -31,29 +31,6 @@ export const Main = () => {
 		<MapContainer>
 		  <Map />
 		</MapContainer>
-		{/* <RightContainer>
-		  <Link to='/memorygame'>
-			<ThinnerCard
-			  thumbnailUrl='https://www.fillmurray.com/100/100'
-			  title='Memory'
-			  secondaryText='This is secundaryText'
-			/>
-		  </Link>
-		  <Link to='/memorygame'>
-			<ThinnerCard
-			  thumbnailUrl='https://www.fillmurray.com/100/100'
-			  title='Garden'
-			  secondaryText='This is secundaryText'
-		  />
-		  </Link>
-		  <Link to='/classroom'>
-			<ThinnerCard
-				thumbnailUrl='https://www.fillmurray.com/100/100'
-				title='Classroom'
-				secondaryText='This is secundaryText'
-			/>
-		  </Link>
-		</RightContainer> */}
 		</Container>
 		<BottomContainer>
 		  <Wrapper>
@@ -88,44 +65,46 @@ const MainContainer = styled.main`
 `;
 
 const Container = styled.section`
-	display: flex;
-	width: 100%;
-	padding: 0 20px;
-	@media (min-width: 768px) {
-		margin-top: 80px;
-		padding: 0 40px;
-	}
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+  @media (min-width: 768px) {
+	margin-top: 80px;
+	padding: 0 40px;
+  }
 `;
 
 const MapContainer = styled.div`
+  width: 100%;
+  @media (min-width: 768px) {
 	width: 80%;
-	display: none;
-	@media (min-width: 768px) {
-		width: 80%;
-		height: 35vh;
-		display: flex;
-	}
+	height: 35vh;
+	display: flex;
+  }
 `;
 
 const BottomContainer = styled.div`
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 0 20px;
-	margin: 40px 0 100px 0;
-	@media (min-width: 768px) {
-		padding: 0 40px;
-		flex-direction: row;
-		justify-content: space-evenly;
-		margin: 40px 0;
-	}
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  margin: 40px 0 100px 0;
+  @media (min-width: 768px) {
+	padding: 0 40px;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 40px 0;
+	align-items: flex-start;
+  }
 `;
 
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	margin: 0 10px;
+	margin: 10px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
 		padding: 0;
@@ -138,8 +117,10 @@ const CardTitle = styled.h4`
 	color: ${props => props.theme.textColor};
 	padding: 7px 10px;
 	margin: 0;
-	width: fit-content;
 	background-color: ${props => props.theme.primary};
+	@media (min-width: 768px) {
+		width: fit-content;
+	}
 `;
 
 const CardContainer = styled.div`
@@ -167,6 +148,7 @@ const CitizensContainer = styled.div`
 		flex-wrap: wrap;
 		padding: 0;
 		width: 100%;
+		// min-height: 320px;
 	}
 `;
 

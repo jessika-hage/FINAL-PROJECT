@@ -10,7 +10,7 @@ import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
-import { MemoryGame } from './pages/secondmemory/MemoryGame';
+import { MemoryGame } from './pages/MemoryGame';
 import { profile } from 'reducers/profile';
 
 const reducer = combineReducers({

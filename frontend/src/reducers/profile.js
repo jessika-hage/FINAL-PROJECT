@@ -6,6 +6,7 @@ const initialState = {
 	accessToken: null,
 	userId: null,
 	badges: null,
+	created: null,
 };
 
 export const profile = createSlice({
@@ -26,6 +27,9 @@ export const profile = createSlice({
 		},
 		setBadges: (store, action) => {
 			store.badges = action.payload;
+		},
+		setCreated: (store, action) => {
+			store.created = action.payload;
 		},
 		setLogOut: () => {
 			return {

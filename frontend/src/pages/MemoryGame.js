@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { GameBoard } from "./GameBoard";
-import { GameFinished } from "./GameFinished";
-import { Header } from "../../components/Header";
-import { Camera } from "../../components/Camera";
+import { GameBoard } from "../components/memory/GameBoard";
+import { GameFinished } from "../components/memory/GameFinished";
+import { Header } from "../components/Header";
+import { Camera } from "../components/Camera";
 
-import { GAME_STATUS } from "./constants";
+import { GAME_STATUS } from "../components/memory/constants";
 
 export const MemoryGame = () => {
   const [open, setOpen] = useState(false);
