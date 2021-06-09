@@ -42,6 +42,14 @@ const Citizen = mongoose.model('Citizen', {
 		type: Number,
 		default: 5,
 	},
+	ranking: {
+		type: Number,
+		default: 10,
+	},
+	coins: {
+		type: Number,
+		default: 10,
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now,
@@ -84,35 +92,15 @@ app.get('/', (req, res) => {
 
 // GET for logged in citizen
 // app.get('/citizen', authenticateCitizen);
-app.get('/citizen', async (req, res) => {
-	const profile = await Citizen.findById({ username, createdAt, badges });
+// app.get('/citizen', async (req, res) => {
+// 	const profile = await Citizen.findById({ username, createdAt, badges });
 
-	try {
-		res.json(profile);
-	} catch (error) {
-		res.status(400).json({ message: 'Invalid request, profil not fund', error });
-	}
-});
-
-// POST for increasing badges
-app.post('/citizen/:id/badges', authenticateCitizen);
-app.post('/citizen/:id/badges', async (req, res) => {
-	const { id } = req.params;
-	try {
-		const updatedBadges = await Citizen.findByIdAndUpdate(
-			id,
-			{ badges: req.body.amount },
-			{ new: true }
-		);
-		if (updatedBadges) {
-			res.json(updatedBadges);
-		} else {
-			res.status(404).json({ message: 'Not found!' });
-		}
-	} catch (error) {
-		res.status(400).json({ message: 'Invalid request', error });
-	}
-});
+// 	try {
+// 		res.json(profile);
+// 	} catch (error) {
+// 		res.status(400).json({ message: 'Invalid request, profil not fund', error });
+// 	}
+// });
 
 // GET all citizens
 // app.get('/citizens', authenticateCitizen);
@@ -125,6 +113,10 @@ app.get('/citizens', async (req, res) => {
 			return { badges: 1 };
 		} else if (sort === 'senior') {
 			return { createdAt: 1 };
+		} else if (sort === 'highestRanking') {
+			return { ranking: -1 }
+		} else if (sort === 'richest') {
+			return { coins: -1 }
 		} else {
 			return { createdAt: -1 };
 		}
@@ -158,26 +150,28 @@ app.post('/signup', async (req, res) => {
 			userId: newCitizen._id,
 			accessToken: newCitizen.accessToken,
 			badges: newCitizen.badges,
+			ranking: newCitizen.ranking,
+			coins: newCitizen.coins,
 			createdAt: newCitizen.createdAt,
 		});
 	} catch (error) {
 		if (error.code === 11000) {
-		  if (error.keyValue.username) {
+			if (error.keyValue.username) {
 			res.status(400).json({
-			  success: false,
-			  message: "Username already taken, sorry! :)",
-			  error,
+			success: false,
+			message: "Username already taken, sorry! :)",
+			error,
 			});
-		  } else if (error.keyValue.email) {
-			res.status(400).json({
-			  success: false,
-			  message: "Email already taken, sorry! :)",
-			  error,
-			});
-		  }
+				} else if (error.keyValue.email) {
+				res.status(400).json({
+				success: false,
+				message: "Email already taken, sorry! :)",
+				error,
+				});
+				}
 		}
 		res.status(400).json({ success: false, message: "Invalid request", error });
-	  }
+	}
 });
 
 // POST for signing in
@@ -194,6 +188,8 @@ app.post('/signin', async (req, res) => {
 				username: citizen.username,
 				accessToken: citizen.accessToken,
 				badges: citizen.badges,
+				ranking: citizen.ranking,
+				coins: citizen.coins,
 				createdAt: citizen.createdAt,
 			});
 		} else {
@@ -225,6 +221,79 @@ app.post('/citizenmessage', async (req, res) => {
 		res.status(400).json({ success: false, message: 'Invalid request', error })
 	}
 });
+
+// PATCH for increasing badges
+// app.put('/citizen/:id/badges', authenticateCitizen);
+app.patch('/citizen/:id/badges', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedBadges = await Citizen.findByIdAndUpdate(
+			id,
+			{ 
+				$inc: { 
+					badges: req.body.badges 
+				}
+			},
+			{ new: true }
+		);
+		if (updatedBadges) {
+			res.json(updatedBadges);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for increasing ranking
+// app.put('/citizen/:id/ranking', authenticateCitizen);
+app.patch('/citizen/:id/ranking', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedRanking = await Citizen.findByIdAndUpdate(
+			id,
+			{ 
+				$inc: { 
+					ranking: req.body.ranking
+				}
+			},
+			{ new: true }
+		);
+		if (updatedRanking) {
+			res.json(updatedRanking);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for increasing coins
+// app.put('/citizen/:id/coins', authenticateCitizen);
+app.patch('/citizen/:id/coins', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedCoins = await Citizen.findByIdAndUpdate(
+			id,
+			{ 
+				$inc: { 
+					coins: req.body.coins
+				}
+			},
+			{ new: true }
+		);
+		if (updatedCoins) {
+			res.json(updatedCoins);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
 
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
