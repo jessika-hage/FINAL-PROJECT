@@ -14,11 +14,11 @@ export const SignIn = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // useEffect(() => {
-	// if (accessToken) {
-	//   history.push('/');
-	// }
-  // }, [accessToken, history]);
+  useEffect(() => {
+	if (accessToken) {
+	  history.push('/');
+	}
+  }, [accessToken, history]);
 
   const handleFormSubmit = (e) => {
 	e.preventDefault();
@@ -38,6 +38,9 @@ export const SignIn = () => {
 			dispatch(profile.actions.setUsername(data.username));
 			dispatch(profile.actions.setAccessToken(data.accessToken));
 			dispatch(profile.actions.setBadges(data.badges));
+      dispatch(profile.actions.setRanking(data.ranking));
+      dispatch(profile.actions.setCoins(data.coins));
+      dispatch(profile.actions.setCreated(data.created));
 			dispatch(profile.actions.setUserId(data.userId));
 		  });
 		} else {

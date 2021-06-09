@@ -7,25 +7,33 @@ export const MainContainer = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    z-index: 1;
+`;
+
+const badgeanimation = keyframes`
+  10% { opacity: 0; transform: scale(0.1)}
+  70% { opacity: 1; transform: scale(1.5)}
+  to { opacity: 1; transform: scale(1) }
 `
 export const BadgeContainer = styled.div`
   display: flex;
   align-items: center;
+  color: white;
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
-  color: white;
+  z-index: 1;
+  animation: ${badgeanimation} 1.5s linear;
+  opacity: 0;
+  margin-left: 15px;
 `;
 
-export const BadgeText = styled.h1``
+export const BadgeText = styled.h1`
+  font-size: 60px;
+`;
 
 export const BadgeIcon = styled.h1`
-text-align: center;
+  text-align: center;
+  font-size: 60px;  
 `

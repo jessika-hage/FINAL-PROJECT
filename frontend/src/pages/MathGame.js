@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { profile, updateBadges } from '../reducers/profile';
+
+import { updateBadges } from '../reducers/profile';
 import { ProgressBar } from '../components/math/ProgressBar';
 import { MathForm } from '../components/math/MathForm';
 import { Header } from '../components/Header';
@@ -17,20 +18,19 @@ export const MathGame = () => {
 	const [currentProblem, setCurrentProblem] = useState(generateProblem());
 	const [userAnswer, setUserAnswer] = useState('');
 	const [showError, setShowError] = useState(false);
-	const [badge, setBadge] = useState(true);
+	const [animation, setAnimation] = useState(false);
 	const answerField = useRef(null);
 	const resetButton = useRef(null);
 	const accessToken = useSelector((store) => store.profile.accessToken);
-	const badges = useSelector((store) => store.profile.badges);
 
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
 	// Opens dialog when game is finished
 	useEffect(() => {
@@ -74,12 +74,17 @@ export const MathGame = () => {
 	};
 
 	const resetGame = () => {
-		setScore(0);
-		setMistakes(0);
-		setUserAnswer('');
-		setCurrentProblem(generateProblem());
+		setAnimation(true)
 		setOpen(false);
-		updateBadges(score);
+		dispatch(updateBadges(score));
+		setTimeout(() => {
+			setScore(0);
+			setMistakes(0);
+			setUserAnswer('');
+			setCurrentProblem(generateProblem());
+			history.push('/')
+		}, 2000)
+		
 	};
 
 	return (
@@ -110,7 +115,7 @@ export const MathGame = () => {
 				resetButton={resetButton}
 				onClick={resetGame}
 			/>
-			<BadgesAnimation />
+			{ animation && <BadgesAnimation text={score} /> }
 		</MainContainer>
 	);
 };
@@ -122,9 +127,9 @@ const MainContainer = styled.main`
 	background-color: ${(props) => props.theme.backgroundColor};
 	width: 100%;
 	height: 100vh;
-	position: relative;
 	overflow: auto;
 	margin: 0 0 200px 0;
+	position: relative;
 `;
 
 const MathTitle = styled.h1`

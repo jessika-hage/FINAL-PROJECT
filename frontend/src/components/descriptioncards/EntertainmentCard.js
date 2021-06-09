@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 
+import { updateBadges } from '../../reducers/profile';
+import { updateRanking } from '../../reducers/profile';
 import { MOVIE_API } from '../../reusable/Urls';
 import { Card } from '../Card';
 
@@ -10,6 +13,8 @@ export const EntertainmentCard = () => {
 	const [movieTwo, setMovieTwo] = useState([]);
 	const [open, setOpen] = useState(false);
 	const [premium, setPremium] = useState(false);
+
+	const dispatch = useDispatch();
 
 	const fetchMovie = useCallback(() => {
 		fetch(MOVIE_API)
@@ -21,17 +26,23 @@ export const EntertainmentCard = () => {
 					json.results[Math.floor(Math.random() * json.results.length)];
 				setMovie(getMovie);
 				setMovieTwo(getMovieTwo);
-				console.log(json.results);
 			});
 	}, []);
 
 	useEffect(() => {
 		fetchMovie();
-		console.log(fetchMovie);
 	}, [fetchMovie]);
 
 	const onToggleDialog = () => {
 		setOpen(!open);
+	};
+
+	// Upgrade to premium movie
+	// Decrease badges and increase ranking
+	const buyMovie = () => {
+		setPremium(true);
+		dispatch(updateBadges(- 2));
+		dispatch(updateRanking(1));
 	};
 
 	return (
@@ -59,7 +70,7 @@ export const EntertainmentCard = () => {
 								</ImdbLink>
 							</RatingImdb>
 							<MovieDescription>{movie.overview}</MovieDescription>
-							<UpgradeButton onClick={() => setPremium(true)}>
+							<UpgradeButton onClick={buyMovie}>
 								Upgrade to premium
 							</UpgradeButton>
 						</MovieTextContainer>
@@ -95,7 +106,6 @@ const ThinnerCard = styled(Card)`
 	padding: 0;
 	border-bottom: 3px solid ${(props) => props.theme.primary};
 	@media (min-width: 768px) {
-		border-right: 2px solid ${(props) => props.theme.primary};
 		border-bottom: none;
 		height: 160px;
 	}

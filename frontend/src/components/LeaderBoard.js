@@ -22,16 +22,18 @@ export const LeaderBoard = () => {
 		<TableContainer>
 			<TableHead>
 				<TableCell>Citizen</TableCell>
-				<TableCell>Status</TableCell>
+				<TableCell>Ranking</TableCell>
 				<TableCell>Days on Ship</TableCell>
 				<TableCell>Badges</TableCell>
+				<TableCell>Coins</TableCell>
 			</TableHead>
 			{leaderBoard.map((citizen) => (
 				<CitizensList key={citizen._id}>
 					<Citizen>{citizen.username}</Citizen>
-					<Citizen></Citizen>
+					<Citizen>{citizen.ranking}/100</Citizen>
 					<Citizen>{moment(citizen.createdAt).toNow(true)}</Citizen>
 					<Citizen>{citizen.badges}</Citizen>
+					<Citizen>{citizen.coins}</Citizen>
 				</CitizensList>
 			 ))}
 		</TableContainer>

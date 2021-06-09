@@ -2,13 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Dialog, DialogContent, DialogActions, DialogTitle } from "@material-ui/core";
 
-import { GAME_STATUS } from "./constants";
 
-export const GameFinished = ({ open, onReset, results }) => {
-
-  const handleReset = () => {
-    onReset(GAME_STATUS.CREATING);
-  };
+export const GameFinished = ({ handleReset, open, results }) => {
 
   return (
     <Dialog open={open}>

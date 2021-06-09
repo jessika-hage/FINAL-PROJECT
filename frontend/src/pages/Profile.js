@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
 import moment from 'moment';
 import { FaSignOutAlt } from 'react-icons/fa';
 
-// import { CITIZEN_URL } from '../reusable/Urls';
-import { profile, updateBadges } from '../reducers/profile';
 import { ThemeButtons } from '../components/ThemeButtons';
 
 export const Profile = () => {
-	//   const [mode, setMode] = useState('');
-	const accessToken = useSelector((store) => store.profile.accessToken);
 	const username = useSelector((store) => store.profile.username);
-	const userId = useSelector((store) => store.profile.userId);
+	const created = useSelector((store) => store.profile.created);
 	const badges = useSelector((store) => store.profile.badges);
-	const dispatch = useDispatch();
+	const ranking = useSelector((store) => store.profile.ranking);
+	const coins = useSelector((store) => store.profile.coins);
 
 	return (
 		<ProfileContainer>
@@ -25,11 +22,12 @@ export const Profile = () => {
 					<TextContainer>
 						<Username>{username}</Username>
 						<PointsText>{badges} Badges</PointsText>
-						<PointsText>4.2/10 Ranking</PointsText>
+						<PointsText>{ranking}/100 Ranking</PointsText>
+						<PointsText>{coins} $</PointsText>
 					</TextContainer>
 				</ImageNameContainer>
 				<DaysContainer>
-					<DaysText>Days on ship: 4</DaysText>
+					<DaysText>Days on ship: {moment(created).toNow(true)}</DaysText>
 					<DaysText>
 						Days to destination: <Countdown date={moment().add(3500, 'day')} />
 					</DaysText>

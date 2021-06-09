@@ -7,10 +7,8 @@ import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar'
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { Map } from '../components/Map';
-// import { WeatherCard } from '../components/descriptioncards/WeatherCard';
 import { EntertainmentCard } from '../components/descriptioncards/EntertainmentCard';
 import { NutritionCard } from '../components/descriptioncards/NutritionCard';
-// import { CurrencyCard } from '../components/descriptioncards/CurrencyCard';
 import { LeaderBoard } from '../components/LeaderBoard';
 
 export const Main = () => {
@@ -18,11 +16,11 @@ export const Main = () => {
 
   const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
   return (
 	<MainContainer>
@@ -34,21 +32,19 @@ export const Main = () => {
 		</MapContainer>
 		</Container>
 		<BottomContainer>
-		  <Wrapper>
+		  <WrapperCard>
 			<CardTitle>Today on the ship</CardTitle>
 			<CardContainer>
-			  {/* <WeatherCard /> */}
 			  <NutritionCard />
 			  <EntertainmentCard />
-			  {/* <CurrencyCard /> */}
 			</CardContainer>
-		  </Wrapper>
-		  <Wrapper>
+		  </WrapperCard>
+		  <WrapperLeaderBoard>
 			<CardTitle>Citizens Leaderboard</CardTitle>
 			<CitizensContainer>
 				<LeaderBoard />
 			</CitizensContainer>
-		  </Wrapper>
+		  </WrapperLeaderBoard>
 		  <RollingInfoBar/>
 		</BottomContainer>
 	</MainContainer>
@@ -102,7 +98,7 @@ const BottomContainer = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
+const WrapperCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -110,7 +106,13 @@ const Wrapper = styled.div`
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
 		padding: 0;
-		width: 50%;
+		width: 40%;
+	}
+`;
+
+const WrapperLeaderBoard = styled(WrapperCard)`
+	@media (min-width: 768px) {
+		width: 60%;
 	}
 `;
 
