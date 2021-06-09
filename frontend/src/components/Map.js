@@ -42,7 +42,7 @@ export const Map = () => {
 				</RoomThree>
 			</Tooltip>
 			<Tooltip title='STORE!'>
-				<RoomFour to='Store'>
+				<RoomFour to='/store'>
 					<Icons>
 						<LocalGroceryStoreIcon fontSize='large' />
 					</Icons>
@@ -124,7 +124,7 @@ const RoomThree = styled.div`
 	}
 `;
 
-const RoomFour = styled.div`
+const RoomFour = styled(Link)`
 	grid-column: 4 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;

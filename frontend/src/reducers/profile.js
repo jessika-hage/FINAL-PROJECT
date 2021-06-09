@@ -49,7 +49,7 @@ export const updateBadges = (badges) => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ badges: getState().profile.badges }),
+			body: JSON.stringify({ badges }),
 		};
 		fetch(`http://localhost:8080/citizen/${user}/badges`, options)
 			.then((res) => res.json())

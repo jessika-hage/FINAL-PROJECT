@@ -6,7 +6,7 @@ export const ResetButton = ({ resetButton, onClick }) => {
     <Button
       ref={resetButton}
       onClick={onClick}>
-      Start Over
+      Collect Your Points
     </Button>
   )
 };

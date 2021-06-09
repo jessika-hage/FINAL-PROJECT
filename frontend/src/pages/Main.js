@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar'
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { Map } from '../components/Map';
@@ -17,11 +18,11 @@ export const Main = () => {
 
   const history = useHistory();
 
-	useEffect(() => {
-		if (!accessToken) {
-			history.push('/signin');
-		}
-	}, [accessToken, history]);
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [accessToken, history]);
 
   return (
 	<MainContainer>
@@ -48,6 +49,7 @@ export const Main = () => {
 				<LeaderBoard />
 			</CitizensContainer>
 		  </Wrapper>
+		  <RollingInfoBar/>
 		</BottomContainer>
 	</MainContainer>
   );
@@ -59,7 +61,7 @@ const MainContainer = styled.main`
 	align-items: center;
 	background-color: ${props => props.theme.backgroundColor};
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	position: relative;
 	overflow: auto;
 `;
@@ -70,7 +72,7 @@ const Container = styled.section`
   width: 100%;
   padding: 0 20px;
   @media (min-width: 768px) {
-	margin-top: 80px;
+	margin-top: 50px;
 	padding: 0 40px;
   }
 `;
@@ -95,7 +97,7 @@ const BottomContainer = styled.div`
 	padding: 0 40px;
 	flex-direction: row;
 	justify-content: space-evenly;
-	margin: 40px 0;
+	margin: 40px 0 80px 0;
 	align-items: flex-start;
   }
 `;

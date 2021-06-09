@@ -8,6 +8,7 @@ import { MathForm } from '../components/math/MathForm';
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { FinishGame } from '../components/math/FinishGame';
+import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 
 export const MathGame = () => {
 	const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ export const MathGame = () => {
 	const [currentProblem, setCurrentProblem] = useState(generateProblem());
 	const [userAnswer, setUserAnswer] = useState('');
 	const [showError, setShowError] = useState(false);
+	const [badge, setBadge] = useState(true);
 	const answerField = useRef(null);
 	const resetButton = useRef(null);
 	const accessToken = useSelector((store) => store.profile.accessToken);
@@ -77,9 +79,7 @@ export const MathGame = () => {
 		setUserAnswer('');
 		setCurrentProblem(generateProblem());
 		setOpen(false);
-		// if (score > 0) {
-		// 	updateBadges(score);
-		// }
+		updateBadges(score);
 	};
 
 	return (
@@ -110,6 +110,7 @@ export const MathGame = () => {
 				resetButton={resetButton}
 				onClick={resetGame}
 			/>
+			<BadgesAnimation />
 		</MainContainer>
 	);
 };

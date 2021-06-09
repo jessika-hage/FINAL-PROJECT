@@ -16,11 +16,11 @@ export const SignUp = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-	if (accessToken) {
-	history.push("/");
-	}
-  }, [accessToken, history]);
+  // useEffect(() => {
+	// if (accessToken) {
+	// history.push("/");
+	// }
+  // }, [accessToken, history]);
 
   const handleFormSubmit = (e) => {
 	e.preventDefault();
