@@ -48,6 +48,15 @@ const Citizen = mongoose.model('Citizen', {
 	},
 });
 
+const CitizenMessage = mongoose.model('CitizenMessage', {
+	message: String,
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+})
+
+// Authorization
 const authenticateCitizen = async (req, res, next) => {
 	const accessToken = req.header('Authorization');
 
@@ -74,7 +83,7 @@ app.get('/', (req, res) => {
 });
 
 // GET for logged in citizen
-app.get('/citizen', authenticateCitizen);
+// app.get('/citizen', authenticateCitizen);
 app.get('/citizen', async (req, res) => {
 	const profile = await Citizen.findById({ username, createdAt, badges });
 
@@ -152,10 +161,23 @@ app.post('/signup', async (req, res) => {
 			createdAt: newCitizen.createdAt,
 		});
 	} catch (error) {
-		res
-			.status(400)
-			.json({ success: false, message: 'Blä blä,Invalid request', error });
-	}
+		if (error.code === 11000) {
+		  if (error.keyValue.username) {
+			res.status(400).json({
+			  success: false,
+			  message: "Username already taken, sorry! :)",
+			  error,
+			});
+		  } else if (error.keyValue.email) {
+			res.status(400).json({
+			  success: false,
+			  message: "Email already taken, sorry! :)",
+			  error,
+			});
+		  }
+		}
+		res.status(400).json({ success: false, message: "Invalid request", error });
+	  }
 });
 
 // POST for signing in
@@ -181,6 +203,26 @@ app.post('/signin', async (req, res) => {
 		res
 			.status(400)
 			.json({ success: false, message: 'Blä!!Invalid request', error });
+	}
+});
+
+// GET Messages for messageboard
+// app.get('/citizenmessage', authenticateCitizen);
+app.get('/citizenmessage', async (req, res) => {
+	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 });
+	res.json({ success: true, citizenMessage })
+});
+
+// POST message on messageboard
+// app.post('/citizenmessage', authenticateCitizen);
+app.post('/citizenmessage', async (req, res) => {
+	const { message } = req.body;
+
+	try {
+		const newCitizenMessage = await new CitizenMessage({ message }).save();
+		res.json({ success: true, newCitizenMessage });
+	} catch (error) {
+		res.status(400).json({ success: false, message: 'Invalid request', error })
 	}
 });
 

@@ -8,6 +8,7 @@ import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import AppsIcon from '@material-ui/icons/Apps';
 import Icon from '@material-ui/core/Icon';
+import InfoIcon from '@material-ui/icons/Info';
 import { Link } from 'react-router-dom';
 
 export const Map = () => {
@@ -47,6 +48,13 @@ export const Map = () => {
 					</Icons>
 				</RoomFour>
 			</Tooltip>
+			<Tooltip title='INFO!'>
+				<RoomInfo>
+					<Icons>
+						<InfoIcon fontSize='large' />
+					</Icons>
+				</RoomInfo>
+			</Tooltip>
 			<Tooltip title='GYM!'>
 				<RoomFive>
 					<Icons>
@@ -68,12 +76,12 @@ export const Map = () => {
 
 const GridContainer = styled.section`
 	display: grid;
-	grid-template: repeat(7, 1fr) / repeat(7, 1fr);
+	grid-template: repeat(7, 1fr) / repeat(11, 1fr);
 	width: 100%;
 `;
 
 const RoomOne = styled(Link)`
-	grid-column: 1 / span 2;
+	grid-column: 1 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
 	border-top-left-radius: 200px;
@@ -88,7 +96,7 @@ const RoomOne = styled(Link)`
 `;
 
 const RoomTwo = styled.div`
-	grid-column: 1 / span 2;
+	grid-column: 1 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
 	border-bottom-left-radius: 200px;
@@ -103,7 +111,7 @@ const RoomTwo = styled.div`
 `;
 
 const RoomThree = styled.div`
-	grid-column: 3 / span 2;
+	grid-column: 4 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
 	display: flex;
@@ -116,8 +124,8 @@ const RoomThree = styled.div`
 	}
 `;
 
-const RoomFour = styled(Link)`
-	grid-column: 3 / span 2;
+const RoomFour = styled.div`
+	grid-column: 4 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
 	display: flex;
@@ -131,7 +139,7 @@ const RoomFour = styled(Link)`
 `;
 
 const RoomFive = styled.div`
-	grid-column: 5 / span 2;
+	grid-column: 7 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
 	display: flex;
@@ -145,7 +153,7 @@ const RoomFive = styled.div`
 `;
 
 const RoomSix = styled(Link)`
-	grid-column: 5 / span 2;
+	grid-column: 7 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
 	display: flex;
@@ -158,8 +166,23 @@ const RoomSix = styled(Link)`
 	}
 `;
 
+const RoomInfo = styled(Link)`
+	grid-column: 6 / span 2;
+	grid-row: 3 / span 2;
+	border: 2px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 1;
+	background-color: ${(props) => props.theme.secondary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
+`;
+
 const CircleRoom = styled.div`
-	grid-column: 2 / span 2;
+	grid-column: 3 / span 2;
 	grid-row: 3 / span 2;
 	border: 2px solid white;
 	border-radius: 50%;
@@ -176,7 +199,7 @@ const CircleRoom = styled.div`
 `;
 
 const RoomSeven = styled.div`
-	grid-column: 7 / span 3;
+	grid-column: 8 / span 3;
 	grid-row: 5 / span 1;
 `;
 

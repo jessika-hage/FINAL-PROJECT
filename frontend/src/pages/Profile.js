@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
 import moment from 'moment';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 // import { CITIZEN_URL } from '../reusable/Urls';
 import { profile, updateBadges } from '../reducers/profile';
@@ -42,7 +43,12 @@ export const Profile = () => {
 					<TaskTitle>Tasks for today</TaskTitle>
 				</RightContainer>
 			</BottomContainer>
+			<LastContainer>
 			<ThemeButtons text='Change your spaceship color:' />
+			<ButtonSignOut>
+			<FaSignOutAlt />
+			</ButtonSignOut>
+			</LastContainer>
 		</ProfileContainer>
 	);
 };
@@ -119,7 +125,7 @@ const BottomContainer = styled.div`
 	display: flex;
 	height: 100%;
 	margin: 0;
-	border-bottom: 2px solid ${(props) => props.theme.secondary};
+	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 
 const LeftContainer = styled.div`
@@ -130,10 +136,31 @@ const LeftContainer = styled.div`
 `;
 
 const RightContainer = styled(LeftContainer)`
-	padding-left: 20px;
-	border-left: 2px solid ${(props) => props.theme.secondary};
+  padding-left: 20px;
+  border-left: 2px solid ${(props) => props.theme.secondary};
 `;
 
 const TaskTitle = styled(Username)`
 	font-size: 15px;
 `;
+
+const LastContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const ButtonSignOut = styled.div`
+  outline: none;
+  border: none;
+  margin-top: 10px;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  color: ${props => props.theme.textColor};
+  :hover {
+	color: ${props => props.theme.hover};
+  }
+`;
+

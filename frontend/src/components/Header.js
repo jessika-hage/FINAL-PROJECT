@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import moment from 'moment';
 import Drawer from '@material-ui/core/Drawer';
 import { Tooltip } from '@material-ui/core';
-import { FaUserAstronaut } from 'react-icons/fa';
-import CommentIcon from '@material-ui/icons/Comment';
+import { FaUserAstronaut, FaCommentDots } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { Profile } from '../pages/Profile';
+import { MessageBoard } from './messageboard/MessageBoard';
 
 export const Header = () => {
 	const [openForm, setOpenForm] = useState(false);
+	const [openMessageBoard, setOpenMessageBoard] = useState(false);
 	const today = moment().add(60, 'year').format('DD/MM YYYY');
 
 	return (
@@ -20,15 +21,20 @@ export const Header = () => {
 				<Date>{today}</Date>
 			</TitleDate>
 			<IconsContainer>
-				<MessageIcon>
-					<CommentIcon fontSize='large' />
+			<Tooltip title='Citizens Messageboard'>
+				<MessageIcon onClick={() => setOpenMessageBoard(true)}>
+					<FaCommentDots />
 				</MessageIcon>
+				</Tooltip>
 				<Tooltip title='My Profile'>
 					<ProfilImg onClick={() => setOpenForm(true)}>
 						<FaUserAstronaut />
 					</ProfilImg>
 				</Tooltip>
 			</IconsContainer>
+			<Drawer anchor='right' open={openMessageBoard} onClose={() => setOpenMessageBoard(false)}>
+				<MessageBoard onClick={() => setOpenMessageBoard(false)} />
+			</Drawer>
 			<Drawer anchor='bottom' open={openForm} onClose={() => setOpenForm(false)}>
 				<DrawerContainer>
 					<Profile />
@@ -83,38 +89,31 @@ const IconsContainer = styled.div`
 `;
 
 const MessageIcon = styled.button`
-	font-size: 10px;
-	border: none;
-	outline: none;
-	background-color: transparent;
-	color: ${(props) => props.theme.textColor};
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	:hover {
-		color: ${(props) => props.theme.hover};
-	}
+font-size: 26px;
+border: none;
+outline: none;
+border-radius: 50%;
+padding: 8px;
+background-color: ${props => props.theme.secondary};
+color: ${props => props.theme.textColor};
+margin-right: 7px;
+cursor: pointer;
+display: flex;
+align-items: center;
+margin-left: 5px;
+cursor: pointer;
+:hover {
+	background-color: ${props => props.theme.hover};
+	transform: scale(1.05);
+}
+@media (min-width: 768px) {
+	font-size: 32px;
+	padding: 10px;
+}
 `;
 
-const ProfilImg = styled.button`
-	font-size: 32px;
-	border: none;
-	outline: none;
-	border-radius: 50%;
-	padding: 10px;
-	background-color: ${(props) => props.theme.secondary};
-	color: ${(props) => props.theme.textColor};
+const ProfilImg = styled(MessageIcon)`
 	margin-right: 20px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	margin-left: 5px;
-	cursor: pointer;
-	:hover {
-		background-color: ${(props) => props.theme.hover};
-		transform: scale(1.05);
-	}
 `;
 
 const DrawerContainer = styled.section`
