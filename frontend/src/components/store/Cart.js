@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { CartItem } from './CartItem';
+
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 
 export const Cart = () => {
-	// TODO - fetch products from the cart store
 	const products = useSelector((store) => store.cart.items);
 
-	// TODO - calculate total from the sum of all products in the cart
 	const totalPrice = useSelector((store) =>
 		store.cart.items.reduce(
 			(total, item) => total + item.price * item.quantity,

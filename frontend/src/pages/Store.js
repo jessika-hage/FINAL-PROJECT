@@ -31,13 +31,13 @@ export const Store = () => (
 );
 
 const Wrapper = styled.div`
-	margin: auto 0;
+	margin: 0 auto;
 	background-color: ${(props) => props.theme.backgroundColor};
 	display: flex;
 	flex-direction: column;
-	align-item: center;
+	align-items: center;
 	justify-content: center;
-	width: 100vw;
+	width: 90%;
 `;
 
 const Main = styled.main`

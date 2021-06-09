@@ -8,23 +8,25 @@ export const Products = () => {
 	const allProducts = useSelector((store) => store.products);
 
 	return (
-		<ProductsWrapper>
-			<Wrapper>
+		<Main>
+			<ProductsWrapper>
 				{allProducts.map((product) => (
 					<Product key={product.id} product={product} />
 				))}
-			</Wrapper>
-		</ProductsWrapper>
+			</ProductsWrapper>
+		</Main>
 	);
 };
 
 const ProductsWrapper = styled.div`
 	display: flex;
 	aline-items: center;
-
-	justify-content: center;
+	flex-wrap: wrap;
+	max-width: 90%;
+	margin: auto 0;
 `;
 
-const Wrapper = styled.div`
-	width: 90vw;
+const Main = styled.main`
+	display: flex;
+	justify-content: center;
 `;

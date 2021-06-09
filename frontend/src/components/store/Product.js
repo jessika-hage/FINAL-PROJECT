@@ -3,74 +3,90 @@ import { useDispatch } from 'react-redux';
 import { cart } from '../../reducers/cart';
 import styled from 'styled-components';
 import { Label } from '@material-ui/icons';
+// import { Card } from '../Card';
 
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
 
 	return (
 		<ProductWrapper>
-			<Icon>{product.emoji}</Icon>
+			<Icon>{}</Icon>
 			<Wrapper1>
 				<TextWrapper>
-					<Text>{product.title}</Text>
+					<TitleBotWrapper>
+						<Text>{product.title}</Text>
+						<AddBotton
+							type='button'
+							disabled={product.inventory === 0}
+							onClick={() => dispatch(cart.actions.addItem(product))}
+						>
+							Add to cart
+						</AddBotton>
+					</TitleBotWrapper>
 					<TextDescription>{product.description}</TextDescription>
+					<Text>{product.price}:-</Text>
 				</TextWrapper>
 			</Wrapper1>
-			<Wrapper2>
-				<Text>{product.price}:-</Text>
-
-				<AddBotton
-					type='button'
-					disabled={product.inventory === 0}
-					onClick={() => dispatch(cart.actions.addItem(product))}
-				>
-					Add to cart
-				</AddBotton>
-			</Wrapper2>
 		</ProductWrapper>
 	);
 };
 
 const AddBotton = styled.button`
-	margin-left: 40px;
 	border-radius: 5px;
-	height: 35px;
+	height: 30px;
+	margin-right: 5px;
+	margin-left: 5px;
 `;
 
 const ProductWrapper = styled.div`
 	display: flex;
-	width: 80%;
+	flex-direction: column;
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
 	aline-items: center;
 	justify-content: center;
-	border-bottom: 4px solid ${(props) => props.theme.secundary};
+	padding: 10px;
+	border: 2px solid ${(props) => props.theme.primary};
+
+	@media (min-width: 768px) {
+		max-width: 45%;
+		padding: 5px;
+		margin: 10px;
+	}
+	@media (min-width: 1200px) {
+		max-width: 25%;
+	}
 `;
 
 const TextWrapper = styled.div`
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 	margin: 0;
 `;
 
-const Wrapper1 = styled.div`
+const TitleBotWrapper = styled.div`
+	width: 100%;
 	display: flex;
-	width: 40%;
 	align-items: center;
 	justify-content: space-between;
-	margin: 10px;
 `;
-const Wrapper2 = styled.div`
+
+const Wrapper1 = styled.div`
 	display: flex;
-	width: 20%;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: column;
 	margin: 10px;
 `;
 
 const Icon = styled.image``;
-const Text = styled.h4`
+const Text = styled.h3`
 	color: ${(props) => props.theme.textColor};
+	margin: 0;
 `;
 
 const TextDescription = styled.p`
 	color: ${(props) => props.theme.textColor};
+	margin: 5;
 `;
