@@ -35,9 +35,12 @@ const ButtonContainer = styled.div`
 `;
 
 const ThemeTitle = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 5px;
   color: ${props => props.theme.textColor};
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Button = styled.button`
@@ -49,7 +52,11 @@ const Button = styled.button`
   border: 2px solid #fff;
   margin-left: 6px;
   :hover {
-      opacity: 0.7;
+    opacity: 0.7;
+  }
+  @media (min-width: 768px) {
+    width: 22px;
+    height: 22px;
   }
 `;
 

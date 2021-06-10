@@ -1,16 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-
-export const MainContainer = styled.main`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-`;
-
 const badgeanimation = keyframes`
   10% { opacity: 0; transform: scale(0.1)}
   70% { opacity: 1; transform: scale(1.5)}
@@ -36,4 +25,4 @@ export const BadgeText = styled.h1`
 export const BadgeIcon = styled.h1`
   text-align: center;
   font-size: 60px;  
-`
+`;

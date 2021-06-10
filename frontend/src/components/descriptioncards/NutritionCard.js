@@ -19,7 +19,7 @@ const ThinnerCard = styled(Card)`
 	width: 100%;
 	height: 120px;
 	margin: 0;
-	border-bottom: 2px solid ${(props) => props.theme.primary};
+	border-bottom: 2px solid ${props => props.theme.primary};
 	@media (min-width: 768px) {
 		height: 160px;
 	}

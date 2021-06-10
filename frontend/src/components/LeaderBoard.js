@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
@@ -6,36 +6,39 @@ import { CITIZEN_URL } from '../reusable/Urls';
 
 export const LeaderBoard = () => {
 	const [leaderBoard, setLeaderBoard] = useState([]);
+	const [sort, setSort] = useState('highestRanking');
 
-	const fetchCitizens = () => {
-		fetch(CITIZEN_URL('citizens'))
+	const fetchCitizens = useCallback(() => {
+		fetch(CITIZEN_URL(`citizens?sort=${sort}`))
 			.then((res) => res.json())
 			.then((data) => setLeaderBoard(data.allCitizens))
 			.catch((err) => console.error(err));
-	};
+	}, [sort])
 
 	useEffect(() => {
 		fetchCitizens();
-	}, []);
+	}, [fetchCitizens]);
+
 
 	return (
 		<TableContainer>
 			<TableHead>
-				<TableCell>Citizen</TableCell>
-				<TableCell>Ranking</TableCell>
-				<TableCell>Days on Ship</TableCell>
-				<TableCell>Badges</TableCell>
-				<TableCell>Coins</TableCell>
+				<TableTitle>Citizen</TableTitle>
+				<TableTitleLinks onClick={() => setSort('highestRanking')}>Ranking</TableTitleLinks>
+				<CitizenDaysLink onClick={() => setSort('senior')}>Days on Ship</CitizenDaysLink>
+				<TableTitleLinks onClick={() => setSort('mostBadges')}>Badges</TableTitleLinks>
+				<TableTitleLinks onClick={() => setSort('richest')}>Coins</TableTitleLinks>
 			</TableHead>
 			{leaderBoard.map((citizen) => (
 				<CitizensList key={citizen._id}>
 					<Citizen>{citizen.username}</Citizen>
 					<Citizen>{citizen.ranking}/100</Citizen>
-					<Citizen>{moment(citizen.createdAt).toNow(true)}</Citizen>
+					<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 					<Citizen>{citizen.badges}</Citizen>
 					<Citizen>{citizen.coins}</Citizen>
 				</CitizensList>
 			 ))}
+			 <ButtonSeeAll>See all citizens</ButtonSeeAll>
 		</TableContainer>
 	);
 };
@@ -55,21 +58,62 @@ const TableHead = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
-const TableCell = styled.h5`
+const TableTitle = styled.div`
 	width: 25%;
-	padding: 5px;
+	padding: 0 0 5px 5px;
 	margin: 0;
 	text-transform: uppercase;
+	color: ${props => props.theme.textColor};
+	font-size: 14px;
+`;
+
+const TableTitleLinks = styled(TableTitle)`
+	cursor: pointer;
+	:hover, :focus {
+		text-decoration: underline;
+	}
+`;
+
+const CitizenDaysLink = styled(TableTitleLinks)`
+  display: none;
+	@media (min-width: 768px) {
+		display: flex;
+}
 `;
 
 const Citizen = styled.p`
 	width: 25%;
-	padding: 10px 0 10px 5px;
+	padding: 6px 0 4px 4px;
 	margin: 0;
-	font-size: 14px;
+	font-size: 12px;
+	@media (min-width: 768px) {
+		font-size: 14px;
+		padding: 10px 0 7px 5px;
+	}
+`;
+
+const CitizenDays = styled(Citizen)`
+  display: none;
+	@media (min-width: 768px) {
+		display: flex;
+}
 `;
 
 const CitizensList = styled.div`
 	display: flex;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
+`;
+
+const ButtonSeeAll = styled.button`
+  padding: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	text-transform: uppercase;
+	background-color: ${props => props.theme.primary};
+	color: ${props => props.theme.textColor};
+	:hover, :focus {
+		background-color: ${props => props.theme.secondary};
+	}
 `;

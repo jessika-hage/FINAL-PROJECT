@@ -63,12 +63,7 @@ export const EntertainmentCard = () => {
 								<MovieTitle>{movie.title}</MovieTitle>
 								<Basic>Basic</Basic>
 							</TitleCircleBox>
-							<RatingImdb>
 								<MovieRating>{movie.vote_average}/10</MovieRating>
-								<ImdbLink href={`https://www.imdb.com/title/${movie.imdb_id}`}>
-									IMDb
-								</ImdbLink>
-							</RatingImdb>
 							<MovieDescription>{movie.overview}</MovieDescription>
 							<UpgradeButton onClick={buyMovie}>
 								Upgrade to premium
@@ -84,12 +79,7 @@ export const EntertainmentCard = () => {
 								<MovieTitle>{movieTwo.title}</MovieTitle>
 								<Premium>Premium</Premium>
 							</TitleCircleBox>
-							<RatingImdb>
 								<MovieRating>{movieTwo.vote_average}/10</MovieRating>
-								<ImdbLink href={`https://www.imdb.com/title/${movieTwo.imdb_id}`}>
-									IMDb
-								</ImdbLink>
-							</RatingImdb>
 							<MovieDescription>{movieTwo.overview}</MovieDescription>
 						</MovieTextContainer>
 					</MovieContainerPremium>
@@ -182,30 +172,9 @@ const Premium = styled(Basic)`
 	border: 2px solid ${(props) => props.theme.hover};
 `;
 
-const RatingImdb = styled.div`
-	display: flex;
-`;
-
 const MovieRating = styled.p`
-	background-color: ${(props) => props.theme.secondary};
-	width: fit-content;
 	font-size: 12px;
-	padding: 5px;
-	margin: 0 7px 0 0;
-`;
-
-const ImdbLink = styled.a`
-	background-color: #e2b616;
-	width: fit-content;
-	font-size: 12px;
-	padding: 5px;
-	margin: 0;
-	font-family: 'Trispace', sans-serif;
-	font-weight: bold;
-	color: #000;
-	:hover {
-		transform: scale(1.1);
-	}
+	margin-top: 4px;
 `;
 
 const MovieDescription = styled.p`

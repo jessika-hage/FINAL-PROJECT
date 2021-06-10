@@ -25,12 +25,14 @@ const Main = styled.div`
   width: 100%;
   height: 35px;
   border-bottom: 36px solid ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.primary};
   display: flex;
   justify-content: center;
   position: relative;
   margin: 0 auto 30px auto;
   @media (min-width: 768px) {
 	border-bottom: 6px solid ${(props) => props.theme.secondary};
+  background-color: transparent;
 	height: 85px;
 	margin: 0 auto 30px auto;
   }

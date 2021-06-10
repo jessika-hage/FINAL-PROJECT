@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 
 import { WEATHER_API } from '../../reusable/Urls';
 import { FORECAST_API } from '../../reusable/Urls';
 import {   
-    Text, 
+    WeatherText, 
     Button, 
     DialogContainer, 
     ForecastTitle, 
@@ -47,7 +46,9 @@ export const Weather = () => {
   };
 	return (
 		<>
-      <Text>WEATHER AT DESTINATION: {weather} °C <Button onClick={onToggleDialog}>See forecast</Button></Text>
+      <WeatherText>WEATHER AT DESTINATION: {weather} °C 
+        <Button onClick={onToggleDialog}>See forecast</Button>
+      </WeatherText>
       <Dialog open={open} onClose={onToggleDialog}>
         <DialogContainer>
           <ForecastTitle>Forecast at destination</ForecastTitle>
