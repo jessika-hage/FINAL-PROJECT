@@ -5,7 +5,7 @@ export const MainBar = styled.div`
   justify-content: center;
   background-color: ${props => props.theme.secondary};
   position: fixed;
-  bottom: 20px;
+  bottom: 35px;
   left: 0;
   padding: 0;
   color: ${props => props.theme.textColor};
@@ -25,12 +25,13 @@ const Roller = keyframes`
 export const RollingText = styled.div`
   display: flex;
   align-items: center;
-  font-size: 12px;
-  animation: ${Roller} 20s linear infinite;
+  font-size: 10px;
+  animation: ${Roller} 25s linear infinite;
   opacity: 0;
   padding: 0;
   @media (min-width: 768px) {
     bottom: 14px;
+    font-size: 12px;
   }
 `;
 
@@ -52,6 +53,7 @@ export const Button = styled.button`
   border: none;
   font-weight: bold;
   margin-left: 10px;
+  cursor: pointer;
   color: ${props => props.theme.textColor};
   text-decoration: underline;
 `;
@@ -61,6 +63,7 @@ export const DialogContainer = styled.div`
   border: 2px solid ${props => props.theme.primary};
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   padding: 20px;
   color: ${props => props.theme.textColor};
 `;
@@ -90,8 +93,10 @@ export const CurrencyTitle = styled(ForecastTitle)`
 export const TextContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width: 100%;
   border-bottom: 2px solid ${props => props.theme.primary};
-  padding: 7px 0 4px 0;
+  padding: 0;
   margin: 0;
 `;
 
@@ -101,7 +106,8 @@ export const CurrencyText = styled(WeatherText)`
 `;
 
 export const ChangeText = styled(CurrencyText)`
-  margin-left: 5px
+  margin-left: 15px;
+  padding: 0;
 `;
 
 export const Text = styled(DayText)`
@@ -111,16 +117,24 @@ export const Text = styled(DayText)`
 `;
 
 export const CoinChange = styled.span`
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
   ${props =>
   props.percent ?
   `
   color: #bb2205;
-  content: 'U+2191';
   `:  `
   color: #127c56;
-  content: 'U+2191';
   `};
+`;
+
+export const PercentChange = styled(CoinChange)`
+  margin-left: 8px;
+`;
+
+export const ArrowIcon = styled.span`
+  margin: 2px 5px 0 8px;
+  padding: 0;
 `;
 
 export const ExchangeButton = styled.button`
@@ -132,7 +146,11 @@ export const ExchangeButton = styled.button`
   text-transform: uppercase;
   font-family: "Trispace", serif;
   color: ${props => props.theme.textColor};
-  background-color: ${props => props.theme.secondary};
+  background-color: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.secondary};
+  :hover, :focus {
+    background-color: ${props => props.theme.secondary};
+  }
 `;
 
 export const ConfirmationDialog = styled.div`
@@ -150,12 +168,13 @@ export const ConfirmationDialog = styled.div`
 export const ConfirmedButton = styled.button`
   outline: none;
   border: none;
-  background-color: ${props => props.theme.secondary};
+  background-color: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.secondary};
   font-size: 14px;
   padding: 8px;
   font-family: 'Trispace', serif;
   color: ${props => props.theme.textColor};
   :hover, :focus {
-    background-color: ${props => props.theme.hover};
+    background-color: ${props => props.theme.secondary};
   }
 `;
