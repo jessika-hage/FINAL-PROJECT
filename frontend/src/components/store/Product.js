@@ -11,20 +11,18 @@ export const Product = ({ product }) => {
 
 	const addProduct = () => {
 		dispatch(cart.actions.addItem(product));
-		onToggleDialog(true);
-	};
-
-	const onToggleDialog = () => {
 		setOpen(!open);
+		setTimeout(() => {setOpen(false)}, 1200)
 	};
 
 	return (
 		<ProductWrapper>
-			<Dialog open={open} onClose={onToggleDialog}>
+			<Dialog open={open} onClose={addProduct}>
 				<DialogContainer>
 					<Icon>{}</Icon>
 					<Text>{product.title}</Text>
 					<Text>{product.price}:-</Text>
+
 				</DialogContainer>
 			</Dialog>
 			<Icon>{}</Icon>
@@ -58,10 +56,20 @@ const DialogContainer = styled.div`
 `;
 
 const AddButton = styled.button`
-	border-radius: 5px;
-	height: 30px;
-	margin-right: 5px;
-	margin-left: 5px;
+	padding: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	width: fit-content;
+	text-transform: uppercase;
+	background-color: ${props => props.theme.primary};
+	color: ${props => props.theme.textColor};
+	border: 2px solid ${props => props.theme.secondary};
+	:hover, :focus {
+		background-color: ${props => props.theme.secondary};
+	}
 `;
 
 const ProductWrapper = styled.div`

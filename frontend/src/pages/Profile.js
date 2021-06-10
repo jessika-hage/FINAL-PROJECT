@@ -7,6 +7,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 
 import { profile } from '../reducers/profile';
 import { ThemeButtons } from '../components/ThemeButtons';
+import { ItemsProfile } from './ItemsProfile';
 
 export const Profile = () => {
 	const username = useSelector((store) => store.profile.username);
@@ -14,7 +15,9 @@ export const Profile = () => {
 	const badges = useSelector((store) => store.profile.badges);
 	const ranking = useSelector((store) => store.profile.ranking);
 	const coins = useSelector((store) => store.profile.coins);
+	const products = useSelector((store) => store.cart.myItems);
 
+	console.log(products)
 	const dispatch = useDispatch();
 
 	return (
@@ -41,7 +44,12 @@ export const Profile = () => {
 					<TaskTitle>Tasks for today</TaskTitle>
 				</LeftContainer>
 				<RightContainer>
-					<TaskTitle>Tasks for today</TaskTitle>
+					<TaskTitle>My items</TaskTitle>
+					<ItemsContainer>
+						{products.map((product) => (
+							<ItemsProfile item={product} />
+						))}
+					</ItemsContainer>
 				</RightContainer>
 			</BottomContainer>
 			<LastContainer>
@@ -143,8 +151,13 @@ const LeftContainer = styled.div`
 `;
 
 const RightContainer = styled(LeftContainer)`
+	display: flex; 
   padding-left: 20px;
   border-left: 2px solid ${(props) => props.theme.secondary};
+`;
+
+const ItemsContainer = styled.div`
+	margin-left: 7px;
 `;
 
 const TaskTitle = styled(Username)`

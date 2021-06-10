@@ -4,29 +4,33 @@ export const cart = createSlice({
 	name: 'cart',
 	initialState: {
 		items: [],
+		myItems: [],
 	},
 	reducers: {
-		addItem: (state, action) => {
-			const exsistingProducts = state.items.find(
+		addItem: (store, action) => {
+			const exsistingProducts = store.items.find(
 				(item) => item.id === action.payload.id
 			);
 
 			if (exsistingProducts) {
 				exsistingProducts.quantity += 1;
 			} else {
-				state.items.push({ ...action.payload, quantity: 1 });
+				store.items.push({ ...action.payload, quantity: 1 });
 			}
 		},
-		removeItem: (state, action) => {
-			const exsistingProducts = state.items.find(
+		removeItem: (store, action) => {
+			const exsistingProducts = store.items.find(
 				(item) => item.id === action.payload.id
 			);
 
 			if (exsistingProducts && exsistingProducts.quantity === 1) {
-				state.items = state.items.filter((item) => item.id !== action.payload.id);
+				store.items = store.items.filter((item) => item.id !== action.payload.id);
 			} else if (exsistingProducts) {
 				exsistingProducts.quantity -= 1;
 			}
+		},
+		buyItems: (store, action) => {
+			store.myItems.push(...store.items, action.payload);
 		},
 	},
 });

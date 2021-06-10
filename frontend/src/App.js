@@ -12,11 +12,15 @@ import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
-import { profile } from 'reducers/profile';
+import { profile } from './reducers/profile';
+import { cart } from './reducers/cart';
+import { products } from './reducers/products'
 
 const reducer = combineReducers({
 	themes: themes.reducer,
 	profile: profile.reducer,
+	cart: cart.reducer,
+	products: products.reducer,
 });
 
 const store = configureStore({ reducer });

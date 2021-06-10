@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
+import { updateCoins } from '../../reducers/profile';
+import { cart } from '../../reducers/cart'
 
 import { CartItem } from './CartItem';
 
 export const Cart = () => {
 	const products = useSelector((store) => store.cart.items);
 	const [open, setOpen] = useState(false);
+	const [openConfirmation, setOpenConfirmation] = useState(false);
+
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const totalPrice = useSelector((store) =>
 		store.cart.items.reduce(
@@ -21,6 +28,18 @@ export const Cart = () => {
 		setOpen(!open);
 	};
 
+	const buy = () => {
+		dispatch(updateCoins(-totalPrice));
+		dispatch(cart.actions.buyItems(products));
+		setOpen(false);
+		setOpenConfirmation(true);
+	};
+
+	const onConfirmed = () => {
+    setOpenConfirmation(false);
+    history.push('/');
+  };
+
 	return (
 		<CartWrapper>
 			<Dialog open={open} onClose={onToggleDialog}>
@@ -29,12 +48,23 @@ export const Cart = () => {
 						<CartItem key={product.id} product={product} />
 					))}
 					<Amount>Total Price: {totalPrice}:-</Amount>
+					<AddButton
+					onClick={buy}
+					>Buy</AddButton>
 				</DialogContainer>
 			</Dialog>
 			<Total>
 				<Amount>Total: {totalPrice}:-</Amount>
-				<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
+				<ShoppingButton>
+					<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
+				</ShoppingButton>
 			</Total>
+      <Dialog open={openConfirmation} onClose={onToggleDialog}>
+        <ConfirmationDialog>
+          <Text>Purchase successful! You can now see your items on your profile.</Text>
+          <ConfirmedButton onClick={onConfirmed}>Thanks!</ConfirmedButton>
+        </ConfirmationDialog>
+      </Dialog>
 		</CartWrapper>
 	);
 };
@@ -48,6 +78,24 @@ const DialogContainer = styled.ul`
 	color: ${(props) => props.theme.textColor};
 	margin: 0;
 `;
+
+const AddButton = styled.button`
+	padding: 5px;
+	margin-top: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	width: fit-content;
+	text-transform: uppercase;
+	background-color: ${props => props.theme.primary};
+	color: ${props => props.theme.textColor};
+	border: 2px solid ${props => props.theme.secondary};
+	:hover, :focus {
+		background-color: ${props => props.theme.secondary};
+	}
+`;
+
 
 const CartWrapper = styled.div`
 	background-color: ${(props) => props.theme.secundary};
@@ -72,3 +120,45 @@ const Amount = styled.div`
 // 	align-items: center;
 // 	color: ${(props) => props.theme.textColor};
 // `;
+
+const ShoppingButton = styled.button`
+	outline: none;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	color: ${(props) => props.theme.textColor};
+	:hover {
+		opacity: 0.7;
+	}
+`;
+
+export const ConfirmationDialog = styled.div`
+  displaY: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 300px;
+  background-color: ${props => props.theme.primary};
+  border: 3px solid ${props => props.theme.secondary};
+  color: ${props => props.theme.textColor};
+`;
+
+export const ConfirmedButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.secondary};
+  font-size: 14px;
+  padding: 8px;
+  font-family: 'Trispace', serif;
+	text-transform: uppercase;
+  color: ${props => props.theme.textColor};
+  :hover, :focus {
+    background-color: ${props => props.theme.secondary};
+  }
+`;
+
+export const Text = styled.p`
+  font-size: 16px;
+`;
