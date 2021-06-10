@@ -12,7 +12,9 @@ export const Product = ({ product }) => {
 	const addProduct = () => {
 		dispatch(cart.actions.addItem(product));
 		setOpen(!open);
-		setTimeout(() => {setOpen(false)}, 1200)
+		setTimeout(() => {
+			setOpen(false);
+		}, 1200);
 	};
 
 	return (
@@ -22,10 +24,10 @@ export const Product = ({ product }) => {
 					<Icon>{}</Icon>
 					<Text>{product.title}</Text>
 					<Text>{product.price}:-</Text>
-
 				</DialogContainer>
 			</Dialog>
-			<Icon>{}</Icon>
+			<ProductImage src={`../../assets/${product.image}`} alt={product.title} />
+			<img src='../../assets/soap.jpg' alt='test' />
 			<Wrapper1>
 				<TextWrapper>
 					<TitleBotWrapper>
@@ -46,6 +48,8 @@ export const Product = ({ product }) => {
 	);
 };
 
+const ProductImage = styled.img``;
+
 const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.primary};
@@ -64,11 +68,12 @@ const AddButton = styled.button`
 	border: none;
 	width: fit-content;
 	text-transform: uppercase;
-	background-color: ${props => props.theme.primary};
-	color: ${props => props.theme.textColor};
-	border: 2px solid ${props => props.theme.secondary};
-	:hover, :focus {
-		background-color: ${props => props.theme.secondary};
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	:hover,
+	:focus {
+		background-color: ${(props) => props.theme.secondary};
 	}
 `;
 
