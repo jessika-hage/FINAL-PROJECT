@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cart } from '../../reducers/cart';
 import styled from 'styled-components';
-import { Label } from '@material-ui/icons';
-// import { Card } from '../Card';
+
+import Dialog from '@material-ui/core/Dialog';
 
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
+	const [open, setOpen] = useState(false);
 
-const AddProduct = () => {
-dispatch(cart.actions.addItem(product))
-}
+	const addProduct = () => {
+		dispatch(cart.actions.addItem(product));
+		onToggleDialog(true);
+	};
 
-	
+	const onToggleDialog = () => {
+		setOpen(!open);
+	};
+
 	return (
 		<ProductWrapper>
+			<Dialog open={open} onClose={onToggleDialog}>
+				<DialogContainer>
+					<Icon>{}</Icon>
+					<Text>{product.title}</Text>
+					<Text>{product.price}:-</Text>
+				</DialogContainer>
+			</Dialog>
 			<Icon>{}</Icon>
 			<Wrapper1>
 				<TextWrapper>
 					<TitleBotWrapper>
 						<Text>{product.title}</Text>
-						<AddBotton
+						<AddButton
 							type='button'
 							disabled={product.inventory === 0}
-							onClick={() => }
+							onClick={addProduct}
 						>
 							Add to cart
-						</AddBotton>
+						</AddButton>
 					</TitleBotWrapper>
 					<TextDescription>{product.description}</TextDescription>
 					<Text>{product.price}:-</Text>
@@ -36,7 +48,16 @@ dispatch(cart.actions.addItem(product))
 	);
 };
 
-const AddBotton = styled.button`
+const DialogContainer = styled.div`
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.primary};
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	color: ${(props) => props.theme.textColor};
+`;
+
+const AddButton = styled.button`
 	border-radius: 5px;
 	height: 30px;
 	margin-right: 5px;

@@ -4,12 +4,11 @@ import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
 
-
 import { CartItem } from './CartItem';
 
 export const Cart = () => {
 	const products = useSelector((store) => store.cart.items);
-		const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 
 	const totalPrice = useSelector((store) =>
 		store.cart.items.reduce(
@@ -18,30 +17,37 @@ export const Cart = () => {
 		)
 	);
 
-		const onToggleDialog = () => {
-    setOpen(!open);
-  };
-  
+	const onToggleDialog = () => {
+		setOpen(!open);
+	};
 
 	return (
 		<CartWrapper>
 			<Dialog open={open} onClose={onToggleDialog}>
-				<Items>
+				<DialogContainer>
 					{products.map((product) => (
 						<CartItem key={product.id} product={product} />
 					))}
-				</Items>
+					<Amount>Total Price: {totalPrice}:-</Amount>
+				</DialogContainer>
 			</Dialog>
 			<Total>
 				<Amount>Total: {totalPrice}:-</Amount>
-				<LocalGroceryStoreIcon 
-				fontSize='large'
-				onClick={onToggleDialog}
-				/>
+				<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
 			</Total>
 		</CartWrapper>
 	);
 };
+
+const DialogContainer = styled.ul`
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.primary};
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	color: ${(props) => props.theme.textColor};
+	margin: 0;
+`;
 
 const CartWrapper = styled.div`
 	background-color: ${(props) => props.theme.secundary};
@@ -60,9 +66,9 @@ const Total = styled.div`
 const Amount = styled.div`
 	color: ${(props) => props.theme.textColor};
 `;
-const Items = styled.ul`
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	color: ${(props) => props.theme.textColor};
-`;
+// const Items = styled.ul`
+// 	display: flex;
+// 	justify-content: space-around;
+// 	align-items: center;
+// 	color: ${(props) => props.theme.textColor};
+// `;
