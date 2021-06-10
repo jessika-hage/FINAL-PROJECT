@@ -8,6 +8,9 @@ import { Label } from '@material-ui/icons';
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
 
+
+
+	
 	return (
 		<ProductWrapper>
 			<Icon>{}</Icon>

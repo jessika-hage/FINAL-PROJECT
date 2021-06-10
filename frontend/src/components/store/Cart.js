@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import { FaTimes } from 'react-icons/fa';
+import Dialog from '@material-ui/core/Dialog';
+
 
 import { CartItem } from './CartItem';
 
 export const Cart = () => {
 	const products = useSelector((store) => store.cart.items);
+		const [open, setOpen] = useState(false);
 
 	const totalPrice = useSelector((store) =>
 		store.cart.items.reduce(
@@ -16,19 +18,26 @@ export const Cart = () => {
 		)
 	);
 
+		const onToggleDialog = () => {
+    setOpen(!open);
+  };
+  
+
 	return (
 		<CartWrapper>
-			<CloseIcon>
-				<FaTimes onClick={onClick} />
-			</CloseIcon>
-			<Items>
-				{products.map((product) => (
-					<CartItem key={product.id} product={product} />
-				))}
-			</Items>
+			<Dialog open={open} onClose={onToggleDialog}>
+				<Items>
+					{products.map((product) => (
+						<CartItem key={product.id} product={product} />
+					))}
+				</Items>
+			</Dialog>
 			<Total>
 				<Amount>Total: {totalPrice}:-</Amount>
-				<LocalGroceryStoreIcon fontSize='large' />
+				<LocalGroceryStoreIcon 
+				fontSize='large'
+				onClick={onToggleDialog}
+				/>
 			</Total>
 		</CartWrapper>
 	);

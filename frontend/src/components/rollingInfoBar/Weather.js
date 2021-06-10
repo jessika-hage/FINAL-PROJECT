@@ -44,6 +44,7 @@ export const Weather = () => {
   const onToggleDialog = () => {
     setOpen(!open);
   };
+  
 	return (
 		<>
       <WeatherText>WEATHER AT DESTINATION: {weather} °C 
