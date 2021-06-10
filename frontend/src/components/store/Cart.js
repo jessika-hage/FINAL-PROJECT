@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CartItem } from './CartItem';
-
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import { FaTimes } from 'react-icons/fa';
+
+import { CartItem } from './CartItem';
 
 export const Cart = () => {
 	const products = useSelector((store) => store.cart.items);
@@ -17,6 +18,9 @@ export const Cart = () => {
 
 	return (
 		<CartWrapper>
+			<CloseIcon>
+				<FaTimes onClick={onClick} />
+			</CloseIcon>
 			<Items>
 				{products.map((product) => (
 					<CartItem key={product.id} product={product} />
