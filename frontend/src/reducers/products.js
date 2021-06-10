@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FaDailymotion } from 'react-icons/fa';
 
 const productData = [
 	{
