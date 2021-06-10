@@ -8,7 +8,9 @@ import { Label } from '@material-ui/icons';
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
 
-
+const AddProduct = () => {
+dispatch(cart.actions.addItem(product))
+}
 
 	
 	return (
@@ -21,7 +23,7 @@ export const Product = ({ product }) => {
 						<AddBotton
 							type='button'
 							disabled={product.inventory === 0}
-							onClick={() => dispatch(cart.actions.addItem(product))}
+							onClick={() => }
 						>
 							Add to cart
 						</AddBotton>
