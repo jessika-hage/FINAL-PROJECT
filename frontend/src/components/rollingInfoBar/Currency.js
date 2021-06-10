@@ -1,6 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import { useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 import { updateBadges, updateCoins } from '../../reducers/profile';
 import {   
@@ -12,9 +13,11 @@ import {
     Text,
     ChangeText,
     CoinChange,
+    ArrowIcon,
     ExchangeButton, 
     ConfirmationDialog,
-    ConfirmedButton} from './Styling';
+    ConfirmedButton,
+    PercentChange } from './Styling';
 
 export const Currency = () => {
   const [currency, setCurrency] = useState([]);
@@ -30,11 +33,11 @@ export const Currency = () => {
   // Fetch one random currency
   // So the space currency looks very volatile
   const fetchCoin = () => {
-    fetch('https://api.coinlore.net/api/tickers/?start=0&limit=30')
+    fetch('https://api.coinlore.net/api/ticker/?id=32360')
     .then(res => res.json())
     .then((json) => {
-      const getCurrency = json.data[Math.floor(Math.random() * json.data.length)];
-      setCurrency(getCurrency);
+      // const getCurrency = json.data[Math.floor(Math.random() * json.data.length)];
+      setCurrency(json[0]);
     });
   };
 
@@ -58,8 +61,13 @@ export const Currency = () => {
 	return (
 		<>
       <CurrencyText>CURRENCY AT DESTINATION: {currency.price_usd} $
-      <ChangeText>Last hour: </ChangeText>
-      <CoinChange percent={currency.percent_change_1h < 0}>  {currency.percent_change_1h} %</CoinChange>
+      <ChangeText>Last hour:</ChangeText>
+      <CoinChange percent={currency.percent_change_1h < 0}> 
+        <ArrowIcon>
+          {currency.percent_change_1h < 0 ? <FaArrowDown /> : <FaArrowUp />}
+        </ArrowIcon> 
+        {currency.percent_change_1h} %
+      </CoinChange>
         <Button onClick={onToggleDialog}>See more</Button>
       </CurrencyText>
       <Dialog open={open} onClose={onToggleDialog}>
@@ -70,21 +78,21 @@ export const Currency = () => {
             </TextContainer>
             <TextContainer>
               <Text>Change in last hour: 
-                <CoinChange percent={currency.percent_change_1h < 0}> {currency.percent_change_1h} %</CoinChange>
+                <PercentChange percent={currency.percent_change_1h < 0}> {currency.percent_change_1h} %</PercentChange>
                 </Text>
                 </TextContainer>
                 <TextContainer>
               <Text>Change in last 24 hours: 
-                <CoinChange percent={currency.percent_change_124h < 0}> {currency.percent_change_24h} %</CoinChange>
+                <PercentChange percent={currency.percent_change_124h < 0}> {currency.percent_change_24h} %</PercentChange>
               </Text>
               </TextContainer>
               <TextContainer>
               <Text>Change in the last week: 
-                <CoinChange percent={currency.percent_change_7d < 0}> {currency.percent_change_7d} %</CoinChange>
+                <PercentChange percent={currency.percent_change_7d < 0}> {currency.percent_change_7d} %</PercentChange>
               </Text>
               </TextContainer>
               <TextContainer>
-              <Text>Exchange: 1 badge = 10 SPACE $
+              <Text>Exchange rate: 1 badge = 10 SPACE $
               </Text>
               </TextContainer>
               <ExchangeButton onClick={onExchange}>Exchange</ExchangeButton>

@@ -48,14 +48,14 @@ const TableContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px;
-	background-color: ${(props) => props.theme.backgroundColor};
-	color: ${(props) => props.theme.textColor};
+	background-color: ${props => props.theme.backgroundColor};
+	color: ${props => props.theme.textColor};
 `;
 
 const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 2px solid ${(props) => props.theme.secondary};
+	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 
 const TableTitle = styled.div`
@@ -106,13 +106,16 @@ const CitizensList = styled.div`
 
 const ButtonSeeAll = styled.button`
   padding: 5px;
+	margin-top: 5px;
 	font-size: 12px;
 	cursor: pointer;
 	outline: none;
 	border: none;
+	width: fit-content;
 	text-transform: uppercase;
 	background-color: ${props => props.theme.primary};
 	color: ${props => props.theme.textColor};
+	border: 2px solid ${props => props.theme.secondary};
 	:hover, :focus {
 		background-color: ${props => props.theme.secondary};
 	}
