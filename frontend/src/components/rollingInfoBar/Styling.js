@@ -122,9 +122,9 @@ export const CoinChange = styled.span`
   ${props =>
   props.percent ?
   `
-  color: #bb2205;
+  color: #e83715;
   `:  `
-  color: #127c56;
+  color: #6DD704;
   `};
 `;
 

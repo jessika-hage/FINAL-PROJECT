@@ -29,7 +29,7 @@ export const Profile = () => {
 						<Username>{username}</Username>
 						<PointsText>{badges} Badges</PointsText>
 						<PointsText>{ranking}/100 Ranking</PointsText>
-						<PointsText>{coins} $</PointsText>
+						<PointsText>{coins} $<img src={require(`../assets/dollar.png`)} /></PointsText>
 					</TextContainer>
 				</ImageNameContainer>
 				<DaysContainer>
@@ -123,6 +123,8 @@ const Username = styled.h3`
 `;
 
 const PointsText = styled.p`
+display: flex;
+align-items: center;
 	font-size: 12px;
 	margin: 2px 0 2px 3px;
 	color: ${(props) => props.theme.textColor};
