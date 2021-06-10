@@ -166,7 +166,7 @@ const RoomSix = styled(Link)`
 	}
 `;
 
-const RoomInfo = styled(Link)`
+const RoomInfo = styled.div`
 	grid-column: 6 / span 2;
 	grid-row: 3 / span 2;
 	border: 2px solid white;

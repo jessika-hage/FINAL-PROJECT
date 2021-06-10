@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
 import moment from 'moment';
 import { FaSignOutAlt } from 'react-icons/fa';
 
+import { profile } from '../reducers/profile';
 import { ThemeButtons } from '../components/ThemeButtons';
 
 export const Profile = () => {
@@ -13,6 +14,8 @@ export const Profile = () => {
 	const badges = useSelector((store) => store.profile.badges);
 	const ranking = useSelector((store) => store.profile.ranking);
 	const coins = useSelector((store) => store.profile.coins);
+
+	const dispatch = useDispatch();
 
 	return (
 		<ProfileContainer>
@@ -43,7 +46,7 @@ export const Profile = () => {
 			</BottomContainer>
 			<LastContainer>
 			<ThemeButtons text='Change your spaceship color:' />
-			<ButtonSignOut>
+			<ButtonSignOut onClick={() => dispatch(profile.actions.setLogOut())}>
 			<FaSignOutAlt />
 			</ButtonSignOut>
 			</LastContainer>
@@ -100,19 +103,25 @@ const DaysContainer = styled(TextContainer)`
 `;
 
 const Username = styled.h3`
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: bold;
 	margin: 3px 0 3px 3px;
 	color: ${(props) => props.theme.textColor};
 	text-transform: uppercase;
 	font-family: 'Trispace';
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
 `;
 
 const PointsText = styled.p`
-	font-size: 14px;
+	font-size: 12px;
 	margin: 2px 0 2px 3px;
 	color: ${(props) => props.theme.textColor};
 	font-family: 'Trispace';
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 const DaysText = styled(PointsText)`
@@ -149,7 +158,7 @@ const LastContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const ButtonSignOut = styled.div`
+const ButtonSignOut = styled.button`
   outline: none;
   border: none;
   margin-top: 10px;

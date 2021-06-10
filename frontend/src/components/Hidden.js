@@ -10,6 +10,7 @@ export const Hidden = () => {
 		scrolling='no'
 		width='100%'
 		height='100%'
+		title='malfunction'
 	  ></iframe>
 	  {/* <iframe
 		src='https://giphy.com/embed/A06UFEx8jxEwU'

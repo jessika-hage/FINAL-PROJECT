@@ -109,16 +109,14 @@ app.get('/citizens', async (req, res) => {
 	const sortCitizens = (sort) => {
 		if (sort === 'mostBadges') {
 			return { badges: -1 };
-		} else if (sort === 'leastBadges') {
-			return { badges: 1 };
 		} else if (sort === 'senior') {
 			return { createdAt: 1 };
-		} else if (sort === 'highestRanking') {
-			return { ranking: -1 }
+		} else if (sort === 'junior') {
+			return { createdAt: -1 }
 		} else if (sort === 'richest') {
 			return { coins: -1 }
 		} else {
-			return { createdAt: -1 };
+			return { ranking: -1 };
 		}
 	};
 

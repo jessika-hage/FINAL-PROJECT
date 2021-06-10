@@ -50,8 +50,8 @@ const Main = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 80px;
-	background-color: ${(props) => props.theme.primary};
+	height: 60px;
+	background-color: ${props => props.theme.primary};
 	position: fixed;
 	margin: 0;
 	width: 100%;
@@ -59,6 +59,7 @@ const Main = styled.div`
 	z-index: 1;
 	@media (min-width: 768px) {
 		top: 0;
+		height: 80px;
 	}
 `;
 
@@ -70,7 +71,7 @@ const TitleDate = styled.div`
 const NavLink = styled(Link)`
 	margin: 0;
 	padding: 0 0 2px 20px;
-	color: ${(props) => props.theme.textColor};
+	color: ${props => props.theme.textColor};
 	font-family: 'Trispace';
 	text-transform: uppercase;
 	font-size: 24px;
@@ -79,9 +80,12 @@ const NavLink = styled(Link)`
 const Date = styled.p`
 	padding 0 20px;
 	margin: 0;
-	font-size: 14px;
+	font-size: 12px;
 	color: ${(props) => props.theme.textColor};
 	font-family: "Trispace";
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 const IconsContainer = styled.div`

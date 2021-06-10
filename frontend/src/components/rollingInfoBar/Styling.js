@@ -5,32 +5,43 @@ export const MainBar = styled.div`
   justify-content: center;
   background-color: ${props => props.theme.secondary};
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
-  padding: 5px;
+  padding: 0;
   color: ${props => props.theme.textColor};
-  opacity: 0.8;
+  opacity: 0.85;
   width: 100%;
+  @media (min-width: 768px) {
+    bottom: 0;
+  }
 `;
 
 const Roller = keyframes`
-5% { opacity: 0; transform: translateX(500px) }
-20% { opacity: 1 }
-95% { opacity: 1 }
-100% { opacity: 0.6; transform: translateX(-800px) }`;
+  5% { opacity: 0; transform: translateX(500px) }
+  10% { opacity: 1 }
+  95% { opacity: 1 }
+  100% { opacity: 0.6; transform: translateX(-1000px) }`;
 
-export const RollingText = styled.p`
-  font-size: 14px;
+export const RollingText = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 12px;
   animation: ${Roller} 20s linear infinite;
   opacity: 0;
+  padding: 0;
+  @media (min-width: 768px) {
+    bottom: 14px;
+  }
 `;
 
 // Weather
-export const Text = styled.div`
-  padding: 0;
-  margin: 0;
+export const WeatherText = styled.div`
+  margin: 0;;
   display: flex;
   align-items: center;
+  padding: 10px 20px 10px 10px;
+  color: ${props => props.theme.textColor};
+  border-right: 2px solid ${props => props.theme.textColor};
 `;
 
 export const Button = styled.button`
@@ -69,4 +80,82 @@ export const WeatherContainer = styled.div`
 export const DayText = styled.p`
   font-size: 16px;
   text-transform: uppercase;
+`;
+
+// Currency
+export const CurrencyTitle = styled(ForecastTitle)`
+  text-align: center;
+`;
+
+export const TextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid ${props => props.theme.primary};
+  padding: 7px 0 4px 0;
+  margin: 0;
+`;
+
+export const CurrencyText = styled(WeatherText)`
+  margin-left: 10px;
+  border-right: none;
+`;
+
+export const ChangeText = styled(CurrencyText)`
+  margin-left: 5px
+`;
+
+export const Text = styled(DayText)`
+  text-transform: none;
+  display: flex;
+  text-align: center;
+`;
+
+export const CoinChange = styled.span`
+  margin-left: 10px;
+  ${props =>
+  props.percent ?
+  `
+  color: #bb2205;
+  content: 'U+2191';
+  `:  `
+  color: #127c56;
+  content: 'U+2191';
+  `};
+`;
+
+export const ExchangeButton = styled.button`
+  outline: none;
+  border: none;
+  padding: 8px;
+  margin-top: 7px;
+  width: fit-content;
+  text-transform: uppercase;
+  font-family: "Trispace", serif;
+  color: ${props => props.theme.textColor};
+  background-color: ${props => props.theme.secondary};
+`;
+
+export const ConfirmationDialog = styled.div`
+  displaY: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 300px;
+  background-color: ${props => props.theme.primary};
+  border: 3px solid ${props => props.theme.secondary};
+  color: ${props => props.theme.textColor};
+`;
+
+export const ConfirmedButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: ${props => props.theme.secondary};
+  font-size: 14px;
+  padding: 8px;
+  font-family: 'Trispace', serif;
+  color: ${props => props.theme.textColor};
+  :hover, :focus {
+    background-color: ${props => props.theme.hover};
+  }
 `;
