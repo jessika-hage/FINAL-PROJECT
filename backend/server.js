@@ -54,15 +54,22 @@ const Citizen = mongoose.model('Citizen', {
 		type: Date,
 		default: Date.now,
 	},
+	avatar: {
+		type: String,
+		default: 'Anonymous',
+	},
+	items: {
+		type: Array,
+	},
 });
 
 const CitizenMessage = mongoose.model('CitizenMessage', {
 	message: String,
 	createdAt: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
 	},
-})
+});
 
 // Authorization
 const authenticateCitizen = async (req, res, next) => {
@@ -112,9 +119,9 @@ app.get('/citizens', async (req, res) => {
 		} else if (sort === 'senior') {
 			return { createdAt: 1 };
 		} else if (sort === 'junior') {
-			return { createdAt: -1 }
+			return { createdAt: -1 };
 		} else if (sort === 'richest') {
-			return { coins: -1 }
+			return { coins: -1 };
 		} else {
 			return { ranking: -1 };
 		}
@@ -150,25 +157,27 @@ app.post('/signup', async (req, res) => {
 			badges: newCitizen.badges,
 			ranking: newCitizen.ranking,
 			coins: newCitizen.coins,
+			avatar: newCitizen.avatar,
+			items: newCitizen.items,
 			createdAt: newCitizen.createdAt,
 		});
 	} catch (error) {
 		if (error.code === 11000) {
 			if (error.keyValue.username) {
-			res.status(400).json({
-			success: false,
-			message: "Username already taken, sorry! :)",
-			error,
-			});
-				} else if (error.keyValue.email) {
 				res.status(400).json({
-				success: false,
-				message: "Email already taken, sorry! :)",
-				error,
+					success: false,
+					message: 'Username already taken, sorry! :)',
+					error,
 				});
-				}
+			} else if (error.keyValue.email) {
+				res.status(400).json({
+					success: false,
+					message: 'Email already taken, sorry! :)',
+					error,
+				});
+			}
 		}
-		res.status(400).json({ success: false, message: "Invalid request", error });
+		res.status(400).json({ success: false, message: 'Invalid request', error });
 	}
 });
 
@@ -188,6 +197,8 @@ app.post('/signin', async (req, res) => {
 				badges: citizen.badges,
 				ranking: citizen.ranking,
 				coins: citizen.coins,
+				avatar: citizen.avatar,
+				items: citizen.items,
 				createdAt: citizen.createdAt,
 			});
 		} else {
@@ -204,7 +215,7 @@ app.post('/signin', async (req, res) => {
 // app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
 	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 });
-	res.json({ success: true, citizenMessage })
+	res.json({ success: true, citizenMessage });
 });
 
 // POST message on messageboard
@@ -216,7 +227,7 @@ app.post('/citizenmessage', async (req, res) => {
 		const newCitizenMessage = await new CitizenMessage({ message }).save();
 		res.json({ success: true, newCitizenMessage });
 	} catch (error) {
-		res.status(400).json({ success: false, message: 'Invalid request', error })
+		res.status(400).json({ success: false, message: 'Invalid request', error });
 	}
 });
 
@@ -227,10 +238,10 @@ app.patch('/citizen/:id/badges', async (req, res) => {
 	try {
 		const updatedBadges = await Citizen.findByIdAndUpdate(
 			id,
-			{ 
-				$inc: { 
-					badges: req.body.badges 
-				}
+			{
+				$inc: {
+					badges: req.body.badges,
+				},
 			},
 			{ new: true }
 		);
@@ -251,10 +262,10 @@ app.patch('/citizen/:id/ranking', async (req, res) => {
 	try {
 		const updatedRanking = await Citizen.findByIdAndUpdate(
 			id,
-			{ 
-				$inc: { 
-					ranking: req.body.ranking
-				}
+			{
+				$inc: {
+					ranking: req.body.ranking,
+				},
 			},
 			{ new: true }
 		);
@@ -275,10 +286,10 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 	try {
 		const updatedCoins = await Citizen.findByIdAndUpdate(
 			id,
-			{ 
-				$inc: { 
-					coins: req.body.coins
-				}
+			{
+				$inc: {
+					coins: req.body.coins,
+				},
 			},
 			{ new: true }
 		);
@@ -292,6 +303,25 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 	}
 });
 
+app.post('/citizen/:id/items', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedItems = await Citizen.findByIdAndUpdate(
+			id,
+			{
+				$addToSet: { items: req.body.items },
+			},
+			{ new: true }
+		);
+		if (updatedItems) {
+			res.json(updatedItems);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
 
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);

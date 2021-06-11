@@ -27,7 +27,7 @@ export const Product = ({ product }) => {
 				</DialogContainer>
 			</Dialog>
 			<ProductImage src={`../../assets/${product.image}`} alt={product.title} />
-			<img src='../../assets/soap.jpg' alt='test' />
+			{/* <img src={require(`../../assets/${product.image}`)} alt='test' /> */}
 			<Wrapper1>
 				<TextWrapper>
 					<TitleBotWrapper>

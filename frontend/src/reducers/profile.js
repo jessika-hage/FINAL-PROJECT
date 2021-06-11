@@ -9,6 +9,8 @@ const initialState = {
 	ranking: null,
 	coins: null,
 	created: null,
+	avatar: null,
+	items: null,
 };
 
 export const profile = createSlice({
@@ -36,6 +38,12 @@ export const profile = createSlice({
 		setCoins: (store, action) => {
 			store.coins = action.payload;
 		},
+		setAvatar: (store, action) => {
+			store.avatar = action.payload;
+		},
+		setItems: (store, action) => {
+			store.items = action.payload;
+		},
 		setCreated: (store, action) => {
 			store.created = action.payload;
 		},
@@ -57,7 +65,7 @@ export const profile = createSlice({
 // Thunk for updating badges
 export const updateBadges = (badges) => {
 	return (dispatch, getState) => {
-		console.log(getState())
+		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -65,7 +73,10 @@ export const updateBadges = (badges) => {
 			},
 			body: JSON.stringify({ badges }),
 		};
-		fetch(`http://localhost:8080/citizen/${getState().profile.userId}/badges`, options)
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/badges`,
+			options
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -78,7 +89,7 @@ export const updateBadges = (badges) => {
 // Thunk for updating ranking
 export const updateRanking = (ranking) => {
 	return (dispatch, getState) => {
-		console.log(getState())
+		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -86,7 +97,10 @@ export const updateRanking = (ranking) => {
 			},
 			body: JSON.stringify({ ranking }),
 		};
-		fetch(`http://localhost:8080/citizen/${getState().profile.userId}/ranking`, options)
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/ranking`,
+			options
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
@@ -99,7 +113,7 @@ export const updateRanking = (ranking) => {
 // Thunk for updating coins
 export const updateCoins = (coins) => {
 	return (dispatch, getState) => {
-		console.log(getState())
+		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -107,11 +121,37 @@ export const updateCoins = (coins) => {
 			},
 			body: JSON.stringify({ coins }),
 		};
-		fetch(`http://localhost:8080/citizen/${getState().profile.userId}/coins`, options)
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/coins`,
+			options
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
 				dispatch(profile.actions.setCoins(data.coins));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+export const updateItems = (items) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ items }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/items`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setItems(data.items.title));
 			})
 			.catch((err) => console.error(err));
 	};

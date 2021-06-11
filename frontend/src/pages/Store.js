@@ -8,29 +8,27 @@ import { Cart } from '../components/store/Cart';
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 
-
-
 export const Store = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
-const history = useHistory();
+	const history = useHistory();
 	useEffect(() => {
 		if (!accessToken) {
 			history.push('/signin');
 		}
 	}, [accessToken, history]);
-	
+
 	return (
-	<Main>
-		<Header />
-		<Camera />
+		<Main>
+			<Header />
+			<Camera />
 			<Wrapper>
 				<Cart />
 				<Products />
 			</Wrapper>
-	</Main>
-);
-	}
+		</Main>
+	);
+};
 
 const Wrapper = styled.div`
 	margin: 0 auto;

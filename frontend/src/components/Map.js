@@ -18,16 +18,16 @@ export const Map = () => {
 	const [openGym, setOpenGym] = useState(false);
 
 	const onToggleInfoDialog = () => {
-    setOpenInfo(!openInfo);
-  };
+		setOpenInfo(!openInfo);
+	};
 
 	const onToggleBedroomDialog = () => {
-    setOpenBedroom(!openBedroom);
-  };
+		setOpenBedroom(!openBedroom);
+	};
 
 	const onToggleGymDialog = () => {
-    setOpenGym(!openGym);
-  };
+		setOpenGym(!openGym);
+	};
 
 	return (
 		<GridContainer>
@@ -43,14 +43,16 @@ export const Map = () => {
 					<HotelIcon fontSize='large' />
 				</Icons>
 				<Dialog open={openBedroom} onClick={onToggleBedroomDialog}>
-						<DialogContainer>
-							<InfoTitle>Get some rest!</InfoTitle>
-							<InfoText>As a citizen on this ship, we like it when you work hard. That's why it is important that you also sleep a little bit sometimes.
-								You will lose 2 badges but will gain 1 ranking!
-							</InfoText>
-							<DialogButton>Sleep!</DialogButton>
-						</DialogContainer>
-					</Dialog>
+					<DialogContainer>
+						<InfoTitle>Get some rest!</InfoTitle>
+						<InfoText>
+							As a citizen on this ship, we like it when you work hard. That's why it
+							is important that you also sleep a little bit sometimes. You will lose 2
+							badges but will gain 1 ranking!
+						</InfoText>
+						<DialogButton>Sleep!</DialogButton>
+					</DialogContainer>
+				</Dialog>
 			</RoomTwo>
 			<Tooltip title='RESTAURANT! see todays menu and upgrade meal!'>
 				<CircleRoom>
@@ -93,8 +95,11 @@ export const Map = () => {
 					<Dialog open={openGym} onClick={onToggleGymDialog}>
 						<DialogContainer>
 							<InfoTitle>Get some workout!</InfoTitle>
-							<InfoText>As a citizen on this ship, it is very important that you exercise regularly. Week citizens won't last for long!
-								The price for entering the gym is 5 badges but it will increase your ranking with 1 since you will become a stronger citizen.
+							<InfoText>
+								As a citizen on this ship, it is very important that you exercise
+								regularly. Week citizens won't last for long! The price for entering the
+								gym is 5 badges but it will increase your ranking with 1 since you will
+								become a stronger citizen.
 							</InfoText>
 							<DialogButton>Workout!</DialogButton>
 						</DialogContainer>
@@ -109,14 +114,67 @@ export const Map = () => {
 				</RoomSix>
 			</Tooltip>
 			<RoomSeven></RoomSeven>
+			<Tooltip title='CLASSROM! Solve mathematical problems and earn points!'>
+				<RoomFarm to='/farm'>
+					<Icons>
+						<Icon className='fa fa-calculator' />
+					</Icons>
+				</RoomFarm>
+			</Tooltip>
+			<RoomDoctor onClick={onToggleBedroomDialog}>
+				<Icons>
+					<HotelIcon fontSize='large' />
+				</Icons>
+				<Dialog open={openBedroom} onClick={onToggleBedroomDialog}>
+					<DialogContainer>
+						<InfoTitle>Get some rest!</InfoTitle>
+						<InfoText>
+							As a citizen on this ship, we like it when you work hard. That's why it
+							is important that you also sleep a little bit sometimes. You will lose 2
+							badges but will gain 1 ranking!
+						</InfoText>
+						<DialogButton>Sleep!</DialogButton>
+					</DialogContainer>
+				</Dialog>
+			</RoomDoctor>
 		</GridContainer>
 	);
 };
 
 const GridContainer = styled.section`
 	display: grid;
-	grid-template: repeat(7, 1fr) / repeat(11, 1fr);
+	grid-template: repeat(7, 1fr) / repeat(13, 1fr);
 	width: 100%;
+`;
+
+const RoomFarm = styled(Link)`
+	grid-column: 10 / span 3;
+	grid-row: 1 / span 3;
+	border: 2px solid white;
+	border-top-right-radius: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: ${(props) => props.theme.secondary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
+`;
+
+const RoomDoctor = styled.div`
+	grid-column: 10 / span 3;
+	grid-row: 4 / span 3;
+	border: 2px solid white;
+	border-bottom-right-radius: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: ${(props) => props.theme.secondary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 const RoomOne = styled(Link)`
@@ -256,18 +314,18 @@ const Icons = styled.button`
 
 // Dialog Info
 export const DialogContainer = styled.div`
-  background-color: ${props => props.theme.backgroundColor};
-  border: 2px solid ${props => props.theme.primary};
-  display: flex;
-  flex-direction: column;
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.primary};
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-  padding: 20px;
-  color: ${props => props.theme.textColor};
+	padding: 20px;
+	color: ${(props) => props.theme.textColor};
 `;
 
 export const InfoTitle = styled.h2`
-  font-size: 24px;
-  text-transform: uppercase;
+	font-size: 24px;
+	text-transform: uppercase;
 `;
 
 export const InfoText = styled.p`
@@ -286,11 +344,12 @@ export const DialogButton = styled.button`
 	border: none;
 	width: fit-content;
 	text-transform: uppercase;
-	background-color: ${props => props.theme.primary};
-	color: ${props => props.theme.textColor};
-	border: 2px solid ${props => props.theme.secondary};
-	:hover, :focus {
-		background-color: ${props => props.theme.secondary};
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	:hover,
+	:focus {
+		background-color: ${(props) => props.theme.secondary};
 	}
 	@media (min-width: 768px) {
 		font-size: 18px;

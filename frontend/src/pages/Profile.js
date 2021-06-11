@@ -15,6 +15,11 @@ export const Profile = () => {
 	const badges = useSelector((store) => store.profile.badges);
 	const ranking = useSelector((store) => store.profile.ranking);
 	const coins = useSelector((store) => store.profile.coins);
+	// const items = useSelector((store) =>
+	// 	store.profile.items.map((item) => {
+	// 		item.title;
+	// 	})
+	// );
 	const products = useSelector((store) => store.cart.myItems);
 
 	const dispatch = useDispatch();
@@ -26,9 +31,13 @@ export const Profile = () => {
 					<ProfileAvatar src={require(`../assets/hacker.png`)} />
 					<TextContainer>
 						<Username>{username}</Username>
-						<PointsText><IconImage src={require(`../assets/badge.png`)} /> {badges}</PointsText>
+						<PointsText>
+							<IconImage src={require(`../assets/badge.png`)} /> {badges}
+						</PointsText>
 						<PointsText>{ranking}/100 Ranking</PointsText>
-						<PointsText><IconImage src={require(`../assets/money2.png`)} /> {coins}</PointsText>
+						<PointsText>
+							<IconImage src={require(`../assets/money2.png`)} /> {coins}
+						</PointsText>
 					</TextContainer>
 				</ImageNameContainer>
 				<DaysContainer>
@@ -40,22 +49,18 @@ export const Profile = () => {
 			</TopContainer>
 			<BottomContainer>
 				<LeftContainer>
-					<TaskTitle>Tasks for today</TaskTitle>
+					{/* <TaskTitle>Tasks for today</TaskTitle> */}
 				</LeftContainer>
 				<RightContainer>
 					<TaskTitle>My items</TaskTitle>
-					<ItemsContainer>
-						{products.map((product) => (
-							<ItemsProfile item={product} />
-						))}
-					</ItemsContainer>
+					{/* <ItemsContainer>{items}</ItemsContainer> */}
 				</RightContainer>
 			</BottomContainer>
 			<LastContainer>
-			<ThemeButtons text='Change your spaceship color:' />
-			<ButtonSignOut onClick={() => dispatch(profile.actions.setLogOut())}>
-			<FaSignOutAlt />
-			</ButtonSignOut>
+				<ThemeButtons text='Change your spaceship color:' />
+				<ButtonSignOut onClick={() => dispatch(profile.actions.setLogOut())}>
+					<FaSignOutAlt />
+				</ButtonSignOut>
 			</LastContainer>
 		</ProfileContainer>
 	);
@@ -92,8 +97,8 @@ const ProfileAvatar = styled.img`
 	border-radius: 50%;
 	cursor: pointer;
 	outline: none;
-	border: 1px solid ${props => props.theme.primary};
-	background-color: ${props => props.theme.secondary};
+	border: 1px solid ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.secondary};
 	margin: 0 0 0 6px;
 	:hover {
 		opacity: 0.7;
@@ -136,8 +141,8 @@ const Username = styled.h3`
 `;
 
 const PointsText = styled.p`
-display: flex;
-align-items: center;
+	display: flex;
+	align-items: center;
 	font-size: 12px;
 	margin: 2px 0 2px 3px;
 	color: ${(props) => props.theme.textColor};
@@ -155,7 +160,7 @@ const BottomContainer = styled.div`
 	display: flex;
 	height: 100%;
 	margin: 0;
-	border-bottom: 2px solid ${props => props.theme.secondary};
+	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
 const LeftContainer = styled.div`
@@ -166,9 +171,9 @@ const LeftContainer = styled.div`
 `;
 
 const RightContainer = styled(LeftContainer)`
-	display: flex; 
-  padding-left: 20px;
-  border-left: 2px solid ${(props) => props.theme.secondary};
+	display: flex;
+	padding-left: 20px;
+	border-left: 2px solid ${(props) => props.theme.secondary};
 `;
 
 const ItemsContainer = styled.div`
@@ -180,22 +185,21 @@ const TaskTitle = styled(Username)`
 `;
 
 const LastContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
 `;
 
 const ButtonSignOut = styled.button`
-  outline: none;
-  border: none;
-  margin-top: 10px;
-  background-color: transparent;
-  font-size: 30px;
-  cursor: pointer;
-  color: ${props => props.theme.textColor};
-  :hover {
-	color: ${props => props.theme.hover};
-  }
+	outline: none;
+	border: none;
+	margin-top: 10px;
+	background-color: transparent;
+	font-size: 30px;
+	cursor: pointer;
+	color: ${(props) => props.theme.textColor};
+	:hover {
+		color: ${(props) => props.theme.hover};
+	}
 `;
-

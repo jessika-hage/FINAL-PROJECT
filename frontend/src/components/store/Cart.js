@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
-import { updateCoins } from '../../reducers/profile';
+import { updateCoins, updateItems } from '../../reducers/profile';
 import { cart } from '../../reducers/cart';
 
 import { CartItem } from './CartItem';
@@ -34,6 +34,7 @@ export const Cart = () => {
 		if (totalPrice <= coins) {
 			dispatch(updateCoins(-totalPrice));
 			dispatch(cart.actions.buyItems(products));
+			dispatch(updateItems(products));
 			setOpen(false);
 			setOpenConfirmation(true);
 		} else {
