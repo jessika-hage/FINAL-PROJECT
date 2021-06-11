@@ -4,7 +4,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { themes } from 'reducers/themes';
-import { Theme } from './components/Theme';
+import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
 import { LeaderBoard } from './components/LeaderBoard';
 import { Main } from './pages/Main';

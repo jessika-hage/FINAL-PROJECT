@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 
-import { WEATHER_API } from '../../reusable/Urls';
-import { FORECAST_API } from '../../reusable/Urls';
+import { WEATHER_API } from '../../reusables/urls';
+import { FORECAST_API } from '../../reusables/urls';
 import {   
     WeatherText, 
     Button, 

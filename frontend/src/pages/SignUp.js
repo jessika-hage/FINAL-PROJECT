@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useSelector, useDispatch, batch } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { ThemeButtons } from '../components/ThemeButtons';
-import { Avatars } from '../components/Avatars';
-import { CITIZEN_URL } from '../reusable/Urls';
+import { ThemeButtons } from '../components/theme/ThemeButtons';
+import { Avatars } from '../components/signinupform/Avatars';
+import { CITIZEN_URL } from '../reusables/urls';
 import { profile } from '../reducers/profile';
+import { TextInput } from '../components/signinupform/TextInput';
+import { SubmitButton } from '../components/signinupform/SubmitButton';
+import { ChangeLogIn } from '../components/signinupform/ChangeLogIn';
+import { MainContainer, Title, Form, ChooseText } from '../components/signinupform/Styling';
 
 export const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -60,126 +63,35 @@ export const SignUp = () => {
 	<MainContainer>
 	  <Title>Citizen Ship</Title>
 	  <Form onSubmit={handleFormSubmit}>
-		<NameInput
-		  type='text'
-		  placeholder='username'
-		  value={username}
-		  onChange={(e) => setUsername(e.target.value)}
-		></NameInput>
-		<NameInput
-		  type='password'
-		  placeholder='password'
-		  value={password}
-		  onChange={(e) => setPassword(e.target.value)}
-		></NameInput>
-		<NameInput
-		  type='email'
-		  placeholder='email'
-		  value={email}
-		  onChange={(e) => setEmail(e.target.value)}
-		></NameInput>
-		<ChooseText>Choose your avatar:</ChooseText>
-		<Avatars />
-		<ChooseText>Color your spaceship:</ChooseText>
-		<ThemeButtons />
-		<Button type='submit' onClick={() => setMode('signup')}>
-		  become a citizen
-		</Button>
-		<SignIn>
-		  Already a citizen? 
-		  <SignInLink to='/signin'>Board ship here!</SignInLink>
-		</SignIn>
+      <TextInput 
+        type='text' 
+        placeholder='username' 
+        value={username} 
+        onChange={(e) => setUsername(e.target.value)} />
+      <TextInput
+        type='password'
+        placeholder='password'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)} />
+      <TextInput
+        type='email'
+        placeholder='email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} />
+      <ChooseText>Choose your avatar:</ChooseText>
+      <Avatars />
+      <ChooseText>Color your spaceship:</ChooseText>
+      <ThemeButtons />
+      <SubmitButton 
+        type='submit' 
+        onClick={() => setMode('signup')} 
+        text='Become a citizen' />
+      <ChangeLogIn 
+        text='Already a citizen?' 
+        link='/signin' 
+        linkText='Board ship here!' />
 	  </Form>
 	</MainContainer>
   );
 };
 
-const Form = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: ${props => props.theme.backgroundColor};
-`;
-
-const Title = styled.h1`
-  font-family: 'Trispace';
-  text-transform: uppercase;
-  color: ${props => props.theme.textColor};
-  font-size: 40px;
-  display: flex;
-  margin-bottom: 40px;
-`;
-
-const NameInput = styled.input`
-  padding: 10px;
-  outline: none;
-  border-bottom: 3px solid ${props => props.theme.primary};
-  border-left: none;
-  border-top: none;
-  border-right: none;
-  background-color: transparent;
-  font-size: 16px;
-  color: ${props => props.theme.textColor};
-  margin-bottom: 20px;
-  width: 300px;
-  font-family: 'Trispace';
-  :focus {
-	background-color: ${props => props.theme.primary};
-  }
-  ::placeholder {
-	text-transform: uppercase;
-  }
-`;
-
-const ChooseText = styled.p`
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-family: 'Trispace';
-  font-size: 14px;
-  margin-top: 30px;
-`;
-
-const Button = styled.button`
-  padding: 15px 25px;
-  outline: none;
-  border: 2px solid transparent;
-  background-color: ${props => props.theme.secondary};
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-family: 'Trispace';
-  margin-top: 35px;
-  cursor: pointer;
-  :hover {
-	opacity: 0.7;
-  }
-  :focus {
-	border: 2px solid ${props => props.theme.hover};
-  }
-`;
-
-const SignIn = styled.p`
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-family: 'Trispace';
-  font-size: 14px;
-`;
-
-const SignInLink = styled(Link)`
-  text-decoration: none;
-  color: ${props => props.theme.textColor};
-  cursor: pointer;
-  margin-left: 7px;
-  :hover, :focus {
-	text-decoration: underline;
-  }
-`;

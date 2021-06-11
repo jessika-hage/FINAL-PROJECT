@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
-import { CITIZEN_URL } from '../reusable/Urls';
+import { CITIZEN_URL } from '../reusables/urls';
 
 export const LeaderBoard = () => {
 	const [leaderBoard, setLeaderBoard] = useState([]);

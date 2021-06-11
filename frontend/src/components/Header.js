@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-	//använd
 import Drawer from '@material-ui/core/Drawer';
 import { Tooltip } from '@material-ui/core';
 import { FaUserAstronaut, FaCommentDots } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import { Profile } from '../pages/Profile';
+import { Profile } from './profile/Profile';
 import { MessageBoard } from './messageboard/MessageBoard';
 
 export const Header = () => {
-	//använd
 const [openForm, setOpenForm] = useState(false);
 	const [openMessageBoard, setOpenMessageBoard] = useState(false);
 	const today = moment().add(60, 'year').format('DD/MM YYYY');

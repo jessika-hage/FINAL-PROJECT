@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { FaTimes } from 'react-icons/fa';
 
-import { CITIZEN_URL } from '../../reusable/Urls';
+import { CITIZEN_URL } from '../../reusables/urls';
 import { MessageForm } from './MessageForm';
 import { 
   MessageContainer, 

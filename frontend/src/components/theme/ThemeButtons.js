@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Tooltip } from "@material-ui/core";
 import styled from 'styled-components';
 
-import { themes } from '../reducers/themes';
-import { darkTheme, lightTheme, blackTheme, grayTheme } from '../styledcomponents/StyledTheme';
+import { themes } from '../../reducers/themes';
+import { darkTheme, lightTheme, blackTheme, grayTheme } from '../../styledcomponents/StyledTheme';
 
 export const ThemeButtons = ({ text }) => {
   const dispatch = useDispatch();

@@ -6,9 +6,9 @@ import { useHistory } from 'react-router-dom';
 import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar';
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
-import { Map } from '../components/Map';
-import { EntertainmentCard } from '../components/descriptioncards/EntertainmentCard';
-import { NutritionCard } from '../components/descriptioncards/NutritionCard';
+import { Map } from '../components/map/Map';
+import { EntertainmentCard } from '../components/todaycards/EntertainmentCard';
+import { NutritionCard } from '../components/todaycards/NutritionCard';
 import { LeaderBoard } from '../components/LeaderBoard';
 
 export const Main = () => {

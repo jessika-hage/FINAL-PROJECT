@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { updateBadges } from '../../reducers/profile';
 import { updateRanking } from '../../reducers/profile';
-import { MOVIE_API } from '../../reusable/Urls';
+import { MOVIE_API } from '../../reusables/urls';
 import { Card } from '../Card';
 
 export const EntertainmentCard = () => {
