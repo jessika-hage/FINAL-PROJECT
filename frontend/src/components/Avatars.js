@@ -34,6 +34,9 @@ margin-left: 6px;
 :hover {
   opacity: 0.7;
 }
+:focus {
+  border: 1px solid ${props => props.theme.hover};
+}
 @media (min-width: 768px) {
   width: 64px;
   height: 64px;

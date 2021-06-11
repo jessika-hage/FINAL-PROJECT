@@ -15,12 +15,10 @@ export const Profile = () => {
 	const badges = useSelector((store) => store.profile.badges);
 	const ranking = useSelector((store) => store.profile.ranking);
 	const coins = useSelector((store) => store.profile.coins);
-	// const items = useSelector((store) =>
-	// 	store.profile.items.map((item) => {
-	// 		item.title;
-	// 	})
-	// );
+	const items = useSelector((store) => store.profile.items);
 	const products = useSelector((store) => store.cart.myItems);
+	const itemss = Object.keys(items)
+	console.log(items[0])
 
 	const dispatch = useDispatch();
 
@@ -53,7 +51,7 @@ export const Profile = () => {
 				</LeftContainer>
 				<RightContainer>
 					<TaskTitle>My items</TaskTitle>
-					{/* <ItemsContainer>{items}</ItemsContainer> */}
+					{itemss.map((key) => <ItemsProfile item={items[key]} />)}
 				</RightContainer>
 			</BottomContainer>
 			<LastContainer>

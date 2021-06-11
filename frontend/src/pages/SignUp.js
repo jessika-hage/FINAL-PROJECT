@@ -44,6 +44,8 @@ export const SignUp = () => {
 			dispatch(profile.actions.setBadges(data.badges));
       dispatch(profile.actions.setRanking(data.ranking));
       dispatch(profile.actions.setCoins(data.coins));
+      dispatch(profile.actions.setItems(data.items));
+      dispatch(profile.actions.setAvatar(data.avatar));
       dispatch(profile.actions.setCreated(data.created));
 			dispatch(profile.actions.setUserId(data.userId));
 		});

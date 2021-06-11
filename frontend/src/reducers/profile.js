@@ -56,6 +56,8 @@ export const profile = createSlice({
 				badges: null,
 				ranking: null,
 				coins: null,
+				items: "",
+				avatar: null,
 				created: null,
 			};
 		},
@@ -142,7 +144,7 @@ export const updateItems = (items) => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ items }),
+			body: JSON.stringify( { items } ),
 		};
 		fetch(
 			`http://localhost:8080/citizen/${getState().profile.userId}/items`,
@@ -151,7 +153,7 @@ export const updateItems = (items) => {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				dispatch(profile.actions.setItems(data.items.title));
+				dispatch(profile.actions.setItems(data.items));
 			})
 			.catch((err) => console.error(err));
 	};
