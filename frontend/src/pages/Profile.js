@@ -17,19 +17,18 @@ export const Profile = () => {
 	const coins = useSelector((store) => store.profile.coins);
 	const products = useSelector((store) => store.cart.myItems);
 
-	console.log(products)
 	const dispatch = useDispatch();
 
 	return (
 		<ProfileContainer>
 			<TopContainer>
 				<ImageNameContainer>
-					<ProfileImg></ProfileImg>
+					<ProfileAvatar src={require(`../assets/hacker.png`)} />
 					<TextContainer>
 						<Username>{username}</Username>
-						<PointsText>{badges} Badges</PointsText>
+						<PointsText><IconImage src={require(`../assets/badge.png`)} /> {badges}</PointsText>
 						<PointsText>{ranking}/100 Ranking</PointsText>
-						<PointsText>{coins} $<img src={require(`../assets/dollar.png`)} /></PointsText>
+						<PointsText><IconImage src={require(`../assets/money2.png`)} /> {coins}</PointsText>
 					</TextContainer>
 				</ImageNameContainer>
 				<DaysContainer>
@@ -82,25 +81,39 @@ const TopContainer = styled.div`
 const ImageNameContainer = styled.div`
 	display: flex;
 	align-items: center;
-	width: 50%;
+	width: 40%;
 	height: 100%;
 `;
 
-const ProfileImg = styled.img`
-	width: 70px;
-	height: 70px;
+const ProfileAvatar = styled.img`
+	width: 40px;
+	height: 40px;
+	padding: 2px;
 	border-radius: 50%;
-	background-image: url('https://www.fillmurray.com/100/100');
-	background-size: cover;
-	margin-right: 10px;
 	cursor: pointer;
+	outline: none;
+	border: 1px solid ${props => props.theme.primary};
+	background-color: ${props => props.theme.secondary};
+	margin: 0 0 0 6px;
+	:hover {
+		opacity: 0.7;
+	}
+	@media (min-width: 768px) {
+		width: 64px;
+		height: 64px;
+		padding: 4px;
+	}
 `;
 
 const TextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 20px 0 20px 0;
+	padding: 20px 0 20px 10px;
 	width: 50%;
+`;
+
+const IconImage = styled.img`
+	margin: 0 5px 5px 5px;
 `;
 
 const DaysContainer = styled(TextContainer)`

@@ -49,14 +49,14 @@ const Button = styled.button`
   border-radius: 50%;
   cursor: pointer;
   outline: none;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   margin-left: 6px;
   :hover {
     opacity: 0.7;
   }
   @media (min-width: 768px) {
-    width: 22px;
-    height: 22px;
+    width: 32px;
+    height: 32px;
   }
 `;
 

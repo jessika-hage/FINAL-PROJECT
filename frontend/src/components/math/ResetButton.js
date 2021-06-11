@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export const ResetButton = ({ resetButton, onClick }) => {
+export const ResetButton = ({ resetButton, onClick, buttonText }) => {
   return (
     <Button
       ref={resetButton}
       onClick={onClick}>
-      Collect Your Points
+      {buttonText}
     </Button>
   )
 };

@@ -11,10 +11,16 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const [openCardCounter, setOpenCardCounter] = useState(0);
+  const [counter, setCounter] = useState(30);
 
   const flipCounter = useRef(0);
-  const startTime = useRef(new Date());
   const isMounted = useRef(false);
+
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+      return () => clearInterval(timer);
+  }, [counter]);
 
  // Check if the flipped cards match
   const checkPair = useCallback(() => {
@@ -87,24 +93,22 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
       );
 
       // Game is finished
-      if (matches.length === DECK_SIZE) {
+      if (matches.length === DECK_SIZE || counter === 0) {
         onGameUpdate(GAME_STATUS.FINISHED, {
           flips: flipCounter.current,
-          time: `${(new Date() - startTime.current) / 1000} seconds`,
         });
       }
     } else if (openCardCounter === 2) {
       setOpenCardCounter(0);
       checkPair();
     }
-  }, [checkPair, deck, openCardCounter, onGameUpdate, startTime]);
+  }, [checkPair, deck, openCardCounter, onGameUpdate, counter]);
 
   const startGame = useCallback(async () => {
     try {
       const newDeck = await GameService();
       setDeck(newDeck);
       flipCounter.current = 0;
-      startTime.current = new Date();
       onGameUpdate(GAME_STATUS.IN_PROGRESS);
     } catch (error) {
       console.error(error);
@@ -139,15 +143,13 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
     }
   }, [deck, checkGameFinished, gameStatus, onGameUpdate]);
 
-  if (gameStatus === GAME_STATUS.LOADING) {
-    return <span>Loading...</span>;
-  }
 
   return (
     <MainContainer>
       <MemoryTitle>Memory Game</MemoryTitle>
       <GameContainer>
-      <FlipText data-testid="flip-counter">Flips: {flipCounter.current}</FlipText>
+        <TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
+        <FlipText>Flips: {flipCounter.current}</FlipText>
       <GameGrid>
         {Object.entries(deck).map(([key, value]) => {
           return (
@@ -177,6 +179,12 @@ const MainContainer = styled.section`
   }
 `;
 
+const TimerContainer = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 15px;
+`;
+
 const MemoryTitle = styled.h1`
   font-size: 30px;
   color: ${props => props.theme.textColor};
@@ -186,8 +194,10 @@ const MemoryTitle = styled.h1`
 const GameContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   background-color: ${props => props.theme.primary};
   border: 4px solid ${props => props.theme.hover};
+  color: ${props => props.theme.textColor};
   padding: 20px 10px;
   @media (min-width: 1024px) {
     max-width: 85%;
@@ -200,15 +210,17 @@ const GameContainer = styled.div`
 
 const FlipText = styled.p`
   font-size: 16px;
-  color: ${(props) => props.theme.textColor};
-  margin: 0 0 15px 18px;
-  @media (min-width: 768px) {
-    margin: 0 0 15px 35px;
-  }
+  position: absolute;
+  left: 20px;
+  top: 0;
+  // @media (min-width: 768px) {
+  //   margin: 0 0 15px 35px;
+  // }
 `;
 
 const GameGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
 `;

@@ -15,6 +15,7 @@ export const MathGame = () => {
 	const [open, setOpen] = useState(false);
 	const [score, setScore] = useState(0);
 	const [mistakes, setMistakes] = useState(0);
+	const [counter, setCounter] = useState(30);
 	const [currentProblem, setCurrentProblem] = useState(generateProblem());
 	const [userAnswer, setUserAnswer] = useState('');
 	const [showError, setShowError] = useState(false);
@@ -32,12 +33,19 @@ export const MathGame = () => {
 		}
 	}, [accessToken, history]);
 
+	  // Initializing the timer
+		useEffect(() => {
+			const timer =
+				counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+				return () => clearInterval(timer);
+		}, [counter]);
+
 	// Opens dialog when game is finished
 	useEffect(() => {
-		if (score === 10 || mistakes === 3) {
+		if (score === 10 || mistakes === 3 || counter === 0) {
 			setOpen(true);
 		}
-	}, [score, mistakes]);
+	}, [score, mistakes, counter]);
 
 	function generateNumber(max) {
 		return Math.floor(Math.random() * (max + 1));
@@ -83,7 +91,7 @@ export const MathGame = () => {
 			setUserAnswer('');
 			setCurrentProblem(generateProblem());
 			history.push('/')
-		}, 2000)
+		}, 1000)
 		
 	};
 
@@ -93,6 +101,7 @@ export const MathGame = () => {
 			<Camera />
 			<MathTitle>Classroom</MathTitle>
 			<MathContainer blurred={mistakes === 3 || score === 10}>
+				<TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
 				<MathProblem wrongAnswer={showError}>
 					{currentProblem.numberOne} {currentProblem.operator}{' '}
 					{currentProblem.numberTwo}
@@ -114,6 +123,7 @@ export const MathGame = () => {
 				endText={score}
 				resetButton={resetButton}
 				onClick={resetGame}
+				buttonText={score > 0 ? 'Collect badges' : 'Try again later'}
 			/>
 			{ animation && <BadgesAnimation text={score} /> }
 		</MainContainer>
@@ -145,6 +155,7 @@ const MathContainer = styled.div`
 	background-color: ${(props) => props.theme.primary};
 	border: 4px solid ${(props) => props.theme.hover};
 	padding: 20px;
+	position: relative;
 	@media (min-width: 768px) {
 		max-width: 85%;
 		padding: 30px;
@@ -154,6 +165,12 @@ const MathContainer = styled.div`
 		max-width: 70%;
 	}
 	${(props) => (props.blurred ? `filter: blur(4px);` : `filter: none;`)}
+`;
+
+const TimerContainer = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 15px;
 `;
 
 const MathProblem = styled.h2`
