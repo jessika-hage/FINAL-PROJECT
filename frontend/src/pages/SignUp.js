@@ -4,6 +4,7 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 
 import { ThemeButtons } from '../components/ThemeButtons';
+import { Avatars } from '../components/Avatars';
 import { CITIZEN_URL } from '../reusable/Urls';
 import { profile } from '../reducers/profile';
 
@@ -76,7 +77,7 @@ export const SignUp = () => {
 		  onChange={(e) => setEmail(e.target.value)}
 		></NameInput>
 		<ChooseText>Choose your avatar:</ChooseText>
-		<ThemeButtons />
+		<Avatars />
 		<ChooseText>Color your spaceship:</ChooseText>
 		<ThemeButtons />
 		<Button type='submit' onClick={() => setMode('signup')}>

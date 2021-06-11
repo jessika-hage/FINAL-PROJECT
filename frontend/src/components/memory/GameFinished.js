@@ -3,19 +3,20 @@ import styled from "styled-components";
 import { Dialog, DialogContent, DialogActions, DialogTitle } from "@material-ui/core";
 
 
-export const GameFinished = ({ handleReset, open, results }) => {
+export const GameFinished = ({ handleCollect, openWin, status, button, results }) => {
 
   return (
-    <Dialog open={open}>
+    <>
+    <Dialog open={openWin}>
       <DialogContainer>
-        <DialogTitle>You solved the memory game!</DialogTitle>
-        <DialogContent>Cards flipped: {results.flips}</DialogContent>
-        <DialogContent>Time taken: {results.time}</DialogContent>
+        <DialogTitle>{status}</DialogTitle>
+        <DialogContent>Cards {results.flips} flips</DialogContent>
         <DialogActions>
-          <Button onClick={handleReset}>Collect points</Button>
+          <Button onClick={handleCollect}>{button}</Button>
         </DialogActions>
       </DialogContainer>
     </Dialog>
+    </>
   );
 };
 

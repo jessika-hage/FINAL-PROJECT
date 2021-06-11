@@ -4,13 +4,13 @@ import { Dialog, DialogActions, DialogTitle } from '@material-ui/core';
 
 import { ResetButton } from './ResetButton';
 
-export const FinishGame = ({ open, endText, resetButton, onClick }) => {
+export const FinishGame = ({ open, endText, resetButton, onClick, buttonText }) => {
 	return (
 		<Dialog open={open}>
 			<DialogContainer>
 				<DialogTitle>You earned {endText} points! </DialogTitle>
 				<DialogActions>
-					<ResetButton resetButton={resetButton} onClick={onClick} />
+					<ResetButton resetButton={resetButton} onClick={onClick} buttonText={buttonText} />
 				</DialogActions>
 			</DialogContainer>
 		</Dialog>
@@ -28,5 +28,5 @@ const DialogContainer = styled.div`
 	color: ${(props) => props.theme.textColor};
 	text-transform: uppercase;
 	font-family: 'Trispace';
-	border: 4px solid ${(props) => props.theme.hover};
+	border: 2px solid ${(props) => props.theme.hover};
 `;

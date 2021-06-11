@@ -13,9 +13,10 @@ import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { GAME_STATUS } from "../components/memory/constants";
 
 export const MemoryGame = () => {
-  const [open, setOpen] = useState(false);
+  const [openWin, setOpenWin] = useState(false);
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.CREATING);
   const [gameResults, setGameResults] = useState({});
+  const [counter, setCounter] = useState(30);
   const [animation, setAnimation] = useState(false);
   const accessToken = useSelector((store) => store.profile.accessToken);
   const countPoints = gameResults.flips;
@@ -29,23 +30,32 @@ useEffect(() => {
   }
 }, [accessToken, history]);
   
+  // Initializing the timer
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+      return () => clearInterval(timer);
+  }, [counter]);
 
+  // Checking for game updates
+  // If status is finished, set win dialog
+  // If timer gets to 0, set lose dialog
   const handleStatusUpdate = (newStatus, results) => {
     setGameStatus(newStatus);
     if (newStatus === GAME_STATUS.FINISHED) {
       setGameResults(results);
-      setOpen(true);
+      setOpenWin(true);
     }
   };
 
-  const handleReset = () => {
-    setOpen(false);
-    setAnimation(true);
-    // onReset(GAME_STATUS.CREATING);
-    dispatch(updateBadges(countPoints));
-    setTimeout(() => {
-      history.push('/');
-    }, 2000)
+  // Collect badges when finished game
+  const handleCollectBadges = () => {
+      setOpenWin(false);
+      setAnimation(true);
+      dispatch(updateBadges(countPoints));
+      setTimeout(() => {
+        history.push('/');
+      }, 2000)
   };
 
   return (
@@ -53,13 +63,18 @@ useEffect(() => {
       <Header />
       <Camera />
       <div>
-        <GameBoard gameStatus={gameStatus} onGameUpdate={handleStatusUpdate} onReset={handleStatusUpdate} />
+        <GameBoard 
+          gameStatus={gameStatus} 
+          onGameUpdate={handleStatusUpdate} 
+          onReset={handleStatusUpdate} />
         {gameStatus === GAME_STATUS.FINISHED && (
           <GameFinished 
-            open={open} 
-            // onChange={handleStatusUpdate} 
+            openWin={openWin} 
+            status={counter === 0 ? 'You ran out of time!' : 'You solved it!'}
+            button={counter === 0 ? 'Try again later' : 'Collect badges'}
             results={gameResults}
-            handleReset={handleReset} />
+            handleCollect={handleCollectBadges}
+             />
         )}
       </div>
       {animation && <BadgesAnimation text={countPoints} />}
