@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tooltip } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
-import HotelIcon from '@material-ui/icons/Hotel';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 
 import { 
   RoomDoctor, 
@@ -23,7 +23,7 @@ export const Doctor = () => {
     <Tooltip title='DOCTOR!'>
       <RoomDoctor onClick={onToggleDoctorDialog}>
         <Icons>
-          <HotelIcon fontSize='large' />
+          <LocalHospitalIcon fontSize='large' />
         </Icons>
         <Dialog open={openDoctor} onClick={onToggleDoctorDialog}>
           <DialogContainer>

@@ -8,9 +8,9 @@ const initialState = {
 	badges: null,
 	ranking: null,
 	coins: null,
-	created: null,
+	createdAt: null,
 	avatar: null,
-	items: null,
+	items: "",
 };
 
 export const profile = createSlice({
@@ -44,8 +44,8 @@ export const profile = createSlice({
 		setItems: (store, action) => {
 			store.items = action.payload;
 		},
-		setCreated: (store, action) => {
-			store.created = action.payload;
+		setCreatedAt: (store, action) => {
+			store.createdAt = action.payload;
 		},
 		setLogOut: () => {
 			return {
@@ -57,8 +57,8 @@ export const profile = createSlice({
 				ranking: null,
 				coins: null,
 				items: "",
-				avatar: null,
-				created: null,
+				avatar: "",
+				createdAt: null,
 			};
 		},
 	},

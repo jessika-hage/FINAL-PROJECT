@@ -31,7 +31,9 @@ export const ThemeButtons = ({ text }) => {
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 5px 0 0 0;
+  max-width: 80%;
 `;
 
 const ThemeTitle = styled.p`

@@ -9,16 +9,24 @@ import { profile } from '../reducers/profile';
 import { TextInput } from '../components/signinupform/TextInput';
 import { SubmitButton } from '../components/signinupform/SubmitButton';
 import { ChangeLogIn } from '../components/signinupform/ChangeLogIn';
-import { MainContainer, Title, Form, ChooseText } from '../components/signinupform/Styling';
+import { 
+  MainContainer, 
+  Title, 
+  Form, 
+  ChooseText,
+  AvatarContainer } from '../components/signinupform/Styling';
 
 export const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [avatar, setAvatar] = useState('');
   const [mode, setMode] = useState(null);
   const accessToken = useSelector((store) => store.profile.accessToken);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const avatars= ['woman', 'man2', 'hacker', 'woman3', 'woman2', 'man'];
 
   useEffect(() => {
 	if (accessToken) {
@@ -34,7 +42,7 @@ export const SignUp = () => {
 	  headers: {
 		'Content-Type': 'application/json',
 	  },
-	  body: JSON.stringify({ username, email, password }),
+	  body: JSON.stringify({ username, email, password, avatar }),
 	};
 	fetch(CITIZEN_URL(mode), options)
 	  .then((res) => res.json())
@@ -49,7 +57,7 @@ export const SignUp = () => {
       dispatch(profile.actions.setCoins(data.coins));
       dispatch(profile.actions.setItems(data.items));
       dispatch(profile.actions.setAvatar(data.avatar));
-      dispatch(profile.actions.setCreated(data.created));
+      dispatch(profile.actions.setCreatedAt(data.createdAt));
 			dispatch(profile.actions.setUserId(data.userId));
 		});
 		} else {
@@ -79,7 +87,13 @@ export const SignUp = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)} />
       <ChooseText>Choose your avatar:</ChooseText>
-      <Avatars />
+      <AvatarContainer>
+      {avatars.map((avatar) => (
+        <Avatars avatar={avatar}
+          image={require(`../assets/${avatar}.png`)}
+          onChange={(e) => setAvatar(e.target.value)} />
+      ))}
+      </AvatarContainer>
       <ChooseText>Color your spaceship:</ChooseText>
       <ThemeButtons />
       <SubmitButton 
@@ -94,4 +108,3 @@ export const SignUp = () => {
 	</MainContainer>
   );
 };
-

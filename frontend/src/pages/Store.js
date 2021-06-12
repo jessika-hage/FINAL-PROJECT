@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 import { Products } from '../components/store/Products';
-import { Cart } from '../components/store/Cart';
 import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 
@@ -23,7 +22,6 @@ export const Store = () => {
 			<Header />
 			<Camera />
 			<Wrapper>
-				<Cart />
 				<Products />
 			</Wrapper>
 		</Main>
@@ -31,13 +29,12 @@ export const Store = () => {
 };
 
 const Wrapper = styled.div`
-	margin: 0 auto;
 	background-color: ${(props) => props.theme.backgroundColor};
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 90%;
+	width: 100%;
 `;
 
 const Main = styled.main`

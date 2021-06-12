@@ -46,7 +46,7 @@ export const SignIn = () => {
 						dispatch(profile.actions.setCoins(data.coins));
 						dispatch(profile.actions.setItems(data.items));
 						dispatch(profile.actions.setAvatar(data.avatar));
-						dispatch(profile.actions.setCreated(data.created));
+						dispatch(profile.actions.setCreatedAt(data.createdAt));
 						dispatch(profile.actions.setUserId(data.userId));
 					});
 				} else {

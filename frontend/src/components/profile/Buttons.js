@@ -7,8 +7,8 @@ import { ButtonContainer, ButtonSignOut } from './Styling';
 export const Buttons = ({ onClick }) => {
   return (
     <ButtonContainer>
-    <ThemeButtons text='Change your spaceship color:' />
-    <ButtonSignOut onClick={onClick}>
+      <ThemeButtons text='Change your spaceship color:' />
+      <ButtonSignOut onClick={onClick}>
       <FaSignOutAlt />
     </ButtonSignOut>
   </ButtonContainer>

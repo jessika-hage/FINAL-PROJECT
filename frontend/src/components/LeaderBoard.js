@@ -38,7 +38,6 @@ export const LeaderBoard = () => {
 					<Citizen>{citizen.coins}</Citizen>
 				</CitizensList>
 			 ))}
-			 <ButtonSeeAll>See all citizens</ButtonSeeAll>
 		</TableContainer>
 	);
 };
@@ -50,6 +49,14 @@ const TableContainer = styled.div`
 	padding: 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
+	max-height: 320px;
+	overflow: scroll;
+	&::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid ${props => props.theme.secondary};
+  }
 `;
 
 const TableHead = styled.div`
@@ -62,6 +69,7 @@ const TableTitle = styled.div`
 	width: 25%;
 	padding: 0 0 5px 5px;
 	margin: 0;
+	font-weight: bold;
 	text-transform: uppercase;
 	color: ${props => props.theme.textColor};
 	font-size: 14px;
@@ -102,21 +110,4 @@ const CitizenDays = styled(Citizen)`
 const CitizensList = styled.div`
 	display: flex;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
-`;
-
-const ButtonSeeAll = styled.button`
-  padding: 5px;
-	margin-top: 5px;
-	font-size: 12px;
-	cursor: pointer;
-	outline: none;
-	border: none;
-	width: fit-content;
-	text-transform: uppercase;
-	background-color: ${props => props.theme.primary};
-	color: ${props => props.theme.textColor};
-	border: 2px solid ${props => props.theme.secondary};
-	:hover, :focus {
-		background-color: ${props => props.theme.secondary};
-	}
 `;

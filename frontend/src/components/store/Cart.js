@@ -77,7 +77,6 @@ export const Cart = () => {
 					<ConfirmedButton onClick={onConfirmed}>Thanks!</ConfirmedButton>
 				</ConfirmationDialog>
 			</Dialog>
-
 			<Dialog open={openFail} onClose={onToggleDialog}>
 				<ConfirmationDialog>
 					<Text>Your purchase was denied due to insufficient funds.</Text>
@@ -119,34 +118,41 @@ const AddButton = styled.button`
 const CartWrapper = styled.div`
 	background-color: ${(props) => props.theme.secundary};
 	display: flex;
-	height: 100px;
-	width: 80%;
-	margin: auto 0;
+	width: 100%;
+	margin: 15px;
 	justify-content: space-between;
+	position: relative;
 `;
+
 const Total = styled.div`
 	display: flex;
-	width: 90%;
+	width: 100%;
 	align-items: center;
 	justify-content: flex-end;
+	position: absolute;
+	bottom 0; 
+	right: 5%;
 	color: ${(props) => props.theme.textColor};
+	@media (min-width: 768px) {
+		right: 12%;
+	}
 `;
 const Amount = styled.div`
 	color: ${(props) => props.theme.textColor};
 `;
 
 const ShoppingButton = styled.button`
-	outline: none;
-	border: none;
 	background-color: transparent;
 	cursor: pointer;
+	margin: 0;
+	padding: 0;
 	color: ${(props) => props.theme.textColor};
 	:hover {
 		opacity: 0.7;
 	}
 `;
 
-export const ConfirmationDialog = styled.div`
+const ConfirmationDialog = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -158,7 +164,7 @@ export const ConfirmationDialog = styled.div`
 	color: ${(props) => props.theme.textColor};
 `;
 
-export const ConfirmedButton = styled.button`
+const ConfirmedButton = styled.button`
 	outline: none;
 	border: none;
 	background-color: ${(props) => props.theme.primary};
@@ -174,6 +180,6 @@ export const ConfirmedButton = styled.button`
 	}
 `;
 
-export const Text = styled.p`
+const Text = styled.p`
 	font-size: 16px;
 `;

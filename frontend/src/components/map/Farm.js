@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip } from '@material-ui/core';
-import Icon from '@material-ui/core/Icon';
+import BugReportIcon from '@material-ui/icons/BugReport';
 
 import { RoomFarm, Icons } from './Styling';
 
@@ -9,7 +9,7 @@ export const Farm = () => {
     <Tooltip title='FARM'>
       <RoomFarm to='/memorygame'>
         <Icons>
-          <Icon className='fa fa-calculator' />
+          <BugReportIcon fontSize='large' />
         </Icons>
       </RoomFarm>
     </Tooltip>

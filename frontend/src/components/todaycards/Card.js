@@ -1,14 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-
-
 export const Card = ({ 
     title, 
     secondaryText,
     icon,
-    thirdText, 
-    secondaryTextTwo,
     thumbnailUrl, 
     thumbnailTwo,
     coverImage, 
@@ -29,11 +25,8 @@ export const Card = ({
           </TitleIconBox>
           <SmallTextContainer>
             {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
-            {secondaryTextTwo && <SecondaryText>{secondaryTextTwo}</SecondaryText>}
           </SmallTextContainer>
-          {thirdText && <ThirdText>{thirdText}</ThirdText>}
-        </TextBox>     
-      
+        </TextBox>         
     </TitleBar>
     {button && <Button onClick={onClick}>{button}</Button>}
     </Content>     
@@ -81,8 +74,6 @@ const SecondaryText = styled.p`
   font-size: 14px;
 `;
 
-const ThirdText = styled(SecondaryText)`
-`;
 
 const Icon = styled.p`
   margin: 0;

@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 // import { WEATHER_API }from "../reusable/Urls"
 import { FaUtensils } from 'react-icons/fa';
-import { Card } from '../Card';
+import { Card } from './Card';
 
 export const NutritionCard = () => {
 	return (
 		<ThinnerCard
-			title='Nutrition served'
+			title='Nutrition'
 			secondaryText='Pasta'
-			icon={<FaUtensils />}
 			button='See more'
 		/>
 	);

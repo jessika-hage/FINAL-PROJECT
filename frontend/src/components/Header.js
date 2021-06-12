@@ -10,7 +10,7 @@ import { Profile } from './profile/Profile';
 import { MessageBoard } from './messageboard/MessageBoard';
 
 export const Header = () => {
-const [openForm, setOpenForm] = useState(false);
+const [openProfile, setOpenProfile] = useState(false);
 	const [openMessageBoard, setOpenMessageBoard] = useState(false);
 	const today = moment().add(60, 'year').format('DD/MM YYYY');
 
@@ -27,7 +27,7 @@ const [openForm, setOpenForm] = useState(false);
 				</MessageIcon>
 				</Tooltip>
 				<Tooltip title='My Profile'>
-					<ProfilImg onClick={() => setOpenForm(true)}>
+					<ProfilImg onClick={() => setOpenProfile(true)}>
 						<FaUserAstronaut />
 					</ProfilImg>
 				</Tooltip>
@@ -35,7 +35,7 @@ const [openForm, setOpenForm] = useState(false);
 			<Drawer anchor='right' open={openMessageBoard} onClose={() => setOpenMessageBoard(false)}>
 				<MessageBoard onClick={() => setOpenMessageBoard(false)} />
 			</Drawer>
-			<Drawer anchor='bottom' open={openForm} onClose={() => setOpenForm(false)}>
+			<Drawer anchor='right' open={openProfile} onClose={() => setOpenProfile(false)}>
 				<DrawerContainer>
 					<Profile />
 				</DrawerContainer>
@@ -121,6 +121,6 @@ const ProfilImg = styled(MessageIcon)`
 `;
 
 const DrawerContainer = styled.section`
-	height: 500px;
+	height: 100vh;
 	background-color: ${(props) => props.theme.primary};
 `;

@@ -182,6 +182,10 @@ export const ButtonContainer = styled.div`
   padding: 5px 0 0 0;
 `;
 
+export const AvatarContainer = styled(ButtonContainer)`
+
+`;
+
 export const Avatar = styled.img`
   width: 40px;
   height: 40px;

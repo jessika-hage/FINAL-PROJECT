@@ -1,10 +1,10 @@
-import React from 'react'
+// import React from 'react'
 
 
-export const Loadingspinner = () => {
-  return (
-    <MainBar>
-      <RollingText><Weather /></RollingText>
-    </MainBar>
-  )
-};
+// export const Loadingspinner = () => {
+//   return (
+//     <MainBar>
+//       <RollingText><Weather /></RollingText>
+//     </MainBar>
+//   )
+// };

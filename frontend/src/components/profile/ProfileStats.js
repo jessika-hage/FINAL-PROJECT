@@ -5,24 +5,25 @@ import {
   ProfileAvatar, 
   StatusContainer, 
   Username, 
-  PointsText, 
+  BadgesText,
+  CoinsText,
   IconImage } from './Styling';
 
-export const ProfileStats = ({ username, badges, ranking, coins }) => {
+export const ProfileStats = ({ avatar, username, badges, ranking, coins }) => {
   return (
     <ImageNameContainer>
-    <ProfileAvatar src={require(`../../assets/hacker.png`)} />
+    <ProfileAvatar src={avatar} />
+    <Username>{username}</Username>
+    <CoinsText>{ranking}/100 Ranking</CoinsText>
     <StatusContainer>
-      <Username>{username}</Username>
-      <PointsText>
+      <BadgesText>
         <IconImage src={require(`../../assets/badge.png`)} /> 
         {badges}
-      </PointsText>
-      <PointsText>{ranking}/100 Ranking</PointsText>
-      <PointsText>
+      </BadgesText>
+      <CoinsText>
         <IconImage src={require(`../../assets/money2.png`)} /> 
         {coins}
-      </PointsText>
+      </CoinsText>
     </StatusContainer>
   </ImageNameContainer>
   )
