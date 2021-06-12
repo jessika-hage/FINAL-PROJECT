@@ -12,9 +12,10 @@ import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
+import { ProtinFarm } from './pages/ProtinFarm';
 import { profile } from './reducers/profile';
 import { cart } from './reducers/cart';
-import { products } from './reducers/products'
+import { products } from './reducers/products';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -38,6 +39,7 @@ export const App = () => {
 						<Route path='/classroom' component={MathGame} />
 						<Route path='/memorygame' component={MemoryGame} />
 						<Route path='/store' component={Store} />
+						<Route path='/farm' component={ProtinFarm} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>
