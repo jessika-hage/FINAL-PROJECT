@@ -44,7 +44,7 @@ const Citizen = mongoose.model('Citizen', {
 	},
 	ranking: {
 		type: Number,
-		default: 10,
+		default: 5,
 	},
 	coins: {
 		type: Number,
@@ -56,7 +56,7 @@ const Citizen = mongoose.model('Citizen', {
 	},
 	avatar: {
 		type: String,
-		default: 'Anonymous',
+		default: 'man',
 	},
 	items: {
 		type: Array,
@@ -138,7 +138,7 @@ app.get('/citizens', async (req, res) => {
 
 // POST for signing up
 app.post('/signup', async (req, res) => {
-	const { username, email, password } = req.body;
+	const { username, email, password, avatar } = req.body;
 
 	try {
 		const salt = bcrypt.genSaltSync();
@@ -147,6 +147,7 @@ app.post('/signup', async (req, res) => {
 			username,
 			email,
 			password: bcrypt.hashSync(password, salt),
+			avatar,
 		}).save();
 		res.json({
 			success: true,
@@ -256,7 +257,7 @@ app.patch('/citizen/:id/badges', async (req, res) => {
 });
 
 // PATCH for increasing ranking
-// app.put('/citizen/:id/ranking', authenticateCitizen);
+// app.patch('/citizen/:id/ranking', authenticateCitizen);
 app.patch('/citizen/:id/ranking', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -280,7 +281,7 @@ app.patch('/citizen/:id/ranking', async (req, res) => {
 });
 
 // PATCH for increasing coins
-// app.put('/citizen/:id/coins', authenticateCitizen);
+// app.patch('/citizen/:id/coins', authenticateCitizen);
 app.patch('/citizen/:id/coins', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -303,6 +304,7 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 	}
 });
 
+// app.patch('/citizen/:id/items', authenticateCitizen);
 app.post('/citizen/:id/items', async (req, res) => {
 	const { id } = req.params;
 	try {
