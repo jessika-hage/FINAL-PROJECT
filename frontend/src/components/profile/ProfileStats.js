@@ -7,22 +7,24 @@ import {
   Username, 
   BadgesText,
   CoinsText,
-  IconImage } from './Styling';
+  BadgeIcon,
+  CoinsIcon } from './Styling';
+  import { RankingProgress } from './RankingProgress';
 
 export const ProfileStats = ({ avatar, username, badges, ranking, coins }) => {
   return (
     <ImageNameContainer>
     <ProfileAvatar src={avatar} />
     <Username>{username}</Username>
-    <CoinsText>{ranking}/100 Ranking</CoinsText>
+    <RankingProgress />
     <StatusContainer>
       <BadgesText>
-        <IconImage src={require(`../../assets/badge.png`)} /> 
+        <BadgeIcon src={require(`../../assets/badge.png`)} /> 
         {badges}
       </BadgesText>
       <CoinsText>
-        <IconImage src={require(`../../assets/money2.png`)} /> 
         {coins}
+        <CoinsIcon src={require(`../../assets/money2.png`)} /> 
       </CoinsText>
     </StatusContainer>
   </ImageNameContainer>

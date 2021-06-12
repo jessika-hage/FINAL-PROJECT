@@ -9,8 +9,8 @@ export const Buttons = ({ onClick }) => {
     <ButtonContainer>
       <ThemeButtons text='Change your spaceship color:' />
       <ButtonSignOut onClick={onClick}>
-      <FaSignOutAlt />
-    </ButtonSignOut>
-  </ButtonContainer>
+       <FaSignOutAlt />
+      </ButtonSignOut>
+    </ButtonContainer>
   )
 };

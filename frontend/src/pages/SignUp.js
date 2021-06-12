@@ -91,7 +91,8 @@ export const SignUp = () => {
       {avatars.map((avatar) => (
         <Avatars avatar={avatar}
           image={require(`../assets/${avatar}.png`)}
-          onChange={(e) => setAvatar(e.target.value)} />
+          onChange={(e) => setAvatar(e.target.value)}
+          checked={Avatars === avatar} />
       ))}
       </AvatarContainer>
       <ChooseText>Color your spaceship:</ChooseText>

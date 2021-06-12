@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { WEATHER_API }from "../reusable/Urls"
-import { FaUtensils } from 'react-icons/fa';
+
 import { Card } from './Card';
 
 export const NutritionCard = () => {

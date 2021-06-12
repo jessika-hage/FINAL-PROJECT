@@ -54,7 +54,7 @@ export const Profile = () => {
 				</LeftContainer> */}
 				<RightContainer>
 					<ContainerTitle>My items</ContainerTitle>
-					{myItems.map((key) => <ItemsProfile item={items[key]} />)}
+					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
 				</RightContainer>
 			</BottomContainer>
 				<Buttons onClick={onLogout} />

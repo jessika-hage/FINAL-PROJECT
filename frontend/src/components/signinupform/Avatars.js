@@ -9,6 +9,7 @@ export const Avatars = ({ avatar, onChange, image }) => {
       <Label htmlFor={avatar} aria-label={avatar}>
         <Radio 
           type="radio" 
+          name="avatar"
           id={avatar} 
           value={avatar} 
           onChange={onChange} 
@@ -26,16 +27,19 @@ export const ButtonContainer = styled.div`
 `;
 
 const Label = styled.label`
-display: flex;
-align-items: center;
-border-radius: 50%;
-border: 1px solid ${props => props.theme.primary};
-background-color: ${props => props.theme.secondary};
-width: 100%;
-height: 100%;
-position: relative;
-margin-right: 10px;
-z-index: 1; 
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid ${props => props.theme.primary};
+  background-color: ${props => props.theme.secondary};
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-right: 10px;
+  z-index: 1; 
+  :hover {
+    border: 2px solid ${props => props.theme.hover};
+}
 `
 
 const Radio = styled.input`
@@ -50,17 +54,30 @@ padding: 0;
 margin: 0;
 outline: none;
 &:checked ~ ${Label} {
-  background-color: red;
-  &::after {
-    content: "";
-    display: block;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin: 6px;
-    background: #eeeeee;
-    border-radius: 20px solid white;
+  ::before {
+    background-color: #771144;
+    border: 3px solid #fdf0f6;
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    z-index: -1; 
   }
+  &focus ~ ${Label} {
+    ::before {
+      background-color: #771144;
+      border: 3px solid #fdf0f6;
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      z-index: -1; 
+    }
+}
 `
 
 export const Avatar = styled.img`

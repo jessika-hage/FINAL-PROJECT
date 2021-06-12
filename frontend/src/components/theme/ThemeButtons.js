@@ -11,19 +11,21 @@ export const ThemeButtons = ({ text }) => {
 
   return (
     <ButtonContainer>
-        <ThemeTitle>{text} </ThemeTitle>
-      <Tooltip title="Light">
-        <LightButton onClick={() => dispatch(themes.actions.changeTheme(lightTheme))}></LightButton>
-      </Tooltip>
-      <Tooltip title="Black">
-        <BlackButton onClick={() => dispatch(themes.actions.changeTheme(blackTheme))}></BlackButton>
-      </Tooltip>
-      <Tooltip title="Grey">
-        <GreyButton onClick={() => dispatch(themes.actions.changeTheme(darkTheme))}></GreyButton>
-      </Tooltip>
-      <Tooltip title="Gray">
-        <GrayButton onClick={() => dispatch(themes.actions.changeTheme(grayTheme))}></GrayButton>
-      </Tooltip>
+      <ThemeTitle>{text} </ThemeTitle>
+      <Buttons>
+        <Tooltip title="Light">
+          <LightButton onClick={() => dispatch(themes.actions.changeTheme(lightTheme))}></LightButton>
+        </Tooltip>
+        <Tooltip title="Black">
+          <BlackButton onClick={() => dispatch(themes.actions.changeTheme(blackTheme))}></BlackButton>
+        </Tooltip>
+        <Tooltip title="Grey">
+          <GreyButton onClick={() => dispatch(themes.actions.changeTheme(darkTheme))}></GreyButton>
+        </Tooltip>
+        <Tooltip title="Gray">
+          <GrayButton onClick={() => dispatch(themes.actions.changeTheme(grayTheme))}></GrayButton>
+        </Tooltip>
+      </Buttons>
     </ButtonContainer>
   )
 }
@@ -33,7 +35,6 @@ const ButtonContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 5px 0 0 0;
-  max-width: 80%;
 `;
 
 const ThemeTitle = styled.p`
@@ -45,6 +46,12 @@ const ThemeTitle = styled.p`
   }
 `;
 
+const Buttons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
 const Button = styled.button`
   width: 26px;
   height: 26px;
@@ -52,7 +59,7 @@ const Button = styled.button`
   cursor: pointer;
   outline: none;
   border: 1px solid #fff;
-  margin-left: 6px;
+  margin-right: 6px;
   :hover {
     opacity: 0.7;
   }

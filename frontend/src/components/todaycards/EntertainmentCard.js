@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Dialog from '@material-ui/core/Dialog';
 
 import { updateBadges } from '../../reducers/profile';
 import { updateRanking } from '../../reducers/profile';
