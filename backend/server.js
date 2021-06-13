@@ -17,6 +17,7 @@ const Citizen = mongoose.model('Citizen', {
 		type: String,
 		required: [true, 'Username Required'],
 		unique: [true, 'Username is already taken'],
+		maxlength: [10, "Your username can be max 15 characters"],
 	},
 	email: {
 		type: String,
@@ -69,6 +70,10 @@ const CitizenMessage = mongoose.model('CitizenMessage', {
 		type: Date,
 		default: Date.now,
 	},
+	user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Citizen'
+ }
 });
 
 // Authorization
@@ -167,13 +172,13 @@ app.post('/signup', async (req, res) => {
 			if (error.keyValue.username) {
 				res.status(400).json({
 					success: false,
-					message: 'Username already taken, sorry! :)',
+					message: 'Another citizen already has that username',
 					error,
 				});
 			} else if (error.keyValue.email) {
 				res.status(400).json({
 					success: false,
-					message: 'Email already taken, sorry! :)',
+					message: 'You can not have the same email as another citizen',
 					error,
 				});
 			}
