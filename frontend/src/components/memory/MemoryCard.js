@@ -5,7 +5,7 @@ import ReactCardFlip from 'react-card-flip';
 import { CARD_STATUS } from "./constants";
 
 
-export const GameCard = ({ data, handleClick, index }) => {
+export const MemoryCard = ({ data, handleClick, index }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [flipped, setFlipped] = useState(false);
   const { id, url, status } = data;
@@ -28,16 +28,23 @@ export const GameCard = ({ data, handleClick, index }) => {
   if (isMatched) isFlipped = true;
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <MemoryCard flipped={isFlipped} onClick={onCardClick}>
-      </MemoryCard>
-      <ImageCard src={url} alt="card" onLoad={handleImageLoad} />
+    <ReactCardFlip 
+      isFlipped={isFlipped} 
+      flipDirection='horizontal'>
+      <Card 
+        flipped={isFlipped} 
+        onClick={onCardClick}>
+      </Card>
+      <ImageCard 
+        src={url} 
+        alt='card' 
+        onLoad={handleImageLoad} />
     </ReactCardFlip>
   );
 };
 
 
-const MemoryCard = styled.div`
+const Card = styled.div`
 	height: 120px;
 	width: 90px;
 	background-color: ${(props) => props.theme.secondary};

@@ -5,7 +5,7 @@ export const MainBar = styled.div`
   justify-content: center;
   background-color: ${props => props.theme.secondary};
   position: fixed;
-  bottom: 35px;
+  bottom: 40px;
   left: 0;
   padding: 0;
   color: ${props => props.theme.textColor};
@@ -29,7 +29,7 @@ export const RollingText = styled.div`
   animation: ${Roller} 25s linear infinite;
   opacity: 0;
   padding: 0;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     bottom: 14px;
     font-size: 12px;
   }
@@ -63,7 +63,6 @@ export const DialogContainer = styled.div`
   border: 2px solid ${props => props.theme.primary};
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   padding: 20px;
   color: ${props => props.theme.textColor};
 `;

@@ -2,13 +2,14 @@ import React from 'react';
 
 import { Input, InputSignIn } from './Styling';
 
-export const TextInput = ({ type, placeholder, value, onChange}) => {
+export const TextInput = ({ type, placeholder, value, onChange, minLength }) => {
   return (
     <Input
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      minLength={minLength}
   ></Input>
   )
 };

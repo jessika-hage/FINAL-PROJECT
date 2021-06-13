@@ -7,6 +7,7 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `;
 
 export const MainContainer = styled.main`
@@ -88,6 +89,56 @@ export const Button = styled.button`
 // SubmitButton for Sign In
 export const ButtonSignIn = styled(Button)`
   animation: ${input} 3.7s linear;
+`;
+
+// Error message and show password buttom
+export const ErrorMessage = styled.p`
+  color: red;
+  margin-top: 10px;
+  font-size: 12px;
+  position: absolute;
+  bottom: 40%;
+`;
+
+export const EyeButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: ${props => props.theme.secondary};
+  font-size: 16px;
+  position: absolute;
+  animation: ${input} 3.5s linear;
+  right: 1%;
+  bottom: 62%;
+  :hover {
+    color: ${props => props.theme.primary};
+  }
+  :focus {
+    color: ${props => props.theme.hover};
+  }
+`;
+
+export const ErrorMessageSignUp = styled.p`
+  color: red;
+  padding-top: 10px;
+  font-size: 12px;
+  margin: 0;
+  position: absolute;
+  bottom: 63%;
+  @media (min-width: 768px) {
+    bottom: 65%;
+  }
+`;
+
+export const EyeButtonSignUp = styled(EyeButton)`
+  bottom: 70%;
+  right: 5%;
+  animation: none;
+  @media (min-width: 768px) {
+    bottom: 72%;
+    right: 18%;
+  }
 `;
 
 // ChangeLogin for Sign Up
@@ -183,9 +234,23 @@ export const ButtonContainer = styled.div`
 `;
 
 export const AvatarContainer = styled(ButtonContainer)`
-
 `;
 
+export const Label = styled.label`
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: ${props => props.theme.secondary};
+  border: 2px solid transparent;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-right: 10px;
+  z-index: 1; 
+  :hover {
+    border: 2px solid ${props => props.theme.hover};
+  }
+`;
 export const Avatar = styled.img`
   width: 40px;
   height: 40px;
@@ -193,18 +258,26 @@ export const Avatar = styled.img`
   border-radius: 50%;
   cursor: pointer;
   outline: none;
-  border: 1px solid ${props => props.theme.primary};
-  background-color: ${props => props.theme.secondary};
-  margin-left: 6px;
-  :hover {
-    opacity: 0.7;
-  }
-  :focus {
-    border: 1px solid ${props => props.theme.hover};
-  }
+  border: 2px solid ${props => props.theme.secondary};
   @media (min-width: 768px) {
     width: 64px;
     height: 64px;
     padding: 4px;
   }
 `;
+
+export const Radio = styled.input`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  &:checked ~ ${Avatar} {
+    border: 2px solid ${props => props.theme.hover};
+  }
+  `;

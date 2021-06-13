@@ -1,22 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import { Dialog, DialogContent, DialogActions, DialogTitle } from "@material-ui/core";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogActions, 
+  DialogTitle } from "@material-ui/core";
 
 
-export const GameFinished = ({ handleCollect, openWin, status, button, results }) => {
+export const FinishDialog = ({ 
+  handleCollect, 
+  openWin, 
+  status, 
+  results }) => {
 
   return (
-    <>
     <Dialog open={openWin}>
       <DialogContainer>
         <DialogTitle>{status}</DialogTitle>
         <DialogContent>Cards {results.flips} flips</DialogContent>
         <DialogActions>
-          <Button onClick={handleCollect}>{button}</Button>
+          <Button onClick={handleCollect}>Collect badges</Button>
         </DialogActions>
       </DialogContainer>
     </Dialog>
-    </>
   );
 };
 

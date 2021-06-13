@@ -12,7 +12,9 @@ import { ChangeLogIn } from '../components/signinupform/ChangeLogIn';
 import { 
   MainContainer, 
   Title, 
-  Form, 
+  Form,
+  ErrorMessageSignUp,
+  EyeButtonSignUp, 
   ChooseText,
   AvatarContainer } from '../components/signinupform/Styling';
 
@@ -22,6 +24,8 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const [avatar, setAvatar] = useState('');
   const [mode, setMode] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(true);
   const accessToken = useSelector((store) => store.profile.accessToken);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -61,10 +65,34 @@ export const SignUp = () => {
 			dispatch(profile.actions.setUserId(data.userId));
 		});
 		} else {
-			console.log(data);
+			handleErrors(data);
 		  }
 	  })
 	  .catch();
+  };
+
+  // Displaying different error messages
+  const handleErrors = (error) => {
+    const errorType = error.error.errors;
+    if (error.error.code === 11000) {
+      if (error.error.keyValue.username) {
+        setErrorMessage(error.error.message);
+      } else if (error.error.keyValue.email) {
+        setErrorMessage(error.error.message);
+      }
+      setErrorMessage(error.message);
+    } else if (errorType.username) {
+      setErrorMessage(errorType.username.message);
+    } else if (errorType.email) {
+      setErrorMessage(errorType.email.message);
+    } else {
+      setErrorMessage(errorType);
+    }
+  };
+
+  const togglePassword = () => {
+    if (!showPassword) setShowPassword(true);
+    else setShowPassword(false);
   };
 
   return (
@@ -77,22 +105,33 @@ export const SignUp = () => {
         value={username} 
         onChange={(e) => setUsername(e.target.value)} />
       <TextInput
-        type='password'
-        placeholder='password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)} />
-      <TextInput
         type='email'
         placeholder='email'
         value={email}
         onChange={(e) => setEmail(e.target.value)} />
+      <TextInput
+        type={showPassword ? 'password' : 'text'}
+        placeholder='password'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        minLength='5' />
+      <EyeButtonSignUp type="button" onClick={togglePassword}>
+        {showPassword ? (
+          <i className="fas fa-eye"></i>
+        ) : (
+          <i className="fas fa-eye-slash"></i>
+        )}
+      </EyeButtonSignUp>
+			<ErrorMessageSignUp>{errorMessage}</ErrorMessageSignUp>
       <ChooseText>Choose your avatar:</ChooseText>
       <AvatarContainer>
       {avatars.map((avatar) => (
-        <Avatars avatar={avatar}
+        <Avatars 
+          key={avatar}
+          avatar={avatar}
           image={require(`../assets/${avatar}.png`)}
           onChange={(e) => setAvatar(e.target.value)}
-          checked={Avatars === avatar} />
+          />
       ))}
       </AvatarContainer>
       <ChooseText>Color your spaceship:</ChooseText>

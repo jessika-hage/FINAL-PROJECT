@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import styled, { keyframes } from 'styled-components';
 import { Dialog } from '@material-ui/core';
 
 import { updateBadges } from '../../reducers/profile';
@@ -13,6 +12,8 @@ import {
   ButtonOne, 
   ButtonTwo, 
   ButtonThree, 
+  ButtonFour,
+  ButtonFive,
   DialogContainer, 
   DialogText, 
   StartButton } from './Styling';
@@ -21,6 +22,7 @@ export const GameBall = () => {
   const [score, setScore] = useState(0);
   const [counter, setCounter] = useState(30);
   const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
+  const numOfBadges = Math.round(score / 2);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,7 +34,7 @@ export const GameBall = () => {
   }, [counter]);
 
   const onCollectBadges = () => {
-    dispatch(updateBadges(score));
+    dispatch(updateBadges(numOfBadges));
     setTimeout(() => {
       history.push('/')
     }, 1000)
@@ -48,25 +50,24 @@ export const GameBall = () => {
     setScore(score +1);
   };
 
-  const onClickMedium = () => {
-    setScore(score + 2);
-  };
-
   const onClickHard = () => {
     setScore(score + 3);
   };
+
 
   return (
     <MainContainer>
       <GameTitle>Space Ball</GameTitle>
       <ScoreText>Score: {score}</ScoreText>
-      <CounterText>00:{counter}</CounterText>
+      <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
       <ButtonOne onClick={onClickHard}></ButtonOne>
-      <ButtonTwo onClick={onClickMedium}></ButtonTwo>
+      <ButtonTwo onClick={onClickEasy}></ButtonTwo>
       <ButtonThree onClick={onClickEasy}></ButtonThree>
+      <ButtonFour onClick={onClickEasy}></ButtonFour>
+      <ButtonFive onClick={onClickHard}></ButtonFive>
       <Dialog open={openFinishedDialog}>
         <DialogContainer>
-          <DialogText>You managed to get {score} badges!</DialogText>
+          <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
           <StartButton onClick={onCollectBadges}>Collect badges</StartButton>
         </DialogContainer>
       </Dialog>

@@ -1,26 +1,19 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import styled from "styled-components";
 
-import { GameCard } from "./GameCard";
-import GameService from "./GameService";
+import { MemoryCard } from "./MemoryCard";
+import { GameService } from "./GameService";
 import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from "./constants";
 
-export const GameBoard = ({ gameStatus, onGameUpdate }) => {
+export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
   const [deck, setDeck] = useState({});
   const [isChecking, setIsChecking] = useState(false);
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const [openCardCounter, setOpenCardCounter] = useState(0);
-  const [counter, setCounter] = useState(30);
 
   const flipCounter = useRef(0);
   const isMounted = useRef(false);
-
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-      return () => clearInterval(timer);
-  }, [counter]);
 
  // Check if the flipped cards match
   const checkPair = useCallback(() => {
@@ -50,6 +43,7 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
     }
   }, [deck, firstCard, secondCard]);
 
+  // Reset all cards
   const resetCards = () => {
     setFirstCard(null);
     setSecondCard(null);
@@ -93,7 +87,7 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
       );
 
       // Game is finished
-      if (matches.length === DECK_SIZE || counter === 0) {
+      if (matches.length === DECK_SIZE) {
         onGameUpdate(GAME_STATUS.FINISHED, {
           flips: flipCounter.current,
         });
@@ -102,7 +96,7 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
       setOpenCardCounter(0);
       checkPair();
     }
-  }, [checkPair, deck, openCardCounter, onGameUpdate, counter]);
+  }, [checkPair, deck, openCardCounter, onGameUpdate]);
 
   const startGame = useCallback(async () => {
     try {
@@ -148,12 +142,11 @@ export const GameBoard = ({ gameStatus, onGameUpdate }) => {
     <MainContainer>
       <MemoryTitle>Memory Game</MemoryTitle>
       <GameContainer>
-        <TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
         <FlipText>Flips: {flipCounter.current}</FlipText>
       <GameGrid>
         {Object.entries(deck).map(([key, value]) => {
           return (
-            <GameCard
+            <MemoryCard
               key={key}
               index={key}
               data={value}
@@ -177,12 +170,6 @@ const MainContainer = styled.section`
   @media (min-width: 768px) {
     padding: 20px;
   }
-`;
-
-const TimerContainer = styled.div`
-  position: absolute;
-  right: 20px;
-  top: 15px;
 `;
 
 const MemoryTitle = styled.h1`

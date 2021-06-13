@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   color: ${props => props.theme.textColor};
   background-color: ${props => props.theme.backgroundColor};
 `;
@@ -51,12 +52,18 @@ export const GameTitle = styled.h1`
 export const ScoreText = styled(GameTitle)`
   font-size: 20px;
   top: 60px;
-  left: 25px;
+  left: 22px;
 `;
 
 export const CounterText = styled(ScoreText)`
-  top: 80px;
-  left: 25px;
+  top: 85px;
+  left: 22px;
+`;
+
+const Button = styled.button`
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 const animationOne = keyframes`
@@ -76,21 +83,20 @@ export const ButtonOne = styled.button`
   height: 100px;
   border-radius: 50%;
   background-color: ${props => props.theme.hover};
-  animation: ${animationOne} 18s linear infinite alternate-reverse;
-  cursor: pointer;
+  animation: ${animationOne} 16s linear infinite alternate-reverse;
 `;
 
 const animationTwo = keyframes`
-  10% { transform: scale(1.2); transform: translateX(500px)}
-  20% { transform: scale(1.3); transform: translateX(-200px)}
-  30% { transform: scale(1.4); transform: translateY(300px)}
-  40% { transform: scale(1.6); transform: translateX(500px)}
-  50% { transform: scale(0.8); transform: translateY(-300px)}
-  60% { transform: scale(0.6); transform: translateX(-400px)}
-  70% { transform: scale(1.5); transform: translateY(500px)}
-  80% { transform: scale(1.3); transform: translateY(-300px)}
-  90% { transform: scale(1.4); transform: translateX(400px)}
-  100% { transform: scale(1); transform: translateY(500px)}
+  10% { transform: translateX(0px)}
+  20% { transform: translateY(-400px)}
+  30% { transform: translateY(300px)}
+  40% { transform: translateX(500px)}
+  50% { transform: translateY(-300px)}
+  60% { transform: translateX(-400px)}
+  70% { transform: translateX(500px)}
+  80% { transform: translateY(100px)}
+  90% { transform: translateX(-300px)}
+  100% { transform: translateY(500px)}
   `
 
 export const ButtonTwo = styled.button`
@@ -98,29 +104,68 @@ export const ButtonTwo = styled.button`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  animation: ${animationTwo} 19s linear infinite alternate-reverse;
-  cursor: pointer;
+  animation: ${animationTwo} 15s linear infinite alternate-reverse;
 `;
 
-export const animationThree = keyframes`
-  10% { transform: scale(1.2); transform: translateX(100px)}
-  20% { transform: scale(1.3); transform: translateX(200px)}
-  30% { transform: scale(1.4); transform: translateX(400px)}
-  40% { transform: scale(1.6); transform: translateY(600px)}
-  50% { transform: scale(1.8); transform: translateX(-500px)}
-  60% { transform: scale(1.9); transform: translateX(-200px)}
-  70% { transform: scale(1.5); transform: translateY(500px)}
-  80% { transform: scale(1.3); transform: translateY(-300px)}
-  90% { transform: scale(1.4); transform: translateX(400px)}
-  100% { transform: scale(1); transform: translateY(500px)}
+ const animationThree = keyframes`
+  10% { transform: translateX(-200px)}
+  20% { transform: translateX(200px)}
+  30% { transform: translateX(600px)}
+  40% { transform: translateY(600px)}
+  50% { transform: translateX(-500px)}
+  60% { transform: translateX(-100px)}
+  70% { transform: translateY(500px)}
+  80% { transform: translateY(-300px)}
+  90% { transform: translateX(400px)}
+  100% { transform: translateY(500px)}
 `;
 
 export const ButtonThree = styled.button`
   background-color: ${props => props.theme.primary};
-  border: 10px solid ${props => props.theme.hover};
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  animation: ${animationThree} 16s linear infinite alternate-reverse;
-  cursor: pointer;
+  animation: ${animationThree} 12s linear infinite alternate-reverse;
+`;
+
+ const animationFour = keyframes`
+  10% { transform: translateX(00px)}
+  20% { transform: translateY(200px)}
+  30% { transform: translateX(400px)}
+  40% { transform: translateY(600px)}
+  50% { transform: translateX(-500px)}
+  60% { transform: translateX(200px)}
+  70% { transform: translateY(500px)}
+  80% { transform: translateY(-300px)}
+  90% { transform: translateX(400px)}
+  100% { transform: translateY(500px)}
+`;
+
+export const ButtonFour = styled.button`
+  background-color: ${props => props.theme.primary};
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  animation: ${animationFour} 13s linear infinite alternate-reverse;
+`;
+
+const animationFive = keyframes`
+10% { transform: scale(1.2); transform: translateX(300px)}
+20% { transform: scale(1.3); transform: translateY(200px)}
+30% { transform: scale(1.4); transform: translateX(400px)}
+40% { transform: scale(1.6); transform: translateY(600px)}
+50% { transform: scale(1.8); transform: translateY(100px)}
+60% { transform: scale(1.9); transform: translateX(-200px)}
+70% { transform: scale(1.5); transform: translateY(500px)}
+80% { transform: scale(1.3); transform: translateY(-300px)}
+90% { transform: scale(1.4); transform: translateX(400px)}
+100% { transform: scale(1); transform: translateY(500px)}
+`;
+
+export const ButtonFive = styled.button`
+  background-color: ${props => props.theme.hover};
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  animation: ${animationFive} 10s linear infinite alternate-reverse;
 `;

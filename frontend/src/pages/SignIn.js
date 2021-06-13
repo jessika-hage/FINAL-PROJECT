@@ -8,12 +8,18 @@ import { TextInputSignIn } from '../components/signinupform/TextInput';
 import { SubmitButtonSignIn } from '../components/signinupform/SubmitButton';
 import { ChangeSignUp } from '../components/signinupform/ChangeLogIn';
 import { TitleAnimation } from '../components/signinupform/TitleAnimation';
-import { MainContainer, Form } from '../components/signinupform/Styling';
+import { 
+	MainContainer, 
+	Form, 
+	ErrorMessage, 
+	EyeButton } from '../components/signinupform/Styling';
 
 export const SignIn = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [mode, setMode] = useState(null);
+	const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -50,11 +56,16 @@ export const SignIn = () => {
 						dispatch(profile.actions.setUserId(data.userId));
 					});
 				} else {
-					console.log(data);
+					setErrorMessage(data.message);
 				}
 			})
 			.catch();
 	};
+
+	const togglePassword = () => {
+    if (!showPassword) setShowPassword(true);
+    else setShowPassword(false);
+  };
 
 	return (
 		<MainContainer>
@@ -66,10 +77,18 @@ export const SignIn = () => {
 					value={username}
 					onChange={(e) => setUsername(e.target.value)} />
 				<TextInputSignIn
-					type='password'
+					type={showPassword ? "password" : "text"}
 					placeholder='password'
 					value={password}
 					onChange={(e) => setPassword(e.target.value)} />
+				<EyeButton type="button" onClick={togglePassword}>
+					{showPassword ? (
+						<i className="fas fa-eye"></i>
+					) : (
+						<i className="fas fa-eye-slash"></i>
+					)}
+				</EyeButton>
+				<ErrorMessage>{errorMessage}</ErrorMessage>
 				<SubmitButtonSignIn
 					type='submit' 
 					onClick={() => setMode('signin')} 

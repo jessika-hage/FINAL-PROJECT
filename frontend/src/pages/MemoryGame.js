@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
 import { updateBadges } from '../reducers/profile';
-import { GameBoard } from "../components/memory/GameBoard";
-import { GameFinished } from "../components/memory/GameFinished";
+import { MemoryBoard } from "../components/memory/MemoryBoard";
+import { FinishDialog } from "../components/memory/FinishDialog";
 import { Header } from "../components/Header";
 import { Camera } from "../components/Camera";
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
@@ -16,26 +16,18 @@ export const MemoryGame = () => {
   const [openWin, setOpenWin] = useState(false);
   const [gameStatus, setGameStatus] = useState(GAME_STATUS.CREATING);
   const [gameResults, setGameResults] = useState({});
-  const [counter, setCounter] = useState(30);
   const [animation, setAnimation] = useState(false);
   const accessToken = useSelector((store) => store.profile.accessToken);
-  const countPoints = gameResults.flips;
+  const countPoints = Math.round(gameResults.flips * 0.5);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-useEffect(() => {
-  if (!accessToken) {
-    history.push('/signin');
-  }
-}, [accessToken, history]);
-  
-  // Initializing the timer
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-      return () => clearInterval(timer);
-  }, [counter]);
+  // useEffect(() => {
+  //   if (!accessToken) {
+  //     history.push('/signin');
+  //   }
+  // }, [accessToken, history]);
 
   // Checking for game updates
   // If status is finished, set win dialog
@@ -63,18 +55,17 @@ useEffect(() => {
       <Header />
       <Camera />
       <div>
-        <GameBoard 
+        <MemoryBoard
           gameStatus={gameStatus} 
           onGameUpdate={handleStatusUpdate} 
           onReset={handleStatusUpdate} />
         {gameStatus === GAME_STATUS.FINISHED && (
-          <GameFinished 
+          <FinishDialog
             openWin={openWin} 
-            status={counter === 0 ? 'You ran out of time!' : 'You solved it!'}
-            button={counter === 0 ? 'Try again later' : 'Collect badges'}
+            status={gameResults.flips < 30 ? 'GREAT job, you solved it!' : 'You solved it!'}
             results={gameResults}
             handleCollect={handleCollectBadges}
-             />
+            />
         )}
       </div>
       {animation && <BadgesAnimation text={countPoints} />}

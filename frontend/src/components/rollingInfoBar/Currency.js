@@ -48,7 +48,7 @@ export const Currency = () => {
   // Exchange function
   const onExchange = () => {
     dispatch(updateBadges(- 1));
-		dispatch(updateCoins(10));
+		dispatch(updateCoins(currency.price_usd));
     setConfirmation(true);
     setOpen(false);
   };
@@ -68,7 +68,7 @@ export const Currency = () => {
         </ArrowIcon> 
         {currency.percent_change_1h} %
       </CoinChange>
-        <Button onClick={onToggleDialog}>See more</Button>
+        <Button onClick={onToggleDialog}>Exchange</Button>
       </CurrencyText>
       <Dialog open={open} onClose={onToggleDialog}>
         <DialogContainer>
@@ -92,7 +92,7 @@ export const Currency = () => {
               </Text>
               </TextContainer>
               <TextContainer>
-              <Text>Exchange rate: 1 badge = 10 SPACE $
+              <Text>Exchange rate: 1 badge = {currency.price_usd} SPACE $
               </Text>
               </TextContainer>
               <ExchangeButton onClick={onExchange}>Exchange</ExchangeButton>
