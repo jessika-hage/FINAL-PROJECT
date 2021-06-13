@@ -84,7 +84,7 @@ export const RoomFarm = styled(RoomClassroom)`
 	border-top-left-radius: 0px;
 `;
 
-export const RoomDoctor = styled(RoomBedroom)`
+export const RoomSpace = styled(RoomBedroom)`
 	grid-column: 10 / span 3;
 	grid-row: 4 / span 3;
 	border-bottom-right-radius: 200px;
@@ -122,6 +122,22 @@ export const InfoText = styled.p`
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}
+`;
+
+export const StartGameButton = styled(Link)`
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.hover};
+  color: ${props => props.theme.textColor};
+  font-size: 16px;
+  width: fit-content;
+  text-transform: uppercase;
+  font-family: "Trispace";
+  cursor: pointer;
+  :hover {
+    background-color: ${props => props.theme.hover};
+  }
 `;
 
 export const DialogButton = styled.button`

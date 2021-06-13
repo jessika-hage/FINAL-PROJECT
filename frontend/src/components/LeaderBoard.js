@@ -31,6 +31,7 @@ export const LeaderBoard = () => {
 			</TableHead>
 			{leaderBoard.map((citizen) => (
 				<CitizensList key={citizen._id}>
+					<CitizenAvatar src={require(`./../assets/${citizen.avatar}.png`)} />
 					<Citizen>{citizen.username}</Citizen>
 					<Citizen>{citizen.ranking}/100</Citizen>
 					<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
@@ -77,6 +78,7 @@ const TableTitle = styled.div`
 
 const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
+	width: 22%;
 	:hover, :focus {
 		text-decoration: underline;
 	}
@@ -86,17 +88,30 @@ const CitizenDaysLink = styled(TableTitleLinks)`
   display: none;
 	@media (min-width: 768px) {
 		display: flex;
-}
+	}
+`;
+
+const CitizenAvatar = styled.img`
+	height: 18px;
+	width: 18px;
+	padding: 2px;
+	margin-right: 5px;
+	background-color: ${props => props.theme.secondary};
+	border-radius: 50%;
+	@media (min-width: 768px) {
+		height: 28px;
+		width: 28px;
+		padding: 2px;
+	}
 `;
 
 const Citizen = styled.p`
 	width: 25%;
-	padding: 6px 0 4px 4px;
 	margin: 0;
 	font-size: 12px;
+	text-align: left;
 	@media (min-width: 768px) {
 		font-size: 14px;
-		padding: 10px 0 7px 5px;
 	}
 `;
 
@@ -104,10 +119,16 @@ const CitizenDays = styled(Citizen)`
   display: none;
 	@media (min-width: 768px) {
 		display: flex;
-}
+	}
 `;
 
 const CitizensList = styled.div`
 	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 6px 0 4px 0;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
+	@media (min-width: 768px) {
+		padding: 6px 0 4px 0;
+	}
 `;

@@ -9,7 +9,7 @@ import { Info } from './Info';
 import { Gym } from './Gym';
 import { Memory } from './Memory';
 import { Farm } from './Farm';
-import { Doctor } from './Doctor';
+import { SpaceBall } from './SpaceBall';
 import { GridContainer } from './Styling';
 
 export const Map = () => {
@@ -24,7 +24,7 @@ export const Map = () => {
 			<Gym />
 			<Memory />
 			<Farm />
-			<Doctor />
+			<SpaceBall />
 		</GridContainer>
 	);
 };

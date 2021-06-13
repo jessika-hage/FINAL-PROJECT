@@ -7,7 +7,7 @@ import { RoomFarm, Icons } from './Styling';
 export const Farm = () => {
   return (
     <Tooltip title='FARM'>
-      <RoomFarm to='/memorygame'>
+      <RoomFarm to='/farm'>
         <Icons>
           <BugReportIcon fontSize='large' />
         </Icons>

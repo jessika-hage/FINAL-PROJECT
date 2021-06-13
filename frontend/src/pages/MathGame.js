@@ -10,8 +10,10 @@ import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { FinishGame } from '../components/math/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
+import { MathStart } from '../components/math/MathStart';
 
 export const MathGame = () => {
+	const [openStart, setOpenStart] = useState(true);
 	const [open, setOpen] = useState(false);
 	const [score, setScore] = useState(0);
 	const [mistakes, setMistakes] = useState(0);
@@ -27,11 +29,11 @@ export const MathGame = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	useEffect(() => {
-		if (!accessToken) {
-			history.push('/signin');
-		}
-	}, [accessToken, history]);
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [accessToken, history]);
 
 	  // Initializing the timer
 		useEffect(() => {
@@ -77,22 +79,25 @@ export const MathGame = () => {
 		} else {
 			setMistakes((prev) => prev + 1);
 			setShowError(true);
-			setTimeout(() => setShowError(false), 401);
+			setTimeout(() => setShowError(false), 400);
 		}
 	};
 
 	const resetGame = () => {
-		setAnimation(true)
-		setOpen(false);
-		dispatch(updateBadges(score));
-		setTimeout(() => {
-			setScore(0);
-			setMistakes(0);
-			setUserAnswer('');
-			setCurrentProblem(generateProblem());
-			history.push('/')
-		}, 1000)
-		
+		if (score > 0) {
+			dispatch(updateBadges(score));
+			setAnimation(true)
+			setOpen(false);
+			setTimeout(() => {
+				setScore(0);
+				setMistakes(0);
+				setUserAnswer('');
+				setCurrentProblem(generateProblem());
+				history.push('/')
+			}, 1000)
+		} else {
+			history.push('/');
+		}	
 	};
 
 	return (
