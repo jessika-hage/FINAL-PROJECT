@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaCoins } from 'react-icons/fa';
 
 import { 
     BadgeContainer, 
@@ -11,7 +10,7 @@ export const BadgesAnimation = ({ text }) => {
   return (
     <BadgeContainer>
       <BadgeText>+{text}</BadgeText>
-      <BadgeIcon><FaCoins /></BadgeIcon>
+      <BadgeIcon src={require(`../../assets/money2.png`)} /> 
     </BadgeContainer>   
   )
 };    

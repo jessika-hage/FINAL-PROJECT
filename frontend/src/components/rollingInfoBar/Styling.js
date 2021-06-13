@@ -25,13 +25,13 @@ const Roller = keyframes`
 export const RollingText = styled.div`
   display: flex;
   align-items: center;
-  font-size: 10px;
+  font-size: 11px;
   animation: ${Roller} 25s linear infinite;
   opacity: 0;
   padding: 0;
   @media (min-width: 1024px) {
     bottom: 14px;
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 

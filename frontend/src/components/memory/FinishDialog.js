@@ -17,7 +17,7 @@ export const FinishDialog = ({
     <Dialog open={openWin}>
       <DialogContainer>
         <DialogTitle>{status}</DialogTitle>
-        <DialogContent>Cards {results.flips} flips</DialogContent>
+        <DialogContent>You made it with {results.flips} flips</DialogContent>
         <DialogActions>
           <Button onClick={handleCollect}>Collect badges</Button>
         </DialogActions>

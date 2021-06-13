@@ -10,14 +10,12 @@ import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { FinishGame } from '../components/math/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-import { MathStart } from '../components/math/MathStart';
 
 export const MathGame = () => {
-	const [openStart, setOpenStart] = useState(true);
-	const [open, setOpen] = useState(false);
+	const [openFinish, setOpenFinish] = useState(false);
 	const [score, setScore] = useState(0);
 	const [mistakes, setMistakes] = useState(0);
-	const [counter, setCounter] = useState(30);
+	// const [counter, setCounter] = useState(30);
 	const [currentProblem, setCurrentProblem] = useState(generateProblem());
 	const [userAnswer, setUserAnswer] = useState('');
 	const [showError, setShowError] = useState(false);
@@ -29,25 +27,25 @@ export const MathGame = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
 	  // Initializing the timer
-		useEffect(() => {
-			const timer =
-				counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-				return () => clearInterval(timer);
-		}, [counter]);
+		// useEffect(() => {
+		// 	const timer =
+		// 		counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+		// 		return () => clearInterval(timer);
+		// }, [counter]);
 
 	// Opens dialog when game is finished
 	useEffect(() => {
-		if (score === 10 || mistakes === 3 || counter === 0) {
-			setOpen(true);
+		if (score === 10 || mistakes === 3) {
+			setOpenFinish(true);
 		}
-	}, [score, mistakes, counter]);
+	}, [score, mistakes]);
 
 	function generateNumber(max) {
 		return Math.floor(Math.random() * (max + 1));
@@ -87,14 +85,10 @@ export const MathGame = () => {
 		if (score > 0) {
 			dispatch(updateBadges(score));
 			setAnimation(true)
-			setOpen(false);
+			setOpenFinish(false);
 			setTimeout(() => {
-				setScore(0);
-				setMistakes(0);
-				setUserAnswer('');
-				setCurrentProblem(generateProblem());
 				history.push('/')
-			}, 1000)
+			}, 2000)
 		} else {
 			history.push('/');
 		}	
@@ -105,8 +99,8 @@ export const MathGame = () => {
 			<Header />
 			<Camera />
 			<MathTitle>Classroom</MathTitle>
-			<MathContainer blurred={mistakes === 3 || score === 10}>
-				<TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
+			<MathContainer>
+				{/* <TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer> */}
 				<MathProblem wrongAnswer={showError}>
 					{currentProblem.numberOne} {currentProblem.operator}{' '}
 					{currentProblem.numberTwo}
@@ -118,13 +112,13 @@ export const MathGame = () => {
 					onChange={(e) => setUserAnswer(e.target.value)}
 				/>
 				<StatusText>
-					You need {10 - score} more points, and are allowed to make {2 - mistakes}{' '}
+					You have {score} points, and can make {3 - mistakes}{' '}
 					more mistakes.
 				</StatusText>
 				<ProgressBar score={score} />
 			</MathContainer>
 			<FinishGame
-				open={open}
+				open={openFinish}
 				endText={score}
 				resetButton={resetButton}
 				onClick={resetGame}

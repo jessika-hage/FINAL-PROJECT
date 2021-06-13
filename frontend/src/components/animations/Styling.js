@@ -10,19 +10,18 @@ export const BadgeContainer = styled.div`
   align-items: center;
   color: white;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-  animation: ${badgeanimation} 1.5s linear;
+  top: 25px;
+  right: 23px;
+  z-index: 3;
+  animation: ${badgeanimation} 1.2s linear;
   opacity: 0;
-  margin-left: 15px;
+  padding: 0;
+  height: 20px;
 `;
 
 export const BadgeText = styled.h1`
-  font-size: 60px;
+  font-size: 24px;
 `;
 
-export const BadgeIcon = styled.h1`
-  text-align: center;
-  font-size: 60px;  
+export const BadgeIcon = styled.img`
 `;

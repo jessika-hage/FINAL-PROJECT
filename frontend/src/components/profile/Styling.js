@@ -55,7 +55,7 @@ export const BadgesText = styled.div`
 	left: 0;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
-		font-size: 16px;
+		font-size: 14px;
 	}
 `;
 
@@ -69,7 +69,7 @@ export const CoinsText = styled.div`
 	right: 0;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
-		font-size: 16px;
+		font-size: 14px;
 	}
 `;
 
@@ -78,7 +78,8 @@ export const BadgeIcon = styled.img`
 `;
 
 export const CoinsIcon = styled.img`
-	margin: 0 0 0 5px`
+	margin: 0 0 0 7px
+`;
 
 // Profile 
 export const ProfileContainer = styled.section`

@@ -33,9 +33,9 @@ export const SignUp = () => {
   const avatars= ['woman', 'man2', 'hacker', 'woman3', 'woman2', 'man'];
 
   useEffect(() => {
-	if (accessToken) {
-	history.push("/");
-	}
+    if (accessToken) {
+    history.push("/");
+    }
   }, [accessToken, history]);
 
   const handleFormSubmit = (e) => {
