@@ -7,6 +7,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  margin-top: -40px;
   color: ${props => props.theme.textColor};
   background-color: ${props => props.theme.backgroundColor};
 `;

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
 import { updateBadges } from '../../reducers/profile';
+import { Header } from '../../components/Header';
+import { Camera } from '../../components/Camera';
 import { 
   MainContainer, 
   GameTitle, 
@@ -56,6 +58,9 @@ export const GameBall = () => {
 
 
   return (
+    <>
+    <Header />
+    <Camera />
     <MainContainer>
       <GameTitle>Space Ball</GameTitle>
       <ScoreText>Score: {score}</ScoreText>
@@ -68,9 +73,10 @@ export const GameBall = () => {
       <Dialog open={openFinishedDialog}>
         <DialogContainer>
           <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
-          <StartButton onClick={onCollectBadges}>Collect badges</StartButton>
+          <StartButton onClick={onCollectBadges}>{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}</StartButton>
         </DialogContainer>
       </Dialog>
     </MainContainer>
+    </>
   )
 };
