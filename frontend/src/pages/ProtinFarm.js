@@ -23,13 +23,56 @@ export const ProtinFarm = () => {
 	);
 };
 
+// @-webkit-keyframes x {
+//   0% {
+//             transform: translatex(-100px, 0);
+//   }
+//   100% {
+//             transform: translatex(100px, 0)
+//   }
+// }
+
+// @keyframes x {
+//   0% {
+//             transform: translatex(-100px, 0);
+//   }
+//   100% {
+//             transform: translatex(100px, 0)
+//   }
+// }
+
+// @keyframes y {
+//   25% {
+//     transform: translatey(0, -50px);
+//   }
+//   0%, 50%, 100% {
+//     transform: translatey(0, 0);
+//   }
+//   75% {
+//     transform: translatey(0, 50px);
+//   }
+
+// }
 const Roller = keyframes`
-0% { transform: translatey(500px) }
-50% { transform: translatex(550px) }
-100% { opacity: 1; transform: translatey(500px) }`;
+  0% {
+            transform: translatex(-100px, 0);
+  }
+  100% {
+            transform: translatex(100px, 0)
+  }
+  25% {
+    transform: translatey(0, -50px);
+  }
+  0%, 50%, 100% {
+    transform: translatey(0, 0);
+  }
+  75% {
+    transform: translatey(0, 50px);
+  }
+	;`;
 
 const Fish1 = styled.div`
-	animation: ${Roller} 5s linear infinite;
+	animation: ${Roller} 20s linear infinite;
 	background-color: #73bed9;
 	height: 20px;
 	width: 50px;
