@@ -21,9 +21,14 @@ export const Product = ({ product }) => {
 		<ProductWrapper>
 			<Dialog open={open} onClose={addProduct}>
 				<DialogContainer>
-					<Icon>{}</Icon>
-					<Text>{product.title}</Text>
-					<Text>{product.price}:-</Text>
+					<ImageWrapper>
+						<ImageDialog src={require(`./assets/${product.image}`)} alt={product.title} />
+					</ImageWrapper>
+					<ProductContainer>
+						<AddedText>Added to cart</AddedText>
+						<Text>{product.title}</Text>
+						<Text>{product.price}$</Text>
+					</ProductContainer>
 				</DialogContainer>
 			</Dialog>
 			<ImageWrapper>
@@ -32,7 +37,7 @@ export const Product = ({ product }) => {
 				<TextWrapper>
 						<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
-					<Text>{product.price}:-</Text>
+					<Text>{product.price}$</Text>
 					<AddButton
 						type='button'
 						disabled={product.inventory === 0}
@@ -56,13 +61,35 @@ const ImageWrapper = styled.div`
 	align-items: center;
 	background-color: ${(props) => props.theme.secondary};
 `;
+
 const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.primary};
 	display: flex;
-	flex-direction: column;
-	padding: 20px;
+	padding: 10px;
+	height: 150px;
 	color: ${(props) => props.theme.textColor};
+`;
+
+const ImageDialog = styled.img`
+	height: 80px;
+	background-color: ${(props) => props.theme.secondary};
+	padding: 7px 2px;
+	margin-right: 10px;
+`;
+
+const ProductContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	justify-content: space-between;
+`;
+
+const AddedText = styled.p`
+	font-size: 16px;
+	text-transform: uppercase;
+	padding-bottom: 3px;
+	border-bottom: 2px solid ${(props) => props.theme.primary};
 `;
 
 const AddButton = styled.button`
@@ -124,13 +151,11 @@ const TextWrapper = styled.div`
 // 	margin: 10px;
 // `;
 
-const Icon = styled.image``;
-
-const Text = styled.h3`
+const Text = styled.p`
 	color: ${(props) => props.theme.textColor};
-	margin: 0;
+	margin: 3px 0;
 	padding: 0;
-	font-size: 16px;
+	font-size: 15px;
 	text-transform: uppercase;
 `;
 

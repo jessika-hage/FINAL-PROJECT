@@ -56,6 +56,11 @@ export const Cart = () => {
 		<CartWrapper>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>
+					<DialogHeader>
+						<HeaderText>Product</HeaderText>
+						<HeaderText>Quantity</HeaderText>
+						<HeaderText>Price</HeaderText>
+					</DialogHeader>
 					{products.map((product) => (
 						<CartItem key={product.id} product={product} />
 					))}
@@ -64,8 +69,9 @@ export const Cart = () => {
 				</DialogContainer>
 			</Dialog>
 			<Total>
-				<Amount>Total: {totalPrice}:-</Amount>
+				{/* <Amount>Total: {totalPrice}$</Amount> */}
 				<ShoppingButton>
+					<ItemsBadge><ItemsBadgeText>{products.length}</ItemsBadgeText></ItemsBadge>
 					<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
 				</ShoppingButton>
 			</Total>
@@ -87,6 +93,26 @@ export const Cart = () => {
 	);
 };
 
+const ItemsBadge = styled.div`
+	background-color: ${(props) => props.theme.secondary};
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: 100px;
+	right: 0;
+	padding: 2px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: -5px;
+`;
+
+const ItemsBadgeText = styled.p`
+	font-size: 12px;
+	color: ${(props) => props.theme.textColor};
+`;
+
 const DialogContainer = styled.ul`
 	background-color: ${(props) => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.primary};
@@ -95,6 +121,17 @@ const DialogContainer = styled.ul`
 	padding: 20px;
 	color: ${(props) => props.theme.textColor};
 	margin: 0;
+`;
+
+const DialogHeader = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+`;
+
+const HeaderText = styled.p`
+	font-size: 14px;
 `;
 
 const AddButton = styled.button`
@@ -137,18 +174,20 @@ const Total = styled.div`
 		right: 12%;
 	}
 `;
+
 const Amount = styled.div`
 	color: ${(props) => props.theme.textColor};
+	margin: 10px 0;
 `;
 
 const ShoppingButton = styled.button`
 	background-color: transparent;
 	cursor: pointer;
-	margin: 0;
 	padding: 0;
+	position: relative;
 	color: ${(props) => props.theme.textColor};
 	:hover {
-		opacity: 0.7;
+		color: ${(props) => props.theme.secondary};
 	}
 `;
 

@@ -65,6 +65,9 @@ const Button = styled.button`
   :hover {
     opacity: 0.7;
   }
+  :focus {
+    transform: scale(1.8);
+  }
 `;
 
 const animationOne = keyframes`

@@ -4,7 +4,8 @@ import styled from 'styled-components/macro'
 export const Card = ({ 
     title, 
     secondaryText,
-    icon,
+    thirdText,
+    fourthText,
     thumbnailUrl, 
     thumbnailTwo,
     coverImage, 
@@ -21,10 +22,13 @@ export const Card = ({
         <TextBox>
           <TitleIconBox>
             {title && <Title>{title}</Title>}
-            {icon && <Icon>{icon}</Icon>}
           </TitleIconBox>
           <SmallTextContainer>
             {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
+            <RatingContainer>
+              {thirdText && <ThirdText>{thirdText}</ThirdText>}
+              {fourthText && <FourthText>{fourthText}</FourthText>}
+            </RatingContainer>
           </SmallTextContainer>
         </TextBox>         
     </TitleBar>
@@ -45,7 +49,14 @@ const ContentIcon = styled.div`
 `;
 
 const SmallTextContainer = styled.div`
-display: flex;
+  display: flex;
+  flex-direction: column;
+`;
+
+const RatingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
 `;
 
 const TitleIconBox = styled.div`
@@ -63,22 +74,32 @@ const TextBox = styled.div`
 
 const Title = styled.h1`
   margin: 0 0 5px 0;
-  font-size: 18px;
+  font-size: 15px;
   text-transform: uppercase;
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.textColor};	
+  @media (min-width: 768px) {
+		font-size: 18px;
+	}
 `;
 
 const SecondaryText = styled.p`
   margin: 0 5px 0 0;
-  color: #6b6b6b;
-  font-size: 14px;
+  color: ${props => props.theme.textColor};
+  font-size: 12px;
+  @media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 
-const Icon = styled.p`
+const ThirdText = styled(SecondaryText)`
   margin: 0;
-  font-size: 20px;
   color: ${props => props.theme.textColor};
+`;
+
+const FourthText = styled(ThirdText)`
+  font-size: 11px;
+  margin-left: 4px;
 `;
 
 const Thumbnail = styled.div`
@@ -112,7 +133,10 @@ const CoverImage = styled.img`
 `;
 
 const Content = styled.div`
-  padding: 20px;
+  padding: 10px;
+  @media (min-width: 768px) {
+		padding: 20px;
+	}
 `;
 
 const Button = styled.button`

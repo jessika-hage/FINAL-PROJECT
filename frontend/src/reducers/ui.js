@@ -11,7 +11,7 @@ export const ui = createSlice({
       state.isLoading = action.payload
     },
     setFlippingBadge: (state, action) => {
-        state.isLoading = action.payload
+        state.flippingBadge = action.payload
     }
   }
 });

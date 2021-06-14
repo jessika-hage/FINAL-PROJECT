@@ -4,7 +4,12 @@ import { Tooltip } from "@material-ui/core";
 import styled from 'styled-components';
 
 import { themes } from '../../reducers/themes';
-import { darkTheme, lightTheme, blackTheme, grayTheme } from '../../styledcomponents/StyledTheme';
+import { 
+  redTheme, 
+  lightTheme, 
+  blueTheme, 
+  grayTheme, 
+  brownTheme } from '../../styledcomponents/StyledTheme';
 
 export const ThemeButtons = ({ text }) => {
   const dispatch = useDispatch();
@@ -16,14 +21,17 @@ export const ThemeButtons = ({ text }) => {
         <Tooltip title="Light">
           <LightButton onClick={() => dispatch(themes.actions.changeTheme(lightTheme))}></LightButton>
         </Tooltip>
-        <Tooltip title="Black">
-          <BlackButton onClick={() => dispatch(themes.actions.changeTheme(blackTheme))}></BlackButton>
+        <Tooltip title="Blue">
+          <BlueButton onClick={() => dispatch(themes.actions.changeTheme(blueTheme))}></BlueButton>
         </Tooltip>
-        <Tooltip title="Grey">
-          <GreyButton onClick={() => dispatch(themes.actions.changeTheme(darkTheme))}></GreyButton>
+        <Tooltip title="Red">
+          <RedButton onClick={() => dispatch(themes.actions.changeTheme(redTheme))}></RedButton>
         </Tooltip>
         <Tooltip title="Gray">
           <GrayButton onClick={() => dispatch(themes.actions.changeTheme(grayTheme))}></GrayButton>
+        </Tooltip>
+        <Tooltip title="Brown">
+          <BrownButton onClick={() => dispatch(themes.actions.changeTheme(brownTheme))}></BrownButton>
         </Tooltip>
       </Buttons>
     </ButtonContainer>
@@ -70,17 +78,21 @@ const Button = styled.button`
 `;
 
 const LightButton = styled(Button)`
-  background-color: brown;
+  background-color: #68825f;
 `;
 
-const BlackButton = styled(Button)`
-  background-color: black;
+const BlueButton = styled(Button)`
+  background-color: #14274e;
 `;
 
-const GreyButton = styled(Button)`
-  background-color: grey;
+const RedButton = styled(Button)`
+  background-color: #bb2205;
 `;
 
 const GrayButton = styled(Button)`
   background-color: #424242;
+`;
+
+const BrownButton = styled(Button)`
+  background-color: #7d5a50;
 `;

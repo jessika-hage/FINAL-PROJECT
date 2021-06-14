@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
 import { updateBadges } from '../../reducers/profile';
@@ -24,10 +24,17 @@ export const GameBall = () => {
   const [score, setScore] = useState(0);
   const [counter, setCounter] = useState(30);
   const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
+  const accessToken = useSelector((store) => store.profile.accessToken);
   const numOfBadges = Math.round(score / 2);
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
   useEffect(() => {
     const timer =

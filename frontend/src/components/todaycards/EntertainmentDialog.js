@@ -3,10 +3,11 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { 
   DialogContainer, 
+  DialogTitleText,
   MovieContainer, 
   MovieImage, 
   MovieTextContainer,
-  TitleCircleBox,
+  TitleContainer,
   MovieTitle,
   Basic,
   MovieRating,
@@ -32,13 +33,14 @@ export const EntertainmentDialog = ({
   return (
     <Dialog open={open} onClose={onClose}>
     <DialogContainer>
+      <DialogTitleText>It will cost you 5 badges to upgrade your movie, but your ranking will increase with 1.</DialogTitleText>
       <MovieContainer>
         <MovieImage src={basicImg} />
         <MovieTextContainer>
-          <TitleCircleBox>
+          <TitleContainer>
             <MovieTitle>{basicTitle}</MovieTitle>
             <Basic>Basic</Basic>
-          </TitleCircleBox>
+          </TitleContainer>
             <MovieRating>{basicRating}/10</MovieRating>
           <MovieDescription>{basicOverview}</MovieDescription>
           <UpgradeButton onClick={onClick}>
@@ -51,10 +53,10 @@ export const EntertainmentDialog = ({
           src={premiumImg}
         />
         <MovieTextContainer>
-          <TitleCircleBox>
+          <TitleContainer>
             <MovieTitle>{premiumTitle}</MovieTitle>
             <Premium>Premium</Premium>
-          </TitleCircleBox>
+          </TitleContainer>
             <MovieRating>{premiumRating}/10</MovieRating>
           <MovieDescription>{premiumOverview}</MovieDescription>
         </MovieTextContainer>

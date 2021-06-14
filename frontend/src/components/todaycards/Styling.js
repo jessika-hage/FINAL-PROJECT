@@ -6,8 +6,16 @@ export const DialogContainer = styled.div`
 	border: 2px solid ${props => props.theme.primary};
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
+	padding: 10px;
 	color: ${props => props.theme.textColor};
+	@media (min-width: 768px) {
+		padding: 20px;
+	}
+`;
+
+export const DialogTitleText = styled.p`
+	font-size: 14px;
+	text-align: center;
 `;
 
 export const MovieContainer = styled.div`
@@ -24,26 +32,38 @@ export const MovieImage = styled.img`
 export const MovieTextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding-left: 20px;
+	padding-left: 10px;
+	@media (min-width: 768px) {
+		padding-left: 20px;
+	}
 `;
 
-export const TitleCircleBox = styled.div`
+export const TitleContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	@media (min-width: 768px) {
+		align-items: center;
+	}
 `;
 
 export const MovieTitle = styled.h2`
-	font-size: 16px;
+	font-size: 14px;
 	text-transform: uppercase;
 	margin: 5px 0 10px 0;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
 `;
 
 export const Basic = styled.div`
 	border: 2px solid ${(props) => props.theme.secondary};
 	font-size: 12px;
-	padding: 10px;
+	padding: 5px;
+	height: fit-content;
 	text-transform: uppercase;
+	@media (min-width: 768px) {
+		padding: 10px;
+	}
 `;
 
 export const Premium = styled(Basic)`
