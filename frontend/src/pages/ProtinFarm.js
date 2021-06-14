@@ -6,7 +6,10 @@ export const ProtinFarm = () => {
 	return (
 		<MainContainer>
 			<WaterContainer>
-				<Fish1></Fish1>
+				{/* <Fish1></Fish1> */}
+				<Icon1 src={require('../components/store/assets/fish.png')} />
+				<Icon2 src={require('../components/store/assets/fish.png')} />
+				<Icon3 src={require('../components/store/assets/fish.png')} />
 				<Wave
 					fill='#73bed9'
 					paused={false}
@@ -24,20 +27,75 @@ export const ProtinFarm = () => {
 };
 
 const Roller = keyframes`
-0% { transform: translatey(500px) }
-50% { transform: translatex(550px) }
-100% { opacity: 1; transform: translatey(500px) }`;
+	0% {
+		transform: translate(0, 0);
+		transform: rotate(90deg);
+	}
+  10% {
+            transform: translate(-100px, 0);
+  }
+	25% {
+    transform: translate(100px, -200px);
+  }
+  50% {
+    transform: translate(0, 0);
+		transform: rotate(180deg);
+  }
+  75% {
+    transform: translate(0, 50px);
+  }
+	100% {
+		transform: translate(0, 0)
+	}
+	;`;
 
-const Fish1 = styled.div`
-	animation: ${Roller} 5s linear infinite;
-	background-color: #73bed9;
-	height: 20px;
-	width: 50px;
-	border-radius: 40px;
-	opacity: 0.3;
+const Roller2 = keyframes`
+	0% {
+		transform: translate(0, 0);
+		transform: rotate(-90deg);
+	}
+  10% {
+            transform: translate(-70px, 0);
+  }
+	25% {
+    transform: translate(150px, -170px);
+  }
+  50% {
+    transform: translate(0, 0);
+		transform: rotate(-180deg);
+  }
+  75% {
+    transform: translate(0, 50px);
+  }
+	100% {
+		transform: translate(0, 0)
+	}
+	;`;
+
+const Icon1 = styled.img`
+	animation: ${Roller} 4s linear infinite;
+	top: 70%;
+	right: 20%;
+	left: 50%;
+	position: absolute;
+`;
+const Icon2 = styled.img`
+	animation: ${Roller2} 2s linear infinite;
+	top: 50%;
+	right: 50%;
+	left: 50%;
+	position: absolute;
+`;
+const Icon3 = styled.img`
+	animation: ${Roller} 7s linear infinite;
+	top: 50%;
+	right: 50%;
+	left: 50%;
+	position: absolute;
 `;
 
 export const WaterContainer = styled.div`
+	position: relative;
 	width: 800px;
 	height: 600px;
 	display: flex;
