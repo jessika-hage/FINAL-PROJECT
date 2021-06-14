@@ -1,73 +1,73 @@
 import styled, { keyframes } from 'styled-components';
 
 export const MainContainer = styled.div`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  margin-top: -40px;
-  color: ${props => props.theme.textColor};
-  background-color: ${props => props.theme.backgroundColor};
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	margin-top: -40px;
+	color: ${(props) => props.theme.textColor};
+	background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const DialogContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: ${props => props.theme.backgroundColor};
-  border: 2px solid ${props => props.theme.secondary};
-  color: ${props => props.theme.textColor};
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${(props) => props.theme.textColor};
 `;
 
 export const DialogText = styled.p`
-  font-size: 16px;
+	font-size: 16px;
 `;
 
 export const StartButton = styled.button`
-  padding: 10px 15px;
-  margin-top: 20px;
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.hover};
-  color: ${props => props.theme.textColor};
-  font-size: 16px;
-  width: fit-content;
-  text-transform: uppercase;
-  font-family: "Trispace";
-  cursor: pointer;
-  :hover {
-    background-color: ${props => props.theme.hover};
-  }
+	padding: 10px 15px;
+	margin-top: 20px;
+	background-color: ${(props) => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.hover};
+	color: ${(props) => props.theme.textColor};
+	font-size: 16px;
+	width: fit-content;
+	text-transform: uppercase;
+	font-family: 'Trispace';
+	cursor: pointer;
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 export const GameTitle = styled.h1`
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  text-transform: uppercase;
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	text-transform: uppercase;
 `;
 
 export const ScoreText = styled(GameTitle)`
-  font-size: 20px;
-  top: 60px;
-  left: 22px;
+	font-size: 20px;
+	top: 60px;
+	left: 22px;
 `;
 
 export const CounterText = styled(ScoreText)`
-  top: 85px;
-  left: 22px;
+	top: 85px;
+	left: 22px;
 `;
 
 const Button = styled.button`
-  :hover {
-    opacity: 0.7;
-  }
-  :focus {
-    transform: scale(1.8);
-  }
+	:hover {
+		opacity: 0.7;
+	}
+	:focus {
+		transform: scale(1.8);
+	}
 `;
 
 const animationOne = keyframes`
@@ -81,13 +81,13 @@ const animationOne = keyframes`
   80% { transform: scale(3); transform: translateY(-300px)}
   90% { transform: scale(3); transform: translateX(400px)}
   100% { transform: scale(3); transform: translateY(500px)}
-  `
+  `;
 export const ButtonOne = styled.button`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.hover};
-  animation: ${animationOne} 16s linear infinite alternate-reverse;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: ${(props) => props.theme.hover};
+	animation: ${animationOne} 16s linear infinite alternate-reverse;
 `;
 
 const animationTwo = keyframes`
@@ -101,17 +101,17 @@ const animationTwo = keyframes`
   80% { transform: translateY(100px)}
   90% { transform: translateX(-300px)}
   100% { transform: translateY(500px)}
-  `
+  `;
 
 export const ButtonTwo = styled.button`
-  background-color: ${props => props.theme.secondary};
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  animation: ${animationTwo} 15s linear infinite alternate-reverse;
+	background-color: ${(props) => props.theme.secondary};
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	animation: ${animationTwo} 15s linear infinite alternate-reverse;
 `;
 
- const animationThree = keyframes`
+const animationThree = keyframes`
   10% { transform: translateX(-200px)}
   20% { transform: translateX(200px)}
   30% { transform: translateX(600px)}
@@ -125,14 +125,14 @@ export const ButtonTwo = styled.button`
 `;
 
 export const ButtonThree = styled.button`
-  background-color: ${props => props.theme.primary};
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  animation: ${animationThree} 12s linear infinite alternate-reverse;
+	background-color: ${(props) => props.theme.primary};
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	animation: ${animationThree} 12s linear infinite alternate-reverse;
 `;
 
- const animationFour = keyframes`
+const animationFour = keyframes`
   10% { transform: translateX(00px)}
   20% { transform: translateY(200px)}
   30% { transform: translateX(400px)}
@@ -146,11 +146,11 @@ export const ButtonThree = styled.button`
 `;
 
 export const ButtonFour = styled.button`
-  background-color: ${props => props.theme.primary};
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  animation: ${animationFour} 13s linear infinite alternate-reverse;
+	background-color: ${(props) => props.theme.primary};
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	animation: ${animationFour} 13s linear infinite alternate-reverse;
 `;
 
 const animationFive = keyframes`
@@ -167,9 +167,9 @@ const animationFive = keyframes`
 `;
 
 export const ButtonFive = styled.button`
-  background-color: ${props => props.theme.hover};
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  animation: ${animationFive} 10s linear infinite alternate-reverse;
+	background-color: ${(props) => props.theme.hover};
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	animation: ${animationFive} 10s linear infinite alternate-reverse;
 `;
