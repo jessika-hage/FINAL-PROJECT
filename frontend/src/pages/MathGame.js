@@ -10,12 +10,18 @@ import { Header } from '../components/Header';
 import { Camera } from '../components/Camera';
 import { FinishGame } from '../components/math/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
+import { generateProblem } from '../components/math/MathHelpers';
+import { MathStart } from '../components/math/MathStart';
 
 export const MathGame = () => {
 	const [openFinish, setOpenFinish] = useState(false);
+	const [start, setStart] = useState(false);
 	const [score, setScore] = useState(0);
 	const [mistakes, setMistakes] = useState(0);
-	// const [counter, setCounter] = useState(30);
+	const [counter, setCounter] = useState(30);
+	const [easy, setEasy] = useState(false);
+	const [medium, setMedium] = useState(false);
+	const [hard, setHard] = useState(false);
 	const [currentProblem, setCurrentProblem] = useState(generateProblem());
 	const [userAnswer, setUserAnswer] = useState('');
 	const [showError, setShowError] = useState(false);
@@ -26,39 +32,49 @@ export const MathGame = () => {
 
 	const dispatch = useDispatch();
 	const history = useHistory();
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [accessToken, history]);
 
+	  //Initializing the timer
 	useEffect(() => {
-		if (!accessToken) {
-			history.push('/signin');
-		}
-	}, [accessToken, history]);
-
-	  // Initializing the timer
-		// useEffect(() => {
-		// 	const timer =
-		// 		counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-		// 		return () => clearInterval(timer);
-		// }, [counter]);
+		const timer =
+			counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+			return () => clearInterval(timer);
+	}, [counter]);
 
 	// Opens dialog when game is finished
 	useEffect(() => {
-		if (score === 10 || mistakes === 3) {
+		if (mistakes === 3 || counter === 0) {
 			setOpenFinish(true);
 		}
-	}, [score, mistakes]);
+	}, [mistakes, counter]);
 
-	function generateNumber(max) {
-		return Math.floor(Math.random() * (max + 1));
-	}
+	// Functions for difficulty level
+	const onClickEasy = () => {
+		setCurrentProblem(generateProblem(0, 10))
+		setEasy(true);
+		setStart(true);
+		setCounter(40);
+	};
 
-	function generateProblem() {
-		return {
-			numberOne: generateNumber(20),
-			numberTwo: generateNumber(20),
-			operator: ['+', '-', 'x'][generateNumber(2)],
-		};
-	}
+	const onClickMedium = () => {
+		setCurrentProblem(generateProblem(5, 20))
+		setMedium(true);
+		setStart(true);
+		setCounter(30);
+	};
 
+	const onClickHard = () => {
+		setCurrentProblem(generateProblem(10, 30))
+		setHard(true);
+		setStart(true);
+		setCounter(20);
+	};
+
+	// Submitting answer
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let correctAnswer;
@@ -72,8 +88,10 @@ export const MathGame = () => {
 
 		if (correctAnswer === parseInt(userAnswer, 10)) {
 			setScore((prev) => prev + 1);
-			setCurrentProblem(generateProblem());
 			setUserAnswer('');
+			if (easy) setCurrentProblem(generateProblem(10))
+			if (medium) setCurrentProblem(generateProblem(20))
+			if (hard) setCurrentProblem(generateProblem(30))
 		} else {
 			setMistakes((prev) => prev + 1);
 			setShowError(true);
@@ -81,6 +99,8 @@ export const MathGame = () => {
 		}
 	};
 
+	// Collecting badges
+	// Returning to main
 	const resetGame = () => {
 		if (score > 0) {
 			dispatch(updateBadges(score));
@@ -100,30 +120,37 @@ export const MathGame = () => {
 			<Camera />
 			<MathTitle>Classroom</MathTitle>
 			<MathContainer>
-				{/* <TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer> */}
-				<MathProblem wrongAnswer={showError}>
-					{currentProblem.numberOne} {currentProblem.operator}{' '}
-					{currentProblem.numberTwo}
-				</MathProblem>
-				<MathForm
-					handleSubmit={handleSubmit}
-					answerField={answerField}
-					value={userAnswer}
-					onChange={(e) => setUserAnswer(e.target.value)}
-				/>
-				<StatusText>
-					You have {score} points, and can make {3 - mistakes}{' '}
-					more mistakes.
-				</StatusText>
-				<ProgressBar score={score} />
+				{!start ?
+					<MathStart 
+						easy={onClickEasy} 
+						medium={onClickMedium} 
+						hard={onClickHard} />
+					:
+					<>
+						<TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
+						<MathProblem wrongAnswer={showError}>
+							{currentProblem.numberOne} {currentProblem.operator}{' '}
+							{currentProblem.numberTwo}
+						</MathProblem>
+						<MathForm
+							handleSubmit={handleSubmit}
+							answerField={answerField}
+							value={userAnswer}
+							onChange={(e) => setUserAnswer(e.target.value)} />
+						<StatusText>
+							You have {score} points, and can make {3 - mistakes}{' '}
+							more mistakes.
+						</StatusText>
+						<ProgressBar score={score} />
+						<FinishGame
+							open={openFinish}
+							endText={!hard ? score : score * 2}
+							resetButton={resetButton}
+							onClick={resetGame}
+							buttonText={score > 0 ? 'Collect badges' : 'Try again later'}	/> 
+					</>
+				}
 			</MathContainer>
-			<FinishGame
-				open={openFinish}
-				endText={score}
-				resetButton={resetButton}
-				onClick={resetGame}
-				buttonText={score > 0 ? 'Collect badges' : 'Try again later'}
-			/>
 			{ animation && <BadgesAnimation text={score} /> }
 		</MainContainer>
 	);

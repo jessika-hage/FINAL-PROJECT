@@ -16,7 +16,6 @@ import { ProtinFarm } from './pages/ProtinFarm';
 import { profile } from './reducers/profile';
 import { cart } from './reducers/cart';
 import { products } from './reducers/products';
-import { GameBall } from './components/spaceball/GameBall';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -41,7 +40,6 @@ export const App = () => {
 						<Route path='/memorygame' component={MemoryGame} />
 						<Route path='/store' component={Store} />
 						<Route path='/farm' component={ProtinFarm} />
-						<Route path='/spaceball' component={GameBall} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>
