@@ -227,7 +227,7 @@ const Icon7 = styled.img`
 	width: 40px;
 	height: 35px;
 	animation: ${Roller} 5s linear infinite;
-	top: 80%;
+	top: 70%;
 	right: 50%;
 	left: 80%;
 	position: absolute;
@@ -245,7 +245,7 @@ const Icon8 = styled.img`
 const Icon9 = styled.img`
 	z-index: 1;
 	animation: ${Roller} 8s linear infinite;
-	top: 80%;
+	top: 90%;
 	right: 50%;
 	left: 80%;
 	position: absolute;
