@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 
-
 import { profile } from '../../reducers/profile';
 import { ItemsProfile } from './ItemsProfile';
 import { ProfileStats } from './ProfileStats';
@@ -21,7 +20,7 @@ import {
 export const Profile = () => {
 	const username = useSelector((store) => store.profile.username);
 	const avatar = useSelector((store) => store.profile.avatar);
-	const created = useSelector((store) => store.profile.created);
+	const createdAt = useSelector((store) => store.profile.createdAt);
 	const badges = useSelector((store) => store.profile.badges);
 	const ranking = useSelector((store) => store.profile.ranking);
 	const coins = useSelector((store) => store.profile.coins);
@@ -43,9 +42,9 @@ export const Profile = () => {
 				username={username} 
 				badges={badges} 
 				ranking={ranking} 
-				coins={coins} />
+				coins={coins === null ? coins : coins.toFixed(2)} />
 				<DaysContainer>
-					<DaysText>Days on ship: {moment(created).toNow(true)}</DaysText>
+					<DaysText>Days on ship: {moment(createdAt).toNow(true)}</DaysText>
 					<DaysText>
 						Days to destination: 
 					</DaysText>

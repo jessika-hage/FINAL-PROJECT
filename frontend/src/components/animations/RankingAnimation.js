@@ -5,8 +5,7 @@ import {
     BadgeText, 
     BadgeIcon } from './Styling';
 
-
-export const BadgesAnimation = ({ text }) => {
+export const RankingAnimation = ({ text }) => {
   return (
     <BadgeContainer>
       <BadgeText>+{text}</BadgeText>

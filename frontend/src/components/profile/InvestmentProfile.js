@@ -25,6 +25,7 @@ export const InvestmentProfile = () => {
   };
 
   const totalMarketValue = investmentQuantity * currency.price_usd;
+  const difference = investments - totalMarketValue;
 
   const onSellInvestment = () => {
     dispatch(updateInvestments(-investmentQuantity, -investments));
@@ -35,19 +36,19 @@ export const InvestmentProfile = () => {
     <InvestmentContainer>
       {investments > 0 ? 
       <>
-      <InvestmentText>Quantity: {investmentQuantity}st $</InvestmentText>
-      <InvestmentText>Initial investment: {investments}$</InvestmentText>
-      <InvestmentText>Current value: {totalMarketValue}$</InvestmentText>
+      <InvestmentText>Quantity: {investmentQuantity}st</InvestmentText>
+      <InvestmentText>Initial investment: {investments.toFixed(2)}$</InvestmentText>
+      <InvestmentText>Current value: {totalMarketValue.toFixed(2)}$</InvestmentText>
       <InvestmentChange>You are: 
-        <ValueChange percent={investments - totalMarketValue < 0}>
-          {investments - totalMarketValue}
+        <ValueChange percent={difference > 0}>
           {investments > totalMarketValue ? <IconDown /> : <IconUp />}
+          {difference.toFixed(2)} $
         </ValueChange>
       </InvestmentChange>
-      </>
-      : <InvestmentText>You have no investments.</InvestmentText>
-      }
       <SellButton onClick={onSellInvestment}>Sell investment</SellButton>
+      </>
+      : <InvestmentText>You have no investments yet.</InvestmentText>
+      }
     </InvestmentContainer>
   )
 };

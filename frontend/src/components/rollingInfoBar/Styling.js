@@ -29,6 +29,7 @@ export const RollingText = styled.div`
   animation: ${Roller} 25s linear infinite;
   opacity: 0;
   padding: 0;
+  overflow: hidden;
   @media (min-width: 1024px) {
     bottom: 14px;
     font-size: 14px;
@@ -49,13 +50,13 @@ export const Button = styled.button`
   padding: 0;
   text-transform: uppercase;
   background-color: transparent;
-  outline: none;
-  border: none;
-  font-weight: bold;
+  font-weight: 400;
   margin-left: 10px;
-  cursor: pointer;
   color: ${props => props.theme.textColor};
   text-decoration: underline;
+  @media (min-width: 1024px) {
+    font-weight: bold;
+  }
 `;
 
 export const DialogContainer = styled.div`
@@ -136,6 +137,12 @@ export const ArrowIcon = styled.span`
   padding: 0;
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const ExchangeButton = styled.button`
   padding: 8px;
   margin-top: 7px;
@@ -147,6 +154,13 @@ export const ExchangeButton = styled.button`
   border: 2px solid ${props => props.theme.secondary};
   :hover, :focus {
     background-color: ${props => props.theme.secondary};
+  }
+`;
+
+export const InvestmentButton = styled(ExchangeButton)`
+  border: 2px solid ${props => props.theme.hover};
+  :hover, :focus {
+    background-color: ${props => props.theme.hover};
   }
 `;
 
@@ -178,10 +192,12 @@ export const ConfirmedButton = styled.button`
 
 // Invest
 export const InvestTitle = styled(CurrencyTitle)`
+  border-bottom: 2px solid ${props => props.theme.hover};
+  padding-bottom: 5px;
 `;
 
 export const InvestInfo = styled.p`
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 export const InputContainer = styled.div`
@@ -193,16 +209,32 @@ export const InputAmount = styled.input`
   padding: 5px;
   border: 2px solid ${props => props.theme.secondary};
   color: ${props => props.theme.textColor};
-  font-size: 18px;
-  max-width: 50px;
+  font-size: 16px;
+  outline: none;
   background-color: ${props => props.theme.primary};
   margin-right: 15px;
+  max-width: 50%;
+  font-family: 'Trispace', serif;
+  :focus {
+    background-color: ${props => props.theme.secondary};
+  }
 `;
 
 export const SpaceText = styled.p`
   font-size: 16px;
-  margin-right: 20px;`
+  margin-right: 20px;
+`;
 
-  export const InvestButton = styled(ExchangeButton)`
-    margin: 0;
-  `;
+export const InvestButton = styled(ExchangeButton)`
+  margin: 0;
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  left: 10%;
+  top: 3%;
+transform: rotate(40deg);
+  @media (min-width: 768px) {
+    left: 26%;
+  }
+`;

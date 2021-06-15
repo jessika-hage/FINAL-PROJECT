@@ -227,21 +227,23 @@ export const InvestmentText = styled(ItemsTitle)`
 export const InvestmentChange = styled(InvestmentText)`
 	display: flex;
 	align-items: center;
+	margin: 0 0 5px 3px;
 `;
 
 export const IconUp = styled(FaArrowUp)`
-	margin-left: 5px;
+	margin: 4px 5px 0 5px;
 `;
 
 export const IconDown = styled(FaArrowDown)`
+	margin: 4px 5px 0 5px;
 `;
 
 export const ValueChange = styled(InvestmentText)`
+	margin: 0 0 5px 3px;
 	${props =>
 		props.percent ?
-		`
-		color: #e83715;
-		`:  `
-		color: #6DD704;
-		`};
-`
+		`color: #e83715;`
+		:  
+		`color: #6DD704;`
+	};
+`;
