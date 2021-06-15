@@ -4,7 +4,6 @@ export const cart = createSlice({
 	name: 'cart',
 	initialState: {
 		items: [],
-		myItems: [],
 	},
 	reducers: {
 		addItem: (store, action) => {
@@ -28,9 +27,6 @@ export const cart = createSlice({
 			} else if (exsistingProducts) {
 				exsistingProducts.quantity -= 1;
 			}
-		},
-		buyItems: (store, action) => {
-			store.myItems.push(...store.items, action.payload);
 		},
 	},
 });

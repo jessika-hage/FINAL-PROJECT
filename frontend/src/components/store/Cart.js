@@ -4,7 +4,9 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
-import { updateCoins, updateItems } from '../../reducers/profile';
+import { FaArrowUp } from 'react-icons/fa';
+
+import { updateCoins, updateItems, updateRanking } from '../../reducers/profile';
 import { cart } from '../../reducers/cart';
 
 import { CartItem } from './CartItem';
@@ -26,6 +28,13 @@ export const Cart = () => {
 		)
 	);
 
+	const totalRanking = useSelector((store) =>
+	store.cart.items.reduce(
+		(total, item) => total + item.ranking * item.quantity,
+		0
+	)
+);
+
 	const onToggleDialog = () => {
 		setOpen(!open);
 	};
@@ -33,8 +42,8 @@ export const Cart = () => {
 	const buy = () => {
 		if (totalPrice <= coins) {
 			dispatch(updateCoins(-totalPrice));
-			dispatch(cart.actions.buyItems(products));
 			dispatch(updateItems(products));
+			dispatch(updateRanking(totalRanking));
 			setOpen(false);
 			setOpenConfirmation(true);
 		} else {
@@ -65,6 +74,7 @@ export const Cart = () => {
 						<CartItem key={product.id} product={product} />
 					))}
 					<Amount>Total Price: {totalPrice}:-</Amount>
+					<Amount>Total Ranking: {totalRanking} <Icon /></Amount>
 					<AddButton onClick={buy}>Buy</AddButton>
 				</DialogContainer>
 			</Dialog>
@@ -178,6 +188,8 @@ const Total = styled.div`
 const Amount = styled.div`
 	color: ${(props) => props.theme.textColor};
 	margin: 10px 0;
+	display: flex;
+	align-items: center;
 `;
 
 const ShoppingButton = styled.button`
@@ -221,4 +233,9 @@ const ConfirmedButton = styled.button`
 
 const Text = styled.p`
 	font-size: 16px;
+`;
+
+const Icon = styled(FaArrowUp)`
+	color: green;
+	margin-left: 5px;
 `;

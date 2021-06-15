@@ -18,7 +18,7 @@ export const CartItem = ({ product }) => {
 					onClick={() => dispatch(cart.actions.removeItem(product))}>
 				-
 				</AddDeleteButton>
-				<ProductText>{product.quantity}</ProductText>
+				<QuantityText>{product.quantity}</QuantityText>
 				<AddDeleteButton 
 					type='button'
 					onClick={() => dispatch(cart.actions.addItem(product))}>
@@ -54,12 +54,20 @@ const ProductText = styled.p`
 	font-size: 13px;
 	color: ${props => props.theme.textColor};
 	margin: 0;
+	width: 30%;
+`;
+
+const QuantityText = styled.p`
+	font-size: 13px;
+	margin: 0;
 `;
 
 const ButtonContainer = styled.div`
 	display: flex;	
 	margin-left: 5px;
 	align-items: center;
+	justify-content: center;
+	width: 30%;
 `;
 
 const AddDeleteButton = styled.button`
