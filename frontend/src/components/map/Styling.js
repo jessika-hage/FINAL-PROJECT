@@ -119,6 +119,7 @@ export const InfoTitle = styled.h2`
 
 export const InfoText = styled.p`
 	font-size: 12px;
+	margin: 5px;
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}

@@ -13,6 +13,14 @@ import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { generateProblem } from '../components/math/MathHelpers';
 import { MathStart } from '../components/math/MathStart';
 
+import { 
+	MainContainer, 
+	MathTitle, 
+	MathContainer, 
+	TimerContainer, 
+	MathProblem, 
+	StatusText } from '../components/math/Styling';
+
 export const MathGame = () => {
 	const [openFinish, setOpenFinish] = useState(false);
 	const [start, setStart] = useState(false);
@@ -32,6 +40,7 @@ export const MathGame = () => {
 
 	const dispatch = useDispatch();
 	const history = useHistory();
+
 	// useEffect(() => {
 	// 	if (!accessToken) {
 	// 		history.push('/signin');
@@ -54,24 +63,24 @@ export const MathGame = () => {
 
 	// Functions for difficulty level
 	const onClickEasy = () => {
-		setCurrentProblem(generateProblem(0, 10))
+		setCurrentProblem(generateProblem(10))
 		setEasy(true);
 		setStart(true);
 		setCounter(40);
 	};
 
 	const onClickMedium = () => {
-		setCurrentProblem(generateProblem(5, 20))
+		setCurrentProblem(generateProblem(20))
 		setMedium(true);
 		setStart(true);
 		setCounter(30);
 	};
 
 	const onClickHard = () => {
-		setCurrentProblem(generateProblem(10, 30))
+		setCurrentProblem(generateProblem(30))
 		setHard(true);
 		setStart(true);
-		setCounter(20);
+		setCounter(25);
 	};
 
 	// Submitting answer
@@ -155,59 +164,3 @@ export const MathGame = () => {
 		</MainContainer>
 	);
 };
-
-const MainContainer = styled.main`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
-	width: 100%;
-	height: 100vh;
-	overflow: auto;
-	margin: 0 0 200px 0;
-	position: relative;
-`;
-
-const MathTitle = styled.h1`
-	font-size: 30px;
-	color: ${(props) => props.theme.textColor};
-	text-transform: uppercase;
-`;
-
-const MathContainer = styled.div`
-	margin: 10px 20px;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.textColor};
-	background-color: ${(props) => props.theme.primary};
-	border: 4px solid ${(props) => props.theme.hover};
-	padding: 20px;
-	position: relative;
-	@media (min-width: 768px) {
-		max-width: 85%;
-		padding: 30px;
-		margin-top: 30px;
-	}
-	@media (min-width: 1400px) {
-		max-width: 70%;
-	}
-	${(props) => (props.blurred ? `filter: blur(4px);` : `filter: none;`)}
-`;
-
-const TimerContainer = styled.div`
-  position: absolute;
-  right: 20px;
-  top: 15px;
-`;
-
-const MathProblem = styled.h2`
-	color: ${(props) => props.theme.textColor};
-	text-align: center;
-	font-size: 32px;
-	${(props) => (props.wrongAnswer ? `color: red; transform: scale(1.2)` : ``)}
-`;
-
-const StatusText = styled.p`
-	color: ${(props) => props.theme.textColor};
-	text-align: center;
-	font-size: 14px;
-`;

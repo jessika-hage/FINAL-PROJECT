@@ -3,7 +3,11 @@ import { Tooltip } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 import Dialog from '@material-ui/core/Dialog';
 
-import { RoomInfo, Icons, DialogContainer, InfoTitle } from './Styling';
+import { 
+  RoomInfo, 
+  Icons, 
+  DialogContainer, 
+  InfoTitle } from './Styling';
 
 export const Info = () => {
   const [openInfo, setOpenInfo] = useState(false);
@@ -25,4 +29,4 @@ export const Info = () => {
       </RoomInfo>
   </Tooltip>
   )
-}
+};

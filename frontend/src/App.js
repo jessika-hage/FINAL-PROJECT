@@ -3,6 +3,9 @@ import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import { profile } from './reducers/profile';
+import { cart } from './reducers/cart';
+import { products } from './reducers/products';
 import { themes } from 'reducers/themes';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
@@ -13,9 +16,8 @@ import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
-import { profile } from './reducers/profile';
-import { cart } from './reducers/cart';
-import { products } from './reducers/products';
+import { GameBall } from './components/spaceball/GameBall';;
+
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -40,6 +42,7 @@ export const App = () => {
 						<Route path='/memorygame' component={MemoryGame} />
 						<Route path='/store' component={Store} />
 						<Route path='/farm' component={ProtinFarm} />
+						<Route path='/spaceball' component={GameBall} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>
