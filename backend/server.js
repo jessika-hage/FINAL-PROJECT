@@ -45,7 +45,7 @@ const Citizen = mongoose.model('Citizen', {
 	},
 	ranking: {
 		type: Number,
-		default: 5,
+		default: 1,
 	},
 	coins: {
 		type: Number,
@@ -62,6 +62,14 @@ const Citizen = mongoose.model('Citizen', {
 	items: {
 		type: Array,
 	},
+	investments: {
+		type: Number,
+		default: 0,
+	},
+	investmentQuantity: {
+		type: Number,
+		default: 0,
+	}
 });
 
 const CitizenMessage = mongoose.model('CitizenMessage', {
@@ -166,6 +174,8 @@ app.post('/signup', async (req, res) => {
 			avatar: newCitizen.avatar,
 			items: newCitizen.items,
 			createdAt: newCitizen.createdAt,
+			investments: newCitizen.investments,
+			investmentQuantity: newCitizen.investmentQuantity,
 		});
 	} catch (error) {
 		if (error.code === 11000) {
@@ -206,6 +216,8 @@ app.post('/signin', async (req, res) => {
 				avatar: citizen.avatar,
 				items: citizen.items,
 				createdAt: citizen.createdAt,
+				investments: citizen.investments,
+				investmentQuantity: citizen.investmentQuantity,
 			});
 		} else {
 			res.status(404).json({ success: false, message: 'Citizen not found' });
@@ -322,6 +334,31 @@ app.post('/citizen/:id/items', async (req, res) => {
 		);
 		if (updatedItems) {
 			res.json(updatedItems);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for updating investments
+// app.patch('/citizen/:id/investments', authenticateCitizen);
+app.patch('/citizen/:id/investments', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedInvestments = await Citizen.findByIdAndUpdate(
+			id,
+			{
+				$inc: {
+					investments: req.body.investments,
+					investmentQuantity: req.body.investmentQuantity,
+				},
+			},
+			{ new: true }
+		);
+		if (updatedInvestments) {
+			res.json(updatedInvestments);
 		} else {
 			res.status(404).json({ message: 'Not found!' });
 		}
