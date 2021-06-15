@@ -42,7 +42,7 @@ export const EntertainmentCard = () => {
 	const buyMovie = () => {
 		setPremium(true);
 		dispatch(updateBadges(- 5));
-		dispatch(updateRanking(1));
+		dispatch(updateRanking(+ 0.5));
 	};
 
 	return (

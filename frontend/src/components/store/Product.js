@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { cart } from '../../reducers/cart';
 import styled from 'styled-components';
-
+import { FaArrowUp } from 'react-icons/fa';
 import Dialog from '@material-ui/core/Dialog';
+
+import { cart } from '../../reducers/cart';
 
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export const Product = ({ product }) => {
 						<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
 					<Text>{product.price}$</Text>
+					<TextDescription>Ranking: {product.ranking} <Icon /></TextDescription>
 					<AddButton
 						type='button'
 						disabled={product.inventory === 0}
@@ -163,4 +165,12 @@ const TextDescription = styled.p`
 	color: ${(props) => props.theme.textColor};
 	margin: 2px 0;
 	font-size: 14px;
+	display: flex;
+	align-items: center;
+`;
+
+
+const Icon = styled(FaArrowUp)`
+	color: green;
+	margin-left: 5px;
 `;
