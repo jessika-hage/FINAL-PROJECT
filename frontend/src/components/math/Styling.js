@@ -100,11 +100,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 export const Text = styled.h2`
   text-align: center;
+  font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -113,17 +121,21 @@ export const ButtonContainer = styled.div`
 
 // Buttons
 export const Button = styled.button`
-  padding: 10px 15px;
+  padding: 7px;
   margin-top: 20px;
   margin: 0 5px;
   background-color: ${props => props.theme.primary};
   border: 2px solid ${props => props.theme.hover};
   color: ${props => props.theme.textColor};
-  font-size: 16px;
+  font-size: 13px;
   text-transform: uppercase;
   font-family: "Trispace";
   :hover {
     background-color: ${props => props.theme.hover};
+  }
+  @media (min-width: 768px) {
+    font-size: 16px;
+    padding: 10px 15px;
   }
 `;
 

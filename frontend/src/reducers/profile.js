@@ -10,7 +10,7 @@ const initialState = {
 	coins: null,
 	createdAt: null,
 	avatar: "man",
-	items: "",
+	items: [],
 	investments: null,
 	investmentQuantity: null,
 };
@@ -64,7 +64,7 @@ export const profile = createSlice({
 				badges: null,
 				ranking: null,
 				coins: null,
-				items: "",
+				items: [],
 				avatar: "man",
 				createdAt: null,
 				investments: null,

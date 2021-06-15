@@ -6,6 +6,7 @@ import { Dialog } from '@material-ui/core';
 import { updateBadges } from '../../reducers/profile';
 import { Header } from '../../components/Header';
 import { Camera } from '../../components/Camera';
+import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
 import { 
   MainContainer, 
   GameTitle, 
@@ -24,6 +25,7 @@ export const GameBall = () => {
   const [score, setScore] = useState(0);
   const [counter, setCounter] = useState(30);
   const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
+  const [animation, setAnimation] = useState(false);
   const accessToken = useSelector((store) => store.profile.accessToken);
   const numOfBadges = Math.round(score / 2);
 
@@ -44,6 +46,7 @@ export const GameBall = () => {
 
   const onCollectBadges = () => {
     dispatch(updateBadges(numOfBadges));
+    setAnimation(true);
     setTimeout(() => {
       history.push('/')
     }, 1000)
@@ -84,6 +87,7 @@ export const GameBall = () => {
         </DialogContainer>
       </Dialog>
     </MainContainer>
+    { animation && <BadgesAnimation text={score} /> }
     </>
   )
 };

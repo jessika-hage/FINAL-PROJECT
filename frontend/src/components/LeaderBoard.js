@@ -36,7 +36,7 @@ export const LeaderBoard = () => {
 					<Citizen>{citizen.ranking}/100</Citizen>
 					<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 					<Citizen>{citizen.badges}</Citizen>
-					<Citizen>{citizen.coins}</Citizen>
+					<Citizen>{citizen.coins.toFixed(2)}</Citizen>
 				</CitizensList>
 			 ))}
 		</TableContainer>
@@ -86,7 +86,7 @@ const TableTitleLinks = styled(TableTitle)`
 
 const CitizenDaysLink = styled(TableTitleLinks)`
   display: none;
-	@media (min-width: 768px) {
+	@media (min-width: 950px) {
 		display: flex;
 	}
 `;
@@ -117,7 +117,7 @@ const Citizen = styled.p`
 
 const CitizenDays = styled(Citizen)`
   display: none;
-	@media (min-width: 768px) {
+	@media (min-width: 950px) {
 		display: flex;
 	}
 `;

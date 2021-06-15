@@ -32,6 +32,12 @@ export const Main = () => {
 				</MapContainer>
 			</Container>
 			<BottomContainer>
+				<WrapperLeaderBoard>
+					<CardTitle>Citizens Leaderboard</CardTitle>
+					<CitizensContainer>
+						<LeaderBoard />
+					</CitizensContainer>
+				</WrapperLeaderBoard>
 				<WrapperCard>
 					<CardTitle>Today on the ship</CardTitle>
 					<CardContainer>
@@ -39,12 +45,6 @@ export const Main = () => {
 						<EntertainmentCard />
 					</CardContainer>
 				</WrapperCard>
-				<WrapperLeaderBoard>
-					<CardTitle>Citizens Leaderboard</CardTitle>
-					<CitizensContainer>
-						<LeaderBoard />
-					</CitizensContainer>
-				</WrapperLeaderBoard>
 				<RollingInfoBar />
 			</BottomContainer>
 		</MainContainer>

@@ -5,12 +5,11 @@ import {
     BadgeText, 
     BadgeIcon } from './Styling';
 
-
-export const BadgesAnimation = ({ text }) => {
+export const CoinsAnimation = ({ text }) => {
   return (
     <BadgeContainer>
       <BadgeText>+{text}</BadgeText>
-      <BadgeIcon src={require(`../../assets/badge.png`)} /> 
+      <BadgeIcon src={require(`../../assets/money2.png`)} /> 
     </BadgeContainer>   
   )
 };    
