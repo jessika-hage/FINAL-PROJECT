@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 
 import { 
   RoomSpace, 
@@ -21,7 +21,7 @@ export const SpaceBall = () => {
   return (
     <RoomSpace onClick={onToggleGameDialog}>
       <Icons>
-        <LocalHospitalIcon fontSize='large' />
+        <BubbleChartIcon fontSize='large' />
       </Icons>
       <Dialog open={openGame} onClick={onToggleGameDialog}>
         <DialogContainer>

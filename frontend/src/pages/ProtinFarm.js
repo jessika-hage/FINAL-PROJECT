@@ -28,10 +28,12 @@ import {
 	CounterText,
 	DialogContainer,
 	StartButton,
+	FishWrapper
 } from '../components/farm/Styling';
 
 export const ProtinFarm = () => {
 	const [score, setScore] = useState(0);
+	const [disabled, setDisabled] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 
@@ -67,6 +69,7 @@ export const ProtinFarm = () => {
 
 	const onClickEasy = () => {
 		setScore(score + 2);
+		setDisabled(true)
 	};
 
 	return (
@@ -81,10 +84,15 @@ export const ProtinFarm = () => {
 				<WaterContainer>
 					<TransparentWrapper disabled='true'></TransparentWrapper>
 					{/* <Fishes /> */}
+					<FishWrapper
+					onClick={() => setDisabled(true)}
+					disabled={disabled}
+					>
 					<Icon1
 						src={require('../components/farm/assets/fish.png')}
 						onClick={onClickEasy}
 					/>
+					</FishWrapper>
 					<Icon2
 						src={require('../components/farm/assets/fish.png')}
 						onClick={onClickEasy}

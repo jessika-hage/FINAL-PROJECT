@@ -62,12 +62,10 @@ export const CounterText = styled(ScoreText)`
 `;
 
 const Button = styled.button`
-	:hover {
-		opacity: 0.7;
-	}
-	:focus {
-		transform: scale(1.8);
-	}
+  border-radius: 50%;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 const animationOne = keyframes`
@@ -84,15 +82,11 @@ const animationOne = keyframes`
   90% { transform: scale(3); transform: translateX(400px)}
   100% { transform: scale(3); transform: translateY(-500px)}
   `
-export const ButtonOne = styled.button`
+export const ButtonOne = styled(Button)`
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.hover};
+  background-color: #1A90FF;
   animation: ${animationOne} 16s linear infinite alternate-reverse;
-  :hover {
-    opacity: 0.6;
-  }
 `;
 
 const animationTwo = keyframes`
@@ -109,15 +103,11 @@ const animationTwo = keyframes`
   100% { transform: translateY(500px)}
   `;
 
-export const ButtonTwo = styled.button`
-  background-color: ${props => props.theme.secondary};
+export const ButtonTwo = styled(Button)`
+  background-color: #CE1F6A;
   width: 150px;
   height: 150px;
-  border-radius: 50%;
   animation: ${animationTwo} 13s linear infinite alternate-reverse;
-  :hover {
-    opacity: 0.6;
-  }
 `;
 
  const animationThree = keyframes`
@@ -134,11 +124,10 @@ export const ButtonTwo = styled.button`
   100% { transform: translateY(500px)}
 `;
 
-export const ButtonThree = styled.button`
-	background-color: ${(props) => props.theme.primary};
+export const ButtonThree = styled(Button)`
+	background-color: #B590CA;
 	width: 200px;
 	height: 200px;
-	border-radius: 50%;
 	animation: ${animationThree} 12s linear infinite alternate-reverse;
 `;
 
@@ -156,11 +145,10 @@ export const ButtonThree = styled.button`
   100% { transform: translateY(500px)}
 `;
 
-export const ButtonFour = styled.button`
-	background-color: ${(props) => props.theme.primary};
+export const ButtonFour = styled(Button)`
+	background-color: #29BB89;
 	width: 160px;
 	height: 160px;
-	border-radius: 50%;
 	animation: ${animationFour} 13s linear infinite alternate-reverse;
 `;
 
@@ -179,13 +167,12 @@ const animationFive = keyframes`
   100% { transform: scale(1); transform: translateY(-600px)}
 `;
 
-export const ButtonFive = styled.button`
+export const ButtonFive = styled(Button)`
   position: absolute;
   bottom: 50%;
   left: 50%;
-  background-color: ${props => props.theme.hover};
+  background-color: #F58634;
   width: 80px;
   height: 80px;
-  border-radius: 50%;
   animation: ${animationFive} 10s linear infinite alternate-reverse;
 `;

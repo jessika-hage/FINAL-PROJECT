@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Tooltip } from '@material-ui/core';
-// import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import Dialog from '@material-ui/core/Dialog';
 
@@ -25,7 +24,6 @@ export const Gym = () => {
 			<RoomGym onClick={onToggleGymDialog}>
 				<Icons>
 					<FitnessCenterIcon fontSize='large' />
-					{/* <BubbleChartIcon fontSize='large' /> */}
 				</Icons>
 				<Dialog open={openGym} onClick={onToggleGymDialog}>
 					<DialogContainer>

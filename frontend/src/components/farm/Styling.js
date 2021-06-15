@@ -47,17 +47,27 @@ const Roller2 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-	;`;
-export const Icon1 = styled.img`
+	;`
+
+	export const FishWrapper = styled.button`
 	z-index: 1;
-	width: 40px;
-	height: 35px;
-	animation: ${Roller} 16s linear infinite;
-	top: 70%;
-	right: 20%;
-	left: 80%;
 	position: absolute;
+	right: 20%;
+	top: 70%;
+	left: 80%;
+	background-color: transparent;
+	animation: ${Roller} 16s linear infinite;
+
+		&:disabled {
+		opacity: 0;
+	}
+	`
+export const Icon1 = styled.img`
+	width:80px;
+	height: 60px;
+
 `;
+
 export const Icon2 = styled.img`
 	z-index: 1;
 	animation: ${Roller2} 18s linear infinite;
