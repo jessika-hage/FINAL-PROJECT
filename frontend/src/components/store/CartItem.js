@@ -43,6 +43,7 @@ const ItemContainer = styled.div`
 const ImageTitleBox = styled.div`
 	display: flex;
 	align-items: center;
+	width: 40%;
 `;
 
 const ProductImage = styled.img`
@@ -54,7 +55,6 @@ const ProductText = styled.p`
 	font-size: 13px;
 	color: ${props => props.theme.textColor};
 	margin: 0;
-	width: 30%;
 `;
 
 const QuantityText = styled.p`

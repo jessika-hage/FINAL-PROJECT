@@ -73,13 +73,12 @@ export const Cart = () => {
 					{products.map((product) => (
 						<CartItem key={product.id} product={product} />
 					))}
-					<Amount>Total Price: {totalPrice}:-</Amount>
+					<Amount>Total Price: {totalPrice}$</Amount>
 					<Amount>Total Ranking: {totalRanking} <Icon /></Amount>
 					<AddButton onClick={buy}>Buy</AddButton>
 				</DialogContainer>
 			</Dialog>
 			<Total>
-				{/* <Amount>Total: {totalPrice}$</Amount> */}
 				<ShoppingButton>
 					<ItemsBadge><ItemsBadgeText>{products.length}</ItemsBadgeText></ItemsBadge>
 					<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
@@ -142,6 +141,9 @@ const DialogHeader = styled.div`
 
 const HeaderText = styled.p`
 	font-size: 14px;
+	:first-of-type {
+		width: 40%;
+	}
 `;
 
 const AddButton = styled.button`
