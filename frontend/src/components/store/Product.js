@@ -47,7 +47,9 @@ export const Product = ({ product }) => {
 					<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
 					<Text>{product.price}$</Text>
-					<TextDescription>Ranking: {product.ranking} <Icon /></TextDescription>
+					<TextDescription>
+						Ranking: {product.ranking} <Icon />
+					</TextDescription>
 					<AddButton
 						type='button'
 						disabled={product.inventory === 0}
@@ -163,13 +165,11 @@ const TextDescription = styled.p`
 	align-items: center;
 `;
 
-<<<<<<< HEAD
-
 const Icon = styled(FaArrowUp)`
 	color: green;
 	margin-left: 5px;
 `;
-=======
+
 const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.primary};
@@ -188,4 +188,3 @@ const ImageDialog = styled.img`
 	margin-right: 10px;
 	height: 120px;
 `;
->>>>>>> yWeek1

@@ -28,7 +28,15 @@ import {
 	CounterText,
 	DialogContainer,
 	StartButton,
-	FishWrapper
+	FishWrapper1,
+	FishWrapper2,
+	FishWrapper3,
+	FishWrapper4,
+	FishWrapper5,
+	FishWrapper6,
+	FishWrapper7,
+	FishWrapper8,
+	FishWrapper9,
 } from '../components/farm/Styling';
 
 export const ProtinFarm = () => {
@@ -68,8 +76,8 @@ export const ProtinFarm = () => {
 	}, [counter]);
 
 	const onClickEasy = () => {
-		setScore(score + 2);
-		setDisabled(true)
+		setScore(score + 1);
+		setDisabled(true);
 	};
 
 	return (
@@ -78,53 +86,66 @@ export const ProtinFarm = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Fish Farm</GameTitle>
-				<ScoreText>Score: {score}</ScoreText>
+				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 
 				<WaterContainer>
 					<TransparentWrapper disabled='true'></TransparentWrapper>
-					{/* <Fishes /> */}
-					<FishWrapper
-					onClick={() => setDisabled(true)}
-					disabled={disabled}
-					>
-					<Icon1
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					</FishWrapper>
-					<Icon2
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon3
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon4
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon5
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon6
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon7
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon8
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
-					<Icon9
-						src={require('../components/farm/assets/fish.png')}
-						onClick={onClickEasy}
-					/>
+
+					<FishWrapper1 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon1
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper1>
+					<FishWrapper2 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon2
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper2>
+					<FishWrapper3 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon3
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper3>
+					<FishWrapper4 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon4
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper4>
+					<FishWrapper5 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon5
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper5>
+					<FishWrapper6 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon6
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper6>
+					<FishWrapper7 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon7
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper7>
+					<FishWrapper8 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon8
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper8>
+					<FishWrapper9 onClick={() => setDisabled(true)} disabled={disabled}>
+						<Icon9
+							src={require('../components/farm/assets/fish.png')}
+							onClick={onClickEasy}
+						/>
+					</FishWrapper9>
 
 					<Wave
 						fill='#73bed9'
@@ -141,7 +162,7 @@ export const ProtinFarm = () => {
 				<Dialog open={openFinishedDialog}>
 					<DialogContainer>
 						<DialogText>
-							You managed to get {score} points which is {numOfBadges} badges!
+							You managed to catch {score} fishes which gives you {numOfBadges} badges!
 						</DialogText>
 						<StartButton onClick={onCollectBadges}>
 							{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}
