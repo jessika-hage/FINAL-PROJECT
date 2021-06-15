@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
-import { updateBadges, updateCoins } from '../../reducers/profile';
+import { updateBadges, updateCoins, updateInvestments } from '../../reducers/profile';
+import { Invest } from './Invest';
 import {   
     CurrencyText, 
     Button, 
@@ -22,6 +23,8 @@ import {
 export const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const [open, setOpen] = useState(false);
+  const [openInvest, setOpenInvest] = useState(false);
+  const [invest, setInvest] = useState('');
   const [confirmation, setConfirmation] = useState(false);
 
   const dispatch = useDispatch();
@@ -31,7 +34,6 @@ export const Currency = () => {
   }, []);
 
   // Fetch one random currency
-  // So the space currency looks very volatile
   const fetchCoin = () => {
     fetch('https://api.coinlore.net/api/ticker/?id=32360')
     .then(res => res.json())
@@ -56,6 +58,17 @@ export const Currency = () => {
   // Function in confirmed dialog after exchanging
   const onConfirmed = () => {
     setConfirmation(false);
+  };
+
+  // Function for investment dialog
+  const onToggleInvestDialog = () => {
+    setOpenInvest(!openInvest);
+  };
+
+  const totalInvest = invest * currency.price_usd;
+
+  const onInvest = () => {
+    dispatch(updateInvestments(invest, totalInvest));
   };
 
 	return (
@@ -83,7 +96,7 @@ export const Currency = () => {
                 </TextContainer>
                 <TextContainer>
               <Text>Change in last 24 hours: 
-                <PercentChange percent={currency.percent_change_124h < 0}> {currency.percent_change_24h} %</PercentChange>
+                <PercentChange percent={currency.percent_change_24h < 0}> {currency.percent_change_24h} %</PercentChange>
               </Text>
               </TextContainer>
               <TextContainer>
@@ -96,8 +109,10 @@ export const Currency = () => {
               </Text>
               </TextContainer>
               <ExchangeButton onClick={onExchange}>Exchange</ExchangeButton>
+              <ExchangeButton onClick={onToggleInvestDialog}>Invest</ExchangeButton>
         </DialogContainer>
       </Dialog>
+      <Invest open={openInvest} onClose={onToggleInvestDialog} value={invest} onChange={(e) => setInvest(e.target.value)} spaceValue={totalInvest} onClick={onInvest} />
       <Dialog open={confirmation} onClose={onToggleDialog}>
         <ConfirmationDialog>
           <Text>You have have received some coins which you can see on your profile!</Text>

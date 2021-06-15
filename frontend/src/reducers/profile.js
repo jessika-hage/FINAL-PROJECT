@@ -11,6 +11,8 @@ const initialState = {
 	createdAt: null,
 	avatar: "man",
 	items: "",
+	investments: null,
+	investmentQuantity: null,
 };
 
 export const profile = createSlice({
@@ -38,14 +40,20 @@ export const profile = createSlice({
 		setCoins: (store, action) => {
 			store.coins = action.payload;
 		},
+		setCreatedAt: (store, action) => {
+			store.createdAt = action.payload;
+		},
 		setAvatar: (store, action) => {
 			store.avatar = action.payload;
 		},
 		setItems: (store, action) => {
 			store.items = action.payload;
 		},
-		setCreatedAt: (store, action) => {
-			store.createdAt = action.payload;
+		setInvestments: (store, action) => {
+			store.investments = action.payload;
+		},
+		setInvestmentQuantity: (store, action) => {
+			store.investmentQuantity = action.payload;
 		},
 		setLogOut: () => {
 			return {
@@ -59,6 +67,8 @@ export const profile = createSlice({
 				items: "",
 				avatar: "man",
 				createdAt: null,
+				investments: null,
+				investmentQuantity: null,
 			};
 		},
 	},
@@ -136,6 +146,7 @@ export const updateCoins = (coins) => {
 	};
 };
 
+// Thunk for updating bought items
 export const updateItems = (items) => {
 	return (dispatch, getState) => {
 		console.log(getState());
@@ -154,6 +165,31 @@ export const updateItems = (items) => {
 			.then((data) => {
 				console.log(data);
 				dispatch(profile.actions.setItems(data.items));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+// Thunk for updating investments
+export const updateInvestments = (investmentQuantity, investments) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ investmentQuantity, investments }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/investments`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setQuantity(data.investments));
+				dispatch(profile.actions.setQuantity(data.investmentQuantity));
 			})
 			.catch((err) => console.error(err));
 	};

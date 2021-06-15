@@ -54,6 +54,8 @@ export const SignIn = () => {
 						dispatch(profile.actions.setAvatar(data.avatar));
 						dispatch(profile.actions.setCreatedAt(data.createdAt));
 						dispatch(profile.actions.setUserId(data.userId));
+						dispatch(profile.actions.setInvestments(data.investments));
+						dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
 					});
 				} else {
 					setErrorMessage(data.message);

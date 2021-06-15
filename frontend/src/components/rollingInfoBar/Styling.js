@@ -137,8 +137,6 @@ export const ArrowIcon = styled.span`
 `;
 
 export const ExchangeButton = styled.button`
-  outline: none;
-  border: none;
   padding: 8px;
   margin-top: 7px;
   width: fit-content;
@@ -177,3 +175,34 @@ export const ConfirmedButton = styled.button`
     background-color: ${props => props.theme.secondary};
   }
 `;
+
+// Invest
+export const InvestTitle = styled(CurrencyTitle)`
+`;
+
+export const InvestInfo = styled.p`
+  font-size: 12px;
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const InputAmount = styled.input`
+  padding: 5px;
+  border: 2px solid ${props => props.theme.secondary};
+  color: ${props => props.theme.textColor};
+  font-size: 18px;
+  max-width: 50px;
+  background-color: ${props => props.theme.primary};
+  margin-right: 15px;
+`;
+
+export const SpaceText = styled.p`
+  font-size: 16px;
+  margin-right: 20px;`
+
+  export const InvestButton = styled(ExchangeButton)`
+    margin: 0;
+  `;

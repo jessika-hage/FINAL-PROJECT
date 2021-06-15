@@ -7,13 +7,15 @@ import { useHistory } from 'react-router-dom';
 import { profile } from '../../reducers/profile';
 import { ItemsProfile } from './ItemsProfile';
 import { ProfileStats } from './ProfileStats';
+import { InvestmentProfile } from './InvestmentProfile';
 import { Buttons } from './Buttons';
 import { 
 	ProfileContainer, 
 	DaysContainer, 
 	DaysText, 
 	BottomContainer, 
-	RightContainer,
+	Items,
+	Investments,
 	ContainerTitle } from './Styling';
 
 export const Profile = () => {
@@ -49,13 +51,14 @@ export const Profile = () => {
 					</DaysText>
 				</DaysContainer>
 			<BottomContainer>
-				{/* <LeftContainer>
-					<ContainerTitle>Tasks for today</ContainerTitle>
-				</LeftContainer> */}
-				<RightContainer>
+				<Items>
 					<ContainerTitle>My items</ContainerTitle>
 					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
-				</RightContainer>
+				</Items>
+				<Investments>
+				<ContainerTitle>My investments</ContainerTitle>
+					<InvestmentProfile />
+				</Investments>
 			</BottomContainer>
 				<Buttons onClick={onLogout} />
 		</ProfileContainer>

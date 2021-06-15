@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 // Profile Stats
 export const ImageNameContainer = styled.div`
@@ -135,20 +137,21 @@ export const BottomContainer = styled.div`
   width: 100%;
 `;
 
-export const LeftContainer = styled.div`
+export const Items = styled.div`
+  padding: 10px 0 10px 0;
+  border-bottom: 2px solid ${(props) => props.theme.secondary};
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 0 0 5px 6px;
-  width: 100%;
 `;
 
-export const RightContainer = styled(LeftContainer)`
-  padding: 10px 0 10px 0;
-  border-bottom: none;
+export const Investments = styled(Items)`
+	border-bottom: none;
 `;
 
 export const ContainerTitle = styled(Username)`
 	font-size: 15px;
+	margin: 7px 0 5px 3px;
 `;
 
 // Buttons
@@ -197,3 +200,48 @@ export const ItemsTitle = styled.p`
 export const ItemsQuantity = styled(ItemsTitle)`
   margin: 0 0 0 5px;
 `;
+
+// InvestmentProfile
+export const SellButton = styled.button`
+	background-color: ${props => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${props => props.theme.textColor};
+	font-size: 14px;
+	margin-top: 7px;
+	padding: 5px;
+	width: fit-content;
+	:hover {
+		background-color: ${props => props.theme.secondary};
+	}
+`;
+
+export const InvestmentContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const InvestmentText = styled(ItemsTitle)`
+	margin: 5px 0 5px 3px;
+`;
+
+export const InvestmentChange = styled(InvestmentText)`
+	display: flex;
+	align-items: center;
+`;
+
+export const IconUp = styled(FaArrowUp)`
+	margin-left: 5px;
+`;
+
+export const IconDown = styled(FaArrowDown)`
+`;
+
+export const ValueChange = styled(InvestmentText)`
+	${props =>
+		props.percent ?
+		`
+		color: #e83715;
+		`:  `
+		color: #6DD704;
+		`};
+`
