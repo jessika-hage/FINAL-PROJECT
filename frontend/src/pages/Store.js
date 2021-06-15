@@ -10,12 +10,12 @@ import { Camera } from '../components/Camera';
 export const Store = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
-	// const history = useHistory();
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	const history = useHistory();
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
 	return (
 		<Main>

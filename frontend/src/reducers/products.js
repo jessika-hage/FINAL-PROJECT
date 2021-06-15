@@ -2,72 +2,30 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const productData = [
 	{
-<<<<<<< HEAD
-		id: 1,
-		title: 'Socks',
-		description: 'One size fits all',
-		price: 20,
-		image: 'socks.png',
-		ranking: 0.5,
-	},
-	{
-		id: 2,
-		title: 'Overall',
-		description: 'One size fits all',
-		price: 100,
-		image: 'overall.png',
-		ranking: 1,
-	},
-	{
-		id: 3,
-		title: 'Soap',
-		description: 'Essential item. Shuld be used daily',
-		price: 15,
-		image: 'soap.png',
-		ranking: 0.5,
-=======
 		id: 3,
 		title: 'Soap',
 		description: 'Essential item. Shuld be used daily',
 		price: 3,
 		image: 'soap.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 4,
 		title: 'Toilet paper',
 		description: 'Essential item. Shuld be used daily',
-<<<<<<< HEAD
-		price: 15,
-		image: 'toilet-paper.png',
-		ranking: 0.5
-=======
 		price: 2,
 		image: 'toilet-paper.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 5,
 		title: 'Vitamin-D',
 		description: 'One a day keeps the dector away',
-<<<<<<< HEAD
-		price: 50,
-		image: 'vitamins.png',
-		ranking: 1,
-=======
 		price: 3,
 		image: 'vitamins.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 6,
 		title: 'Vacuum cleaner',
 		description: 'A tidy home is a happy home',
-<<<<<<< HEAD
-		price: 500,
-		image: 'vaccum-cleaner.png',
-		ranking: 2,
-=======
 		price: 20,
 		image: 'vacuumcleaner1.jpg',
 	},
@@ -78,30 +36,18 @@ const productData = [
 		description: 'One size fits all',
 		price: 20,
 		image: 'overall.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 7,
 		title: 'Blancet',
 		description: '100% paper. Reusble.',
-<<<<<<< HEAD
-		price: 80,
-		image: 'blanket.png',
-		ranking: 1.5,
-=======
 		price: 5,
 		image: 'blancets1.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 8,
 		title: 'Slippers',
 		description: 'One size fits all',
-<<<<<<< HEAD
-		price: 30,
-		image: 'slippers.png',
-		ranking: 1,
-=======
 		price: 2,
 		image: 'slipper.jpg',
 	},
@@ -111,46 +57,27 @@ const productData = [
 		description: 'One size fits all',
 		price: 2,
 		image: 'sock.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 9,
 		title: 'Citizens Little Red One',
 		description: 'The only reading needed',
-<<<<<<< HEAD
-		price: 50,
-		image: 'book.png',
-		ranking: 1,
-=======
 		price: 1,
 		image: 'book1.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 10,
 		title: 'Noise reducer',
 		description: 'Get the 14h beauty sleep that you deserve',
-<<<<<<< HEAD
-		price: 200,
-		image: 'noise.png',
-		ranking: 1.5,
-=======
 		price: 2,
 		image: 'noisereducer.jpg',
->>>>>>> yWeek1
 	},
 	{
 		id: 11,
 		title: 'Happy-pills',
 		description: 'Just for emergencies',
-<<<<<<< HEAD
-		price: 250,
-		image: 'hallucinogen.png',
-		ranking: 2,
-=======
 		price: 6,
 		image: 'happy.jpg',
->>>>>>> yWeek1
 	},
 ];
 
