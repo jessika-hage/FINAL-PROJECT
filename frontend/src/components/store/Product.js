@@ -19,12 +19,15 @@ export const Product = ({ product }) => {
 	};
 
 	return (
-		<ProductWrapper>
+		<Main>
 			<Dialog open={open} onClose={addProduct}>
 				<DialogContainer>
-					<ImageWrapper>
-						<ImageDialog src={require(`./assets/${product.image}`)} alt={product.title} />
-					</ImageWrapper>
+					<ImageDialogWrapper>
+						<ImageDialog
+							src={require(`./assets/${product.image}`)}
+							alt={product.title}
+						/>
+					</ImageDialogWrapper>
 					<ProductContainer>
 						<AddedText>Added to cart</AddedText>
 						<Text>{product.title}</Text>
@@ -32,11 +35,16 @@ export const Product = ({ product }) => {
 					</ProductContainer>
 				</DialogContainer>
 			</Dialog>
-			<ImageWrapper>
-				<ProductImage src={require(`./assets/${product.image}`)} alt={product.title} />
-			</ImageWrapper>
+
+			<ProductWrapper>
+				<ImageWrapper>
+					<ProductImage
+						src={require(`./assets/${product.image}`)}
+						alt={product.title}
+					/>
+				</ImageWrapper>
 				<TextWrapper>
-						<Text>{product.title}</Text>
+					<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
 					<Text>{product.price}$</Text>
 					<TextDescription>Ranking: {product.ranking} <Icon /></TextDescription>
@@ -48,42 +56,42 @@ export const Product = ({ product }) => {
 						Add to cart
 					</AddButton>
 				</TextWrapper>
-		</ProductWrapper>
+			</ProductWrapper>
+		</Main>
 	);
 };
 
 const ProductImage = styled.img`
-	height: 100px;
+	width: 300px;
+	margin: 0;
+
+	@media (min-width: 768px) {
+		width: 300px;
+		padding: 5px;
+	}
+	@media (min-width: 1200px) {
+		max-width: 330px;
+	}
 `;
 
 const ImageWrapper = styled.div`
 	margin: 0;
-	padding: 5px;
 	display: flex;
+	justify-items: center;
 	align-items: center;
 	background-color: ${(props) => props.theme.secondary};
 `;
 
-const DialogContainer = styled.div`
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+const ProductWrapper = styled.div`
 	display: flex;
-	padding: 10px;
-	height: 150px;
-	color: ${(props) => props.theme.textColor};
-`;
-
-const ImageDialog = styled.img`
-	height: 80px;
-	background-color: ${(props) => props.theme.secondary};
-	padding: 7px 2px;
-	margin-right: 10px;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
 `;
 
 const ProductContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-left: 10px;
 	justify-content: space-between;
 `;
 
@@ -110,23 +118,23 @@ const AddButton = styled.button`
 	}
 `;
 
-const ProductWrapper = styled.div`
+const Main = styled.div`
 	display: flex;
-	width: 100%;
-	height: 200px;
+	margin: 5px;
+	width: 350;
+	height: 500px;
 	margin-bottom: 10px;
 	aline-items: center;
 	justify-content: center;
 	padding: 5px;
-	margin: 10px;
 	border: 2px solid ${(props) => props.theme.primary};
 
 	@media (min-width: 768px) {
-		max-width: 45%;
+		width: 320px;
 		padding: 5px;
 	}
 	@media (min-width: 1200px) {
-		max-width: 25%;
+		width: 350px;
 	}
 `;
 
@@ -138,20 +146,6 @@ const TextWrapper = styled.div`
 	padding: 7px 7px 7px 13px;
 	margin: 0;
 `;
-
-// const TitleBotWrapper = styled.div`
-// 	width: 100%;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: space-between;
-// `;
-
-// const Wrapper1 = styled.div`
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: space-between;
-// 	margin: 10px;
-// `;
 
 const Text = styled.p`
 	color: ${(props) => props.theme.textColor};
@@ -169,8 +163,29 @@ const TextDescription = styled.p`
 	align-items: center;
 `;
 
+<<<<<<< HEAD
 
 const Icon = styled(FaArrowUp)`
 	color: green;
 	margin-left: 5px;
 `;
+=======
+const DialogContainer = styled.div`
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.primary};
+	display: flex;
+	padding: 10px;
+	height: 150px;
+	color: ${(props) => props.theme.textColor};
+`;
+
+const ImageDialogWrapper = styled.div`
+	margin-right: 5px;
+`;
+const ImageDialog = styled.img`
+	background-color: ${(props) => props.theme.secondary};
+	padding: 7px 2px;
+	margin-right: 10px;
+	height: 120px;
+`;
+>>>>>>> yWeek1
