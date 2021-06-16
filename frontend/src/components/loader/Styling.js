@@ -13,7 +13,13 @@ div>div {
   position: absolute;
 }
 
-.wrapper:nth-of-type(2)>div {
+ const wrapper = styled.div`
+  :nth-of-type(2) {
+    height: 40px;
+    width: 40px;
+    opacity: 0.8;
+  }
+ `:nth-of-type(2)>div {
     height: 40px;
     width: 40px;
     opacity: 0.8;
