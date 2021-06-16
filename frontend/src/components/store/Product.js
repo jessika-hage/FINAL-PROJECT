@@ -167,10 +167,6 @@ const Icon = styled(FaArrowUp)`
 	color: green;
 	margin-left: 5px;
 `;
-<<<<<<< HEAD
-=======
-
->>>>>>> yWeek1
 const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.primary};
