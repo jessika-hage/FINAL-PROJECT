@@ -70,9 +70,9 @@ const Citizen = mongoose.model('Citizen', {
 		type: Number,
 		default: 0,
 	},
-	calories: {
+	energy: {
 		type: Number,
-		default: 0,
+		default: 2000,
 	}
 });
 
@@ -180,6 +180,7 @@ app.post('/signup', async (req, res) => {
 			createdAt: newCitizen.createdAt,
 			investments: newCitizen.investments,
 			investmentQuantity: newCitizen.investmentQuantity,
+			energy: newCitizen.energy,
 		});
 	} catch (error) {
 		if (error.code === 11000) {
@@ -222,6 +223,7 @@ app.post('/signin', async (req, res) => {
 				createdAt: citizen.createdAt,
 				investments: citizen.investments,
 				investmentQuantity: citizen.investmentQuantity,
+				energy: citizen.energy,
 			});
 		} else {
 			res.status(404).json({ success: false, message: 'Citizen not found' });
@@ -375,21 +377,21 @@ app.patch('/citizen/:id/investments', async (req, res) => {
 });
 
 // PATCH for increasing caloryintake
-// app.patch('/citizen/:id/calories', authenticateCitizen);
-app.patch('/citizen/:id/calories', async (req, res) => {
+// app.patch('/citizen/:id/energy', authenticateCitizen);
+app.patch('/citizen/:id/energy', async (req, res) => {
 	const { id } = req.params;
 	try {
-		const updatedCalories = await Citizen.findByIdAndUpdate(
+		const updatedEnergy = await Citizen.findByIdAndUpdate(
 			id,
 			{
 				$inc: {
-					calories: req.body.calories,
+					energy: req.body.energy,
 				},
 			},
 			{ new: true }
 		);
-		if (updatedCalories) {
-			res.json(updatedCalories);
+		if (updatedEnergy) {
+			res.json(updatedEnergy);
 		} else {
 			res.status(404).json({ message: 'Not found!' });
 		}
