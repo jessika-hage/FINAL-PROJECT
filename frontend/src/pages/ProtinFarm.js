@@ -41,11 +41,19 @@ import {
 
 export const ProtinFarm = () => {
 	const [score, setScore] = useState(0);
-	const [disabled, setDisabled] = useState(false);
+	const [disabled1, setDisabled1] = useState(false);
+	const [disabled2, setDisabled2] = useState(false);
+	const [disabled3, setDisabled3] = useState(false);
+	const [disabled4, setDisabled4] = useState(false);
+	const [disabled5, setDisabled5] = useState(false);
+	const [disabled6, setDisabled6] = useState(false);
+	const [disabled7, setDisabled7] = useState(false);
+	const [disabled8, setDisabled8] = useState(false);
+	const [disabled9, setDisabled9] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 
-	const numOfBadges = Math.round(score / 2);
+	const numOfBadges = Math.round(score);
 	const [counter, setCounter] = useState(30);
 
 	const dispatch = useDispatch();
@@ -75,9 +83,41 @@ export const ProtinFarm = () => {
 		}
 	}, [counter]);
 
-	const onClickEasy = () => {
+	const onClick1 = () => {
 		setScore(score + 1);
-		setDisabled(true);
+		setDisabled1(true);
+	};
+	const onClick2 = () => {
+		setScore(score + 1);
+		setDisabled2(true);
+	};
+	const onClick3 = () => {
+		setScore(score + 1);
+		setDisabled3(true);
+	};
+	const onClick4 = () => {
+		setScore(score + 1);
+		setDisabled4(true);
+	};
+	const onClick5 = () => {
+		setScore(score + 1);
+		setDisabled5(true);
+	};
+	const onClick6 = () => {
+		setScore(score + 1);
+		setDisabled6(true);
+	};
+	const onClick7 = () => {
+		setScore(score + 1);
+		setDisabled7(true);
+	};
+	const onClick8 = () => {
+		setScore(score + 1);
+		setDisabled8(true);
+	};
+	const onClick9 = () => {
+		setScore(score + 1);
+		setDisabled9(true);
 	};
 
 	return (
@@ -90,60 +130,67 @@ export const ProtinFarm = () => {
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 
 				<WaterContainer>
-					<TransparentWrapper disabled='true'></TransparentWrapper>
-
-					<FishWrapper1 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled1='true'></TransparentWrapper>
+					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
 						<Icon1
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick1}
 						/>
 					</FishWrapper1>
-					<FishWrapper2 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled2='true'></TransparentWrapper>
+					<FishWrapper2 onClick={() => setDisabled2(true)} disabled={disabled2}>
 						<Icon2
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick2}
 						/>
 					</FishWrapper2>
-					<FishWrapper3 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled3='true'></TransparentWrapper>
+					<FishWrapper3 onClick={() => setDisabled3(true)} disabled={disabled3}>
 						<Icon3
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick3}
 						/>
 					</FishWrapper3>
-					<FishWrapper4 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled4='true'></TransparentWrapper>
+					<FishWrapper4 onClick={() => setDisabled4(true)} disabled={disabled4}>
 						<Icon4
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick4}
 						/>
 					</FishWrapper4>
-					<FishWrapper5 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled5='true'></TransparentWrapper>
+					<FishWrapper5 onClick={() => setDisabled5(true)} disabled={disabled5}>
 						<Icon5
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick5}
 						/>
 					</FishWrapper5>
-					<FishWrapper6 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled6='true'></TransparentWrapper>
+					<FishWrapper6 onClick={() => setDisabled6(true)} disabled={disabled6}>
 						<Icon6
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick6}
 						/>
 					</FishWrapper6>
-					<FishWrapper7 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled7='true'></TransparentWrapper>
+					<FishWrapper7 onClick={() => setDisabled7(true)} disabled={disabled7}>
 						<Icon7
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick7}
 						/>
 					</FishWrapper7>
-					<FishWrapper8 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled8='true'></TransparentWrapper>
+					<FishWrapper8 onClick={() => setDisabled8(true)} disabled={disabled8}>
 						<Icon8
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick8}
 						/>
 					</FishWrapper8>
-					<FishWrapper9 onClick={() => setDisabled(true)} disabled={disabled}>
+					<TransparentWrapper disabled9='true'></TransparentWrapper>
+					<FishWrapper9 onClick={() => setDisabled9(true)} disabled={disabled9}>
 						<Icon9
 							src={require('../components/farm/assets/fish.png')}
-							onClick={onClickEasy}
+							onClick={onClick9}
 						/>
 					</FishWrapper9>
 

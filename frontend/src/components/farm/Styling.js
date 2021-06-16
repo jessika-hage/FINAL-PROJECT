@@ -78,6 +78,8 @@ export const FishWrapper2 = styled.button`
 	position: absolute;
 	&:disabled {
 		opacity: 0;
+		width: 80px;
+		height: 100px;
 	}
 `;
 export const Icon2 = styled.img``;
@@ -136,7 +138,10 @@ export const FishWrapper6 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon6 = styled.img``;
+export const Icon6 = styled.img`
+	width: 30px;
+	height: 25px;
+`;
 
 export const FishWrapper7 = styled.button`
 	background-color: transparent;
