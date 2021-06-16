@@ -11,6 +11,8 @@ import {
   MessageTitle, 
   MessageList, 
   MessageBox, 
+  ImageUserBox,
+  TextBox,
   MessageText,
   MessageCreated,
   CitizenAvatar,
@@ -62,10 +64,14 @@ export const MessageBoard = ({ onClick }) => {
         <MessageList>
           {messageList.map((message, index) => (
             <MessageBox key={index}>
-              <MessageText>{message.message}</MessageText>
-              <MessageCreated>{moment(message.createdAt).fromNow()}</MessageCreated>
-              <Username>{message.user.username}</Username>
-              <CitizenAvatar src={require(`../../assets/${message.user.avatar}.png`)} />
+              <ImageUserBox>
+                <CitizenAvatar src={require(`../../assets/${message.user.avatar}.png`)} />
+                <Username>{message.user.username}</Username>
+              </ImageUserBox>
+              <TextBox>
+                <MessageText>{message.message}</MessageText>
+                <MessageCreated>{moment(message.createdAt).fromNow()}</MessageCreated>
+              </TextBox>
             </MessageBox>
           ))}
         </MessageList>

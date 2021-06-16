@@ -86,28 +86,43 @@ export const MessageList = styled.div`
 `;
 
 export const MessageBox = styled.div`
-  font-size: 14px;
+  display: flex;
   border-bottom: 3px solid ${props => props.theme.primary};
   :last-of-type {
     margin-bottom: 100px;
   }
 `;
 
+export const ImageUserBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 10px 5px;
+`;
+
+export const TextBox = styled(ImageUserBox)`
+  margin-left: 10px;
+  align-items: flex-start;
+  height: 100%;
+  justify-content: space-between;
+`;
+
 export const MessageText = styled.p`
   font-size: 14px;
-  margin-bottom: 0;
+  margin: 0 0 5px 0;
 `;
 
 export const MessageCreated = styled.p`
   font-size: 11px;
-  margin-top: 3px;
+  margin: 0;
 `;
 
 export const CitizenAvatar = styled.img`
 	height: 18px;
 	width: 18px;
 	padding: 2px;
-	margin-right: 5px;
+	margin: 3px 0 0 0;
 	background-color: ${props => props.theme.secondary};
 	border-radius: 50%;
 	@media (min-width: 768px) {
@@ -119,4 +134,5 @@ export const CitizenAvatar = styled.img`
 
 export const Username = styled.p`
   font-size: 12px;
+  margin: 0;
 `;
