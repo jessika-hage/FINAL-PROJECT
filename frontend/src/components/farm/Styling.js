@@ -47,96 +47,149 @@ const Roller2 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-	;`
+	;`;
 
-	export const FishWrapper = styled.button`
+export const FishWrapper1 = styled.button`
 	z-index: 1;
 	position: absolute;
+	background-color: transparent;
 	right: 20%;
 	top: 70%;
 	left: 80%;
-	background-color: transparent;
+
 	animation: ${Roller} 16s linear infinite;
 
-		&:disabled {
+	&:disabled {
 		opacity: 0;
 	}
-	`
+`;
 export const Icon1 = styled.img`
-	width:80px;
+	width: 80px;
 	height: 60px;
-
 `;
 
-export const Icon2 = styled.img`
+export const FishWrapper2 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller2} 18s linear infinite;
 	top: 50%;
 	right: 50%;
 	left: 50%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+		width: 80px;
+		height: 100px;
+	}
 `;
-export const Icon3 = styled.img`
+export const Icon2 = styled.img``;
+
+export const FishWrapper3 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller} 15s linear infinite;
 	top: 80%;
 	right: 20%;
 	left: 80%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
-export const Icon4 = styled.img`
+export const Icon3 = styled.img``;
+
+export const FishWrapper4 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller} 17s linear infinite;
 	top: 90%;
 	right: 40%;
 	left: 60%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
-export const Icon5 = styled.img`
+export const Icon4 = styled.img``;
+
+export const FishWrapper5 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller} 11s linear infinite;
 	top: 70%;
 	right: 40%;
 	left: 60%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
-export const Icon6 = styled.img`
+export const Icon5 = styled.img``;
+
+export const FishWrapper6 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller} 13s linear infinite;
 	top: 80%;
 	right: 70%;
 	left: 30%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
-export const Icon7 = styled.img`
+export const Icon6 = styled.img`
+	width: 30px;
+	height: 25px;
+`;
+
+export const FishWrapper7 = styled.button`
+	background-color: transparent;
 	z-index: 1;
-	width: 40px;
-	height: 35px;
 	animation: ${Roller} 15s linear infinite;
 	top: 70%;
 	right: 50%;
 	left: 80%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
-export const Icon8 = styled.img`
+export const Icon7 = styled.img`
+	width: 40px;
+	height: 35px;
+`;
+
+export const FishWrapper8 = styled.button`
+	background-color: transparent;
 	z-index: 1;
-	width: 50px;
-	height: 45px;
 	animation: ${Roller} 7s linear infinite;
 	top: 80%;
 	right: 50%;
 	left: 50%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
+`;
+export const Icon8 = styled.img`
+	width: 50px;
+	height: 45px;
 `;
 
-export const Icon9 = styled.img`
+export const FishWrapper9 = styled.button`
+	background-color: transparent;
 	z-index: 1;
 	animation: ${Roller} 18s linear infinite;
 	top: 90%;
 	right: 50%;
 	left: 80%;
 	position: absolute;
+	&:disabled {
+		opacity: 0;
+	}
 `;
+export const Icon9 = styled.img``;
 
 export const GameTitle = styled.h1`
 	position: absolute;

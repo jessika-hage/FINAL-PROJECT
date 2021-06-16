@@ -47,7 +47,9 @@ export const Product = ({ product }) => {
 					<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
 					<Text>{product.price}$</Text>
-					<TextDescription>Ranking: {product.ranking} <Icon /></TextDescription>
+					<TextDescription>
+						Ranking: {product.ranking} <Icon />
+					</TextDescription>
 					<AddButton
 						type='button'
 						disabled={product.inventory === 0}
