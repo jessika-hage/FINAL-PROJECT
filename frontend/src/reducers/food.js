@@ -1,20 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+//Daily intake
+// Energy: 8,400kJ/2,000kcal
+// Total fat: less than 70g
+// Saturates: less than 20g
+// Carbohydrate: 260g
+// Total sugars: 90g
+// Protein: 50g
+// Salt: less than 6g
+
 const foodData = [
 	{
 		id: 1,
-		title: 'Pasta',
-		calories: 500,
+		title: 'Protein Burger',
+		energy: 900,
+		protein: 80,
+		salt: 2,
+		price: 5,
 	},
 	{
 		id: 2,
-		title: 'Pasta',
-		calories: 500,
+		title: 'Protein Shake',
+		energy: 500,
+		protein: 80,
+		salt: 2,
+		price: 3,
 	},
 	{
 		id: 3,
-		title: 'Pasta',
-		calories: 500,
+		title: 'Fish´n Go',
+		energy: 600,
+		protein: 50,
+		salt: 2,
+		price: 5,
 	},
 	{
 		id: 4,
