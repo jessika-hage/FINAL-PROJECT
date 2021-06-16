@@ -10,7 +10,7 @@ import { food } from './reducers/food'
 import { themes } from 'reducers/themes';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
-import { LeaderBoard } from './components/LeaderBoard';
+import { LeaderBoard } from './components/leaderboard/LeaderBoard';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';

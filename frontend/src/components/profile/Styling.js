@@ -83,6 +83,34 @@ export const CoinsIcon = styled.img`
 	margin: 0 0 0 7px
 `;
 
+// Ranking Progress Bar
+export const ProgressContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  margin: 0 0 10px 0;
+`; 
+
+export const ProgressBar = styled.div`
+  height: 8px;
+  width: 100%;
+  border: 1px solid ${props => props.theme.secondary};
+`;
+
+export const ProgressFiller = styled.div`
+  background: ${props => props.theme.hover};
+  width: 100%;
+  height: 100%;
+  transition: width 0.5s linear;
+`;
+
+export const ProgressText = styled.p`
+  font-size: 10px;
+  margin: 0 2px 4px 0;
+  color: ${props => props.theme.textColor};
+`;
+
 // Profile 
 export const ProfileContainer = styled.section`
 	display: flex;

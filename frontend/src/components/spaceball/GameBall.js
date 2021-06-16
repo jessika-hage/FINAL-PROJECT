@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
 import { updateBadges } from '../../reducers/profile';
-import { Header } from '../../components/Header';
-import { Camera } from '../../components/Camera';
+import { Header } from '../header/Header';
+import { Camera } from '../header/Camera';
 import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
 import { 
   MainContainer, 

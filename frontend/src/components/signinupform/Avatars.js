@@ -6,7 +6,6 @@ import {
   Radio,
   Avatar } from './Styling';
 
-
 export const Avatars = ({ avatar, onChange, checked, image }) => {
 
   return (

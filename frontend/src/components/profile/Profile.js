@@ -38,18 +38,18 @@ export const Profile = () => {
 
 	return (
 		<ProfileContainer>
-				<ProfileStats 
+			<ProfileStats 
 				avatar={require(`../../assets/${avatar}.png`)}
 				username={username} 
 				badges={badges} 
 				ranking={ranking} 
 				coins={coins === null ? coins : coins.toFixed(2)} />
-				<DaysContainer>
-					<DaysText>Days on ship: {moment(createdAt).toNow(true)}</DaysText>
-					<DaysText>
-						Days to destination: 
-					</DaysText>
-				</DaysContainer>
+			<DaysContainer>
+				<DaysText>Days on ship: {moment(createdAt).toNow(true)}</DaysText>
+				<DaysText>
+					Days to destination: 
+				</DaysText>
+			</DaysContainer>
 			<BottomContainer>
 				<Items>
 					<ContainerTitle>My energy</ContainerTitle>
@@ -60,11 +60,11 @@ export const Profile = () => {
 					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
 				</Items>
 				<Investments>
-				<ContainerTitle>My investments</ContainerTitle>
+					<ContainerTitle>My investments</ContainerTitle>
 					<InvestmentProfile />
 				</Investments>
 			</BottomContainer>
-				<Buttons onClick={onLogout} />
+			<Buttons onClick={onLogout} />
 		</ProfileContainer>
 	);
 };

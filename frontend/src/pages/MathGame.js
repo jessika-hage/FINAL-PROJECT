@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateBadges } from '../reducers/profile';
 import { ProgressBar } from '../components/math/ProgressBar';
 import { MathForm } from '../components/math/MathForm';
-import { Header } from '../components/Header';
-import { Camera } from '../components/Camera';
+import { Header } from '../components/header/Header';
+import { Camera } from '../components/header/Camera';
 import { FinishGame } from '../components/math/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { generateProblem } from '../components/math/MathHelpers';
@@ -46,7 +46,7 @@ export const MathGame = () => {
 	// 	}
 	// }, [accessToken, history]);
 
-	  //Initializing the timer
+	//Initializing the timer
 	useEffect(() => {
 		const timer =
 			counter > 0 && setInterval(() => setCounter(counter - 1), 1000);

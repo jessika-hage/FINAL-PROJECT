@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import styled from "styled-components";
 
 import { MemoryCard } from "./MemoryCard";
-import { GameService } from "./GameService";
-import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from "./constants";
+import { GetImages } from "./GetImages";
+import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from "./Constants";
+import { 
+  Container, 
+  MemoryTitle, 
+  GameContainer, 
+  FlipText, 
+  GameGrid } from './Styling';
 
 export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
   const [deck, setDeck] = useState({});
@@ -100,7 +105,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 
   const startGame = useCallback(async () => {
     try {
-      const newDeck = await GameService();
+      const newDeck = await GetImages();
       setDeck(newDeck);
       flipCounter.current = 0;
       onGameUpdate(GAME_STATUS.IN_PROGRESS);
@@ -139,7 +144,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 
 
   return (
-    <MainContainer>
+    <Container>
       <MemoryTitle>Memory Game</MemoryTitle>
       <GameContainer>
         <FlipText>Flips: {flipCounter.current}</FlipText>
@@ -156,58 +161,6 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
         })}
       </GameGrid>
       </GameContainer>
-    </MainContainer>
+    </Container>
   );
 };
-
-
-const MainContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  @media (min-width: 768px) {
-    padding: 20px;
-  }
-`;
-
-const MemoryTitle = styled.h1`
-  font-size: 30px;
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-`;
-
-const GameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background-color: ${props => props.theme.primary};
-  border: 4px solid ${props => props.theme.hover};
-  color: ${props => props.theme.textColor};
-  padding: 20px 10px;
-  @media (min-width: 1024px) {
-    max-width: 85%;
-    padding: 30px;
-  }
-  @media (min-width: 1400px) {
-    max-width: 70%;
-  }
-`; 
-
-const FlipText = styled.p`
-  font-size: 16px;
-  position: absolute;
-  left: 20px;
-  top: 0;
-  // @media (min-width: 768px) {
-  //   margin: 0 0 15px 35px;
-  // }
-`;
-
-const GameGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-`;

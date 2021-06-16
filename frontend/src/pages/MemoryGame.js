@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
 import { updateBadges } from '../reducers/profile';
 import { MemoryBoard } from "../components/memory/MemoryBoard";
 import { FinishDialog } from "../components/memory/FinishDialog";
-import { Header } from "../components/Header";
-import { Camera } from "../components/Camera";
+import { Header } from "../components/header/Header";
+import { Camera } from "../components/header/Camera";
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-
-import { GAME_STATUS } from "../components/memory/constants";
+import { GAME_STATUS } from "../components/memory/Constants";
+import { MainContainer } from '../components/memory/Styling';
 
 export const MemoryGame = () => {
   const [openWin, setOpenWin] = useState(false);
@@ -42,12 +41,12 @@ export const MemoryGame = () => {
 
   // Collect badges when finished game
   const handleCollectBadges = () => {
-      setOpenWin(false);
-      setAnimation(true);
-      dispatch(updateBadges(countPoints));
-      setTimeout(() => {
-        history.push('/');
-      }, 2000)
+    setOpenWin(false);
+    setAnimation(true);
+    dispatch(updateBadges(countPoints));
+    setTimeout(() => {
+      history.push('/');
+    }, 2000)
   };
 
   return (
@@ -72,19 +71,3 @@ export const MemoryGame = () => {
     </MainContainer>
   );
 };
-
-const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${props => props.theme.backgroundColor};
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow: auto;
-  margin: 0;  
-  padding-bottom: 100px;
-  @media (min-width: 768px) {
-    padding-bottom: 0;
-  }
-`;

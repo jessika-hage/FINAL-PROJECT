@@ -1,7 +1,7 @@
-import { CARD_STATUS, DECK_SIZE, API_PAGE_SIZE, BASE_URL } from "./constants";
+import { CARD_STATUS, DECK_SIZE, API_PAGE_SIZE, BASE_URL } from "./Constants";
 
 // Create new game
-export const GameService = async () => {
+export const GetImages = async () => {
   const urls = await getRandomUrls();
   const deck = urls.concat(urls);
 
@@ -46,6 +46,5 @@ export const getRandomUrls = async () => {
       }
     }
   }
-
   return urlArray;
 };

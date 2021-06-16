@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { EnergyContainer, EnergyText } from './Styling';
 
 export const EnergyProfile = () => {
+  
   const energy = useSelector((store) => store.profile.energy)
   return (
     <EnergyContainer>

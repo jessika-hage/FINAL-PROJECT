@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components"
 import ReactCardFlip from 'react-card-flip';
 
-import { CARD_STATUS } from "./constants";
+import { CARD_STATUS } from "./Constants";
+import { Card, ImageCard } from './Styling';
 
 
 export const MemoryCard = ({ data, handleClick, index }) => {
@@ -32,7 +33,7 @@ export const MemoryCard = ({ data, handleClick, index }) => {
       isFlipped={isFlipped} 
       flipDirection='horizontal'>
       <Card 
-        flipped={isFlipped} 
+        flipped={flipped} 
         onClick={onCardClick}>
       </Card>
       <ImageCard 
@@ -42,32 +43,3 @@ export const MemoryCard = ({ data, handleClick, index }) => {
     </ReactCardFlip>
   );
 };
-
-
-const Card = styled.div`
-	height: 120px;
-	width: 90px;
-	background-color: ${(props) => props.theme.secondary};
-  margin: 5px;
-  cursor: pointer;
-  :hover {
-    opacity: 0.7;
-  }
-  @media (min-width: 768px) {
-    margin: 10px;
-    height: 180px;
-    width: 140px;
-  }
-`;
-
-const ImageCard = styled.img`
-  margin: 5px;
-  height: 120px;
-	width: 90px;
-  @media (min-width: 768px) {
-    margin: 10px;
-    height: 180px;
-    width: 140px;
-  }
-`;
-

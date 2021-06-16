@@ -35,6 +35,7 @@ export const InvestmentProfile = () => {
 			});
 	};
 
+	// Variables to get get different values of investment
   const totalMarketValue = investmentQuantity * currency.price_usd;
   const difference = totalMarketValue - investments;
   const percentDifference = difference/investments * 100;

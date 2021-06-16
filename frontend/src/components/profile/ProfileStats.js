@@ -14,19 +14,19 @@ import {
 export const ProfileStats = ({ avatar, username, badges, ranking, coins }) => {
   return (
     <ImageNameContainer>
-    <ProfileAvatar src={avatar} />
-    <Username>{username}</Username>
-    <RankingProgress />
-    <StatusContainer>
-      <BadgesText>
-        <BadgeIcon src={require(`../../assets/badge.png`)} /> 
-        {badges}
-      </BadgesText>
-      <CoinsText>
-        {coins}
-        <CoinsIcon src={require(`../../assets/money2.png`)} /> 
-      </CoinsText>
-    </StatusContainer>
+      <ProfileAvatar src={avatar} />
+      <Username>{username}</Username>
+      <RankingProgress />
+      <StatusContainer>
+        <BadgesText>
+          <BadgeIcon src={require(`../../assets/badge.png`)} /> 
+          {badges}
+        </BadgesText>
+        <CoinsText>
+          {coins}
+          <CoinsIcon src={require(`../../assets/money2.png`)} /> 
+        </CoinsText>
+      </StatusContainer>
   </ImageNameContainer>
   )
 };

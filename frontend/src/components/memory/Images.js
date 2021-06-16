@@ -1,4 +1,4 @@
-import { CARD_STATUS } from "./constants"
+import { CARD_STATUS } from "./Constants"
 
 export const imageArray = [
 	{

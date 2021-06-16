@@ -3,19 +3,19 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import { Products } from '../components/store/Products';
-import { Header } from '../components/Header';
-import { Camera } from '../components/Camera';
+import { Products } from '../components/store/products/AllProducts';
+import { Header } from '../components/header/Header';
+import { Camera } from '../components/header/Camera';
 
 export const Store = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
-	const history = useHistory();
-	useEffect(() => {
-		if (!accessToken) {
-			history.push('/signin');
-		}
-	}, [accessToken, history]);
+	// const history = useHistory();
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		history.push('/signin');
+	// 	}
+	// }, [accessToken, history]);
 
 	return (
 		<Main>

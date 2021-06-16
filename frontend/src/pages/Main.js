@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar';
-import { Header } from '../components/Header';
-import { Camera } from '../components/Camera';
+import { Header } from '../components/header/Header';
+import { Camera } from '../components/header/Camera';
 import { Map } from '../components/map/Map';
 import { EntertainmentCard } from '../components/todaycards/EntertainmentCard';
 import { NutritionCard } from '../components/todaycards/NutritionCard';
-import { LeaderBoard } from '../components/LeaderBoard';
+import { LeaderBoard } from '../components/leaderboard/LeaderBoard';
 
 export const Main = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
@@ -155,24 +155,3 @@ const CitizensContainer = styled.div`
 		// min-height: 320px;
 	}
 `;
-
-// const RightContainer = styled.div`
-// 	width: 100%;
-// 	margin: 0;
-// 	background-color: ${props => props.theme.backgroundColor};
-// 	border: 2px solid ${props => props.theme.primary};
-// 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
-// 	@media (min-width: 768px) {
-// 		width: 35%;
-// 	}
-// `;
-
-// const ThinnerCard = styled(Card)`
-// 	width: 100%;
-// 	margin: 0;
-// 	cursor: pointer;
-// 	border-bottom: 2px solid ${props => props.theme.primary};
-// 	:hover {
-// 		background-color: ${props => props.theme.primary};
-// 	}
-// `;

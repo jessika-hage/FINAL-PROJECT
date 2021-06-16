@@ -24,19 +24,19 @@ export const MessageInput = styled.textarea`
 `;
 
 export const SubmitButton = styled.button`
-  outline: none;
   position: absolute;
   bottom: 10px;
   right: 10px;
-  padding: 10px;
+  padding: 7px;
   text-transform: uppercase;
   color: ${props => props.theme.textColor};
-  background-color: ${props => props.theme.hover};
+  border: 2px solid ${props => props.theme.secondary};
+  background-color: ${props => props.theme.primary};
   border-radius: 5px;
   font-family: "Trispace", serif;
-  font-size: 18px;
+  font-size: 16px;
   :hover {
-      opacity: 0.7;
+    background-color: ${props => props.theme.secondary};
   }
 `;
 
@@ -53,8 +53,6 @@ export const MessageContainer = styled.section`
 `;
 
 export const CloseIcon = styled.button`
-  outline: none;
-  border: none;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -87,7 +85,8 @@ export const MessageList = styled.div`
 
 export const MessageBox = styled.div`
   display: flex;
-  border-bottom: 3px solid ${props => props.theme.primary};
+  width: 100%;
+  border-bottom: 2px solid ${props => props.theme.primary};
   :last-of-type {
     margin-bottom: 100px;
   }
@@ -97,15 +96,14 @@ export const ImageUserBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   padding: 10px 5px;
 `;
 
 export const TextBox = styled(ImageUserBox)`
-  margin-left: 10px;
+  margin-left: 6px;
   align-items: flex-start;
-  height: 100%;
-  justify-content: space-between;
+  justify-content: space-between;;
+  width: 100%;
 `;
 
 export const MessageText = styled.p`
@@ -115,20 +113,22 @@ export const MessageText = styled.p`
 
 export const MessageCreated = styled.p`
   font-size: 11px;
-  margin: 0;
+  width: 100%;
+  margin: 0 15px 0 0;
+  text-align: right;
+  opacity: 0.7;
 `;
 
 export const CitizenAvatar = styled.img`
-	height: 18px;
-	width: 18px;
+	height: 30px;
+	width: 30px;
 	padding: 2px;
-	margin: 3px 0 0 0;
+	margin: 0 0 3px 0;
 	background-color: ${props => props.theme.secondary};
 	border-radius: 50%;
 	@media (min-width: 768px) {
-		height: 28px;
-		width: 28px;
-		padding: 2px;
+		height: 36px;
+		width: 36px;
 	}
 `;
 
