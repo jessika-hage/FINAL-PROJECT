@@ -69,6 +69,10 @@ const Citizen = mongoose.model('Citizen', {
 	investmentQuantity: {
 		type: Number,
 		default: 0,
+	},
+	calories: {
+		type: Number,
+		default: 0,
 	}
 });
 
@@ -232,17 +236,19 @@ app.post('/signin', async (req, res) => {
 // GET Messages for messageboard
 // app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
-	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 });
+	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 }).populate('user', 'username avatar');
 	res.json({ success: true, citizenMessage });
 });
 
 // POST message on messageboard
 // app.post('/citizenmessage', authenticateCitizen);
-app.post('/citizenmessage', async (req, res) => {
+app.post('/citizenmessage/:userid', async (req, res) => {
 	const { message } = req.body;
+	const { userid } = req.params;
 
 	try {
-		const newCitizenMessage = await new CitizenMessage({ message }).save();
+		const user = await Citizen.findById(userid)
+		const newCitizenMessage = await new CitizenMessage({ message, user }).save();
 		res.json({ success: true, newCitizenMessage });
 	} catch (error) {
 		res.status(400).json({ success: false, message: 'Invalid request', error });
@@ -321,6 +327,7 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 	}
 });
 
+// PATCH for adding items from shop
 // app.patch('/citizen/:id/items', authenticateCitizen);
 app.post('/citizen/:id/items', async (req, res) => {
 	const { id } = req.params;
@@ -359,6 +366,30 @@ app.patch('/citizen/:id/investments', async (req, res) => {
 		);
 		if (updatedInvestments) {
 			res.json(updatedInvestments);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for increasing caloryintake
+// app.patch('/citizen/:id/calories', authenticateCitizen);
+app.patch('/citizen/:id/calories', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedCalories = await Citizen.findByIdAndUpdate(
+			id,
+			{
+				$inc: {
+					calories: req.body.calories,
+				},
+			},
+			{ new: true }
+		);
+		if (updatedCalories) {
+			res.json(updatedCalories);
 		} else {
 			res.status(404).json({ message: 'Not found!' });
 		}
