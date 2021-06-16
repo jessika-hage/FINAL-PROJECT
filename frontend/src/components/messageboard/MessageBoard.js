@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { FaTimes } from 'react-icons/fa';
 
@@ -11,11 +12,14 @@ import {
   MessageList, 
   MessageBox, 
   MessageText,
-  MessageCreated } from './Styling';
+  MessageCreated,
+  CitizenAvatar,
+  Username, } from './Styling';
 
 export const MessageBoard = ({ onClick }) => {
   const [messageList, setMessageList] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const userId = useSelector((store) => store.profile.userId);
 
   // Fetch all messages
   const fetchMessages = () => {
@@ -36,7 +40,7 @@ export const MessageBoard = ({ onClick }) => {
   const handleMessageSubmit = (e) => {
     e.preventDefault();
 
-    fetch(CITIZEN_URL('citizenmessage'), {
+    fetch(CITIZEN_URL(`citizenmessage/${userId}`), {
       method: 'POST',
       body: JSON.stringify({ message: newMessage }),
       headers: { 'Content-Type': 'application/json' }
@@ -60,6 +64,8 @@ export const MessageBoard = ({ onClick }) => {
             <MessageBox key={index}>
               <MessageText>{message.message}</MessageText>
               <MessageCreated>{moment(message.createdAt).fromNow()}</MessageCreated>
+              <Username>{message.user.username}</Username>
+              <CitizenAvatar src={require(`../../assets/${message.user.avatar}.png`)} />
             </MessageBox>
           ))}
         </MessageList>

@@ -102,3 +102,21 @@ export const MessageCreated = styled.p`
   font-size: 11px;
   margin-top: 3px;
 `;
+
+export const CitizenAvatar = styled.img`
+	height: 18px;
+	width: 18px;
+	padding: 2px;
+	margin-right: 5px;
+	background-color: ${props => props.theme.secondary};
+	border-radius: 50%;
+	@media (min-width: 768px) {
+		height: 28px;
+		width: 28px;
+		padding: 2px;
+	}
+`;
+
+export const Username = styled.p`
+  font-size: 12px;
+`;

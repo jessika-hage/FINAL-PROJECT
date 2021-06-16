@@ -226,24 +226,31 @@ export const InvestmentText = styled(ItemsTitle)`
 
 export const InvestmentChange = styled(InvestmentText)`
 	display: flex;
-	align-items: center;
-	margin: 0 0 5px 3px;
+	flex-direction: column;
+	margin: 5px 0 5px 3px;
 `;
 
 export const IconUp = styled(FaArrowUp)`
-	margin: 4px 5px 0 5px;
+	margin: 4px 5px 0 0;
 `;
 
 export const IconDown = styled(FaArrowDown)`
-	margin: 4px 5px 0 5px;
+	margin: 4px 5px 0 0;
 `;
 
 export const ValueChange = styled(InvestmentText)`
-	margin: 0 0 5px 3px;
+	margin: 5px 35px 0 0;
 	${props =>
 		props.percent ?
 		`color: #e83715;`
 		:  
 		`color: #6DD704;`
 	};
+`;
+
+export const ChangeBox = styled.div`
+	display: flex;
+	// justify-content: space-between;
+	align-items: center;
+	margin: 0;
 `;

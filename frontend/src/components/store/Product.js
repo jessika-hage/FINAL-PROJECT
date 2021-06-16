@@ -121,8 +121,6 @@ const AddButton = styled.button`
 const Main = styled.div`
 	display: flex;
 	margin: 5px;
-	width: 350;
-	// height: 500px;
 	margin-bottom: 10px;
 	aline-items: center;
 	justify-content: center;
