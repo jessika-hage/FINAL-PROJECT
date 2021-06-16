@@ -56,6 +56,7 @@ export const SignIn = () => {
 						dispatch(profile.actions.setUserId(data.userId));
 						dispatch(profile.actions.setInvestments(data.investments));
 						dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
+						dispatch(profile.actions.setEnergy(data.energy));
 					});
 				} else {
 					setErrorMessage(data.message);

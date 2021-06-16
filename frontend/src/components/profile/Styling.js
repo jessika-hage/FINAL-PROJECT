@@ -254,3 +254,14 @@ export const ChangeBox = styled.div`
 	align-items: center;
 	margin: 0;
 `;
+
+// Energy Profile
+
+export const EnergyContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const EnergyText = styled(ItemsTitle)`
+	margin: 5px 0 0 3px;
+`;

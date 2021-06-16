@@ -13,6 +13,7 @@ const initialState = {
 	items: [],
 	investments: null,
 	investmentQuantity: null,
+	energy: null,
 };
 
 export const profile = createSlice({
@@ -55,6 +56,9 @@ export const profile = createSlice({
 		setInvestmentQuantity: (store, action) => {
 			store.investmentQuantity = action.payload;
 		},
+		setEnergy: (store, action) => {
+			store.energy = action.payload;
+		},
 		setLogOut: () => {
 			return {
 				username: null,
@@ -69,6 +73,7 @@ export const profile = createSlice({
 				createdAt: null,
 				investments: null,
 				investmentQuantity: null,
+				energy: null,
 			};
 		},
 	},
@@ -190,6 +195,30 @@ export const updateInvestments = (investmentQuantity, investments) => {
 				console.log(data);
 				dispatch(profile.actions.setQuantity(data.investments));
 				dispatch(profile.actions.setQuantity(data.investmentQuantity));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+// Thunk for updating energy intake
+export const updateEnergy = (energy) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ energy }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/energy`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setEnergy(data.energy));
 			})
 			.catch((err) => console.error(err));
 	};

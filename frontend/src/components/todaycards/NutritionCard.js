@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 
@@ -6,6 +7,7 @@ import { Card } from './Card';
 
 export const NutritionCard = () => {
 	const [open, setOpen] = useState(false);
+	const allFood = useSelector((store) => store.food);
 
 	const onToggleDialog = () => {
 		setOpen(!open);
@@ -23,18 +25,20 @@ export const NutritionCard = () => {
 			<TableContainer>
 			<TableHead>
 				<TableTitle>Type</TableTitle>
-				<TableTitleLinks>Carbohydrates</TableTitleLinks>
-				<CitizenDaysLink>Kcal</CitizenDaysLink>
-				<TableTitleLinks>Vitamins</TableTitleLinks>
-				<TableTitleLinks>Protein</TableTitleLinks>
+				<TableTitleLinks>Energy</TableTitleLinks>
+				<CitizenDaysLink>Protein</CitizenDaysLink>
+				<TableTitleLinks>Salt</TableTitleLinks>
+				<TableTitleLinks>Price</TableTitleLinks>
 			</TableHead>
-				<CitizensList>
-					<Citizen>340kcal</Citizen>
-					<Citizen>40 vitamin</Citizen>
-					<CitizenDays>400kcal</CitizenDays>
-					<Citizen>400kcal</Citizen>
-					<Citizen>500kcal</Citizen>
+			{allFood.map((food) => (
+				<CitizensList key={food.id}>
+					<Citizen>{food.title}</Citizen>
+					<Citizen>{food.energy}kcal</Citizen>
+					<Citizen>{food.protein}g</Citizen>
+					<Citizen>{food.salt}g</Citizen>
+					<Citizen>{food.price}$ <BuyFood>Buy</BuyFood></Citizen>
 				</CitizensList>
+			 ))}
 		</TableContainer>
 	</Dialog>
 	</>
@@ -99,20 +103,6 @@ const CitizenDaysLink = styled(TableTitleLinks)`
 	}
 `;
 
-const CitizenAvatar = styled.img`
-	height: 18px;
-	width: 18px;
-	padding: 2px;
-	margin-right: 5px;
-	background-color: ${props => props.theme.secondary};
-	border-radius: 50%;
-	@media (min-width: 768px) {
-		height: 28px;
-		width: 28px;
-		padding: 2px;
-	}
-`;
-
 const Citizen = styled.p`
 	width: 25%;
 	margin: 0;
@@ -120,13 +110,6 @@ const Citizen = styled.p`
 	text-align: left;
 	@media (min-width: 768px) {
 		font-size: 14px;
-	}
-`;
-
-const CitizenDays = styled(Citizen)`
-  display: none;
-	@media (min-width: 768px) {
-		display: flex;
 	}
 `;
 
@@ -138,5 +121,23 @@ const CitizensList = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 	@media (min-width: 768px) {
 		padding: 6px 0 4px 0;
+	}
+`;
+
+const BuyFood = styled.button`
+	padding: 5px;
+	margin: 0;
+	font-size: 12px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	width: fit-content;
+	text-transform: uppercase;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	:hover,
+	:focus {
+		background-color: ${(props) => props.theme.secondary};
 	}
 `;

@@ -37,7 +37,7 @@ export const InvestmentProfile = () => {
 
   const totalMarketValue = investmentQuantity * currency.price_usd;
   const difference = totalMarketValue - investments;
-  const percentDifference = investments / totalMarketValue;
+  const percentDifference = difference/investments * 100;
 
 	const onSellInvestment = () => {
 		dispatch(updateInvestments(-investmentQuantity, -investments));

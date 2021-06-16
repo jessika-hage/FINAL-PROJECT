@@ -7,6 +7,7 @@ import { profile } from '../../reducers/profile';
 import { ItemsProfile } from './ItemsProfile';
 import { ProfileStats } from './ProfileStats';
 import { InvestmentProfile } from './InvestmentProfile';
+import { EnergyProfile } from './EnergyProfile';
 import { Buttons } from './Buttons';
 import { 
 	ProfileContainer, 
@@ -50,6 +51,10 @@ export const Profile = () => {
 					</DaysText>
 				</DaysContainer>
 			<BottomContainer>
+				<Items>
+					<ContainerTitle>My energy</ContainerTitle>
+					<EnergyProfile />
+				</Items>
 				<Items>
 					<ContainerTitle>My items</ContainerTitle>
 					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
