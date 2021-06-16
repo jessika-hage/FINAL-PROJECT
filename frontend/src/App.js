@@ -10,15 +10,15 @@ import { food } from './reducers/food'
 import { themes } from 'reducers/themes';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
-import { LeaderBoard } from './components/leaderboard/LeaderBoard';
+import { LeaderBoard } from './components/LeaderBoard';
+import { Loader } from './components/loader/Loader';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
-import { GameBall } from './components/spaceball/GameBall';;
-
+import { GameBall } from './components/spaceball/GameBall';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -45,6 +45,7 @@ export const App = () => {
 						<Route path='/store' component={Store} />
 						<Route path='/farm' component={ProtinFarm} />
 						<Route path='/spaceball' component={GameBall} />
+						<Route path='/loader' component={Loader} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>
