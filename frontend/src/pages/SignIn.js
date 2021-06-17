@@ -57,6 +57,9 @@ export const SignIn = () => {
 						dispatch(profile.actions.setInvestments(data.investments));
 						dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
 						dispatch(profile.actions.setEnergy(data.energy));
+						dispatch(profile.actions.setHighscoreSpaceball(data.highscoreSpaceball));
+						dispatch(profile.actions.setHighscoreFish(data.highscoreFish));
+						dispatch(profile.actions.setHighscoreMath(data.highscoreMath));
 					});
 				} else {
 					setErrorMessage(data.message);

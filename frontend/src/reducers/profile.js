@@ -14,7 +14,10 @@ const initialState = {
 	investments: null,
 	investmentQuantity: null,
 	energy: null,
-
+	highscoreSpaceball: null,
+	highscoreFish: null,
+	highscoreMath: null,
+	highscoreMemory: null,
 };
 
 export const profile = createSlice({
@@ -60,6 +63,15 @@ export const profile = createSlice({
 		setEnergy: (store, action) => {
 			store.energy = action.payload;
 		},
+		setHighscoreSpaceball: (store, action) => {
+			store.highscoreSpaceball = action.payload;
+		},
+		setHighscoreFish: (store, action) => {
+			store.highscoreFish = action.payload;
+		},
+		setHighscoreMath: (store, action) => {
+			store.highscoreMath = action.payload;
+		},
 		setLogOut: () => {
 			return {
 				username: null,
@@ -75,6 +87,9 @@ export const profile = createSlice({
 				investments: null,
 				investmentQuantity: null,
 				energy: null,
+				highscoreSpaceball: null,
+				highscoreFish: null,
+				highscoreMath: null,
 			};
 		},
 	},
@@ -220,6 +235,78 @@ export const updateEnergy = (energy) => {
 			.then((data) => {
 				console.log(data);
 				dispatch(profile.actions.setEnergy(data.energy));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+// Thunk for updating highscore spaceball
+export const updateHighscoreSpaceball = (highscoreSpaceball) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ highscoreSpaceball }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreSpaceball`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setHighscoreSpaceball(data.highscoreSpaceball));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+// Thunk for updating highscore fish farm
+export const updateHighscoreFish = (highscoreFish) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ highscoreFish }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreFish`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setHighscoreFish(data.highscoreFish));
+			})
+			.catch((err) => console.error(err));
+	};
+};
+
+// Thunk for updating highscore math
+export const updateHighscoreMath = (highscoreMath) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ highscoreMath }),
+		};
+		fetch(
+			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreMath`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setHighscoreMath(data.highscoreMath));
 			})
 			.catch((err) => console.error(err));
 	};

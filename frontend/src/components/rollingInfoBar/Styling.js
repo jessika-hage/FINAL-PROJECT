@@ -42,6 +42,7 @@ export const WeatherText = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 20px 10px 10px;
+  text-transform: uppercase;
   color: ${props => props.theme.textColor};
   border-right: 2px solid ${props => props.theme.textColor};
 `;
@@ -86,7 +87,7 @@ export const DayText = styled.p`
 `;
 
 // Currency
-export const CurrencyTitle = styled(ForecastTitle)`
+export const HouseTitle = styled(ForecastTitle)`
   text-align: center;
 `;
 
@@ -100,12 +101,12 @@ export const TextContainer = styled.div`
   margin: 0;
 `;
 
-export const CurrencyText = styled(WeatherText)`
+export const HousingText = styled(WeatherText)`
   margin-left: 10px;
   border-right: none;
 `;
 
-export const ChangeText = styled(CurrencyText)`
+export const ChangeText = styled(HousingText)`
   margin-left: 15px;
   padding: 0;
 `;
@@ -116,26 +117,6 @@ export const Text = styled(DayText)`
   text-align: center;
 `;
 
-export const CoinChange = styled.span`
-  display: flex;
-  align-items: center;
-  ${props =>
-  props.percent ?
-  `
-  color: #e83715;
-  `:  `
-  color: #6DD704;
-  `};
-`;
-
-export const PercentChange = styled(CoinChange)`
-  margin-left: 8px;
-`;
-
-export const ArrowIcon = styled.span`
-  margin: 2px 5px 0 8px;
-  padding: 0;
-`;
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -143,7 +124,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-export const ExchangeButton = styled.button`
+export const BuyButton = styled.button`
   padding: 8px;
   margin-top: 7px;
   width: fit-content;
@@ -157,13 +138,8 @@ export const ExchangeButton = styled.button`
   }
 `;
 
-export const InvestmentButton = styled(ExchangeButton)`
-  border: 2px solid ${props => props.theme.hover};
-  :hover, :focus {
-    background-color: ${props => props.theme.hover};
-  }
-`;
 
+// Kan användas till housedialog
 export const ConfirmationDialog = styled.div`
   displaY: flex;
   justify-content: center;
@@ -190,51 +166,3 @@ export const ConfirmedButton = styled.button`
   }
 `;
 
-// Invest
-export const InvestTitle = styled(CurrencyTitle)`
-  border-bottom: 2px solid ${props => props.theme.hover};
-  padding-bottom: 5px;
-`;
-
-export const InvestInfo = styled.p`
-  font-size: 14px;
-`;
-
-export const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const InputAmount = styled.input`
-  padding: 5px;
-  border: 2px solid ${props => props.theme.secondary};
-  color: ${props => props.theme.textColor};
-  font-size: 16px;
-  outline: none;
-  background-color: ${props => props.theme.primary};
-  margin-right: 15px;
-  max-width: 50%;
-  font-family: 'Trispace', serif;
-  :focus {
-    background-color: ${props => props.theme.secondary};
-  }
-`;
-
-export const SpaceText = styled.p`
-  font-size: 16px;
-  margin-right: 20px;
-`;
-
-export const InvestButton = styled(ExchangeButton)`
-  margin: 0;
-`;
-
-export const Image = styled.img`
-  position: absolute;
-  left: 10%;
-  top: 3%;
-transform: rotate(40deg);
-  @media (min-width: 768px) {
-    left: 26%;
-  }
-`;

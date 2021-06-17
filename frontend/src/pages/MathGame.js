@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateBadges } from '../reducers/profile';
+import { updateBadges, updateHighscoreMath } from '../reducers/profile';
 import { ProgressBar } from '../components/math/ProgressBar';
 import { MathForm } from '../components/math/MathForm';
 import { Header } from '../components/header/Header';
@@ -36,6 +36,7 @@ export const MathGame = () => {
 	const answerField = useRef(null);
 	const resetButton = useRef(null);
 	const accessToken = useSelector((store) => store.profile.accessToken);
+	const highscore = useSelector((store) => store.profile.highscoreMath);
 
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -111,6 +112,9 @@ export const MathGame = () => {
 	// Returning to main
 	const resetGame = () => {
 		if (score > 0) {
+			if (score > highscore) {
+				dispatch(updateHighscoreMath(score));
+			}
 			dispatch(updateBadges(score));
 			setAnimation(true)
 			setOpenFinish(false);

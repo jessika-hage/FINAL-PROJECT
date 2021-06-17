@@ -1,62 +1,48 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 
-export const InvestCard = () => {
+import { 
+  Container, 
+  TextContainer, 
+  Title, 
+  ChangeContainer, 
+  ChangeText, 
+  CoinChange, 
+  IconDown, 
+  IconUp, 
+  SeeMoreButton } from './Styling';
+
+export const InvestCard = ({ onClick }) => {
+  const [currency, setCurrency] = useState([]);
+
+  useEffect(() => {
+		fetchCoin();
+	}, []);
+
+	// Fetch one random currency
+	const fetchCoin = () => {
+		fetch('https://api.coinlore.net/api/ticker/?id=32360')
+			.then((res) => res.json())
+			.then((json) => {
+				setCurrency(json[0]);
+			});
+	};
+
   return (
     <Container>
-      <ThumbnailTwo src={require('./growth.png')} />
       <TextContainer>
-      <Title>Space Invest</Title>
+        <Title>
+          Space $
+        </Title>
+        <ChangeText>Exchange rate: 2 badges = {currency.price_usd} $</ChangeText>
+        <ChangeContainer>
+          <ChangeText>Last hour:</ChangeText>
+          <CoinChange percent={currency.percent_change_1h < 0}>
+            {currency.percent_change_1h < 0 ? <IconDown /> : <IconUp />}
+            {currency.percent_change_1h} %
+          </CoinChange>
+        </ChangeContainer>
       </TextContainer>
-      <Button>Invest</Button>
+      <SeeMoreButton onClick={onClick}>Exchange & Invest</SeeMoreButton>
     </Container>
   )
 };
-
-const Container = styled.div`
-  padding: 20px;
-  background: ${props => props.theme.backgroundColor};
-  position: relative;
-  display: flex;
-`;
-
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Title = styled.h1`
-  margin: 0 0 5px 0;
-  font-size: 15px;
-  text-transform: uppercase;
-  color: ${props => props.theme.textColor};	
-  @media (min-width: 768px) {
-		font-size: 18px;
-	}
-`;
-
-const Button = styled.button`
-  background-color: ${props => props.theme.primary};
-  color: ${props => props.theme.textColor};
-  padding: 10px;
-  border: ${props => props.theme.secondary};
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-family: "Trispace", serif;
-  :hover {
-    background-color: ${props => props.theme.secondary};
-  }
-`;
-
-const ThumbnailTwo = styled.img`
-  height: 100%;
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
-  @media (min-width: 768px) {
-      width: 105px;
-  }
-`;

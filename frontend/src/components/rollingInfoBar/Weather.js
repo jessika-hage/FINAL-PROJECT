@@ -47,7 +47,7 @@ export const Weather = () => {
   
 	return (
 		<>
-      <WeatherText>WEATHER AT DESTINATION: {weather} °C 
+      <WeatherText>Weather: {weather} °C 
         <Button onClick={onToggleDialog}>See forecast</Button>
       </WeatherText>
       <Dialog open={open} onClose={onToggleDialog}>

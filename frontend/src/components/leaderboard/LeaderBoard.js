@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 
 import { CITIZEN_URL } from '../../reusables/urls';
@@ -11,11 +12,13 @@ import {
 	CitizensList, 
 	CitizenAvatar, 
 	Citizen,
-	CitizenDays } from './Styling';
+	CitizenDays,
+	Icon } from './Styling';
 
 export const LeaderBoard = () => {
 	const [leaderBoard, setLeaderBoard] = useState([]);
 	const [sort, setSort] = useState('highestRanking');
+	const user = useSelector((store) => store.profile.username);
 
 	const fetchCitizens = useCallback(() => {
 		fetch(CITIZEN_URL(`citizens?sort=${sort}`))
@@ -40,8 +43,9 @@ export const LeaderBoard = () => {
 			</TableHead>
 			{leaderBoard.map((citizen) => (
 				<CitizensList key={citizen._id}>
+					{user === citizen.username ? <Icon /> : ""}
 					<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-					<Citizen>{citizen.username}</Citizen>
+					<Citizen>{user === citizen.username ? 'Me' : citizen.username}</Citizen>
 					<Citizen>{citizen.ranking}/100</Citizen>
 					<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 					<Citizen>{citizen.badges}</Citizen>

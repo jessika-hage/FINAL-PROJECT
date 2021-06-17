@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
-import { updateBadges } from '../reducers/profile';
+import { updateBadges, updateHighscoreFish } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
 // import { Fishes } from '../components/farm/Fishes';
@@ -51,6 +51,7 @@ export const ProtinFarm = () => {
 	const [disabled8, setDisabled8] = useState(false);
 	const [disabled9, setDisabled9] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
+	const highscore = useSelector((store) => store.profile.highscoreFish);
 	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 
 	const numOfBadges = Math.round(score);
@@ -59,11 +60,11 @@ export const ProtinFarm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		history.push('/signin');
-	// 	}
-	// }, [accessToken, history]);
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
 	useEffect(() => {
 		const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -71,6 +72,9 @@ export const ProtinFarm = () => {
 	}, [counter]);
 
 	const onCollectBadges = () => {
+		if (score > highscore) {
+			dispatch(updateHighscoreFish(score));
+		}
 		dispatch(updateBadges(numOfBadges));
 		setTimeout(() => {
 			history.push('/');
