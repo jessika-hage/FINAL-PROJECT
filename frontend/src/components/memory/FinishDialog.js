@@ -19,7 +19,7 @@ export const FinishDialog = ({
     <Dialog open={openWin}>
       <DialogContainer>
         <DialogTitle>{status}</DialogTitle>
-        <DialogContent>You made it with {results.flips} flips</DialogContent>
+        <DialogContent>You made it with {results.flips} flips and it took you {results.time}</DialogContent>
         <DialogActions>
           <Button onClick={handleCollect}>Collect badges</Button>
         </DialogActions>

@@ -10,7 +10,6 @@ import { food } from './reducers/food'
 import { themes } from 'reducers/themes';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
-import { LeaderBoard } from './components/LeaderBoard';
 import { Loader } from './components/loader/Loader';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
@@ -38,7 +37,6 @@ export const App = () => {
 					<Switch>
 						<Route exact path='/' component={Main} />
 						<Route path='/signin' component={SignIn} />
-						<Route path='/leaderboard' component={LeaderBoard} />
 						<Route path='/signup' component={SignUp} />
 						<Route path='/classroom' component={MathGame} />
 						<Route path='/memorygame' component={MemoryGame} />

@@ -14,6 +14,7 @@ const initialState = {
 	investments: null,
 	investmentQuantity: null,
 	energy: null,
+
 };
 
 export const profile = createSlice({

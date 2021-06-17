@@ -58,12 +58,8 @@ export const GameBall = () => {
     }
   }, [counter])
   
-  const onClickEasy = () => {
-    setScore(score +1);
-  };
-
-  const onClickHard = () => {
-    setScore(score + 3);
+  const onClickEasy = (number) => {
+    setScore(score + number);
   };
 
 
@@ -75,11 +71,11 @@ export const GameBall = () => {
       <GameTitle>Space Ball</GameTitle>
       <ScoreText>Score: {score}</ScoreText>
       <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-      <ButtonOne onClick={onClickHard}></ButtonOne>
-      <ButtonTwo onClick={onClickEasy}></ButtonTwo>
-      <ButtonThree onClick={onClickEasy}></ButtonThree>
-      <ButtonFour onClick={onClickEasy}></ButtonFour>
-      <ButtonFive onClick={onClickHard}></ButtonFive>
+      <ButtonOne onClick={() => onClickEasy(3)}></ButtonOne>
+      <ButtonTwo onClick={() => onClickEasy(1)}></ButtonTwo>
+      <ButtonThree onClick={() => onClickEasy(1)}></ButtonThree>
+      <ButtonFour onClick={() => onClickEasy(1)}></ButtonFour>
+      <ButtonFive onClick={() => onClickEasy(5)}></ButtonFive>
       <Dialog open={openFinishedDialog}>
         <DialogContainer>
           <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
