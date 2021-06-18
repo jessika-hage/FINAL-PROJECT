@@ -42,7 +42,9 @@ export const Main = () => {
 					<CardTitle>Game Highscores</CardTitle>
 					<CardContainer>
 						<HighscoreBoard />
-						<CardTitleInvest>Citizen Stock Exchange</CardTitleInvest>
+					</CardContainer>
+					<CardTitleInvest>Citizen Stock Exchange</CardTitleInvest>
+					<CardContainer>
 						<Currency />
 					</CardContainer>
 				</WrapperCard>
@@ -133,6 +135,7 @@ const CardTitle = styled.h4`
 
 const CardTitleInvest = styled(CardTitle)`
 	width: 100%;
+	margin-top: 20px;
 `;
 
 const CardContainer = styled.div`
@@ -147,6 +150,10 @@ const CardContainer = styled.div`
 		padding: 0;
 		width: 100%;
 	}
+`;
+
+const CardContainerCurrency = styled(CardContainer)`
+	margin-top: 20px;
 `;
 
 const CitizensContainer = styled.div`

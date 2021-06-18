@@ -3,11 +3,13 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 // Card 
 export const Container = styled.div`
-  padding: 20px;
+  padding: 10px 20px;
   background: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor};
   position: relative;
   display: flex;
+  height: 115px;
+  margin-top: 10px;
 `;
 
 export const TextContainer = styled.div`

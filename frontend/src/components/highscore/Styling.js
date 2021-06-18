@@ -7,7 +7,7 @@ export const TableContainer = styled.div`
 	padding: 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
-	max-height: 320px;
+	max-height: 220px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -38,7 +38,7 @@ export const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
 	width: 20%;
 	:hover, :focus {
-		text-decoration: underline;
+		opacity: 0.7;
 	}
 `;
 
@@ -64,8 +64,7 @@ export const CitizenAvatar = styled.img`
 	padding: 2px;
 	margin:  0 5px;
 	border-radius: 50%;
-  background-color: ${(props) => props.theme.secondary}
-  border: 1px solid transparent;
+  background-color: ${(props) => props.theme.secondary};
 	@media (min-width: 768px) {
 		height: 22px;
 		width: 22px;

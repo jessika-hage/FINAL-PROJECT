@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const GridContainer = styled.section`
 	display: grid;
-	grid-template: repeat(7, 1fr) / repeat(13, 1fr);
+	grid-template: repeat(7, 1fr) / repeat(12, 1fr);
 	width: 100%;
 `;
 
@@ -125,6 +125,19 @@ export const InfoText = styled.p`
 	}
 `;
 
+export const List = styled.ul`
+	list-style-type: square;
+	padding: 0 20px;
+`;
+
+export const ListItem = styled.li`
+	font-size: 12px;
+	margin: 5px;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
+`
+
 export const StartGameButton = styled(Link)`
   padding: 10px 15px;
   margin-top: 20px;
@@ -157,4 +170,44 @@ export const DialogButton = styled.button`
 	@media (min-width: 768px) {
 		font-size: 18px;
 	}
+`;
+
+// Space Ball
+
+export const CirclePoint = styled.div`
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	padding: 3px;
+`;
+
+export const Circle = styled.div`
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	margin: 0 5px 0 3px;
+	@media (min-width: 768px) {
+		width: 20px;
+		height: 20px;
+	}
+`;
+
+export const Orange = styled(Circle)`
+	background-color: #F58634;
+`;
+
+export const Blue = styled(Circle)`
+	background-color: #1A90FF;
+`;
+
+export const Purple = styled(Circle)`
+	background-color: #B590CA;
+`;
+
+export const Pink = styled(Circle)`
+	background-color: #CE1F6A;
+`;
+
+export const Green = styled(Circle)`
+	background-color: #29BB89;
 `;

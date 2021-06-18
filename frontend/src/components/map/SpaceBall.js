@@ -8,7 +8,14 @@ import {
   DialogContainer, 
   InfoTitle, 
   InfoText, 
-  StartGameButton } from './Styling';
+  StartGameButton,
+  CirclePoint,
+  Circle,
+  Orange,
+  Blue,
+  Purple,
+  Pink,
+  Green } from './Styling';
 
 
 export const SpaceBall = () => {
@@ -27,7 +34,12 @@ export const SpaceBall = () => {
         <DialogContainer>
           <InfoTitle>Space Ball</InfoTitle>
           <InfoText>This game is to train your reflexes and see how fast you are, also an important part of being a citizen! 
-            You have 30 seconds to collect as many points as possible. Two points equals one badge. You get your points by clicking on the flying circles. The two smallest gives you 3 points per click and the others 1 point.</InfoText>
+            You have 30 seconds to collect as many points as possible.</InfoText>
+          <CirclePoint><Purple></Purple> - 1 point</CirclePoint>
+          <CirclePoint><Green></Green> - 1 points</CirclePoint>
+          <CirclePoint><Pink></Pink> - 2 points</CirclePoint>
+          <CirclePoint><Blue></Blue> - 3 points</CirclePoint>
+          <CirclePoint><Orange></Orange> - 4 points</CirclePoint>
           <StartGameButton to='/spaceball'>Lets start</StartGameButton>
         </DialogContainer>
       </Dialog>

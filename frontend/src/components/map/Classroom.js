@@ -8,7 +8,9 @@ import {
   DialogContainer, 
   InfoTitle, 
   InfoText, 
-  StartGameButton } from './Styling';
+  StartGameButton,
+List,
+ListItem } from './Styling';
 
 export const Classroom = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -25,10 +27,12 @@ export const Classroom = () => {
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>Classroom</InfoTitle>
-            <InfoText>In the classroom you can get badges by solving mathematical problems. You will get to choose between:</InfoText>
-            <InfoText>BEGINNER: You will have 40s and the numbers are low. This of course reflects on how many badges you can make.</InfoText>
-            <InfoText>AVERAGE: Everything is pretty average here.</InfoText>
-            <InfoText>EXPERT: For the pro citizen! Higher numbers and short time, but you will get DOUBLE the badges.</InfoText> 
+            <InfoText>In the classroom you can get badges by solving mathematical problems. There are three:</InfoText>
+            <List>
+              <ListItem>BEGINNER: You will have 40s and the numbers are low. This of course reflects on how many badges you can make.</ListItem>
+              <ListItem>AVERAGE: Everything is pretty average here.</ListItem>
+              <ListItem>EXPERT: For the pro citizen! Higher numbers and short time, but you will get DOUBLE the badges.</ListItem> 
+            </List>
             <StartGameButton to='/classroom'>Lets start</StartGameButton>
           </DialogContainer>
         </Dialog>

@@ -16,6 +16,9 @@ export const TableContainer = styled.div`
     height: 15px;
     border: 2px solid ${props => props.theme.secondary};
   }
+  @media (min-width: 768px) {
+    max-height: 437px;
+  }
 `;
 
 export const TableHead = styled.div`

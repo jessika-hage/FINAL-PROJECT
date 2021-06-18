@@ -45,7 +45,7 @@ export const Profile = () => {
 				ranking={ranking} 
 				coins={coins === null ? coins : coins.toFixed(2)} />
 			<DaysContainer>
-				<DaysText>Days on ship: {moment(createdAt).toNow(true)}</DaysText>
+				<DaysText>Time on ship: {moment(createdAt).toNow(true)}</DaysText>
 				<DaysText>
 					Days to destination: 
 				</DaysText>

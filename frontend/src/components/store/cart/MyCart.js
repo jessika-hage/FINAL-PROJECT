@@ -5,6 +5,7 @@ import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
 
 import { updateCoins, updateItems, updateRanking } from '../../../reducers/profile';
+import { cart } from '../../../reducers/cart';
 import { CartItem } from './CartItem';
 import { ConfirmationDialogs } from './ConfirmationDialogs';
 import { 
@@ -54,6 +55,7 @@ export const MyCart = () => {
 			dispatch(updateCoins(-totalPrice));
 			dispatch(updateItems(products));
 			dispatch(updateRanking(totalRanking));
+			dispatch(cart.actions.emptyCart())
 			setOpen(false);
 			setOpenConfirmation(true);
 		} else {

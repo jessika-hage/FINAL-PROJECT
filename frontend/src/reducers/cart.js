@@ -28,5 +28,8 @@ export const cart = createSlice({
 				exsistingProducts.quantity -= 1;
 			}
 		},
+		emptyCart: () => {
+			return { items: [] }
+		}
 	},
 });
