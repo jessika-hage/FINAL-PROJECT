@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { profile } from './reducers/profile';
 import { cart } from './reducers/cart';
 import { products } from './reducers/products';
-import { food } from './reducers/food'
+import { food } from './reducers/food';
 import { themes } from 'reducers/themes';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
