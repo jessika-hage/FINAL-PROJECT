@@ -18,7 +18,7 @@ const Citizen = mongoose.model('Citizen', {
 		type: String,
 		required: [true, 'Username Required'],
 		unique: [true, 'Username is already taken'],
-		maxlength: [10, "Your username can be max 15 characters"],
+		maxlength: [10, 'Your username can be max 15 characters'],
 	},
 	email: {
 		type: String,
@@ -86,10 +86,8 @@ const Citizen = mongoose.model('Citizen', {
 	highscoreMath: {
 		type: Number,
 		default: 0,
-	}
+	},
 });
-
-
 
 const CitizenMessage = mongoose.model('CitizenMessage', {
 	message: String,
@@ -98,9 +96,9 @@ const CitizenMessage = mongoose.model('CitizenMessage', {
 		default: Date.now,
 	},
 	user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Citizen'
- }
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Citizen',
+	},
 });
 
 // Authorization
@@ -110,6 +108,8 @@ const authenticateCitizen = async (req, res, next) => {
 	try {
 		const citizen = await Citizen.findOne({ accessToken });
 		if (citizen) {
+			//added from Maks, adding all info about Citizen
+			req.citizen = citizen;
 			next();
 		} else {
 			res.status(401).json({ success: false, message: 'Not authorized' });
@@ -161,6 +161,105 @@ app.get('/citizens', async (req, res) => {
 		res.status(400).json({ message: 'Someting went wrong', error });
 	}
 });
+
+//use to generate a random link to reset password
+const randomString = (length) => {
+	let text = '';
+	const possible = 'abcdefghijklmnopqrstuvwxyx123456789_-.';
+	for (let i = 0; i < length; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return text;
+};
+
+app.put('/citizen/password', authenticateCitizen);
+app.put('/citizen/password', async (req, res) => {
+	if (!req.body) return res.status(400).json({ message: 'No request body' });
+	if (!req.body.email)
+		return res.status(400).json({ message: 'No email in request body' });
+
+	const token = randomString(40);
+	const emailData = {
+		to: req.body.email,
+		subject: 'Hello ✔', // Subject line
+		text: 'Hello world?', // plain text body
+		html: '<b>Hello world?</b>',
+	};
+	return Citizen.update(
+		{ email: req.body.email },
+		{ $set: { resetPassLink: token } },
+		function (error, feedback) {
+			if (error) return res.send(error);
+			else {
+				sendEmail(emailData);
+				return res
+					.status(200)
+					.json({ message: `Email has been sent to ${req.body.email}` });
+			}
+		}
+	);
+});
+
+app.put('/api/resetpass', async (req, res) => {
+	const { resetPassLink, newPassword } = req.body;
+	Citizen.hashPassword(newPassword).then((hashPassword) => {
+		return Citizen.update(
+			{ resetPassLink },
+			{ $set: { password: hashedPass, reserPassLink: '' } },
+			function (error, feedback) {
+				if (error) return res.send(error);
+				return res.send(feedback);
+			}
+		);
+	});
+});
+
+// //update password when you remember you old password
+// app.patch('/citizen/password', authenticateCitizen);
+// app.patch('/citizen/password', async (req, res) => {
+// 	const { _id } = req.citizen;
+// 	const { oldPassword, newPassword } = req.body;
+
+// 	try {
+// 		const salt = bcrypt.genSaltSync();
+
+// 		if (req.citizen && bcrypt.compareSync(oldPassword, req.citizen.password)) {
+// 			const updatedCitizen = await Citizen.findByIdAndUpdate(
+// 				_id,
+// 				{
+// 					password: bcrypt.hashSync(newPassword, salt),
+// 				},
+// 				{ new: true }
+// 			);
+// 			res.json({ success: true });
+// 		} else {
+// 			res.status(401).json({ success: false });
+// 		}
+// 	} catch (error) {
+// 		res.status(400).json({ success: false, error });
+// 	}
+// });
+
+// app.patch('/citizen/newpassword', authenticateCitizen);
+// app.patch('/citizen/newpassword', async (req, res) => {
+// 	const { _id } = req.citizen;
+// 	const { newPassword } = req.body;
+
+// 	try {
+// 		const salt = bcrypt.genSaltSync();
+
+// 		const updatedCitizen = await Citizen.findByIdAndUpdate(
+// 			_id,
+// 			{
+// 				password: bcrypt.hashSync(newPassword, salt),
+// 			},
+// 			{ new: true }
+// 		);
+// 		res.json({ success: true });
+// 	} catch (error) {
+// 		res.status(400).json({ success: false, error });
+// 	}
+// });
 
 // POST for signing up
 app.post('/signup', async (req, res) => {
@@ -253,7 +352,9 @@ app.post('/signin', async (req, res) => {
 // GET Messages for messageboard
 // app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
-	const citizenMessage = await CitizenMessage.find().sort({ createdAt: -1 }).populate('user', 'username avatar');
+	const citizenMessage = await CitizenMessage.find()
+		.sort({ createdAt: -1 })
+		.populate('user', 'username avatar');
 	res.json({ success: true, citizenMessage });
 });
 
@@ -264,7 +365,7 @@ app.post('/citizenmessage/:userid', async (req, res) => {
 	const { userid } = req.params;
 
 	try {
-		const user = await Citizen.findById(userid)
+		const user = await Citizen.findById(userid);
 		const newCitizenMessage = await new CitizenMessage({ message, user }).save();
 		res.json({ success: true, newCitizenMessage });
 	} catch (error) {
@@ -440,11 +541,9 @@ app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
 app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 	const { id } = req.params;
 	try {
-		const updatedHighscoreFish = await Citizen.findByIdAndUpdate(
-			id,
-			req.body,
-			{ new: true }
-		);
+		const updatedHighscoreFish = await Citizen.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
 		if (updatedHighscoreFish) {
 			res.json(updatedHighscoreFish);
 		} else {
@@ -460,11 +559,9 @@ app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 app.patch('/citizen/:id/highscoreMath', async (req, res) => {
 	const { id } = req.params;
 	try {
-		const updatedHighscoreMath = await Citizen.findByIdAndUpdate(
-			id,
-			req.body,
-			{ new: true }
-		);
+		const updatedHighscoreMath = await Citizen.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
 		if (updatedHighscoreMath) {
 			res.json(updatedHighscoreMath);
 		} else {
