@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
-import { updateBadges } from '../../reducers/profile';
+import { updateBadges, updateHighscoreSpaceball } from '../../reducers/profile';
 import { Header } from '../header/Header';
 import { Camera } from '../header/Camera';
 import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
@@ -27,6 +27,7 @@ export const GameBall = () => {
   const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
   const [animation, setAnimation] = useState(false);
   const accessToken = useSelector((store) => store.profile.accessToken);
+  const highscore = useSelector((store) => store.profile.highscoreSpaceball);
   const numOfBadges = Math.round(score / 2);
 
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ export const GameBall = () => {
   }, [counter]);
 
   const onCollectBadges = () => {
+    if (score > highscore) {
+      dispatch(updateHighscoreSpaceball(score))
+    }
     dispatch(updateBadges(numOfBadges));
     setAnimation(true);
     setTimeout(() => {
@@ -83,7 +87,7 @@ export const GameBall = () => {
         </DialogContainer>
       </Dialog>
     </MainContainer>
-    { animation && <BadgesAnimation text={score} /> }
+    { animation && <BadgesAnimation text={numOfBadges} /> }
     </>
   )
 };

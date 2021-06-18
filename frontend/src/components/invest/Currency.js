@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import styled from 'styled-components';
 
 import {
 	updateBadges,
 	updateCoins,
-	updateInvestments,
-} from '../../reducers/profile';
-import { Invest } from './Invest';
+	updateInvestments } from '../../reducers/profile';
+import { InvestCard } from './InvestCard'
+import { InvestDialog } from './InvestDialog';
 import {
-	CurrencyText,
-	Button,
 	DialogContainer,
 	CurrencyTitle,
 	TextContainer,
 	Text,
-	ChangeText,
-	CoinChange,
-	ArrowIcon,
 	ButtonContainer,
 	ExchangeButton,
 	InvestmentButton,
 	ConfirmationDialog,
 	ConfirmedButton,
-	PercentChange,
-} from './Styling';
+	PercentChange } from './Styling';
 
 export const Currency = () => {
 	const [currency, setCurrency] = useState([]);
@@ -108,17 +102,7 @@ export const Currency = () => {
 
 	return (
 		<>
-			<CurrencyText>
-				CURRENCY AT DESTINATION: {currency.price_usd} $
-				<ChangeText>Last hour:</ChangeText>
-				<CoinChange percent={currency.percent_change_1h < 0}>
-					<ArrowIcon>
-						{currency.percent_change_1h < 0 ? <FaArrowDown /> : <FaArrowUp />}
-					</ArrowIcon>
-					{currency.percent_change_1h} %
-				</CoinChange>
-				<Button onClick={onToggleDialog}>Exchange</Button>
-			</CurrencyText>
+			<InvestCard onClick={onToggleDialog} />
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>
 					<CurrencyTitle>SPACE $</CurrencyTitle>
@@ -173,7 +157,7 @@ export const Currency = () => {
 					<ConfirmedButton onClick={onConfirmed}>Thanks!</ConfirmedButton>
 				</ConfirmationDialog>
 			</Dialog>
-			<Invest
+			<InvestDialog
 				open={openInvest}
 				onClose={onToggleInvestDialog}
 				value={investValue}

@@ -7,9 +7,9 @@ import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
 import { Map } from '../components/map/Map';
-import { EntertainmentCard } from '../components/todaycards/EntertainmentCard';
-import { NutritionCard } from '../components/todaycards/NutritionCard';
+import { Currency } from '../components/invest/Currency';
 import { LeaderBoard } from '../components/leaderboard/LeaderBoard';
+import { HighscoreBoard } from '../components/highscore/HighscoreBoard';
 
 export const Main = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
@@ -39,10 +39,11 @@ export const Main = () => {
 					</CitizensContainer>
 				</WrapperLeaderBoard>
 				<WrapperCard>
-					<CardTitle>Today on the ship</CardTitle>
+					<CardTitle>Game Highscores</CardTitle>
 					<CardContainer>
-						<NutritionCard />
-						<EntertainmentCard />
+						<HighscoreBoard />
+						<CardTitleInvest>Citizen Stock Exchange</CardTitleInvest>
+						<Currency />
 					</CardContainer>
 				</WrapperCard>
 				<RollingInfoBar />
@@ -96,6 +97,9 @@ const BottomContainer = styled.div`
 		margin: 40px 0 80px 0;
 		align-items: flex-start;
 	}
+	@media (min-width: 1400px) {
+		width: 90%;
+	}
 `;
 
 const WrapperCard = styled.div`
@@ -103,7 +107,7 @@ const WrapperCard = styled.div`
 	flex-direction: column;
 	width: 100%;
 	margin: 10px;
-	@media (min-width: 768px) {
+	@media (min-width: 1000px) {
 		flex-wrap: wrap;
 		padding: 0;
 		width: 40%;
@@ -111,7 +115,7 @@ const WrapperCard = styled.div`
 `;
 
 const WrapperLeaderBoard = styled(WrapperCard)`
-	@media (min-width: 768px) {
+	@media (min-width: 1000px) {
 		width: 60%;
 	}
 `;
@@ -125,6 +129,10 @@ const CardTitle = styled.h4`
 	@media (min-width: 768px) {
 		width: fit-content;
 	}
+`;
+
+const CardTitleInvest = styled(CardTitle)`
+	width: 100%;
 `;
 
 const CardContainer = styled.div`

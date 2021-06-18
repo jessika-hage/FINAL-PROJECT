@@ -13,7 +13,7 @@ import {
   ConfirmationDialog, 
   ConfirmedButton } from './Styling';
 
-export const Invest = ({ 
+export const InvestDialog = ({ 
   open, 
   onClose, 
   onChange, 
@@ -36,7 +36,11 @@ export const Invest = ({
             it goes up to 10$, your money will be worth 125$! If you see that the price has decreased a lot the last week it could be a good opportunity to invest.
           </InvestInfo>
           <InputContainer>
-            <InputAmount type='text' placeholder='Quantity' onChange={onChange} value={value}></InputAmount>
+            <InputAmount 
+              type='text' 
+              placeholder='Quantity' 
+              onChange={onChange} 
+              value={value}></InputAmount>
             <SpaceText>{spaceValue} $</SpaceText>
           </InputContainer>
           <InvestButton onClick={onClick}>Make Investment</InvestButton>
@@ -50,7 +54,8 @@ export const Invest = ({
           <ConfirmedButton onClick={onCloseSuccess}>Thanks!</ConfirmedButton>
         </ConfirmationDialog>
       </Dialog>
-      <Dialog open={openFail} 
+      <Dialog 
+        open={openFail} 
         onClose={onCloseFail}>
         <ConfirmationDialog>
           <Text>You do not have enough coins for this investment!</Text>

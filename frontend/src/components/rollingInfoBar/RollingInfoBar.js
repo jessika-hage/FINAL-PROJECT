@@ -2,7 +2,7 @@ import React from 'react'
 
 import { MainBar, RollingText } from './Styling'
 import { Weather } from './Weather';
-import { Currency } from './Currency';
+import { Housing } from './Housing';
 
 
 export const RollingInfoBar = () => {
@@ -11,7 +11,7 @@ export const RollingInfoBar = () => {
         <MainBar>
             <RollingText>
                 <Weather />
-                <Currency />
+                <Housing />
             </RollingText>
         </MainBar>
     )

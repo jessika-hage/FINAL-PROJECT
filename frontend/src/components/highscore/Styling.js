@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FaStar } from 'react-icons/fa';
 
 export const TableContainer = styled.div`
 	display: flex;
@@ -21,11 +20,12 @@ export const TableContainer = styled.div`
 export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
+  align-items: center;
 	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 
 export const TableTitle = styled.div`
-	width: 25%;
+	width: 30%;
 	padding: 0 0 5px 5px;
 	margin: 0;
 	font-weight: bold;
@@ -36,65 +36,64 @@ export const TableTitle = styled.div`
 
 export const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
-	width: 22%;
+	width: 20%;
 	:hover, :focus {
 		text-decoration: underline;
 	}
 `;
 
-export const CitizenDaysLink = styled(TableTitleLinks)`
-  display: none;
-	@media (min-width: 950px) {
-		display: flex;
-	}
+export const PositionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 35%;
 `;
 
-export const Icon = styled(FaStar)`
-  color: yellow;
-  font-size: 8px;
-  margin: 0 5px 0 -13px;
+export const Position = styled.p`
+  padding-left: 5px;
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
   @media (min-width: 768px) {
-    font-size: 10px;
+    font-size: 18px;
   }
 `;
 
 export const CitizenAvatar = styled.img`
-	height: 18px;
-	width: 18px;
+	height: 15px;
+	width: 15px;
 	padding: 2px;
-	margin-right: 5px;
-	background-color: ${props => props.theme.secondary};
-  border: 1.5px solid ${props => props.theme.secondary};
+	margin:  0 5px;
 	border-radius: 50%;
+  background-color: ${(props) => props.theme.secondary}
+  border: 1px solid transparent;
 	@media (min-width: 768px) {
-		height: 28px;
-		width: 28px;
+		height: 22px;
+		width: 22px;
 		padding: 2px;
 	}
 `;
 
 export const Citizen = styled.p`
-	width: 25%;
+  padding: 0 5px;
 	margin: 0;
 	font-size: 12px;
+  width: 20%;
 	text-align: left;
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
 `;
 
-export const CitizenDays = styled(Citizen)`
-  display: none;
-	@media (min-width: 950px) {
-		display: flex;
-	}
+export const Score = styled(Citizen)`
+  margin-left: 5px;
 `;
 
 export const CitizensList = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
-	padding: 6px 0 4px 0;
+	justify-content: space-between;
+	padding: 6px 4px 4px 4px;
+  width: 100%;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 	@media (min-width: 768px) {
 		padding: 6px 0 4px 0;

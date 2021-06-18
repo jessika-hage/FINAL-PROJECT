@@ -9,6 +9,7 @@ mongoose.connect(mongoUrl, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,
+	useFindAndModify: false,
 });
 mongoose.Promise = Promise;
 
@@ -74,6 +75,18 @@ const Citizen = mongoose.model('Citizen', {
 		type: Number,
 		default: 2000,
 	},
+	highscoreSpaceball: {
+		type: Number,
+		default: 0,
+	},
+	highscoreFish: {
+		type: Number,
+		default: 0,
+	},
+	highscoreMath: {
+		type: Number,
+		default: 0,
+	},
 });
 
 const CitizenMessage = mongoose.model('CitizenMessage', {
@@ -116,18 +129,6 @@ app.get('/', (req, res) => {
 	res.send('Hello world');
 });
 
-// GET for logged in citizen
-// app.get('/citizen', authenticateCitizen);
-// app.get('/citizen', async (req, res) => {
-// 	const profile = await Citizen.findById({ username, createdAt, badges });
-
-// 	try {
-// 		res.json(profile);
-// 	} catch (error) {
-// 		res.status(400).json({ message: 'Invalid request, profil not fund', error });
-// 	}
-// });
-
 // GET all citizens
 // app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
@@ -141,12 +142,18 @@ app.get('/citizens', async (req, res) => {
 			return { createdAt: -1 };
 		} else if (sort === 'richest') {
 			return { coins: -1 };
+		} else if (sort === 'highscoreSpaceball') {
+			return { highscoreSpaceball: -1 };
+		} else if (sort === 'highscoreFish') {
+			return { highscoreFish: -1 };
+		} else if (sort === 'highscoreMath') {
+			return { highscoreMath: -1 };
 		} else {
 			return { ranking: -1 };
 		}
 	};
 
-	const allCitizens = await Citizen.find().sort(sortCitizens(sort));
+	const allCitizens = await Citizen.find().sort(sortCitizens(sort)).exec();
 
 	try {
 		return res.json({ allCitizens });
@@ -282,6 +289,9 @@ app.post('/signup', async (req, res) => {
 			investments: newCitizen.investments,
 			investmentQuantity: newCitizen.investmentQuantity,
 			energy: newCitizen.energy,
+			highscoreSpaceball: newCitizen.highscoreSpaceball,
+			highscoreFish: newCitizen.highscoreFish,
+			highscoreMath: newCitizen.highscoreMath,
 		});
 	} catch (error) {
 		if (error.code === 11000) {
@@ -325,6 +335,9 @@ app.post('/signin', async (req, res) => {
 				investments: citizen.investments,
 				investmentQuantity: citizen.investmentQuantity,
 				energy: citizen.energy,
+				highscoreSpaceball: citizen.highscoreSpaceball,
+				highscoreFish: citizen.highscoreFish,
+				highscoreMath: citizen.highscoreMath,
 			});
 		} else {
 			res.status(404).json({ success: false, message: 'Citizen not found' });
@@ -495,6 +508,62 @@ app.patch('/citizen/:id/energy', async (req, res) => {
 		);
 		if (updatedEnergy) {
 			res.json(updatedEnergy);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for updating highscore spaceball
+// app.patch('/citizen/:id/highscoreSpaceball', authenticateCitizen);
+app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedHighscoreSpaceball = await Citizen.findByIdAndUpdate(
+			id,
+			req.body,
+			{ new: true }
+		);
+		if (updatedHighscoreSpaceball) {
+			res.json(updatedHighscoreSpaceball);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for updating highscore fish farm
+// app.patch('/citizen/:id/highscoreFish', authenticateCitizen);
+app.patch('/citizen/:id/highscoreFish', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedHighscoreFish = await Citizen.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
+		if (updatedHighscoreFish) {
+			res.json(updatedHighscoreFish);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
+// PATCH for updating highscore math
+// app.patch('/citizen/:id/highscoreMath', authenticateCitizen);
+app.patch('/citizen/:id/highscoreMath', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedHighscoreMath = await Citizen.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
+		if (updatedHighscoreMath) {
+			res.json(updatedHighscoreMath);
 		} else {
 			res.status(404).json({ message: 'Not found!' });
 		}
