@@ -130,7 +130,7 @@ app.get('/', (req, res) => {
 });
 
 // GET all citizens
-// app.get('/citizens', authenticateCitizen);
+app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
 	const { sort } = req.query;
 	const sortCitizens = (sort) => {
@@ -163,14 +163,14 @@ app.get('/citizens', async (req, res) => {
 });
 
 //use to generate a random link to reset password
-const randomString = (length) => {
-	let text = '';
-	const possible = 'abcdefghijklmnopqrstuvwxyx123456789_-.';
-	for (let i = 0; i < length; i++) {
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-	}
-	return text;
-};
+// const randomString = (length) => {
+// 	let text = '';
+// 	const possible = 'abcdefghijklmnopqrstuvwxyx123456789_-.';
+// 	for (let i = 0; i < length; i++) {
+// 		text += possible.charAt(Math.floor(Math.random() * possible.length));
+// 	}
+// 	return text;
+// };
 
 // app.put('/citizen/password', authenticateCitizen);
 // app.put('/citizen/password', async (req, res) => {
@@ -215,15 +215,15 @@ const randomString = (length) => {
 // });
 
 //update password when you remember your old password
-app.patch('/citizen/password', authenticateCitizen);
-app.patch('/citizen/password', async (req, res) => {
+app.patch('/citizen/:id/password', authenticateCitizen);
+app.patch('/citizen/:id/password', async (req, res) => {
 	const { _id } = req.citizen;
-	const { oldPassword, newPassword } = req.body;
+	const { password, newPassword } = req.body;
 
 	try {
 		const salt = bcrypt.genSaltSync();
 
-		if (req.citizen && bcrypt.compareSync(oldPassword, req.citizen.password)) {
+		if (req.citizen && bcrypt.compareSync(password, req.citizen.password)) {
 			const updatedCitizen = await Citizen.findByIdAndUpdate(
 				_id,
 				{
@@ -231,36 +231,36 @@ app.patch('/citizen/password', async (req, res) => {
 				},
 				{ new: true }
 			);
-			res.json({ success: true });
+			res.json({ success: true, message: 'password updated!' });
 		} else {
-			res.status(401).json({ success: false });
+			res.status(401).json({ success: false, message: 'Could not update password!' });
 		}
 	} catch (error) {
-		res.status(400).json({ success: false, error });
+		res.status(400).json({ success: false, message: 'Invalid request', error });
 	}
 });
 
 //update password when you forgot your old password
-app.patch('/citizen/newpassword', authenticateCitizen);
-app.patch('/citizen/newpassword', async (req, res) => {
-	const { _id } = req.citizen;
-	const { newPassword } = req.body;
+// app.patch('/citizen/newpassword', authenticateCitizen);
+// app.patch('/citizen/newpassword', async (req, res) => {
+// 	const { _id } = req.citizen;
+// 	const { newPassword } = req.body;
 
-	try {
-		const salt = bcrypt.genSaltSync();
+// 	try {
+// 		const salt = bcrypt.genSaltSync();
 
-		const updatedCitizen = await Citizen.findByIdAndUpdate(
-			_id,
-			{
-				password: bcrypt.hashSync(newPassword, salt),
-			},
-			{ new: true }
-		);
-		res.json({ success: true });
-	} catch (error) {
-		res.status(400).json({ success: false, error });
-	}
-});
+// 		const updatedCitizen = await Citizen.findByIdAndUpdate(
+// 			_id,
+// 			{
+// 				password: bcrypt.hashSync(newPassword, salt),
+// 			},
+// 			{ new: true }
+// 		);
+// 		res.json({ success: true });
+// 	} catch (error) {
+// 		res.status(400).json({ success: false, error });
+// 	}
+// });
 
 // POST for signing up
 app.post('/signup', async (req, res) => {
@@ -351,7 +351,7 @@ app.post('/signin', async (req, res) => {
 });
 
 // GET Messages for messageboard
-// app.get('/citizenmessage', authenticateCitizen);
+app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
 	const citizenMessage = await CitizenMessage.find()
 		.sort({ createdAt: -1 })
@@ -360,7 +360,7 @@ app.get('/citizenmessage', async (req, res) => {
 });
 
 // POST message on messageboard
-// app.post('/citizenmessage', authenticateCitizen);
+app.post('/citizenmessage', authenticateCitizen);
 app.post('/citizenmessage/:userid', async (req, res) => {
 	const { message } = req.body;
 	const { userid } = req.params;
@@ -374,8 +374,26 @@ app.post('/citizenmessage/:userid', async (req, res) => {
 	}
 });
 
+// PATCH for updating avatar
+app.patch('/citizen/:id/avatar', authenticateCitizen);
+app.patch('/citizen/:id/avatar', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const updatedAvatar = await Citizen.findByIdAndUpdate(id, req.body, {
+			new: true,
+		});
+		if (updatedAvatar) {
+			res.json(updatedAvatar);
+		} else {
+			res.status(404).json({ message: 'Not found!' });
+		}
+	} catch (error) {
+		res.status(400).json({ message: 'Invalid request', error });
+	}
+});
+
 // PATCH for increasing badges
-// app.put('/citizen/:id/badges', authenticateCitizen);
+app.patch('/citizen/:id/badges', authenticateCitizen);
 app.patch('/citizen/:id/badges', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -399,7 +417,7 @@ app.patch('/citizen/:id/badges', async (req, res) => {
 });
 
 // PATCH for increasing ranking
-// app.patch('/citizen/:id/ranking', authenticateCitizen);
+app.patch('/citizen/:id/ranking', authenticateCitizen);
 app.patch('/citizen/:id/ranking', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -423,7 +441,7 @@ app.patch('/citizen/:id/ranking', async (req, res) => {
 });
 
 // PATCH for increasing coins
-// app.patch('/citizen/:id/coins', authenticateCitizen);
+app.patch('/citizen/:id/coins', authenticateCitizen);
 app.patch('/citizen/:id/coins', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -447,7 +465,7 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 });
 
 // PATCH for adding items from shop
-// app.patch('/citizen/:id/items', authenticateCitizen);
+app.patch('/citizen/:id/items', authenticateCitizen);
 app.post('/citizen/:id/items', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -469,7 +487,7 @@ app.post('/citizen/:id/items', async (req, res) => {
 });
 
 // PATCH for updating investments
-// app.patch('/citizen/:id/investments', authenticateCitizen);
+app.patch('/citizen/:id/investments', authenticateCitizen);
 app.patch('/citizen/:id/investments', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -494,7 +512,7 @@ app.patch('/citizen/:id/investments', async (req, res) => {
 });
 
 // PATCH for increasing caloryintake
-// app.patch('/citizen/:id/energy', authenticateCitizen);
+app.patch('/citizen/:id/energy', authenticateCitizen);
 app.patch('/citizen/:id/energy', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -518,7 +536,7 @@ app.patch('/citizen/:id/energy', async (req, res) => {
 });
 
 // PATCH for updating highscore spaceball
-// app.patch('/citizen/:id/highscoreSpaceball', authenticateCitizen);
+app.patch('/citizen/:id/highscoreSpaceball', authenticateCitizen);
 app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -538,7 +556,7 @@ app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
 });
 
 // PATCH for updating highscore fish farm
-// app.patch('/citizen/:id/highscoreFish', authenticateCitizen);
+app.patch('/citizen/:id/highscoreFish', authenticateCitizen);
 app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -556,7 +574,7 @@ app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 });
 
 // PATCH for updating highscore math
-// app.patch('/citizen/:id/highscoreMath', authenticateCitizen);
+app.patch('/citizen/:id/highscoreMath', authenticateCitizen);
 app.patch('/citizen/:id/highscoreMath', async (req, res) => {
 	const { id } = req.params;
 	try {
