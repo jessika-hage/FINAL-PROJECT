@@ -107,7 +107,7 @@ export const updateBadges = (badges) => {
 			body: JSON.stringify({ badges }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/badges`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/badges`,
 			options
 		)
 			.then((res) => res.json())
@@ -131,7 +131,7 @@ export const updateRanking = (ranking) => {
 			body: JSON.stringify({ ranking }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/ranking`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/ranking`,
 			options
 		)
 			.then((res) => res.json())
@@ -155,7 +155,7 @@ export const updateCoins = (coins) => {
 			body: JSON.stringify({ coins }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/coins`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/coins`,
 			options
 		)
 			.then((res) => res.json())
@@ -179,7 +179,7 @@ export const updateItems = (items) => {
 			body: JSON.stringify( { items } ),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/items`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/items`,
 			options
 		)
 			.then((res) => res.json())
@@ -203,7 +203,7 @@ export const updateInvestments = (investmentQuantity, investments) => {
 			body: JSON.stringify({ investmentQuantity, investments }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/investments`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/investments`,
 			options
 		)
 			.then((res) => res.json())
@@ -228,7 +228,7 @@ export const updateEnergy = (energy) => {
 			body: JSON.stringify({ energy }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/energy`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/energy`,
 			options
 		)
 			.then((res) => res.json())
@@ -252,7 +252,7 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 			body: JSON.stringify({ highscoreSpaceball }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreSpaceball`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreSpaceball`,
 			options
 		)
 			.then((res) => res.json())
@@ -276,7 +276,7 @@ export const updateHighscoreFish = (highscoreFish) => {
 			body: JSON.stringify({ highscoreFish }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreFish`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreFish`,
 			options
 		)
 			.then((res) => res.json())
@@ -300,7 +300,7 @@ export const updateHighscoreMath = (highscoreMath) => {
 			body: JSON.stringify({ highscoreMath }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreMath`,
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreMath`,
 			options
 		)
 			.then((res) => res.json())

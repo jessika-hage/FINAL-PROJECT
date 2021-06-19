@@ -51,10 +51,18 @@ export const RoomGarden = styled(RoomBedroom)`
 	border-radius: 0px;
 `;
 
-export const RoomStore = styled(RoomClassroom)`
+export const RoomStore = styled(Link)`
 	grid-column: 4 / span 3;
 	grid-row: 4 / span 3;
-	border-radius: 0px;
+	border: 2px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: ${(props) => props.theme.secondary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 export const RoomInfo = styled(RoomBedroom)`
