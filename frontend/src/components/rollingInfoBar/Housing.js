@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import { housing } from '../../reducers/housing';
-
 import {
 	HousingText,
 	Button,
@@ -18,6 +16,8 @@ import {
 	ButtonContainer,
 	BuyButton,
 	HouseImage,
+	Title,
+	PriceContainer,
 } from './Styling';
 
 export const Housing = () => {
@@ -46,9 +46,11 @@ export const Housing = () => {
 									alt={house.title}
 								/>
 								<HouseTextContainer>
-									<HouseTitle>{house.title}</HouseTitle>
+									<Title>{house.title}</Title>
 									<Text>{house.description}</Text>
-									<Text>{house.price} $</Text>
+									<PriceContainer>
+										<Text> Price from: {house.price} $</Text>
+									</PriceContainer>
 								</HouseTextContainer>
 							</HouseContainer>
 						))}

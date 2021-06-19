@@ -88,7 +88,11 @@ export const DayText = styled.p`
 
 //Housing
 export const HouseImage = styled.img`
-	width: 500px;
+	width: 250px;
+`;
+export const Title = styled.h1`
+	margin: 5 0 0 0;
+	font-size: 20px;
 `;
 
 export const HouseContainer = styled.div`
@@ -102,16 +106,25 @@ export const HousingText = styled(WeatherText)`
 	border-right: none;
 `;
 
+export const PriceContainer = styled.div`
+	color: 
+	align-items: center;
+
+`;
+
 export const HouseTextContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 0;
+	padding-bottom: 10px;
 `;
 
-// Currency
 export const HouseTitle = styled(ForecastTitle)`
 	text-align: center;
 `;
+
+// Currency
 
 export const TextContainer = styled.div`
 	display: flex;
