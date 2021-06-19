@@ -66,7 +66,11 @@ export const DialogContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
+	max-width: 300px;
 	color: ${(props) => props.theme.textColor};
+	@media (min-width: 768px) {
+		max-width: 400px;
+	}
 `;
 
 export const ForecastTitle = styled.h2`
@@ -107,9 +111,6 @@ export const HousingText = styled(WeatherText)`
 `;
 
 export const PriceContainer = styled.div`
-	color: 
-	align-items: center;
-
 `;
 
 export const HouseTextContainer = styled.div`
@@ -118,6 +119,14 @@ export const HouseTextContainer = styled.div`
 	align-items: center;
 	margin-top: 0;
 	padding-bottom: 10px;
+`;
+
+export const HouseText = styled.p`
+	font-size: 14px;
+	margin: 0;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
 `;
 
 export const HouseTitle = styled(ForecastTitle)`

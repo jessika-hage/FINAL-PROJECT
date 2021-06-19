@@ -11,7 +11,7 @@ import {
 	HouseContainer,
 	HouseTitle,
 	HouseTextContainer,
-	Text,
+	HouseText,
 	ChangeText,
 	ButtonContainer,
 	BuyButton,
@@ -47,9 +47,9 @@ export const Housing = () => {
 								/>
 								<HouseTextContainer>
 									<Title>{house.title}</Title>
-									<Text>{house.description}</Text>
+									<HouseText>{house.description}</HouseText>
 									<PriceContainer>
-										<Text> Price from: {house.price} $</Text>
+										<HouseText> Price from: {house.price} $</HouseText>
 									</PriceContainer>
 								</HouseTextContainer>
 							</HouseContainer>
