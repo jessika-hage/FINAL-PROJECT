@@ -3,6 +3,7 @@ import { Tooltip } from '@material-ui/core';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import Dialog from '@material-ui/core/Dialog';
 
+import { updateEnergy } from '../../reducers/profile';
 import {
 	RoomGym,
 	Icons,

@@ -1,6 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import styled, { keyframes } from 'styled-components';
+import { FaArrowUp, FaArrowDown, FaExclamationTriangle } from 'react-icons/fa';
 
 // Profile Stats
 export const ImageNameContainer = styled.div`
@@ -122,6 +121,7 @@ export const ProfileContainer = styled.section`
   margin: 10px;
   max-width: 350px;
 	min-width: 300px;
+	overflow: scroll;
 `;
 
 // export const TopContainer = styled.div`
@@ -292,4 +292,28 @@ export const EnergyContainer = styled.div`
 
 export const EnergyText = styled(ItemsTitle)`
 	margin: 5px 0 0 3px;
+	// display: flex;
+	// align-items: center;
+`;
+
+const alert = keyframes`
+	from { transform: scale(1) }
+	to { transform: scale(1.2) }
+`;
+
+export const AlertIcon = styled(FaExclamationTriangle)`
+	color: red;
+	animation: ${alert} 1s linear infinite alternate-reverse;
+	margin-left: 10px;
+	cursor: pointer;
+`;
+
+export const AlertContainer = styled.div`
+	background-color: ${props => props.theme.primary};
+	border: 2px solid ${props => props.theme.secondary};
+	max-width: 250px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

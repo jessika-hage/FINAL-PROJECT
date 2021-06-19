@@ -1,48 +1,71 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
-import { Tooltip } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 
-import { RoomRestaurant, Icons } from './Styling';
+import { updateEnergy } from '../../reducers/profile';
+import { 
+	RoomRestaurant, 
+	Icons, 
+	DialogContainer, 
+	InfoText } from './Styling';
 
 
 export const Restaurant = () => {
   const [open, setOpen] = useState(false);
+	const [openConfirmation, setOpenConfirmation] = useState(false);
 	const allFood = useSelector((store) => store.food);
+
+	const dispatch = useDispatch();
 
 	const onToggleDialog = () => {
 		setOpen(!open);
-  }
+  };
+
+	const onBuy = (energy) => {
+		setOpenConfirmation(true);
+		dispatch(updateEnergy(energy))
+		setTimeout(() => {
+			setOpenConfirmation(false);
+		}, 2000)
+	};
 
   return (
-<>
+		<>
       <RoomRestaurant onClick={onToggleDialog}>
         <Icons>
           <RestaurantIcon fontSize='large' />
         </Icons>
       </RoomRestaurant>
       <Dialog open={open} onClose={onToggleDialog}>
-			<TableContainer>
-			<TableHead>
-				<TableTitle>Type</TableTitle>
-				<TableTitleLinks>Energy</TableTitleLinks>
-				<CitizenDaysLink>Protein</CitizenDaysLink>
-				<TableTitleLinks>Salt</TableTitleLinks>
-				<TableTitleLinks>Price</TableTitleLinks>
-			</TableHead>
-			{allFood.map((food) => (
-				<CitizensList key={food.id}>
-					<Citizen>{food.title}</Citizen>
-					<Citizen>{food.energy}kcal</Citizen>
-					<Citizen>{food.protein}g</Citizen>
-					<Citizen>{food.salt}g</Citizen>
-					<Citizen>{food.price}$ <BuyFood>Buy</BuyFood></Citizen>
-				</CitizensList>
-			 ))}
-		</TableContainer>
-	</Dialog>
+				<TableContainer>
+					<TableHead>
+						<TableTitle>Type</TableTitle>
+						<TableTitleLinks>Energy</TableTitleLinks>
+						<CitizenDaysLink>Protein</CitizenDaysLink>
+						<TableTitleLinks>Salt</TableTitleLinks>
+						<TableTitleLinks>Price</TableTitleLinks>
+					</TableHead>
+					{allFood.map((food) => (
+						<CitizensList key={food.id}>
+							<Citizen>{food.title}</Citizen>
+							<Citizen>{food.energy}kcal</Citizen>
+							<Citizen>{food.protein}g</Citizen>
+							<Citizen>{food.salt}g</Citizen>
+							<Citizen>{food.price}$ 
+								<BuyFood 
+									onClick={() => onBuy(food.energy)}>Buy</BuyFood>
+							</Citizen>
+						</CitizensList>
+			 		))}
+				</TableContainer>
+			</Dialog>
+			<Dialog open={openConfirmation}>
+				<DialogContainer>
+					<InfoText>Purchase successfull! Your energyintake has now increased!</InfoText>
+				</DialogContainer>
+			</Dialog>
   </>
   )
 };
