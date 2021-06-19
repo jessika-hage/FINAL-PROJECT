@@ -95,6 +95,29 @@ export const profile = createSlice({
 	},
 });
 
+// Thunk for updating avatar
+export const updateAvatar = (avatar) => {
+	return (dispatch, getState) => {
+		console.log(getState());
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ avatar }),
+		};
+		fetch(
+			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/avatar`,
+			options
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				dispatch(profile.actions.setBadges(data.avatar));
+			})
+			.catch((err) => console.error(err));
+	};
+};
 
 // Thunk for updating badges
 export const updateBadges = (badges) => {
