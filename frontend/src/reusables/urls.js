@@ -1,5 +1,5 @@
 // Citizen API
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://citizen-ship.herokuapp.com";
 export const CITIZEN_URL = (slug) => `${BASE_URL}/${slug}`;
 
 // Description Cards

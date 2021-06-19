@@ -29,7 +29,7 @@ export const MemoryCard = ({ data, handleClick, index }) => {
 	return (
 		<ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal'>
 			<Card flipped={flipped} onClick={onCardClick}></Card>
-			<ImageCard src={url} alt='card' onLoad={handleImageLoad} />
+			<ImageCard src={url} alt='card' onLoad={handleImageLoad} isLoaded={isLoaded} />
 		</ReactCardFlip>
 	);
 };
