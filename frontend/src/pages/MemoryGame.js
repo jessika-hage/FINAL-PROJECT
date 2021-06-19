@@ -8,7 +8,7 @@ import { FinishDialog } from '../components/memory/FinishDialog';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-import { GAME_STATUS } from '../components/memory/Constants';
+import { GAME_STATUS } from '../components/memory/constants';
 import { MainContainer } from '../components/memory/Styling';
 
 export const MemoryGame = () => {
