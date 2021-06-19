@@ -6,25 +6,25 @@ export const TableContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px;
-	background-color: ${props => props.theme.backgroundColor};
-	color: ${props => props.theme.textColor};
+	background-color: ${(props) => props.theme.backgroundColor};
+	color: ${(props) => props.theme.textColor};
 	max-height: 320px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border: 2px solid ${props => props.theme.secondary};
-  }
-  @media (min-width: 768px) {
-    max-height: 437px;
-  }
+		-webkit-appearance: none;
+		width: 15px;
+		height: 15px;
+		border: 2px solid ${(props) => props.theme.secondary};
+	}
+	@media (min-width: 768px) {
+		max-height: 437px;
+	}
 `;
 
 export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 2px solid ${props => props.theme.secondary};
+	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
 export const TableTitle = styled.div`
@@ -33,32 +33,33 @@ export const TableTitle = styled.div`
 	margin: 0;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: ${props => props.theme.textColor};
+	color: ${(props) => props.theme.textColor};
 	font-size: 14px;
 `;
 
 export const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
 	width: 22%;
-	:hover, :focus {
+	:hover,
+	:focus {
 		text-decoration: underline;
 	}
 `;
 
 export const CitizenDaysLink = styled(TableTitleLinks)`
-  display: none;
+	display: none;
 	@media (min-width: 950px) {
 		display: flex;
 	}
 `;
 
 export const Icon = styled(FaStar)`
-  color: yellow;
-  font-size: 8px;
-  margin: 0 5px 0 -13px;
-  @media (min-width: 768px) {
-    font-size: 10px;
-  }
+	color: yellow;
+	font-size: 8px;
+	margin: 0 5px 0 -13px;
+	@media (min-width: 768px) {
+		font-size: 10px;
+	}
 `;
 
 export const CitizenAvatar = styled.img`
@@ -66,8 +67,8 @@ export const CitizenAvatar = styled.img`
 	width: 18px;
 	padding: 2px;
 	margin-right: 5px;
-	background-color: ${props => props.theme.secondary};
-  border: 1.5px solid ${props => props.theme.secondary};
+	background-color: ${(props) => props.theme.secondary};
+	border: 1.5px solid ${(props) => props.theme.secondary};
 	border-radius: 50%;
 	@media (min-width: 768px) {
 		height: 28px;
@@ -87,7 +88,7 @@ export const Citizen = styled.p`
 `;
 
 export const CitizenDays = styled(Citizen)`
-  display: none;
+	display: none;
 	@media (min-width: 950px) {
 		display: flex;
 	}

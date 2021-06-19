@@ -6,20 +6,24 @@ import { CITIZEN_URL } from '../reusables/urls';
 import { profile } from '../reducers/profile';
 import { TextInputSignIn } from '../components/signinupform/TextInput';
 import { SubmitButtonSignIn } from '../components/signinupform/SubmitButton';
-import { ChangeSignUp } from '../components/signinupform/ChangeLogIn';
+import {
+	ChangeSignUp,
+	ResetPassword,
+} from '../components/signinupform/ChangeLogIn';
 import { TitleAnimation } from '../components/signinupform/TitleAnimation';
-import { 
-	MainContainer, 
-	Form, 
-	ErrorMessage, 
-	EyeButton } from '../components/signinupform/Styling';
+import {
+	MainContainer,
+	Form,
+	ErrorMessage,
+	EyeButton,
+} from '../components/signinupform/Styling';
 
 export const SignIn = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [mode, setMode] = useState(null);
 	const [errorMessage, setErrorMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(true);
+	const [showPassword, setShowPassword] = useState(true);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -69,9 +73,9 @@ export const SignIn = () => {
 	};
 
 	const togglePassword = () => {
-    if (!showPassword) setShowPassword(true);
-    else setShowPassword(false);
-  };
+		if (!showPassword) setShowPassword(true);
+		else setShowPassword(false);
+	};
 
 	return (
 		<MainContainer>
@@ -81,32 +85,38 @@ export const SignIn = () => {
 					type='text'
 					placeholder='username'
 					value={username}
-					onChange={(e) => setUsername(e.target.value)} />
+					onChange={(e) => setUsername(e.target.value)}
+				/>
 				<TextInputSignIn
-					type={showPassword ? "password" : "text"}
+					type={showPassword ? 'password' : 'text'}
 					placeholder='password'
 					value={password}
-					onChange={(e) => setPassword(e.target.value)} />
-				<EyeButton type="button" onClick={togglePassword}>
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<EyeButton type='button' onClick={togglePassword}>
 					{showPassword ? (
-						<i className="fas fa-eye"></i>
+						<i className='fas fa-eye'></i>
 					) : (
-						<i className="fas fa-eye-slash"></i>
+						<i className='fas fa-eye-slash'></i>
 					)}
 				</EyeButton>
 				<ErrorMessage>{errorMessage}</ErrorMessage>
 				<SubmitButtonSignIn
-					type='submit' 
-					onClick={() => setMode('signin')} 
-					text='Board ship' />
+					type='submit'
+					onClick={() => setMode('signin')}
+					text='Board ship'
+				/>
 				<ChangeSignUp
-					text='Not a citizen yet?' 
-					link='/signup' 
-					linkText='Become one here!' />
+					text='Not a citizen yet?'
+					link='/signup'
+					linkText='Become one here!'
+				/>
+				<ResetPassword
+					text='Forgot you password?'
+					link='/resetpassword'
+					linkText='Reset it here!'
+				/>
 			</Form>
 		</MainContainer>
 	);
 };
-
-
-

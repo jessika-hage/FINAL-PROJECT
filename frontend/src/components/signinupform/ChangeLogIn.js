@@ -3,20 +3,28 @@ import React from 'react';
 import { ChangeText, ChangeLink, ChangeTextSignIn } from './Styling';
 
 export const ChangeLogIn = ({ text, link, linkText }) => {
-  return (
-    <ChangeText>
-      {text}
-    <ChangeLink to={link}>{linkText}</ChangeLink>
-  </ChangeText>
-  )
+	return (
+		<ChangeText>
+			{text}
+			<ChangeLink to={link}>{linkText}</ChangeLink>
+		</ChangeText>
+	);
 };
 
 export const ChangeSignUp = ({ text, link, linkText }) => {
-  return (
-    <ChangeTextSignIn>
-      {text}
-    <ChangeLink to={link}>{linkText}</ChangeLink>
-  </ChangeTextSignIn>
-  )
+	return (
+		<ChangeTextSignIn>
+			{text}
+			<ChangeLink to={link}>{linkText}</ChangeLink>
+		</ChangeTextSignIn>
+	);
 };
 
+export const ResetPassword = ({ text, link, linkText }) => {
+	return (
+		<ChangeTextSignIn>
+			{text}
+			<ChangeLink to={link}>{linkText}</ChangeLink>
+		</ChangeTextSignIn>
+	);
+};

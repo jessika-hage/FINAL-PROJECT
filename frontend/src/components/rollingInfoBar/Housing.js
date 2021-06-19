@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 
+import { housing } from '../../reducers/housing';
+
 import {
 	HousingText,
 	Button,
@@ -11,6 +13,7 @@ import {
 	ChangeText,
 	ButtonContainer,
 	BuyButton,
+	HouseImage,
 } from './Styling';
 
 export const Housing = () => {
@@ -29,9 +32,14 @@ export const Housing = () => {
 			</HousingText>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>
-					<HouseTitle>HOUSES</HouseTitle>
+					<HouseImage
+						src={require(`./assets/${housing.image}`)}
+						alt={housing.title}
+					/>
+					<HouseTitle>Let Your Dream Come True</HouseTitle>
 					<TextContainer>
-						<Text>1,500,000 $</Text>
+						<Text>{housing.description}</Text>
+						<Text>{housing.price}</Text>
 					</TextContainer>
 					<ButtonContainer>
 						<BuyButton>Buy House</BuyButton>

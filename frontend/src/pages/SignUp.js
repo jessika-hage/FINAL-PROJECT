@@ -17,7 +17,6 @@ import {
 	EyeButtonSignUp,
 	ChooseText,
 	AvatarContainer,
-	ResetPassword,
 } from '../components/signinupform/Styling';
 
 export const SignUp = () => {
@@ -157,11 +156,6 @@ export const SignUp = () => {
 					link='/signin'
 					linkText='Board ship here!'
 				/>
-				{/* <ResetPassword
-					text='Forgot you password??'
-					link='/resetpassword'
-					linkText='Reset it here!'
-				/> */}
 			</Form>
 		</MainContainer>
 	);

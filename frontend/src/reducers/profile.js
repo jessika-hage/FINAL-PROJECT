@@ -9,7 +9,7 @@ const initialState = {
 	ranking: null,
 	coins: null,
 	createdAt: null,
-	avatar: "man",
+	avatar: 'man',
 	items: [],
 	investments: null,
 	investmentQuantity: null,
@@ -82,7 +82,7 @@ export const profile = createSlice({
 				ranking: null,
 				coins: null,
 				items: [],
-				avatar: "man",
+				avatar: 'man',
 				createdAt: null,
 				investments: null,
 				investmentQuantity: null,
@@ -176,7 +176,7 @@ export const updateItems = (items) => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify( { items } ),
+			body: JSON.stringify({ items }),
 		};
 		fetch(
 			`http://localhost:8080/citizen/${getState().profile.userId}/items`,
@@ -252,7 +252,9 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 			body: JSON.stringify({ highscoreSpaceball }),
 		};
 		fetch(
-			`http://localhost:8080/citizen/${getState().profile.userId}/highscoreSpaceball`,
+			`http://localhost:8080/citizen/${
+				getState().profile.userId
+			}/highscoreSpaceball`,
 			options
 		)
 			.then((res) => res.json())

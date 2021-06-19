@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 
 import { cart } from '../../../reducers/cart';
-import { 
-	MainContainer, 
-	DialogContainer, 
-	ImageDialogWrapper, 
-	ImageDialog, 
-	ProductContainer, 
-	AddedText, 
+import {
+	MainContainer,
+	DialogContainer,
+	ImageDialogWrapper,
+	ImageDialog,
+	ProductContainer,
+	AddedText,
 	Text,
 	ProductWrapper,
 	ImageWrapper,
@@ -17,7 +17,8 @@ import {
 	TextWrapper,
 	TextDescription,
 	AddButton,
-	Icon } from './Styling';
+	Icon,
+} from './Styling';
 
 export const Product = ({ product }) => {
 	const dispatch = useDispatch();
