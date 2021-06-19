@@ -130,7 +130,7 @@ app.get('/', (req, res) => {
 });
 
 // GET all citizens
-app.get('/citizens', authenticateCitizen);
+// app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
 	const { sort } = req.query;
 	const sortCitizens = (sort) => {
