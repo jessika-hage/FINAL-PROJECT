@@ -172,94 +172,95 @@ const randomString = (length) => {
 	return text;
 };
 
-app.put('/citizen/password', authenticateCitizen);
-app.put('/citizen/password', async (req, res) => {
-	if (!req.body) return res.status(400).json({ message: 'No request body' });
-	if (!req.body.email)
-		return res.status(400).json({ message: 'No email in request body' });
+// app.put('/citizen/password', authenticateCitizen);
+// app.put('/citizen/password', async (req, res) => {
+// 	if (!req.body) return res.status(400).json({ message: 'No request body' });
+// 	if (!req.body.email)
+// 		return res.status(400).json({ message: 'No email in request body' });
 
-	const token = randomString(40);
-	const emailData = {
-		to: req.body.email,
-		subject: 'Hello ✔', // Subject line
-		text: 'Hello world?', // plain text body
-		html: '<b>Hello world?</b>',
-	};
-	return Citizen.update(
-		{ email: req.body.email },
-		{ $set: { resetPassLink: token } },
-		function (error, feedback) {
-			if (error) return res.send(error);
-			else {
-				sendEmail(emailData);
-				return res
-					.status(200)
-					.json({ message: `Email has been sent to ${req.body.email}` });
-			}
-		}
-	);
-});
-
-app.put('/api/resetpass', async (req, res) => {
-	const { resetPassLink, newPassword } = req.body;
-	Citizen.hashPassword(newPassword).then((hashPassword) => {
-		return Citizen.update(
-			{ resetPassLink },
-			{ $set: { password: hashedPass, reserPassLink: '' } },
-			function (error, feedback) {
-				if (error) return res.send(error);
-				return res.send(feedback);
-			}
-		);
-	});
-});
-
-// //update password when you remember you old password
-// app.patch('/citizen/password', authenticateCitizen);
-// app.patch('/citizen/password', async (req, res) => {
-// 	const { _id } = req.citizen;
-// 	const { oldPassword, newPassword } = req.body;
-
-// 	try {
-// 		const salt = bcrypt.genSaltSync();
-
-// 		if (req.citizen && bcrypt.compareSync(oldPassword, req.citizen.password)) {
-// 			const updatedCitizen = await Citizen.findByIdAndUpdate(
-// 				_id,
-// 				{
-// 					password: bcrypt.hashSync(newPassword, salt),
-// 				},
-// 				{ new: true }
-// 			);
-// 			res.json({ success: true });
-// 		} else {
-// 			res.status(401).json({ success: false });
+// 	const token = randomString(40);
+// 	const emailData = {
+// 		to: req.body.email,
+// 		subject: 'Hello ✔', // Subject line
+// 		text: 'Hello world?', // plain text body
+// 		html: '<b>Hello world?</b>',
+// 	};
+// 	return Citizen.update(
+// 		{ email: req.body.email },
+// 		{ $set: { resetPassLink: token } },
+// 		function (error, feedback) {
+// 			if (error) return res.send(error);
+// 			else {
+// 				sendEmail(emailData);
+// 				return res
+// 					.status(200)
+// 					.json({ message: `Email has been sent to ${req.body.email}` });
+// 			}
 // 		}
-// 	} catch (error) {
-// 		res.status(400).json({ success: false, error });
-// 	}
+// 	);
 // });
 
-// app.patch('/citizen/newpassword', authenticateCitizen);
-// app.patch('/citizen/newpassword', async (req, res) => {
-// 	const { _id } = req.citizen;
-// 	const { newPassword } = req.body;
-
-// 	try {
-// 		const salt = bcrypt.genSaltSync();
-
-// 		const updatedCitizen = await Citizen.findByIdAndUpdate(
-// 			_id,
-// 			{
-// 				password: bcrypt.hashSync(newPassword, salt),
-// 			},
-// 			{ new: true }
+// app.put('/api/resetpass', async (req, res) => {
+// 	const { resetPassLink, newPassword } = req.body;
+// 	Citizen.hashPassword(newPassword).then((hashPassword) => {
+// 		return Citizen.update(
+// 			{ resetPassLink },
+// 			{ $set: { password: hashedPass, reserPassLink: '' } },
+// 			function (error, feedback) {
+// 				if (error) return res.send(error);
+// 				return res.send(feedback);
+// 			}
 // 		);
-// 		res.json({ success: true });
-// 	} catch (error) {
-// 		res.status(400).json({ success: false, error });
-// 	}
+// 	});
 // });
+
+//update password when you remember your old password
+app.patch('/citizen/password', authenticateCitizen);
+app.patch('/citizen/password', async (req, res) => {
+	const { _id } = req.citizen;
+	const { oldPassword, newPassword } = req.body;
+
+	try {
+		const salt = bcrypt.genSaltSync();
+
+		if (req.citizen && bcrypt.compareSync(oldPassword, req.citizen.password)) {
+			const updatedCitizen = await Citizen.findByIdAndUpdate(
+				_id,
+				{
+					password: bcrypt.hashSync(newPassword, salt),
+				},
+				{ new: true }
+			);
+			res.json({ success: true });
+		} else {
+			res.status(401).json({ success: false });
+		}
+	} catch (error) {
+		res.status(400).json({ success: false, error });
+	}
+});
+
+//update password when you forgot your old password
+app.patch('/citizen/newpassword', authenticateCitizen);
+app.patch('/citizen/newpassword', async (req, res) => {
+	const { _id } = req.citizen;
+	const { newPassword } = req.body;
+
+	try {
+		const salt = bcrypt.genSaltSync();
+
+		const updatedCitizen = await Citizen.findByIdAndUpdate(
+			_id,
+			{
+				password: bcrypt.hashSync(newPassword, salt),
+			},
+			{ new: true }
+		);
+		res.json({ success: true });
+	} catch (error) {
+		res.status(400).json({ success: false, error });
+	}
+});
 
 // POST for signing up
 app.post('/signup', async (req, res) => {

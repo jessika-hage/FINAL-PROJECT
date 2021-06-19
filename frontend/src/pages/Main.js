@@ -152,10 +152,6 @@ const CardContainer = styled.div`
 	}
 `;
 
-const CardContainerCurrency = styled(CardContainer)`
-	margin-top: 20px;
-`;
-
 const CitizensContainer = styled.div`
 	display: flex;
 	flex-direction: column;

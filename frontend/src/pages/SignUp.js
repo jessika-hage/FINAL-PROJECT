@@ -17,7 +17,7 @@ import {
 	EyeButtonSignUp,
 	ChooseText,
 	AvatarContainer,
-	ResetPassword,
+	// ResetPassword,
 } from '../components/signinupform/Styling';
 
 export const SignUp = () => {
