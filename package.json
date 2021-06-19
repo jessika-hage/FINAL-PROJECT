@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "nodemailer": "^6.6.1",
+    "react-responsive-carousel": "^3.2.18",
     "react-wavify": "^1.5.2",
     "styled-components": "^5.3.0"
   }

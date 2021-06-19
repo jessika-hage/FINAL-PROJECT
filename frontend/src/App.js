@@ -18,6 +18,7 @@ import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
 import { GameBall } from './components/spaceball/GameBall';
+import { housing } from 'reducers/housing';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
 	cart: cart.reducer,
 	products: products.reducer,
 	food: food.reducer,
+	housing: housing.reducer,
 });
 
 const store = configureStore({ reducer });
