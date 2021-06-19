@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
-import styled from 'styled-components';
 
 import {
 	updateBadges,

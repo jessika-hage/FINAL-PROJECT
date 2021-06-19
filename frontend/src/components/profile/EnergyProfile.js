@@ -21,10 +21,8 @@ export const EnergyProfile = () => {
 	const createdAtDate = moment(createdAt);
 	const today = moment();
 	const difference = today.diff(createdAtDate, 'days');
-	console.log(difference);
 	const averageEnergy = energy / difference;
 	const delay = 1000 * 60 * 30;
-	console.log(delay);
 
 	useEffect(() => {
 		if (averageEnergy < 1500) {
@@ -35,7 +33,7 @@ export const EnergyProfile = () => {
 		} else {
 			setAlert(false);
 		}
-	}, [energy])
+	}, [averageEnergy, delay, dispatch])
 
 	const onToggleDialog = () => {
 		setOpen(!open);

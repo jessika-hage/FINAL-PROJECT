@@ -8,7 +8,7 @@ export const GridContainer = styled.section`
 `;
 
 // Rooms
-export const RoomClassroom = styled(Link)`
+export const RoomClassroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;

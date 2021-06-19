@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import Icon from '@material-ui/core/Icon';
-import { FaStar } from 'react-icons/fa';
 
 import { CITIZEN_URL } from '../../reusables/urls';
 import { 
