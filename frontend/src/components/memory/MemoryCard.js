@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
-import { CARD_STATUS } from './Constants';
+import { CARD_STATUS } from './constants';
 import { Card, ImageCard } from './Styling';
 
 export const MemoryCard = ({ data, handleClick, index }) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 import { MemoryCard } from './MemoryCard';
 import { GetImages } from './GetImages';
-import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from './Constants';
+import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from './constants';
 import {
 	Container,
 	MemoryTitle,

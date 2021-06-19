@@ -1,4 +1,4 @@
-import { CARD_STATUS, DECK_SIZE, API_PAGE_SIZE, BASE_URL } from "./Constants";
+import { CARD_STATUS, DECK_SIZE, API_PAGE_SIZE, BASE_URL } from "./constants";
 
 // Create new game
 export const GetImages = async () => {
