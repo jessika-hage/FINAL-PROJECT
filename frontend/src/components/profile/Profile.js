@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
+import Dialog from '@material-ui/core/Dialog';
 
 import { profile } from '../../reducers/profile';
 import { ItemsProfile } from './ItemsProfile';
 import { ProfileStats } from './ProfileStats';
 import { InvestmentProfile } from './InvestmentProfile';
 import { EnergyProfile } from './EnergyProfile';
+import { Settings } from './Settings';
 import { Buttons } from './Buttons';
 import { 
 	ProfileContainer, 
@@ -19,6 +21,7 @@ import {
 	ContainerTitle } from './Styling';
 
 export const Profile = () => {
+	const [openSettings, setOpenSettings] = useState(false);
 	const username = useSelector((store) => store.profile.username);
 	const avatar = useSelector((store) => store.profile.avatar);
 	const createdAt = useSelector((store) => store.profile.createdAt);
@@ -35,6 +38,10 @@ export const Profile = () => {
 		dispatch(profile.actions.setLogOut())
 		history.push('/');
 	};
+
+	const toggleSettings = () => {
+		setOpenSettings(!openSettings)
+	}
 
 	return (
 		<ProfileContainer>
@@ -64,7 +71,10 @@ export const Profile = () => {
 					<InvestmentProfile />
 				</Investments>
 			</BottomContainer>
-			<Buttons onClick={onLogout} />
+			<Buttons onSettings={toggleSettings} onClick={onLogout} />
+			<Dialog open={openSettings} onClose={toggleSettings}>
+				<Settings />
+			</Dialog>
 		</ProfileContainer>
 	);
 };

@@ -1,13 +1,15 @@
 import React from 'react';
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaSignOutAlt, FaCog } from 'react-icons/fa';
 
 import { ThemeButtons } from '../theme/ThemeButtons';
-import { ButtonContainer, ButtonSignOut } from './Styling';
+import { ButtonContainer, ButtonSignOut, ButtonSettings } from './Styling';
 
-export const Buttons = ({ onClick }) => {
+export const Buttons = ({ onSettings, onClick }) => {
   return (
     <ButtonContainer>
-      <ThemeButtons text='Change your spaceship color:' />
+      <ButtonSettings onClick={onSettings}>
+        <FaCog />
+      </ButtonSettings>
       <ButtonSignOut onClick={onClick}>
        <FaSignOutAlt />
       </ButtonSignOut>

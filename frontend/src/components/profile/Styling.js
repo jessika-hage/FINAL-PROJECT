@@ -185,27 +185,31 @@ export const ContainerTitle = styled(Username)`
 // Buttons
 export const ButtonContainer = styled.div`
 	display: flex;
-  flex-direction: column;
-	flex-wrap: wrap;
-  padding: 0 0 0 5px;
+  align-items: center;
+	justify-content: space-between;
+  padding: 10px 10px 7px 10px;
 	position: absolute;
-	bottom: 50px;
+	bottom: 0px;
 	left: 10px;
 	right: 10px;
 	border-top: 2px solid ${(props) => props.theme.secondary};
 `;
 
 export const ButtonSignOut = styled.button`
-	margin-top: 10px;
+	// margin-top: 10px;
 	background-color: transparent;
 	font-size: 30px;
-  position: absolute;
-  bottom: -40px;
-  right: 5px;
+  // position: absolute;
+  // bottom: -40px;
+  // right: 5px;
 	color: ${props => props.theme.textColor};
 	:hover {
 		color: ${props => props.theme.hover};
 	}
+`;
+
+export const ButtonSettings = styled(ButtonSignOut)`
+	// left: 5px;
 `;
 
 // Items Profile

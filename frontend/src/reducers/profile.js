@@ -95,10 +95,10 @@ export const profile = createSlice({
 	},
 });
 
+
 // Thunk for updating badges
 export const updateBadges = (badges) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
