@@ -77,6 +77,9 @@ export const FishWrapper2 = styled.button`
 	right: 50%;
 	left: 50%;
 	position: absolute;
+	background-color: red;
+	height: 50px;
+	width: 50px;
 	&:disabled {
 		opacity: 0;
 		width: 80px;
