@@ -108,7 +108,6 @@ const authenticateCitizen = async (req, res, next) => {
 	try {
 		const citizen = await Citizen.findOne({ accessToken });
 		if (citizen) {
-			//added from Maks, adding all info about Citizen
 			req.citizen = citizen;
 			next();
 		} else {
@@ -130,7 +129,7 @@ app.get('/', (req, res) => {
 });
 
 // GET all citizens
-// app.get('/citizens', authenticateCitizen);
+app.get('/citizens', authenticateCitizen);
 app.get('/citizens', async (req, res) => {
 	const { sort } = req.query;
 	const sortCitizens = (sort) => {
@@ -215,7 +214,7 @@ app.get('/citizens', async (req, res) => {
 // });
 
 //update password when you remember your old password
-// app.patch('/citizen/:id/password', authenticateCitizen);
+app.patch('/citizen/:id/password', authenticateCitizen);
 app.patch('/citizen/:id/password', async (req, res) => {
 	const { _id } = req.citizen;
 	const { password, newPassword } = req.body;
@@ -231,7 +230,7 @@ app.patch('/citizen/:id/password', async (req, res) => {
 				},
 				{ new: true }
 			);
-			res.json({ success: true, updatedCitizen, message: 'password updated!' });
+			res.json({ success: true, message: 'password updated!' });
 		} else {
 			res.status(401).json({ success: false, message: 'Could not update password!' });
 		}
@@ -351,7 +350,7 @@ app.post('/signin', async (req, res) => {
 });
 
 // GET Messages for messageboard
-// app.get('/citizenmessage', authenticateCitizen);
+app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
 	const citizenMessage = await CitizenMessage.find()
 		.sort({ createdAt: -1 })
@@ -360,7 +359,7 @@ app.get('/citizenmessage', async (req, res) => {
 });
 
 // POST message on messageboard
-// app.post('/citizenmessage', authenticateCitizen);
+app.post('/citizenmessage/:userid', authenticateCitizen);
 app.post('/citizenmessage/:userid', async (req, res) => {
 	const { message } = req.body;
 	const { userid } = req.params;
@@ -375,7 +374,7 @@ app.post('/citizenmessage/:userid', async (req, res) => {
 });
 
 // PATCH for updating avatar
-// app.patch('/citizen/:id/avatar', authenticateCitizen);
+app.patch('/citizen/:id/avatar', authenticateCitizen);
 app.patch('/citizen/:id/avatar', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -394,7 +393,7 @@ app.patch('/citizen/:id/avatar', async (req, res) => {
 
 
 // PATCH for increasing badges
-// app.patch('/citizen/:id/badges', authenticateCitizen);
+app.patch('/citizen/:id/badges', authenticateCitizen);
 app.patch('/citizen/:id/badges', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -418,7 +417,7 @@ app.patch('/citizen/:id/badges', async (req, res) => {
 });
 
 // PATCH for increasing ranking
-// app.patch('/citizen/:id/ranking', authenticateCitizen);
+app.patch('/citizen/:id/ranking', authenticateCitizen);
 app.patch('/citizen/:id/ranking', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -442,7 +441,7 @@ app.patch('/citizen/:id/ranking', async (req, res) => {
 });
 
 // PATCH for increasing coins
-// app.patch('/citizen/:id/coins', authenticateCitizen);
+app.patch('/citizen/:id/coins', authenticateCitizen);
 app.patch('/citizen/:id/coins', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -466,7 +465,7 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 });
 
 // PATCH for adding items from shop
-// app.patch('/citizen/:id/items', authenticateCitizen);
+app.patch('/citizen/:id/items', authenticateCitizen);
 app.post('/citizen/:id/items', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -488,7 +487,7 @@ app.post('/citizen/:id/items', async (req, res) => {
 });
 
 // PATCH for updating investments
-// app.patch('/citizen/:id/investments', authenticateCitizen);
+app.patch('/citizen/:id/investments', authenticateCitizen);
 app.patch('/citizen/:id/investments', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -513,7 +512,7 @@ app.patch('/citizen/:id/investments', async (req, res) => {
 });
 
 // PATCH for increasing caloryintake
-// app.patch('/citizen/:id/energy', authenticateCitizen);
+app.patch('/citizen/:id/energy', authenticateCitizen);
 app.patch('/citizen/:id/energy', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -537,7 +536,7 @@ app.patch('/citizen/:id/energy', async (req, res) => {
 });
 
 // PATCH for updating highscore spaceball
-// app.patch('/citizen/:id/highscoreSpaceball', authenticateCitizen);
+app.patch('/citizen/:id/highscoreSpaceball', authenticateCitizen);
 app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -557,7 +556,7 @@ app.patch('/citizen/:id/highscoreSpaceball', async (req, res) => {
 });
 
 // PATCH for updating highscore fish farm
-// app.patch('/citizen/:id/highscoreFish', authenticateCitizen);
+app.patch('/citizen/:id/highscoreFish', authenticateCitizen);
 app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -575,7 +574,7 @@ app.patch('/citizen/:id/highscoreFish', async (req, res) => {
 });
 
 // PATCH for updating highscore math
-// app.patch('/citizen/:id/highscoreMath', authenticateCitizen);
+app.patch('/citizen/:id/highscoreMath', authenticateCitizen);
 app.patch('/citizen/:id/highscoreMath', async (req, res) => {
 	const { id } = req.params;
 	try {
