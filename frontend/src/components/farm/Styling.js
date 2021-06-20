@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
+import fish from './assets/fish.png'
 
 const Roller = keyframes`
 	0% {
@@ -65,9 +66,10 @@ export const FishWrapper1 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon1 = styled.img`
+export const Icon1 = styled(FaFish)`
 	width: 80px;
 	height: 60px;
+	color: #73bed9;
 `;
 
 export const FishWrapper2 = styled.button`
@@ -88,7 +90,7 @@ export const FishWrapper2 = styled.button`
 `;
 export const Icon2 = styled(FaFish)`
 	font-size: 40px;
-	color: red;
+	color: #73bed9;
 `;;
 
 export const FishWrapper3 = styled.button`
@@ -103,7 +105,9 @@ export const FishWrapper3 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon3 = styled.img``;
+export const Icon3 = styled(FaFish)`
+	color: #73bed9;
+`;
 
 export const FishWrapper4 = styled.button`
 	background-color: transparent;
@@ -117,7 +121,7 @@ export const FishWrapper4 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon4 = styled.img``;
+export const Icon4 = styled(FaFish)``;
 
 export const FishWrapper5 = styled.button`
 	background-color: transparent;
@@ -131,7 +135,9 @@ export const FishWrapper5 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon5 = styled.img``;
+export const Icon5 = styled(FaFish)`
+color: #73bed9;
+`;
 
 export const FishWrapper6 = styled.button`
 	background-color: transparent;
@@ -145,9 +151,10 @@ export const FishWrapper6 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon6 = styled.img`
+export const Icon6 = styled(FaFish)`
 	width: 30px;
 	height: 25px;
+	color: #73bed9;
 `;
 
 export const FishWrapper7 = styled.button`
@@ -162,9 +169,10 @@ export const FishWrapper7 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon7 = styled.img`
+export const Icon7 = styled(FaFish)`
 	width: 40px;
 	height: 35px;
+	color: #73bed9;
 `;
 
 export const FishWrapper8 = styled.button`
@@ -175,13 +183,16 @@ export const FishWrapper8 = styled.button`
 	right: 50%;
 	left: 50%;
 	position: absolute;
+	object-fit: cover;
+	background-image: url(${fish});
 	&:disabled {
 		opacity: 0;
 	}
 `;
-export const Icon8 = styled.img`
+export const Icon8 = styled(FaFish)`
 	width: 50px;
 	height: 45px;
+	color: #73bed9;
 `;
 
 export const FishWrapper9 = styled.button`
@@ -196,7 +207,8 @@ export const FishWrapper9 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon9 = styled.img``;
+export const Icon9 = styled.img`
+color: #73bed9;`;
 
 export const GameTitle = styled.h1`
 	position: absolute;

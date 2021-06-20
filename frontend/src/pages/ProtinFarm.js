@@ -132,10 +132,7 @@ export const ProtinFarm = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Fish Farm</GameTitle>
-					<Icon3
-							src={require('../assets/fish.png')} 
-							onClick={onClick3}
-						/>
+			
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 				<Water></Water>
@@ -143,7 +140,7 @@ export const ProtinFarm = () => {
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
 						<Icon1
-							src={require('../assets/badge-big.png')}
+		
 							onClick={onClick1}
 						/>
 					</FishWrapper1>
@@ -156,42 +153,36 @@ export const ProtinFarm = () => {
 					<TransparentWrapper disabled3='true'></TransparentWrapper>
 					<FishWrapper3 onClick={() => setDisabled3(true)} disabled={disabled3}>
 						<Icon3
-							src={require('../assets/fish.png')} 
 							onClick={onClick3}
 						/>
 					</FishWrapper3>
 					<TransparentWrapper disabled4='true'></TransparentWrapper>
 					<FishWrapper4 onClick={() => setDisabled4(true)} disabled={disabled4}>
 						<Icon4
-							src={require('../components/farm/assets/fish.png')}
 							onClick={onClick4}
 						/>
 					</FishWrapper4>
 					<TransparentWrapper disabled5='true'></TransparentWrapper>
 					<FishWrapper5 onClick={() => setDisabled5(true)} disabled={disabled5}>
 						<Icon5
-							src={require('../components/farm/assets/fish.png')}
 							onClick={onClick5}
 						/>
 					</FishWrapper5>
 					<TransparentWrapper disabled6='true'></TransparentWrapper>
 					<FishWrapper6 onClick={() => setDisabled6(true)} disabled={disabled6}>
 						<Icon6
-							src={require('../components/farm/assets/fish.png')}
 							onClick={onClick6}
 						/>
 					</FishWrapper6>
 					<TransparentWrapper disabled7='true'></TransparentWrapper>
 					<FishWrapper7 onClick={() => setDisabled7(true)} disabled={disabled7}>
 						<Icon7
-							src={require('../components/farm/assets/fish.png')}
 							onClick={onClick7}
 						/>
 					</FishWrapper7>
 					<TransparentWrapper disabled8='true'></TransparentWrapper>
 					<FishWrapper8 onClick={() => setDisabled8(true)} disabled={disabled8}>
 						<Icon8
-							src={require('../components/farm/assets/fish.png')}
 							onClick={onClick8}
 						/>
 					</FishWrapper8>
