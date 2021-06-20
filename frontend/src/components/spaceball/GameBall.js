@@ -75,10 +75,10 @@ export const GameBall = () => {
       <GameTitle>Space Ball</GameTitle>
       <ScoreText>Score: {score}</ScoreText>
       <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-      <ButtonOne onClick={() => onClickEasy(3)}></ButtonOne>
-      <ButtonTwo onClick={() => onClickEasy(1)}></ButtonTwo>
+      <ButtonOne onClick={() => onClickEasy(4)}></ButtonOne>
+      <ButtonTwo onClick={() => onClickEasy(3)}></ButtonTwo>
       <ButtonThree onClick={() => onClickEasy(1)}></ButtonThree>
-      <ButtonFour onClick={() => onClickEasy(1)}></ButtonFour>
+      <ButtonFour onClick={() => onClickEasy(2)}></ButtonFour>
       <ButtonFive onClick={() => onClickEasy(5)}></ButtonFive>
       <Dialog open={openFinishedDialog}>
         <DialogContainer>

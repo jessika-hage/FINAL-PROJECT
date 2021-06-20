@@ -45,20 +45,29 @@ export const StartButton = styled.button`
 
 export const GameTitle = styled.h1`
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	left: 20px;
 	text-transform: uppercase;
+  @media ( min-width: 768px) {
+    top: 10px;
+  }
 `;
 
 export const ScoreText = styled(GameTitle)`
 	font-size: 20px;
-	top: 60px;
+	top: 75px;
 	left: 22px;
+  @media ( min-width: 768px) {
+    top: 60px;
+  }
 `;
 
 export const CounterText = styled(ScoreText)`
-	top: 85px;
+	top: 100px;
 	left: 22px;
+  @media ( min-width: 768px) {
+    top: 85px;
+  }
 `;
 
 const Button = styled.button`
@@ -69,20 +78,22 @@ const Button = styled.button`
 `;
 
 const animationOne = keyframes`
-  0% { transform: scale(1.2); transform: translateY(500px)}
-  10% { transform: scale(1.2); transform: translateY(-500px)}
-  20% { transform: scale(1.3); transform: translateY(600px)}
-  30% { transform: scale(1.4); transform: translateX(400px)}
-  40% { transform: scale(1.6); transform: translateY(-400px)}
-  50% { transform: scale(0.8); transform: translateY(400px)}
-  55% { transform: scale(0.8); transform: translateY(-400px)}
-  60% { transform: scale(0.6); transform: translateX(400px)}
-  70% { transform: scale(1.5); transform: translateX(-500px)}
-  80% { transform: scale(3); transform: translateY(500px)}
-  90% { transform: scale(3); transform: translateX(400px)}
-  100% { transform: scale(3); transform: translateY(-500px)}
-  `
+  0% { transform: translateY(500px) }
+  10% { transform: translateY(-500px) }
+  20% { transform: translateY(600px) }
+  30% { transform: translateX(400px) }
+  40% { transform: translateY(-400px) }
+  50% { transform: translateY(400px) }
+  55% { transform: translateY(-400px) }
+  60% { transform: translateX(400px) }
+  70% { transform: translateX(-500px) }
+  80% { transform: translateY(500px) }
+  90% { transform: translateX(400px) }
+  100% { transform: translateY(-500px) }
+`;
+
 export const ButtonOne = styled(Button)`
+  position: absolute;
   width: 100px;
   height: 100px;
   background-color: #1A90FF;
@@ -90,66 +101,79 @@ export const ButtonOne = styled(Button)`
 `;
 
 const animationTwo = keyframes`
-  0% { transform: translateY(-600px)}
-  10% { transform: translateX(0px)}
-  20% { transform: translateY(-400px)}
-  30% { transform: translateY(300px)}
-  40% { transform: translateX(500px)}
-  50% { transform: translateY(-300px)}
-  60% { transform: translateX(-400px)}
-  70% { transform: translateX(500px)}
-  80% { transform: translateY(100px)}
-  90% { transform: translateX(-300px)}
-  100% { transform: translateY(500px)}
-  `;
+  0% { transform: translateY(-600px) }
+  10% { transform: translateX(0px) }
+  20% { transform: translateY(-400px) }
+  30% { transform: translateY(300px) }
+  40% { transform: translateX(500px) }
+  50% { transform: translateY(-300px) }
+  60% { transform: translateX(-400px) }
+  70% { transform: translateX(500px) }
+  80% { transform: translateY(100px) }
+  90% { transform: translateX(-300px) }
+  100% { transform: translateY(500px) }
+`;
 
 export const ButtonTwo = styled(Button)`
+  position: absolute;
   background-color: #CE1F6A;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   animation: ${animationTwo} 13s linear infinite alternate-reverse;
+  @media (min-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
  const animationThree = keyframes`
-  0% { transform: translateX(300px)}
-  10% { transform: translateX(-500px)}
-  20% { transform: translateX(200px)}
-  30% { transform: translateX(600px)}
-  40% { transform: translateY(-600px)}
-  50% { transform: translateX(-500px)}
-  60% { transform: translateX(-100px)}
-  70% { transform: translateY(500px)}
-  80% { transform: translateY(-300px)}
-  90% { transform: translateX(400px)}
-  100% { transform: translateY(500px)}
+  0% { transform: translateX(300px) }
+  10% { transform: translateX(-500px) }
+  20% { transform: translateX(200px) }
+  30% { transform: translateX(600px) }
+  40% { transform: translateY(-600px) }
+  50% { transform: translateX(-500px) }
+  60% { transform: translateX(-100px) }
+  70% { transform: translateY(500px) }
+  80% { transform: translateY(-300px) }
+  90% { transform: translateX(400px) }
+  100% { transform: translateY(500px) }
 `;
 
 export const ButtonThree = styled(Button)`
+  position: absolute;
 	background-color: #B590CA;
-	width: 200px;
-	height: 200px;
+	width: 170px;
+	height: 170px;
 	animation: ${animationThree} 12s linear infinite alternate-reverse;
+  @media (min-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
  const animationFour = keyframes`
-  0% { transform: translateX(0px)}
-  10% { transform: translateX(200px)}
-  20% { transform: translateY(400px)}
-  30% { transform: translateX(-300px)}
-  40% { transform: translateY(200px)}
-  50% { transform: translateX(200px)}
-  60% { transform: translateX(600px)}
-  70% { transform: translateY(500px)}
-  80% { transform: translateY(-300px)}
-  90% { transform: translateX(400px)}
-  100% { transform: translateY(500px)}
+  0% { transform: translateX(0px) }
+  10% { transform: translateX(200px) }
+  20% { transform: translateY(400px) }
+  30% { transform: translateX(-300px) }
+  40% { transform: translateY(200px) }
+  50% { transform: translateX(200px) }
+  60% { transform: translateX(600px) }
+  70% { transform: translateY(500px) }
+  80% { transform: translateY(-300px) }
+  90% { transform: translateX(400px) }
+  100% { transform: translateY(500px) }
 `;
 
 export const ButtonFour = styled(Button)`
+  position: absolute;
+  bottom: 30%;
+  left: 20%;
 	background-color: #29BB89;
-	width: 120px;
-	height: 120px;
-	animation: ${animationFour} 13s linear infinite alternate-reverse;
+	width: 130px;
+	height: 130px;
+	animation: ${animationFour} 14s linear infinite alternate-reverse;
   @media (min-width: 768px) {
     width: 160px;
     height: 160px;
@@ -157,18 +181,18 @@ export const ButtonFour = styled(Button)`
 `;
 
 const animationFive = keyframes`
-  0% { transform: scale(1.2); transform: translateX(100px)}
-  10% { transform: scale(1.2); transform: translateX(-600px)}
-  20% { transform: scale(1.3); transform: translateY(-300px)}
-  30% { transform: scale(1.4); transform: translateX(400px)}
-  40% { transform: scale(1.6); transform: translateY(600px)}
-  50% { transform: scale(1.8); transform: translateY(100px)}
-  60% { transform: scale(1.9); transform: translateX(-400px)}
-  70% { transform: scale(1.5); transform: translateY(-500px)}
-  80% { transform: scale(1.3); transform: translateY(400px)}
-  85% { transform: scale(1.3); transform: translateY(-400px)}
-  90% { transform: scale(1.4); transform: translateX(400px)}
-  100% { transform: scale(1); transform: translateY(-600px)}
+  0% { transform: translateX(0px) }
+  10% { transform: translateX(-600px) }
+  20% { transform: translateY(-300px) }
+  30% { transform: translateX(400px) }
+  40% { transform: translateY(600px) }
+  50% { transform: translateY(100px) }
+  60% { transform: translateX(-400px) }
+  70% { transform: translateY(-500px) }
+  80% { transform: translateY(400px) }
+  85% { transform: translateY(-400px) }
+  90% { ransform: translateX(400px) }
+  100% { transform: translateY(-600px) }
 `;
 
 export const ButtonFive = styled(Button)`

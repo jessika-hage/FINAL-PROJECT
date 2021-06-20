@@ -5,25 +5,28 @@ import {
   DialogContainer, 
   InvestTitle, 
   InvestInfo, 
+  PriceInfo,
+  QuestionText,
   InvestButton, 
   InputContainer, 
   InputAmount, 
-  SpaceText, 
-  Text, 
+  TotalValueText, 
+  ConfirmationText, 
   ConfirmationDialog, 
   ConfirmedButton } from './Styling';
 
 export const InvestDialog = ({ 
   open, 
   onClose, 
+  rate,
   onChange, 
   spaceValue, 
   onClick, 
   value, 
-  openSuccess,
-  onCloseSuccess, 
-  openFail, 
-  onCloseFail }) => {
+  openConfirm,
+  onCloseConfirm,
+  confirmText,
+  buttonText }) => {
 
   return (
     <>
@@ -35,31 +38,25 @@ export const InvestDialog = ({
             is important to be careful and never invest more than you are ready to lose! So let's say if you invest 100$ when the price is 8$ and then 
             it goes up to 10$, your money will be worth 125$! If you see that the price has decreased a lot the last week it could be a good opportunity to invest.
           </InvestInfo>
+          <PriceInfo>Current price: {rate} $</PriceInfo>
+          <QuestionText>How much do you want to invest?</QuestionText>
           <InputContainer>
             <InputAmount 
               type='text' 
-              placeholder='Quantity' 
+              placeholder='Enter quantity' 
               onChange={onChange} 
               value={value}></InputAmount>
-            <SpaceText>{spaceValue} $</SpaceText>
+            <TotalValueText> = {spaceValue} $</TotalValueText>
           </InputContainer>
           <InvestButton onClick={onClick}>Make Investment</InvestButton>
         </DialogContainer>
       </Dialog>
       <Dialog 
-        open={openSuccess} 
-        onClose={onCloseSuccess}>
+        open={openConfirm} 
+        onClose={onCloseConfirm}>
         <ConfirmationDialog>
-          <Text>You have now successfully invested in SPACE$! You can see it on your profile shortly and keep track on the current value of your investment.</Text>
-          <ConfirmedButton onClick={onCloseSuccess}>Thanks!</ConfirmedButton>
-        </ConfirmationDialog>
-      </Dialog>
-      <Dialog 
-        open={openFail} 
-        onClose={onCloseFail}>
-        <ConfirmationDialog>
-          <Text>You do not have enough coins for this investment!</Text>
-          <ConfirmedButton onClick={onCloseFail}>Make some more money!</ConfirmedButton>
+          <ConfirmationText>{confirmText}</ConfirmationText>
+          <ConfirmedButton onClick={onCloseConfirm}>{buttonText}</ConfirmedButton>
         </ConfirmationDialog>
       </Dialog>
     </>
