@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 
 import { 
   PasswordForm, 
@@ -14,7 +13,6 @@ export const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
-  const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
@@ -43,16 +41,12 @@ const onUpdatePassword = (e) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setOpen(true);
           setSuccess(true);
           setNoMatch(false);
           setFail(false);
           setPassword('');
           setNewPassword('');
           setConfirmedPassword('');
-          setTimeout(() => {
-            setOpen(false);
-          }, 2000)
         } else {
           setFail(true);
           setNoMatch(false);
