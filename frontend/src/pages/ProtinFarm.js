@@ -139,7 +139,7 @@ export const ProtinFarm = () => {
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
 						<Icon1
-							src={require('../components/farm/assets/fish.png')}
+							src={require('../assets/badge-big.png')}
 							onClick={onClick1}
 						/>
 					</FishWrapper1>
@@ -153,7 +153,7 @@ export const ProtinFarm = () => {
 					<TransparentWrapper disabled3='true'></TransparentWrapper>
 					<FishWrapper3 onClick={() => setDisabled3(true)} disabled={disabled3}>
 						<Icon3
-							src={require('../components/farm/assets/fish.png')}
+							src={require('../assets/fish.png')}
 							onClick={onClick3}
 						/>
 					</FishWrapper3>

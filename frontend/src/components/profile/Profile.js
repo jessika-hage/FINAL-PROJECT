@@ -31,6 +31,10 @@ export const Profile = () => {
 	const items = useSelector((store) => store.profile.items);
 	const myItems = Object.keys(items);
 
+	const createdAtDate = moment(createdAt);
+	const arrivalDate = moment([2029, 5, 18])
+	const timeToDestination = arrivalDate.diff(createdAtDate, 'days');
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -54,7 +58,7 @@ export const Profile = () => {
 			<DaysContainer>
 				<DaysText>Time on ship: {moment(createdAt).toNow(true)}</DaysText>
 				<DaysText>
-					Days to destination: 
+					Days to destination: {timeToDestination}
 				</DaysText>
 			</DaysContainer>
 			<BottomContainer>
