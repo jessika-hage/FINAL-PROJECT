@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
-import fish from './assets/fish.png'
+import fish from './assets/fish.png';
 
 const Roller = keyframes`
 	0% {
@@ -67,8 +67,7 @@ export const FishWrapper1 = styled.button`
 	}
 `;
 export const Icon1 = styled(FaFish)`
-	width: 80px;
-	height: 60px;
+	font-size: 40px;
 	color: #73bed9;
 `;
 
@@ -91,7 +90,7 @@ export const FishWrapper2 = styled.button`
 export const Icon2 = styled(FaFish)`
 	font-size: 40px;
 	color: #73bed9;
-`;;
+`;
 
 export const FishWrapper3 = styled.button`
 	background-color: transparent;
@@ -107,6 +106,7 @@ export const FishWrapper3 = styled.button`
 `;
 export const Icon3 = styled(FaFish)`
 	color: #73bed9;
+	font-size: 40px;
 `;
 
 export const FishWrapper4 = styled.button`
@@ -121,7 +121,10 @@ export const FishWrapper4 = styled.button`
 		opacity: 0;
 	}
 `;
-export const Icon4 = styled(FaFish)``;
+export const Icon4 = styled(FaFish)`
+	font-size: 40px;
+	color: #73bed9;
+`;
 
 export const FishWrapper5 = styled.button`
 	background-color: transparent;
@@ -136,7 +139,8 @@ export const FishWrapper5 = styled.button`
 	}
 `;
 export const Icon5 = styled(FaFish)`
-color: #73bed9;
+	color: #73bed9;
+	font-size: 40px;
 `;
 
 export const FishWrapper6 = styled.button`
@@ -152,8 +156,7 @@ export const FishWrapper6 = styled.button`
 	}
 `;
 export const Icon6 = styled(FaFish)`
-	width: 30px;
-	height: 25px;
+	font-size: 40px;
 	color: #73bed9;
 `;
 
@@ -170,8 +173,7 @@ export const FishWrapper7 = styled.button`
 	}
 `;
 export const Icon7 = styled(FaFish)`
-	width: 40px;
-	height: 35px;
+	font-size: 40px;
 	color: #73bed9;
 `;
 
@@ -190,8 +192,7 @@ export const FishWrapper8 = styled.button`
 	}
 `;
 export const Icon8 = styled(FaFish)`
-	width: 50px;
-	height: 45px;
+	font-size: 40px;
 	color: #73bed9;
 `;
 
@@ -208,7 +209,8 @@ export const FishWrapper9 = styled.button`
 	}
 `;
 export const Icon9 = styled.img`
-color: #73bed9;`;
+	color: #73bed9;
+`;
 
 export const GameTitle = styled.h1`
 	position: absolute;
@@ -233,13 +235,12 @@ export const TransparentWrapper = styled.button`
 `;
 
 export const HideContainer = styled.div`
-display: none;
-width: 100%;
-@media (min-width: 768px) {
-	display: flex;
-}
-`
-
+	display: none;
+	width: 100%;
+	@media (min-width: 768px) {
+		display: flex;
+	}
+`;
 
 export const ShowMobile = styled.div`
 	@media (max-width: 768px) {
