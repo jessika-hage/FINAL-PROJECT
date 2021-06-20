@@ -132,59 +132,42 @@ export const ProtinFarm = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Fish Farm</GameTitle>
-			
+
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 				<Water></Water>
 				<WaterContainer>
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
-						<Icon1
-		
-							onClick={onClick1}
-						/>
+						<Icon1 onClick={onClick1} />
 					</FishWrapper1>
 					<TransparentWrapper disabled2='true'></TransparentWrapper>
 					<FishWrapper2 onClick={() => setDisabled2(true)} disabled={disabled2}>
-						<Icon2
-							onClick={onClick2}
-						/> 
+						<Icon2 onClick={onClick2} />
 					</FishWrapper2>
 					<TransparentWrapper disabled3='true'></TransparentWrapper>
 					<FishWrapper3 onClick={() => setDisabled3(true)} disabled={disabled3}>
-						<Icon3
-							onClick={onClick3}
-						/>
+						<Icon3 onClick={onClick3} />
 					</FishWrapper3>
 					<TransparentWrapper disabled4='true'></TransparentWrapper>
 					<FishWrapper4 onClick={() => setDisabled4(true)} disabled={disabled4}>
-						<Icon4
-							onClick={onClick4}
-						/>
+						<Icon4 onClick={onClick4} />
 					</FishWrapper4>
 					<TransparentWrapper disabled5='true'></TransparentWrapper>
 					<FishWrapper5 onClick={() => setDisabled5(true)} disabled={disabled5}>
-						<Icon5
-							onClick={onClick5}
-						/>
+						<Icon5 onClick={onClick5} />
 					</FishWrapper5>
 					<TransparentWrapper disabled6='true'></TransparentWrapper>
 					<FishWrapper6 onClick={() => setDisabled6(true)} disabled={disabled6}>
-						<Icon6
-							onClick={onClick6}
-						/>
+						<Icon6 onClick={onClick6} />
 					</FishWrapper6>
 					<TransparentWrapper disabled7='true'></TransparentWrapper>
 					<FishWrapper7 onClick={() => setDisabled7(true)} disabled={disabled7}>
-						<Icon7
-							onClick={onClick7}
-						/>
+						<Icon7 onClick={onClick7} />
 					</FishWrapper7>
 					<TransparentWrapper disabled8='true'></TransparentWrapper>
 					<FishWrapper8 onClick={() => setDisabled8(true)} disabled={disabled8}>
-						<Icon8
-							onClick={onClick8}
-						/>
+						<Icon8 onClick={onClick8} />
 					</FishWrapper8>
 					<TransparentWrapper disabled9='true'></TransparentWrapper>
 					<FishWrapper9 onClick={() => setDisabled9(true)} disabled={disabled9}>
@@ -195,17 +178,17 @@ export const ProtinFarm = () => {
 					</FishWrapper9>
 					<ShowMobile></ShowMobile>
 					<HideContainer>
-					<Wave
-						fill='#73bed9'
-						paused={false}
-						options={{
-							height: 200,
-							amplitude: 50,
-							speed: 0.15,
-							points: 3,
-							opacity: 0.4,
-						}}
-					/>
+						<Wave
+							fill='#73bed9'
+							paused={false}
+							options={{
+								height: 200,
+								amplitude: 50,
+								speed: 0.15,
+								points: 3,
+								opacity: 0.4,
+							}}
+						/>
 					</HideContainer>
 				</WaterContainer>
 				<Dialog open={openFinishedDialog}>
