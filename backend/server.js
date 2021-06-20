@@ -349,7 +349,6 @@ app.post('/signin', async (req, res) => {
 });
 
 // GET Messages for messageboard
-app.get('/citizenmessage', authenticateCitizen);
 app.get('/citizenmessage', async (req, res) => {
 	const citizenMessage = await CitizenMessage.find()
 		.sort({ createdAt: -1 })
@@ -464,7 +463,7 @@ app.patch('/citizen/:id/coins', async (req, res) => {
 });
 
 // PATCH for adding items from shop
-app.patch('/citizen/:id/items', authenticateCitizen);
+app.post('/citizen/:id/items', authenticateCitizen);
 app.post('/citizen/:id/items', async (req, res) => {
 	const { id } = req.params;
 	try {
