@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaFish, FaUtensils, FaShoppingCart, FaSquareRootAlt, FaInfoCircle, FaBed, FaTh, FaDumbbell } from 'react-icons/fa';
+import { 
+	FaFish, 
+	FaUtensils, 
+	FaShoppingCart, 
+	FaSquareRootAlt, 
+	FaInfoCircle, 
+	FaBed, 
+	FaTh, 
+	FaDumbbell } from 'react-icons/fa';
 
 export const GridContainer = styled.section`
 	display: grid;
