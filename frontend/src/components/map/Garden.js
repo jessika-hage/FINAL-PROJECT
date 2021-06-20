@@ -7,7 +7,7 @@ import { RoomGarden, Icons } from './Styling';
 export const Garden = () => {
 	return (
 		<Tooltip title='GARDEN! grow flowers and earn points!'>
-			<RoomGarden to='/Garden'>
+			<RoomGarden to='/garden'>
 				<Icons>
 					<LocalFloristIcon fontSize='large' />
 				</Icons>

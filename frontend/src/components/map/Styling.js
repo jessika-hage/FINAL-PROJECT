@@ -15,12 +15,8 @@ export const GridContainer = styled.section`
 	display: grid;
 	grid-template: repeat(6, 1fr) / repeat(12, 1fr);
 	width: 100%;
-<<<<<<< HEAD
-	color: ${(props) => props.theme.textColor};
-=======
 	min-height: 200px;
-	color: ${props => props.theme.textColor};
->>>>>>> cc8036bb916a38afb53f018489ae54619a214725
+	color: ${(props) => props.theme.textColor};
 `;
 
 // Rooms
