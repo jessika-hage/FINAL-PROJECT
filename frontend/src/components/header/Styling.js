@@ -108,6 +108,7 @@ export const CameraContainer = styled.div`
   justify-content: center;
   position: fixed;
 	top: 0;
+	z-index: 2;
   margin: 0 auto 3500px auto;
   @media (min-width: 768px) {
 		background-color: transparent;

@@ -214,8 +214,17 @@ export const TransparentWrapper = styled.button`
 	height: 50%;
 `;
 
+export const HideContainer = styled.div`
+display: none;
+width: 100%;
+@media (min-width: 768px) {
+	display: flex;
+}
+`
+
+
 export const ShowMobile = styled.div`
-	@media (max-width: 400px) {
+	@media (max-width: 768px) {
 		z-index: 1;
 		position: absolute;
 		bottom: 0;

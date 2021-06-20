@@ -37,6 +37,7 @@ import {
 	FishWrapper8,
 	FishWrapper9,
 	ShowMobile,
+	HideContainer,
 	Water,
 } from '../components/farm/Styling';
 
@@ -199,6 +200,7 @@ export const ProtinFarm = () => {
 						/>
 					</FishWrapper9>
 					<ShowMobile></ShowMobile>
+					<HideContainer>
 					<Wave
 						fill='#73bed9'
 						paused={false}
@@ -210,6 +212,7 @@ export const ProtinFarm = () => {
 							opacity: 0.4,
 						}}
 					/>
+					</HideContainer>
 				</WaterContainer>
 				<Dialog open={openFinishedDialog}>
 					<DialogContainer>
