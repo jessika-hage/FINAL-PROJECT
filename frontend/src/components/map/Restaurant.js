@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 
 import { updateEnergy } from '../../reducers/profile';
-import { 
-	RoomRestaurant, 
-	DialogContainer, 
+import {
+	RoomRestaurant,
+	DialogContainer,
 	InfoText,
-	RestaurantIcon } from './Styling';
-
+	RestaurantIcon,
+} from './Styling';
 
 export const Restaurant = () => {
-  const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 	const [openConfirmation, setOpenConfirmation] = useState(false);
 	const allFood = useSelector((store) => store.food);
 
@@ -20,22 +20,22 @@ export const Restaurant = () => {
 
 	const onToggleDialog = () => {
 		setOpen(!open);
-  };
+	};
 
 	const onBuy = (energy) => {
 		setOpenConfirmation(true);
-		dispatch(updateEnergy(energy))
+		dispatch(updateEnergy(energy));
 		setTimeout(() => {
 			setOpenConfirmation(false);
-		}, 2000)
+		}, 2000);
 	};
 
-  return (
+	return (
 		<>
-      <RoomRestaurant onClick={onToggleDialog}>
-        <RestaurantIcon />
-      </RoomRestaurant>
-      <Dialog open={open} onClose={onToggleDialog}>
+			<RoomRestaurant onClick={onToggleDialog}>
+				<RestaurantIcon />
+			</RoomRestaurant>
+			<Dialog open={open} onClose={onToggleDialog}>
 				<TableContainer>
 					<TableHead>
 						<TableTitle>Type</TableTitle>
@@ -50,21 +50,22 @@ export const Restaurant = () => {
 							<Citizen>{food.energy}kcal</Citizen>
 							<Citizen>{food.protein}g</Citizen>
 							<Citizen>{food.salt}g</Citizen>
-							<Citizen>{food.price}$ 
-								<BuyFood 
-									onClick={() => onBuy(food.energy)}>Buy</BuyFood>
+							<Citizen>
+								{food.price}$<BuyFood onClick={() => onBuy(food.energy)}>Buy</BuyFood>
 							</Citizen>
 						</CitizensList>
-			 		))}
+					))}
 				</TableContainer>
 			</Dialog>
 			<Dialog open={openConfirmation}>
 				<DialogContainer>
-					<InfoText>Purchase successfull! Your energyintake has now increased!</InfoText>
+					<InfoText>
+						Purchase successfull! Your energyintake has now increased!
+					</InfoText>
 				</DialogContainer>
 			</Dialog>
-  </>
-  )
+		</>
+	);
 };
 
 const TableContainer = styled.div`
@@ -72,22 +73,22 @@ const TableContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px;
-	background-color: ${props => props.theme.backgroundColor};
-	color: ${props => props.theme.textColor};
+	background-color: ${(props) => props.theme.backgroundColor};
+	color: ${(props) => props.theme.textColor};
 	max-height: 320px;
 	min-width: 600px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border: 2px solid ${props => props.theme.secondary};
-  }
+		-webkit-appearance: none;
+		width: 15px;
+		height: 15px;
+		border: 2px solid ${(props) => props.theme.secondary};
+	}
 `;
 
 const TableHead = styled.div`
 	display: flex;
-	border-bottom: 2px solid ${props => props.theme.secondary};
+	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
 const TableTitle = styled.div`
@@ -96,20 +97,21 @@ const TableTitle = styled.div`
 	margin: 0;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: ${props => props.theme.textColor};
+	color: ${(props) => props.theme.textColor};
 	font-size: 14px;
 `;
 
 const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
 	width: 22%;
-	:hover, :focus {
+	:hover,
+	:focus {
 		text-decoration: underline;
 	}
 `;
 
 const CitizenDaysLink = styled(TableTitleLinks)`
-  display: none;
+	display: none;
 	@media (min-width: 768px) {
 		display: flex;
 	}
@@ -138,7 +140,7 @@ const CitizensList = styled.div`
 
 const BuyFood = styled.button`
 	padding: 5px;
-	margin: 0;
+	margin: 0 0 0 10px;
 	font-size: 12px;
 	cursor: pointer;
 	outline: none;
