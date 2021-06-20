@@ -254,9 +254,8 @@ export const updateInvestments = (investmentQuantity, investments) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				dispatch(profile.actions.setQuantity(data.investments));
-				dispatch(profile.actions.setQuantity(data.investmentQuantity));
+				dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
+				dispatch(profile.actions.setInvestments(data.investments));
 			})
 			.catch((err) => console.error(err));
 	};

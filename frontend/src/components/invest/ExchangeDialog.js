@@ -10,7 +10,10 @@ import {
   InvestButton, 
   InputContainer, 
   InputAmount, 
-  TotalValueText } from './Styling';
+  TotalValueText,
+  ConfirmationDialog,
+  ConfirmationText,
+  ConfirmedButton } from './Styling';
 
 export const ExchangeDialog = ({ 
   openExchange, 
@@ -19,7 +22,11 @@ export const ExchangeDialog = ({
   onChange, 
   totalExchange,
   onClick, 
-  value }) => {
+  value,
+  open,
+  onClose,
+  confirmText,
+  buttonText }) => {
 
   return (
     <>
@@ -40,6 +47,14 @@ export const ExchangeDialog = ({
           </InputContainer>
           <InvestButton onClick={onClick}>Make Exchange</InvestButton>
         </DialogContainer>
+        <Dialog open={open} onClose={onClose}>
+          <ConfirmationDialog>
+            <ConfirmationText>
+              {confirmText}
+            </ConfirmationText>
+            <ConfirmedButton onClick={onClose}>{buttonText}</ConfirmedButton>
+          </ConfirmationDialog>
+			  </Dialog>
       </Dialog>
     </>
   )

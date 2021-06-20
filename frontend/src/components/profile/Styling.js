@@ -138,16 +138,16 @@ export const DaysContainer = styled(StatusContainer)`
 	justify-content: center;
   align-items: flex-start;
 	margin: 0;
-  padding: 5px;
-	border-bottom: 2px solid ${(props) => props.theme.secondary};
+  padding: 7px 5px;
+	border-bottom: 1px solid ${(props) => props.theme.secondary};
 `;
 
 export const DaysText = styled.div`
-	font-weight: bold;
   margin: 0;
-  padding: 5px 0;
+  padding: 3px 0;
 	display: flex;
 	align-items: center;
+	font-family: 'OPen Sans';
 	font-size: 12px;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
@@ -165,7 +165,7 @@ export const BottomContainer = styled.div`
 
 export const Items = styled.div`
   padding: 10px 5px;
-  border-bottom: 2px solid ${(props) => props.theme.secondary};
+  border-bottom: 1px solid ${(props) => props.theme.secondary};
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -192,7 +192,7 @@ export const ButtonContainer = styled.div`
 	bottom: 0px;
 	z-index: 1;
 	background-color: ${props => props.theme.primary};
-	border-top: 2px solid ${(props) => props.theme.secondary};
+	border-top: 1px solid ${(props) => props.theme.secondary};
 `;
 
 export const ButtonSignOut = styled.button`
@@ -277,15 +277,13 @@ export const ValueChange = styled(InvestmentText)`
 	};
 `;
 
-export const ChangeBox = styled.div`
+export const ChangeBox = styled.span`
 	display: flex;
-	// justify-content: space-between;
 	align-items: center;
 	margin: 0;
 `;
 
 // Energy Profile
-
 export const EnergyContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -293,8 +291,7 @@ export const EnergyContainer = styled.div`
 
 export const EnergyText = styled(ItemsTitle)`
 	margin: 5px 0 0 3px;
-	// display: flex;
-	// align-items: center;
+	font-family: 'Open Sans', serif;
 `;
 
 const alert = keyframes`

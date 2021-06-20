@@ -5,7 +5,7 @@ export const TableContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
 	max-height: 320px;
@@ -24,6 +24,8 @@ export const TableContainer = styled.div`
 export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
+	padding: 12px 20px 8px 20px;
 	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 

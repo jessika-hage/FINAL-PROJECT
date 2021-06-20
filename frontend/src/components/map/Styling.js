@@ -263,7 +263,6 @@ export const DialogButton = styled.button`
 `;
 
 // Space Ball
-
 export const CirclePoint = styled.div`
 	display: flex;
 	align-items: center;
@@ -300,4 +299,19 @@ export const Pink = styled(Circle)`
 
 export const Green = styled(Circle)`
 	background-color: #29bb89;
+`;
+
+// Restaurant
+export const SmallInfoIcon = styled(FaInfoCircle)`
+	font-size: 16px;
+	cursor: pointer;
+	:hover {
+		transform: scale(1.3);
+	}
+`;
+
+export const InfoContainer = styled(DialogContainer)`
+	max-width: 300px;
+	font-size: 14px;
+	font-family: 'Open Sans', serif;
 `;

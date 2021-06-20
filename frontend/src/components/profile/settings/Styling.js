@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 2px 0;
 `;
 
 export const AvatarContainer = styled(ButtonContainer)`
@@ -87,26 +87,12 @@ export const Radio = styled.input`
 	}
 `;
 
-// Dialogs
-export const DialogContainer = styled.div`
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.secondary};
-  padding 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const DialogText = styled.p`
-  color: ${props => props.theme.textColor};
-  font-size: 16px;
-`;
-
 // Password
 export const PasswordForm = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  position: relative;
 `;
 
 export const Input = styled.input`
@@ -117,7 +103,7 @@ export const Input = styled.input`
   border-top: none;
   border-right: none;
   background-color: transparent;
-  font-size: 14px;
+  font-size: 12px;
   color: ${props => props.theme.textColor};
   margin: 5px 5px 5px 0;
   width: 160px;
@@ -128,9 +114,6 @@ export const Input = styled.input`
   ::placeholder {
 	text-transform: uppercase;
   }
-  // :last-of-type {
-  //   margin: 5px 0 5px 0;
-  // }
 `;
 
 export const ConfirmInput = styled.div`
@@ -142,6 +125,7 @@ export const ConfirmInput = styled.div`
 export const ConfirmText = styled.p`
   font-size: 12px;
   margin: 2px 0 0 0;
+  font-family: 'Open Sans', serif;
   ${props =>
     props.success 
     ?
@@ -149,4 +133,22 @@ export const ConfirmText = styled.p`
     :  
     ` color: #e83715; `
   };
+`;
+
+export const EyeOne = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: ${props => props.theme.secondary};
+  font-size: 20px;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  :hover {
+    color: ${props => props.theme.primary};
+  }
+  :focus {
+    color: ${props => props.theme.hover};
+  }
 `;

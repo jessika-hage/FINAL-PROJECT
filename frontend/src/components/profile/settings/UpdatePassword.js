@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { 
   PasswordForm, 
@@ -7,12 +8,14 @@ import {
   Input, 
   ConfirmInput, 
   UpdateButton, 
-  ConfirmText } from './Styling';
+  ConfirmText,
+  EyeOne } from './Styling';
 
 export const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
@@ -56,29 +59,40 @@ const onUpdatePassword = (e) => {
       setNoMatch(true);
       setFail(false);
     }
-      
+};
+
+const togglePassword = () => {
+  if (!showPassword) setShowPassword(true);
+  else setShowPassword(false);
 };
 
   return (
     <PasswordForm onSubmit={onUpdatePassword}>
       <ChangeTitle>Change your password:</ChangeTitle>
       <Input 
-        type='password'
+        type={showPassword ? 'password' : 'text'}
         placeholder='current password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}/>
       <ConfirmInput>
-      <Input
-        type='password'
-        placeholder='new password'
-        value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)} />
-      <Input
-        type='password'
-        placeholder='confirm password'
-        value={confirmedPassword}
-        onChange={(e) => setConfirmedPassword(e.target.value)} />
+        <Input
+          type={showPassword ? 'password' : 'text'}
+          placeholder='new password'
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)} />
+        <Input
+          type={showPassword ? 'password' : 'text'}
+          placeholder='confirm password'
+          value={confirmedPassword}
+          onChange={(e) => setConfirmedPassword(e.target.value)} />
       </ConfirmInput>
+      <EyeOne type='button' onClick={togglePassword}>
+        {showPassword ? (
+          <FaEye />
+        ) : (
+          <FaEyeSlash />
+        )}
+      </EyeOne>
       <ConfirmText success={success}>{noMatch ? 'Passwords do not match' : ''}</ConfirmText>
       <ConfirmText success={success}>{fail ? 'Could not update password right now' : ''}</ConfirmText>
       <ConfirmText success={success}>{success ? 'Password successfully updated!' : ''}</ConfirmText>

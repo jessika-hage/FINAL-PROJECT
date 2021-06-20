@@ -9,11 +9,14 @@ import {
 	DialogContainer,
 	InfoText,
 	RestaurantIcon,
+	SmallInfoIcon,
+	InfoContainer,
 } from './Styling';
 
 export const Restaurant = () => {
 	const [open, setOpen] = useState(false);
 	const [openConfirmation, setOpenConfirmation] = useState(false);
+	const [openInfo, setOpenInfo] = useState(false);
 	const allFood = useSelector((store) => store.food);
 
 	const dispatch = useDispatch();
@@ -30,32 +33,42 @@ export const Restaurant = () => {
 		}, 2000);
 	};
 
+	const onToggleInfo = () => {
+		setOpenInfo(!openInfo);
+	};
+
 	return (
 		<>
 			<RoomRestaurant onClick={onToggleDialog}>
 				<RestaurantIcon />
 			</RoomRestaurant>
 			<Dialog open={open} onClose={onToggleDialog}>
-				<TableContainer>
-					<TableHead>
+				<Title>Restaurant <SmallInfoIcon onClick={onToggleInfo} /></Title>
+				<TableHead>
 						<TableTitle>Type</TableTitle>
-						<TableTitleLinks>Energy</TableTitleLinks>
-						<CitizenDaysLink>Protein</CitizenDaysLink>
-						<TableTitleLinks>Salt</TableTitleLinks>
-						<TableTitleLinks>Price</TableTitleLinks>
+						<TableTitle>Energy</TableTitle>
+						<TableTitleHide>Protein</TableTitleHide>
+						<TableTitleHide>Salt</TableTitleHide>
+						<TableTitle>Price</TableTitle>
 					</TableHead>
+				<TableContainer>
 					{allFood.map((food) => (
-						<CitizensList key={food.id}>
-							<Citizen>{food.title}</Citizen>
-							<Citizen>{food.energy}kcal</Citizen>
-							<Citizen>{food.protein}g</Citizen>
-							<Citizen>{food.salt}g</Citizen>
-							<Citizen>
+						<FoodList key={food.id}>
+							<Food>{food.title}</Food>
+							<Food>{food.energy}kcal</Food>
+							<FoodHide>{food.protein}g</FoodHide>
+							<FoodHide>{food.salt}g</FoodHide>
+							<Food>
 								{food.price}$<BuyFood onClick={() => onBuy(food.energy)}>Buy</BuyFood>
-							</Citizen>
-						</CitizensList>
+							</Food>
+						</FoodList>
 					))}
 				</TableContainer>
+			</Dialog>
+			<Dialog open={openInfo} onClose={onToggleInfo}>
+				<InfoContainer>
+					It is very important that you get the energy that you need. You need to have a daily average intake of 2000 kcal. You can see yours on your profile and it will alert you when you are running low.
+				</InfoContainer>
 			</Dialog>
 			<Dialog open={openConfirmation}>
 				<DialogContainer>
@@ -68,15 +81,28 @@ export const Restaurant = () => {
 	);
 };
 
+
+const Title = styled.h4`
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: ${(props) => props.theme.textColor};
+	padding: 7px 10px;
+	margin: 0;
+	width: 100%;
+	background-color: ${(props) => props.theme.primary};
+`;
+
 const TableContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 20px;
 	background-color: ${(props) => props.theme.backgroundColor};
 	color: ${(props) => props.theme.textColor};
+	padding: 10px 20px 15px 20px;
 	max-height: 320px;
-	min-width: 600px;
+	width: 320px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
 		-webkit-appearance: none;
@@ -84,11 +110,19 @@ const TableContainer = styled.div`
 		height: 15px;
 		border: 2px solid ${(props) => props.theme.secondary};
 	}
+	@media (min-width: 768px) {
+		width: 600px;
+	}
 `;
 
 const TableHead = styled.div`
 	display: flex;
+	justify-content: space-between;
+	width: 100%;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.backgroundColor};
+	color: ${(props) => props.theme.textColor};
+	padding: 12px 20px 8px 20px;
 `;
 
 const TableTitle = styled.div`
@@ -101,36 +135,35 @@ const TableTitle = styled.div`
 	font-size: 14px;
 `;
 
-const TableTitleLinks = styled(TableTitle)`
-	cursor: pointer;
-	width: 22%;
-	:hover,
-	:focus {
-		text-decoration: underline;
-	}
-`;
-
-const CitizenDaysLink = styled(TableTitleLinks)`
+const TableTitleHide = styled(TableTitle)`
 	display: none;
 	@media (min-width: 768px) {
 		display: flex;
 	}
 `;
 
-const Citizen = styled.p`
-	width: 25%;
-	margin: 0;
+const Food = styled.p`
+	width: 20%;
+	margin: 0 ;
 	font-size: 12px;
-	text-align: left;
+	font-family: 'Open Sans', serif;
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
 `;
 
-const CitizensList = styled.div`
+const FoodHide = styled(Food)`
+	display: none;
+	@media (min-width: 768px) {
+		display: flex;
+	}
+`;
+
+const FoodList = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	width: 100%;
 	padding: 6px 0 4px 0;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 	@media (min-width: 768px) {

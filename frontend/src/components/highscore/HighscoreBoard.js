@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
-import Icon from '@material-ui/core/Icon';
 
 import { CITIZEN_URL } from '../../reusables/urls';
 import { 
@@ -14,7 +12,10 @@ import {
   PositionContainer,
   Position,
 	CitizenAvatar, 
-	Citizen } from './Styling';
+	Citizen,
+	Score,
+	MathIcon,
+	FishIcon } from './Styling';
 
 export const HighscoreBoard = () => {
 	const [highscoreBoard, setHighscoreBoard] = useState([]);
@@ -30,13 +31,14 @@ export const HighscoreBoard = () => {
 
 
 	return (
-		<TableContainer>
-			<TableHead>
+		<>
+					<TableHead>
 				<TableTitle>Citizen</TableTitle>
 				<TableTitleLinks onClick={() => setSort('highscoreSpaceball')}><BubbleChartIcon fontSize='large' /></TableTitleLinks>
-				<TableTitleLinks onClick={() => setSort('highscoreFish')}><InvertColorsIcon fontSize='large' /></TableTitleLinks>
-        <TableTitleLinks onClick={() => setSort('highscoreMath')}><Icon className='fa fa-calculator' /></TableTitleLinks>
+				<TableTitleLinks onClick={() => setSort('highscoreFish')}><FishIcon /></TableTitleLinks>
+        <TableTitleLinks onClick={() => setSort('highscoreMath')}><MathIcon /></TableTitleLinks>
 			</TableHead>
+		<TableContainer>
 			{highscoreBoard.map((citizen, index) => (
 				<CitizensList key={citizen._id}>
           <PositionContainer>
@@ -46,11 +48,12 @@ export const HighscoreBoard = () => {
 					 {user === citizen.username ? 'Me' : citizen.username}
           </Citizen>
           </PositionContainer>
-					<Citizen>{citizen.highscoreSpaceball}p</Citizen>
-          <Citizen>{citizen.highscoreFish}p</Citizen>
-          <Citizen>{citizen.highscoreMath}p</Citizen>
+					<Score>{citizen.highscoreSpaceball}p</Score>
+          <Score>{citizen.highscoreFish}p</Score>
+          <Score>{citizen.highscoreMath}p</Score>
 				</CitizensList>
 			 ))}
 		</TableContainer>
+		</>
 	);
 };

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
+import Badge from '@material-ui/core/Badge';
 
 import { updateCoins, updateItems, updateRanking } from '../../../reducers/profile';
 import { cart } from '../../../reducers/cart';
@@ -18,8 +19,6 @@ import {
 	BuyButton, 
 	ShoppingCart, 
 	ShoppingButton, 
-	ItemsBadge, 
-	ItemsBadgeText, 
 	Icon } from './Styling';
 
 export const MyCart = () => {
@@ -93,8 +92,9 @@ export const MyCart = () => {
 			</Dialog>
 			<ShoppingCart>
 				<ShoppingButton>
-					<ItemsBadge><ItemsBadgeText>{products.length}</ItemsBadgeText></ItemsBadge>
-					<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
+					<Badge badgeContent={products.length} color='secondary' showZero>
+						<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
+					</Badge>
 				</ShoppingButton>
 			</ShoppingCart>
 			<ConfirmationDialogs 

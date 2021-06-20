@@ -19,7 +19,7 @@ export const EnergyProfile = () => {
 	const dispatch = useDispatch();
 
 	const createdAtDate = moment(createdAt);
-	const today = moment();
+	const today = moment().add(1, 'day');
 	const difference = today.diff(createdAtDate, 'days');
 	const averageEnergy = energy / difference;
 	const delay = 1000 * 60 * 30;
@@ -42,7 +42,7 @@ export const EnergyProfile = () => {
 
 	return (
 		<EnergyContainer>
-			<EnergyText>My average intake: {averageEnergy}kcal 
+			<EnergyText>My average intake: {averageEnergy} kcal 
 				{alert && <AlertIcon onClick={onToggleDialog}></AlertIcon>}
 			</EnergyText>
 			<Dialog open={open} onClose={onToggleDialog}>
@@ -50,7 +50,7 @@ export const EnergyProfile = () => {
 					<EnergyText>Your energy intake is running dangerously low! You need to eat something or you're ranking will go down with 1.</EnergyText>
 				</AlertContainer>
 			</Dialog>
-			<EnergyText>Needed average: 2000kcal</EnergyText>
+			<EnergyText>Needed average: 2000 kcal</EnergyText>
 		</EnergyContainer>
 	);
 };

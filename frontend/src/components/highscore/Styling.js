@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { FaSquareRootAlt, FaFish } from 'react-icons/fa';
 
 export const TableContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
 	max-height: 220px;
@@ -21,17 +22,21 @@ export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
   align-items: center;
+	padding: 10px 20px 5px 20px;
 	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 
 export const TableTitle = styled.div`
-	width: 30%;
+	width: 35%;
 	padding: 0 0 5px 5px;
 	margin: 0;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: ${props => props.theme.textColor};
 	font-size: 14px;
+	@media (min-width: 1300px) {
+		width: 40%;
+	}
 `;
 
 export const TableTitleLinks = styled(TableTitle)`
@@ -54,7 +59,7 @@ export const Position = styled.p`
   font-size: 14px;
   text-align: left;
   @media (min-width: 768px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 
@@ -85,6 +90,7 @@ export const Citizen = styled.p`
 
 export const Score = styled(Citizen)`
   margin-left: 5px;
+	text-align: center;
 `;
 
 export const CitizensList = styled.div`
@@ -96,5 +102,19 @@ export const CitizensList = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 	@media (min-width: 768px) {
 		padding: 6px 0 4px 0;
+	}
+`;
+
+export const MathIcon = styled(FaSquareRootAlt)`
+	font-size: 20px;
+	@media (min-width: 414px) {
+		font-size: 24px;
+	}
+`;
+
+export const FishIcon = styled(FaFish)`
+	font-size: 20px;
+	@media (min-width: 414px) {
+		font-size: 28px;
 	}
 `;

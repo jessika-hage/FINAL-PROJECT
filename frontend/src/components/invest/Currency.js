@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 
 import {
 	updateBadges,
 	updateCoins,
 	updateInvestments } from '../../reducers/profile';
-import { InvestCard } from './InvestCard'
+import { InvestCard } from './InvestCard';
+import { PriceChange } from './PriceChange';
 import { InvestDialog } from './InvestDialog';
 import { ExchangeDialog } from './ExchangeDialog';
-import {
-	DialogContainer,
-	CurrencyTitle,
-	TextContainer,
-	Text,
-	ButtonContainer,
-	ExchangeButton,
-	InvestmentButton,
-	ConfirmationDialog,
-	ConfirmationText,
-	ConfirmedButton,
-	PercentChange } from './Styling';
+
 
 export const Currency = () => {
 	const [currency, setCurrency] = useState([]);
@@ -42,7 +31,7 @@ export const Currency = () => {
 		fetchCoin();
 	}, []);
 
-	// Fetch one  currency
+	// Fetch one currency
 	const fetchCoin = () => {
 		fetch('https://api.coinlore.net/api/ticker/?id=32360')
 			.then((res) => res.json())
@@ -61,9 +50,9 @@ export const Currency = () => {
 		setOpenExchange(!openExchange);
 	};
 
+	// Calculates exchange rate
 	const totalExchange = exchangeValue * currency.price_usd / 2;
 
-	// Exchange function
 	const onExchange = () => {
 		if (badges >= exchangeValue) {
 			dispatch(updateBadges(- exchangeValue));
@@ -82,13 +71,14 @@ export const Currency = () => {
 		setOpenConfirmExchange(!openConfirmExchange);
 	};
 
+
 	// Toggle Investment Dialog
 	const onToggleInvestDialog = () => {
 		setOpenInvest(!openInvest);
 		setOpen(!open);
 	};
 
-
+	// Calculates investment
 	const totalInvest = investValue * currency.price_usd;
 
 	const onInvest = () => {
@@ -111,47 +101,11 @@ export const Currency = () => {
 	return (
 		<>
 			<InvestCard onClick={onToggleDialog} />
-			<Dialog open={open} onClose={onToggleDialog}>
-				<DialogContainer>
-					<CurrencyTitle>SPACE $</CurrencyTitle>
-					<TextContainer>
-						<Text>Price: {currency.price_usd} $</Text>
-					</TextContainer>
-					<TextContainer>
-						<Text>
-							Change in last hour:
-							<PercentChange percent={currency.percent_change_1h < 0}>
-								{currency.percent_change_1h} %
-							</PercentChange>
-						</Text>
-					</TextContainer>
-					<TextContainer>
-						<Text>
-							Change in last 24 hours:
-							<PercentChange percent={currency.percent_change_24h < 0}>
-								{currency.percent_change_24h} %
-							</PercentChange>
-						</Text>
-					</TextContainer>
-					<TextContainer>
-						<Text>
-							Change in the last week:
-							<PercentChange percent={currency.percent_change_7d < 0}>
-								{currency.percent_change_7d} %
-							</PercentChange>
-						</Text>
-					</TextContainer>
-					<TextContainer>
-						<Text>Exchange rate: 2 badge = {currency.price_usd} $</Text>
-					</TextContainer>
-					<ButtonContainer>
-						<ExchangeButton onClick={onToggleExchangeDialog}>Exchange</ExchangeButton>
-						<InvestmentButton onClick={onToggleInvestDialog}>
-							Invest in SPACE$
-						</InvestmentButton>
-					</ButtonContainer>
-				</DialogContainer>
-			</Dialog>
+			<PriceChange
+				open={open} 
+				onClose={onToggleDialog}
+				toggleExchangeDialog={onToggleExchangeDialog}
+				toggleInvestDialog={onToggleInvestDialog} />
 			<ExchangeDialog 
 				openExchange={openExchange} 
 				onCloseExchange={onToggleExchangeDialog} 
@@ -159,17 +113,13 @@ export const Currency = () => {
 				onChange={(e) => setExchangeValue(e.target.value)}
 				value={exchangeValue}
 				totalExchange={totalExchange.toFixed(2)}
-				onClick={onExchange} />
-			<Dialog open={openConfirmExchange} onClose={onToggleConfirmedExchange}>
-				<ConfirmationDialog>
-					<ConfirmationText>
-						{exchangeSuccess
+				onClick={onExchange}
+				open={openConfirmExchange} 
+				onClose={onToggleConfirmedExchange}
+				confirmText={exchangeSuccess
 							? 'You have now received some coins which you can see on your profile!'
 							: 'You do not have enough badges!'}
-					</ConfirmationText>
-					<ConfirmedButton onClick={onToggleConfirmedExchange}>{exchangeSuccess ? 'Thanks!' : 'Okay!'}</ConfirmedButton>
-				</ConfirmationDialog>
-			</Dialog>
+				buttonText={exchangeSuccess ? 'Thanks!' : 'Okay!'} />
 			<InvestDialog
 				open={openInvest}
 				onClose={onToggleInvestDialog}

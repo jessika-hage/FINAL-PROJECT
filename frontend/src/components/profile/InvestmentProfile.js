@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateCoins, updateInvestments } from '../../reducers/profile';
+import { updateCoins, updateInvestments, updateRanking } from '../../reducers/profile';
 import {
 	InvestmentContainer,
 	InvestmentText,
@@ -43,6 +43,9 @@ export const InvestmentProfile = () => {
 	const onSellInvestment = () => {
 		dispatch(updateInvestments(-investmentQuantity, -investments));
 		dispatch(updateCoins(totalMarketValue));
+		if (percentDifference > 10) {
+			dispatch(updateRanking(1));
+		}
 	};
 
 	return (
@@ -72,7 +75,7 @@ export const InvestmentProfile = () => {
 					<SellButton onClick={onSellInvestment}>Sell investment</SellButton>
 				</>
 			) : (
-				<InvestmentText>You have no investments yet.</InvestmentText>
+				<InvestmentText>You have no investments.</InvestmentText>
 			)}
 		</InvestmentContainer>
 	);

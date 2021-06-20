@@ -11,7 +11,7 @@ import {
   CoinsIcon } from './Styling';
   import { RankingProgress } from './RankingProgress';
 
-export const ProfileStats = ({ avatar, username, badges, ranking, coins }) => {
+export const ProfileStats = ({ avatar, username, badges, coins }) => {
   return (
     <ImageNameContainer>
       <ProfileAvatar src={avatar} />

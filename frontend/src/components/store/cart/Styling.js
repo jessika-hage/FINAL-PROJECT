@@ -86,26 +86,6 @@ export const ShoppingButton = styled.button`
 	}
 `;
 
-export const ItemsBadge = styled.div`
-	background-color: ${(props) => props.theme.secondary};
-	position: absolute;
-	width: 18px;
-	height: 18px;
-	top: 100px;
-	right: 0;
-	padding: 2px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top: -5px;
-`;
-
-export const ItemsBadgeText = styled.p`
-	font-size: 12px;
-	color: ${(props) => props.theme.textColor};
-`;
-
 // Confirmation Dialogs
 export const ConfirmationDialog = styled.div`
 	display: flex;
