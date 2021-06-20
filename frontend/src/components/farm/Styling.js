@@ -5,7 +5,7 @@ import fish from './assets/fish.png';
 const Roller = keyframes`
 	0% {
 		transform: translate(50, 0);
-		transform: rotate(90deg);
+		transform: rotate(-90deg);
 	}
   10% {
     transform: translate(-80px, 500);
@@ -17,7 +17,7 @@ const Roller = keyframes`
   }
   50% {
     transform: translate(-400px, 110px);
-		transform: rotate(180deg);
+		transform: rotate(-180deg);
   }
   75% {
     transform: translate(200, 500px);
@@ -31,7 +31,7 @@ const Roller = keyframes`
 const Roller2 = keyframes`
 	0% {
 		transform: translate(0, 0);
-		transform: rotate(90deg);
+		transform: rotate(-90deg);
 	}
   10% {
     transform: translate(-120px, 770);
@@ -41,7 +41,7 @@ const Roller2 = keyframes`
   }
   50% {
     transform: translate(0, 0);
-		transform: rotate(-90deg);
+		transform: rotate(90deg);
   }
   75% {
     transform: translate(200, 500px);
