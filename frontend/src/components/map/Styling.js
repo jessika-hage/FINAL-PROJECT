@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { 
-	FaFish, 
-	FaUtensils, 
-	FaShoppingCart, 
-	FaSquareRootAlt, 
-	FaInfoCircle, 
-	FaBed, 
-	FaTh, 
-	FaDumbbell } from 'react-icons/fa';
+import {
+	FaFish,
+	FaUtensils,
+	FaShoppingCart,
+	FaSquareRootAlt,
+	FaInfoCircle,
+	FaBed,
+	FaTh,
+	FaDumbbell,
+} from 'react-icons/fa';
 
 export const GridContainer = styled.section`
 	display: grid;
 	grid-template: repeat(7, 1fr) / repeat(12, 1fr);
 	width: 100%;
-	color: ${props => props.theme.textColor};
+	color: ${(props) => props.theme.textColor};
 `;
 
 // Rooms
@@ -53,10 +54,19 @@ export const RoomRestaurant = styled(RoomBedroom)`
 	z-index: 1;
 `;
 
-export const RoomGarden = styled(RoomBedroom)`
+export const RoomGarden = styled(Link)`
 	grid-column: 4 / span 3;
 	grid-row: 1 / span 3;
 	border-radius: 0px;
+	border: 2px solid white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: ${(props) => props.theme.primary};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 export const RoomStore = styled(Link)`
@@ -180,7 +190,6 @@ export const GymIcon = styled(FaDumbbell)`
 	}
 `;
 
-
 // Dialog Info
 export const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
@@ -216,22 +225,22 @@ export const ListItem = styled.li`
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}
-`
+`;
 
 export const StartGameButton = styled(Link)`
-  padding: 10px 15px;
-  margin-top: 20px;
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.hover};
-  color: ${props => props.theme.textColor};
-  font-size: 16px;
-  width: fit-content;
-  text-transform: uppercase;
-  font-family: "Trispace";
-  cursor: pointer;
-  :hover {
-    background-color: ${props => props.theme.hover};
-  }
+	padding: 10px 15px;
+	margin-top: 20px;
+	background-color: ${(props) => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.hover};
+	color: ${(props) => props.theme.textColor};
+	font-size: 16px;
+	width: fit-content;
+	text-transform: uppercase;
+	font-family: 'Trispace';
+	cursor: pointer;
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 export const DialogButton = styled.button`
@@ -273,21 +282,21 @@ export const Circle = styled.div`
 `;
 
 export const Orange = styled(Circle)`
-	background-color: #F58634;
+	background-color: #f58634;
 `;
 
 export const Blue = styled(Circle)`
-	background-color: #1A90FF;
+	background-color: #1a90ff;
 `;
 
 export const Purple = styled(Circle)`
-	background-color: #B590CA;
+	background-color: #b590ca;
 `;
 
 export const Pink = styled(Circle)`
-	background-color: #CE1F6A;
+	background-color: #ce1f6a;
 `;
 
 export const Green = styled(Circle)`
-	background-color: #29BB89;
+	background-color: #29bb89;
 `;
