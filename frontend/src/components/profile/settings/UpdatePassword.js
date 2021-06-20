@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 
 import { 
   PasswordForm, 
@@ -8,14 +7,15 @@ import {
   Input, 
   ConfirmInput, 
   UpdateButton, 
-  DialogContainer, 
-  DialogText } from './Styling';
+  ConfirmText } from './Styling';
 
 export const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
-  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
+  const [noMatch, setNoMatch] = useState(false);
   const userId = useSelector(store => store.profile.userId);
   const accessToken = useSelector(store => store.profile.accessToken);
 
@@ -23,13 +23,16 @@ export const UpdatePassword = () => {
 
 const onUpdatePassword = (e) => {
   e.preventDefault();
+
+  if (newPassword === confirmedPassword) {
+
     const options = {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': accessToken,
+        Authorization: accessToken
       },
-      body: JSON.stringify({ newPassword }),
+      body: JSON.stringify({ password, newPassword }),
     }
     fetch(
       `https://citizen-ship.herokuapp.com/citizen/${userId}/password`,
@@ -38,16 +41,22 @@ const onUpdatePassword = (e) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setOpen(true);
-          setTimeout(() => {
-            setOpen(false);
-          }, 2000)
+          setSuccess(true);
+          setNoMatch(false);
+          setFail(false);
+          setPassword('');
+          setNewPassword('');
+          setConfirmedPassword('');
         } else {
-          console.log('sorry')
-        }
-        console.log(data.message)
+          setFail(true);
+          setNoMatch(false);
+        } 
       })
-      .catch();
+    } else {
+      setNoMatch(true);
+      setFail(false);
+    }
+      
 };
 
   return (
@@ -66,16 +75,14 @@ const onUpdatePassword = (e) => {
         onChange={(e) => setNewPassword(e.target.value)} />
       <Input
         type='password'
-        placeholder='confirm new password'
+        placeholder='confirm password'
         value={confirmedPassword}
         onChange={(e) => setConfirmedPassword(e.target.value)} />
       </ConfirmInput>
+      <ConfirmText success={success}>{noMatch ? 'Passwords do not match' : ''}</ConfirmText>
+      <ConfirmText success={success}>{fail ? 'Could not update password right now' : ''}</ConfirmText>
+      <ConfirmText success={success}>{success ? 'Password successfully updated!' : ''}</ConfirmText>
       <UpdateButton type='submit'>Update password</UpdateButton>
-      <Dialog open={open}>
-        <DialogContainer>
-          <DialogText>Password successfully updated!</DialogText>
-        </DialogContainer>
-      </Dialog>
     </PasswordForm>
   )
 };

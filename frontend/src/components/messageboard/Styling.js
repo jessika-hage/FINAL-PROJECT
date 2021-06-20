@@ -75,6 +75,7 @@ export const MessageTitle = styled.h3`
 export const MessageList = styled.div`
   max-width: 320px;
   overflow: scroll;
+  height: 100vh;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 15px;

@@ -25,7 +25,7 @@ const Roller = keyframes`
 export const RollingText = styled.div`
 	display: flex;
 	align-items: center;
-	font-size: 10px;
+	font-size: 12px;
 	animation: ${Roller} 25s linear infinite;
 	opacity: 0;
 	padding: 0;
@@ -49,15 +49,16 @@ export const WeatherText = styled.div`
 
 export const Button = styled.button`
 	padding: 0;
-	// text-transform: uppercase;
+	text-transform: uppercase;
 	background-color: transparent;
 	font-weight: 400;
 	margin-left: 10px;
-	font-size: 11px;
+	font-size: 12px;
 	color: ${(props) => props.theme.textColor};
 	text-decoration: underline;
 	@media (min-width: 1024px) {
 		font-weight: bold;
+		font-size: 15px;
 	}
 `;
 
