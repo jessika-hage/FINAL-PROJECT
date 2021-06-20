@@ -60,9 +60,13 @@ const MainContainer = styled.main`
 	align-items: center;
 	background-color: ${(props) => props.theme.backgroundColor};
 	width: 100%;
+	padding-top: 80px;
 	min-height: 100vh;
 	position: relative;
 	overflow: auto;
+	@media (min-width: 768px) {
+		padding-top: 30px;
+	}
 `;
 
 const Container = styled.section`

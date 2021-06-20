@@ -5,7 +5,7 @@ export const MainBar = styled.div`
 	justify-content: center;
 	background-color: ${(props) => props.theme.secondary};
 	position: fixed;
-	bottom: 40px;
+	bottom: 60px;
 	left: 0;
 	padding: 0;
 	color: ${(props) => props.theme.textColor};
@@ -25,14 +25,14 @@ const Roller = keyframes`
 export const RollingText = styled.div`
 	display: flex;
 	align-items: center;
-	font-size: 11px;
+	font-size: 10px;
 	animation: ${Roller} 25s linear infinite;
 	opacity: 0;
 	padding: 0;
 	overflow: hidden;
 	@media (min-width: 1024px) {
 		bottom: 14px;
-		font-size: 14px;
+		font-size: 15px;
 	}
 `;
 
@@ -49,10 +49,11 @@ export const WeatherText = styled.div`
 
 export const Button = styled.button`
 	padding: 0;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	background-color: transparent;
 	font-weight: 400;
 	margin-left: 10px;
+	font-size: 11px;
 	color: ${(props) => props.theme.textColor};
 	text-decoration: underline;
 	@media (min-width: 1024px) {

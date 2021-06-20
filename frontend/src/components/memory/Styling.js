@@ -10,9 +10,10 @@ export const MainContainer = styled.main`
   position: relative;
   overflow: auto;
   margin: 0;  
+  padding-top: 40px;
   padding-bottom: 100px;
   @media (min-width: 768px) {
-    padding-bottom: 0;
+    padding-top: 20px;
   }
 `;
 

@@ -1,6 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+const initialState = localStorage.getItem('profile') 
+? {
+	username: JSON.parse(localStorage.getItem('profile')).username,
+	email: JSON.parse(localStorage.getItem('profile')).email,
+	accessToken: JSON.parse(localStorage.getItem('profile')).accessToken,
+	userId: JSON.parse(localStorage.getItem('profile')).userId,
+	badges: JSON.parse(localStorage.getItem('profile')).badges,
+	ranking: JSON.parse(localStorage.getItem('profile')).ranking,
+	coins: JSON.parse(localStorage.getItem('profile')).coins,
+	createdAt: JSON.parse(localStorage.getItem('profile')).createdAt,
+	avatar: JSON.parse(localStorage.getItem('profile')).avatar,
+	items: JSON.parse(localStorage.getItem('profile')).items,
+	investments: JSON.parse(localStorage.getItem('profile')).investments,
+	investmentQuantity: JSON.parse(localStorage.getItem('profile')).investmentQuantity,
+	energy: JSON.parse(localStorage.getItem('profile')).energy,
+	highscoreSpaceball: JSON.parse(localStorage.getItem('profile')).highscoreSpaceball,
+	highscoreFish: JSON.parse(localStorage.getItem('profile')).highscoreFish,
+	highscoreMath: JSON.parse(localStorage.getItem('profile')).highscoreMath,
+}
+: {
 	username: null,
 	email: null,
 	accessToken: null,
@@ -17,8 +36,7 @@ const initialState = {
 	highscoreSpaceball: null,
 	highscoreFish: null,
 	highscoreMath: null,
-	highscoreMemory: null,
-};
+}
 
 export const profile = createSlice({
 	name: 'profile',
@@ -113,7 +131,7 @@ export const updateAvatar = (avatar) => {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				dispatch(profile.actions.setBadges(data.avatar));
+				dispatch(profile.actions.setAvatar(data.avatar));
 			})
 			.catch((err) => console.error(err));
 	};
@@ -135,7 +153,6 @@ export const updateBadges = (badges) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setBadges(data.badges));
 			})
 			.catch((err) => console.error(err));

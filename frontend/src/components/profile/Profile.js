@@ -9,7 +9,7 @@ import { ItemsProfile } from './ItemsProfile';
 import { ProfileStats } from './ProfileStats';
 import { InvestmentProfile } from './InvestmentProfile';
 import { EnergyProfile } from './EnergyProfile';
-import { Settings } from './Settings';
+import { Settings } from './settings/Settings';
 import { Buttons } from './Buttons';
 import { 
 	ProfileContainer, 

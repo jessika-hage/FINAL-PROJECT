@@ -16,6 +16,7 @@ export const Main = styled.div`
 	@media (min-width: 768px) {
 		top: 0;
 		height: 80px;
+		border-bottom: 4px solid ${(props) => props.theme.secondary};
 	}
 `;
 
@@ -101,17 +102,17 @@ export const DrawerContainer = styled.section`
 export const CameraContainer = styled.div`
   width: 100%;
   height: 35px;
-  border-bottom: 36px solid ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.secondary};
   background-color: ${(props) => props.theme.primary};
   display: flex;
   justify-content: center;
-  position: relative;
-  margin: 0 auto 30px auto;
+  position: fixed;
+	top: 0;
+  margin: 0 auto 3500px auto;
   @media (min-width: 768px) {
-	border-bottom: 6px solid ${(props) => props.theme.secondary};
-  background-color: transparent;
-	height: 85px;
-	margin: 0 auto 30px auto;
+		background-color: transparent;
+		margin: 0 auto 30px auto;
+		position: relative;
   }
 `;
 

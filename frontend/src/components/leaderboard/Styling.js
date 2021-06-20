@@ -65,7 +65,7 @@ export const CitizenAvatar = styled.img`
 	height: 18px;
 	width: 18px;
 	padding: 2px;
-	margin-right: 5px;
+	margin-right: 8px;
 	background-color: ${props => props.theme.secondary};
   border: 1.5px solid ${props => props.theme.secondary};
 	border-radius: 50%;

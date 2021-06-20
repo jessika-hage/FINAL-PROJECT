@@ -215,13 +215,17 @@ export const TransparentWrapper = styled.button`
 
 export const WaterContainer = styled.div`
 	position: relative;
-	width: 800px;
-	height: 600px;
+	width: 90%;
+	height: 70%;
 	display: flex;
 	justify-content: center;
 	border: 10px solid #68ab9e;
-	margin: auto 0;
+	margin: 50px 0 0 0;
 	background-color: #dcfcf7;
+	@media (min-width: 768px) {
+		width: 800px;
+		height: 600px;
+	}
 `;
 
 export const MainContainer = styled.main`
@@ -231,7 +235,7 @@ export const MainContainer = styled.main`
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	margin-top: -40px;
+	padding-top: 10px;
 	background-color: #d1fff4;
 `;
 

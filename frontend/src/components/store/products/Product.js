@@ -11,6 +11,7 @@ import {
 	ProductContainer, 
 	AddedText, 
 	Text,
+	Price,
 	ProductWrapper,
 	ImageWrapper,
 	ProductImage,
@@ -44,7 +45,7 @@ export const Product = ({ product }) => {
 					<ProductContainer>
 						<AddedText>Added to cart</AddedText>
 						<Text>{product.title}</Text>
-						<Text>{product.price}$</Text>
+						<Price>{product.price}$</Price>
 					</ProductContainer>
 				</DialogContainer>
 			</Dialog>
@@ -59,7 +60,7 @@ export const Product = ({ product }) => {
 				<TextWrapper>
 					<Text>{product.title}</Text>
 					<TextDescription>{product.description}</TextDescription>
-					<Text>{product.price}$</Text>
+					<Price>{product.price}$</Price>
 					<TextDescription>
 						Ranking: {product.ranking} <Icon />
 					</TextDescription>

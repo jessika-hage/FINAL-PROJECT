@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaFish, FaUtensils, FaShoppingCart, FaSquareRootAlt, FaInfoCircle, FaBed, FaTh, FaDumbbell } from 'react-icons/fa';
 
 export const GridContainer = styled.section`
 	display: grid;
 	grid-template: repeat(7, 1fr) / repeat(12, 1fr);
 	width: 100%;
+	color: ${props => props.theme.textColor};
 `;
 
 // Rooms
@@ -12,12 +14,11 @@ export const RoomClassroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
-	border-top-left-radius: 200px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.primary};
 	:hover {
 		background-color: ${(props) => props.theme.hover};
 	}
@@ -26,13 +27,12 @@ export const RoomClassroom = styled.div`
 export const RoomBedroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 4 / span 3;
-	border-bottom-left-radius: 200px;
 	border: 2px solid white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.primary};
 	:hover {
 		background-color: ${(props) => props.theme.hover};
 	}
@@ -59,7 +59,8 @@ export const RoomStore = styled(Link)`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
 	:hover {
 		background-color: ${(props) => props.theme.hover};
 	}
@@ -88,26 +89,89 @@ export const RoomMemory = styled(RoomClassroom)`
 export const RoomFarm = styled(RoomClassroom)`
 	grid-column: 10 / span 3;
 	grid-row: 1 / span 3;
-	border-top-right-radius: 200px;
 	border-top-left-radius: 0px;
 `;
 
 export const RoomSpace = styled(RoomBedroom)`
 	grid-column: 10 / span 3;
 	grid-row: 4 / span 3;
-	border-bottom-right-radius: 200px;
 	border-bottom-left-radius: 0px;
 `;
 
 // Icons
 export const Icons = styled.button`
 	color: ${(props) => props.theme.textColor};
-	font-size: 44px;
 	background-color: transparent;
 	:hover {
 		opacity: 0.7;
 	}
 `;
+
+export const FishIcon = styled(FaFish)`
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
+	@media (min-width: 768px) {
+		font-size: 44px;
+	}
+`;
+
+export const RestaurantIcon = styled(FaUtensils)`
+	font-size: 16px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const ShoppingIcon = styled(FaShoppingCart)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const MathIcon = styled(FaSquareRootAlt)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const InfoIcon = styled(FaInfoCircle)`
+	font-size: 16px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const BedIcon = styled(FaBed)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const MemoryIcon = styled(FaTh)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const GymIcon = styled(FaDumbbell)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
 
 // Dialog Info
 export const DialogContainer = styled.div`

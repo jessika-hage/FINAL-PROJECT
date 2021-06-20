@@ -32,14 +32,15 @@ export const MainContainer = styled.div`
 	aline-items: center;
 	justify-content: center;
 	padding: 5px;
+	width: 45%;
 	border: 2px solid ${(props) => props.theme.primary};
 
 	@media (min-width: 768px) {
-		width: 320px;
+		width: 25%;
 		padding: 5px;
 	}
 	@media (min-width: 1200px) {
-		width: 350px;
+		width: 25%;
 	}
 `;
 
@@ -80,8 +81,16 @@ export const Text = styled.p`
 	color: ${(props) => props.theme.textColor};
 	margin: 3px 0;
 	padding: 0;
-	font-size: 15px;
+	font-size: 14px;
+	font-weight: 600;
 	text-transform: uppercase;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
+`;
+
+export const Price = styled(Text)`
+	font-weight: 400;
 `;
 
 export const ProductWrapper = styled.div`
@@ -100,7 +109,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const ProductImage = styled.img`
-	width: 300px;
+	width: 100%;
 	margin: 0;
 	@media (min-width: 768px) {
 		padding: 5px;
@@ -123,9 +132,12 @@ export const TextWrapper = styled.div`
 export const TextDescription = styled.p`
 	color: ${(props) => props.theme.textColor};
 	margin: 2px 0;
-	font-size: 14px;
+	font-size: 12px;
 	display: flex;
 	align-items: center;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 

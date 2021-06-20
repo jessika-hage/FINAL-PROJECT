@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import Icon from '@material-ui/core/Icon';
 
 import { 
   RoomClassroom, 
   Icons, 
   DialogContainer, 
+  MathIcon,
   InfoTitle, 
   InfoText, 
   StartGameButton,
-List,
-ListItem } from './Styling';
+  List,
+  ListItem } from './Styling';
 
 export const Classroom = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -21,9 +21,7 @@ export const Classroom = () => {
 
   return (
       <RoomClassroom onClick={onToggleGameDialog}>
-        <Icons>
-          <Icon className='fa fa-calculator' />
-        </Icons>
+        <MathIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>Classroom</InfoTitle>

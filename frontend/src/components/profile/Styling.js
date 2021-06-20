@@ -8,8 +8,9 @@ export const ImageNameContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 	width: 100%;
-  padding: 5px 0 0 0;
+  padding: 5px;
   margin: 0 10px;
+	border-bottom: 1px solid ${(props) => props.theme.primary};
 `;
 
 export const ProfileAvatar = styled.img`
@@ -32,7 +33,6 @@ export const StatusContainer = styled.div`
   justify-content: center;
   align-items: center;
 	width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme.primary};
 `;
 
 export const Username = styled.h3`
@@ -114,25 +114,23 @@ export const ProgressText = styled.p`
 export const ProfileContainer = styled.section`
 	display: flex;
 	flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-	max-height: 100vh;
-  padding: 10px 5px;
-  margin: 10px;
+	min-height: 100vh;
+	background-color: ${props => props.theme.backgroundColor};
+  padding: 10px 10px;
   max-width: 350px;
 	min-width: 300px;
 	overflow: scroll;
+	&::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid ${props => props.theme.secondary};
+  }
+	@media (min-width: 768px) {
+		max-width: 450px;
+	}
 `;
-
-// export const TopContainer = styled.div`
-// 	display: flex;
-// 	justify-content: space-between;
-// 	align-items: center;
-// 	border-bottom: 2px solid ${(props) => props.theme.secondary};
-// 	padding-bottom: 0px;
-// 	width: 100%;
-// 	margin: 0;
-// `;
 
 export const DaysContainer = styled(StatusContainer)`
   display: flex;
@@ -140,7 +138,7 @@ export const DaysContainer = styled(StatusContainer)`
 	justify-content: center;
   align-items: flex-start;
 	margin: 0;
-  padding: 5px 0;
+  padding: 5px;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
@@ -166,7 +164,7 @@ export const BottomContainer = styled.div`
 `;
 
 export const Items = styled.div`
-  padding: 10px 0 10px 0;
+  padding: 10px 5px;
   border-bottom: 2px solid ${(props) => props.theme.secondary};
 	width: 100%;
 	display: flex;
@@ -187,21 +185,20 @@ export const ButtonContainer = styled.div`
 	display: flex;
   align-items: center;
 	justify-content: space-between;
-  padding: 10px 10px 7px 10px;
+  padding: 10px 3px 7px 3px;
 	position: absolute;
+	left: 0;
+	right: 0;
 	bottom: 0px;
-	left: 10px;
-	right: 10px;
+	z-index: 1;
+	background-color: ${props => props.theme.primary};
 	border-top: 2px solid ${(props) => props.theme.secondary};
 `;
 
 export const ButtonSignOut = styled.button`
-	// margin-top: 10px;
 	background-color: transparent;
 	font-size: 30px;
-  // position: absolute;
-  // bottom: -40px;
-  // right: 5px;
+	padding: 0 10px 0 0;
 	color: ${props => props.theme.textColor};
 	:hover {
 		color: ${props => props.theme.hover};
@@ -209,7 +206,7 @@ export const ButtonSignOut = styled.button`
 `;
 
 export const ButtonSettings = styled(ButtonSignOut)`
-	// left: 5px;
+	padding: 0 0 0 10px;
 `;
 
 // Items Profile

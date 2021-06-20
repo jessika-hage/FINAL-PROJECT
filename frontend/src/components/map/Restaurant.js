@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import RestaurantIcon from '@material-ui/icons/Restaurant';
 import Dialog from '@material-ui/core/Dialog';
 
 import { updateEnergy } from '../../reducers/profile';
@@ -9,7 +8,8 @@ import {
 	RoomRestaurant, 
 	Icons, 
 	DialogContainer, 
-	InfoText } from './Styling';
+	InfoText,
+	RestaurantIcon } from './Styling';
 
 
 export const Restaurant = () => {
@@ -34,9 +34,7 @@ export const Restaurant = () => {
   return (
 		<>
       <RoomRestaurant onClick={onToggleDialog}>
-        <Icons>
-          <RestaurantIcon fontSize='large' />
-        </Icons>
+        <RestaurantIcon />
       </RoomRestaurant>
       <Dialog open={open} onClose={onToggleDialog}>
 				<TableContainer>

@@ -78,7 +78,7 @@ export const SeeMoreButton = styled.button`
   }
 `; 
 
-// Invest Dialog
+// Dialog
 export const DialogContainer = styled.div`
   background-color: ${props => props.theme.backgroundColor};
   border: 2px solid ${props => props.theme.primary};
@@ -112,10 +112,13 @@ export const InputAmount = styled.input`
   outline: none;
   background-color: ${props => props.theme.primary};
   margin-right: 15px;
-  max-width: 50%;
+  max-width: fit-content;
   font-family: 'Trispace', serif;
   :focus {
     background-color: ${props => props.theme.secondary};
+  }
+  @media (min-width: 768px) {
+    width: 153px;
   }
 `;
 
@@ -128,6 +131,12 @@ export const Text = styled.p`
   text-transform: none;
   display: flex;
   text-align: center;
+  font-size: 13px;
+  text-align: left;
+  margin: 8px 0;
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const ConfirmationDialog = styled.div`

@@ -32,8 +32,7 @@ export const Housing = () => {
 		<>
 			<HousingText>
 				Housing:
-				<ChangeText>Latest</ChangeText>
-				<Button onClick={onToggleDialog}>See house</Button>
+				<Button onClick={onToggleDialog}>See latest</Button>
 			</HousingText>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>

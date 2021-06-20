@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import AppsIcon from '@material-ui/icons/Apps';
 
 import { 
   RoomMemory, 
@@ -8,7 +7,8 @@ import {
   DialogContainer, 
   InfoTitle, 
   InfoText, 
-  StartGameButton } from './Styling';
+  StartGameButton,
+  MemoryIcon } from './Styling';
 
 export const Memory = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -18,9 +18,7 @@ export const Memory = () => {
 	};
   return (
       <RoomMemory onClick={onToggleGameDialog}>
-        <Icons>
-          <AppsIcon fontSize='large' />
-        </Icons>
+        <MemoryIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>Memory</InfoTitle>

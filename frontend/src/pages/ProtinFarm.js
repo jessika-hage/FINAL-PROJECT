@@ -202,7 +202,7 @@ export const ProtinFarm = () => {
 						fill='#73bed9'
 						paused={false}
 						options={{
-							height: 200,
+							height: 220,
 							amplitude: 50,
 							speed: 0.15,
 							points: 3,

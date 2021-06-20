@@ -136,7 +136,7 @@ export const Currency = () => {
 						</Text>
 					</TextContainer>
 					<TextContainer>
-						<Text>Exchange rate: 2 badge = {currency.price_usd} SPACE $</Text>
+						<Text>Exchange rate: 2 badge = {currency.price_usd} $</Text>
 					</TextContainer>
 					<ButtonContainer>
 						<ExchangeButton onClick={onExchange}>Exchange</ExchangeButton>

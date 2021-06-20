@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Tooltip } from '@material-ui/core';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import Dialog from '@material-ui/core/Dialog';
 
 import {
@@ -10,7 +9,7 @@ import {
 	InfoTitle,
 	InfoText,
 	DialogButton,
-} from './Styling';
+	GymIcon } from './Styling';
 
 export const Gym = () => {
 	const [openGym, setOpenGym] = useState(false);
@@ -22,9 +21,7 @@ export const Gym = () => {
 	return (
 		<Tooltip title='GYM!'>
 			<RoomGym onClick={onToggleGymDialog}>
-				<Icons>
-					<FitnessCenterIcon fontSize='large' />
-				</Icons>
+				<GymIcon />
 				<Dialog open={openGym} onClick={onToggleGymDialog}>
 					<DialogContainer>
 						<InfoTitle>Get some workout!</InfoTitle>

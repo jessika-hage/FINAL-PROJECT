@@ -71,6 +71,24 @@ export const SignUp = () => {
 						dispatch(profile.actions.setHighscoreSpaceball(data.highscoreSpaceball));
 						dispatch(profile.actions.setHighscoreFish(data.highscoreFish));
 						dispatch(profile.actions.setHighscoreMath(data.highscoreMath));
+
+						localStorage.setItem('profile', JSON.stringify({
+							username: data.username,
+							userId: data.userId,
+							accessToken: data.accessToken,
+							badges: data.badges,
+							ranking: data.ranking,
+							coins: data.coins,
+							items: data.items,
+							avatar: data.avatar,
+							createdAt: data.createdAt,
+							investments: data.investments,
+							investmentQuantity: data.investmentQuantity,
+							energy: data.energy,
+							highscoreSpaceball: data.highscoreSpaceball,
+							highscoreFish: data.highscoreFish,
+							highscoreMath: data.highscoreMath,
+						}))
 					});
 				} else {
 					handleErrors(data);

@@ -40,4 +40,5 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
 	background-color: ${(props) => props.theme.backgroundColor};
+	padding-top: 45px;
 `;

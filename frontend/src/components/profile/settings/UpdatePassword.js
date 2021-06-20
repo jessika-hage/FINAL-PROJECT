@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import Dialog from '@material-ui/core/Dialog';
 
-import { updatePassword } from '../../reducers/profile';
+import { 
+  PasswordForm, 
+  ChangeTitle,
+  Input, 
+  ConfirmInput, 
+  UpdateButton, 
+  DialogContainer, 
+  DialogText } from './Styling';
 
 export const UpdatePassword = () => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
+  const [open, setOpen] = useState(false);
   const userId = useSelector(store => store.profile.userId);
   const accessToken = useSelector(store => store.profile.accessToken);
 
@@ -15,15 +23,14 @@ export const UpdatePassword = () => {
 
 const onUpdatePassword = (e) => {
   e.preventDefault();
-  if (newPassword === confirmedPassword) {
     const options = {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': accessToken,
       },
-      body: JSON.stringify({ password, newPassword }),
-    };
+      body: JSON.stringify({ newPassword }),
+    }
     fetch(
       `https://citizen-ship.herokuapp.com/citizen/${userId}/password`,
       options
@@ -31,19 +38,27 @@ const onUpdatePassword = (e) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log(data.message);
+          setOpen(true);
+          setTimeout(() => {
+            setOpen(false);
+          }, 2000)
+        } else {
+          console.log('sorry')
         }
+        console.log(data.message)
       })
-      .catch((err) => console.error(err));
-  }
-}
+      .catch();
+};
+
   return (
     <PasswordForm onSubmit={onUpdatePassword}>
+      <ChangeTitle>Change your password:</ChangeTitle>
       <Input 
         type='password'
         placeholder='current password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}/>
+      <ConfirmInput>
       <Input
         type='password'
         placeholder='new password'
@@ -54,34 +69,13 @@ const onUpdatePassword = (e) => {
         placeholder='confirm new password'
         value={confirmedPassword}
         onChange={(e) => setConfirmedPassword(e.target.value)} />
-        <PasswordButton type='submit'>update password</PasswordButton>
+      </ConfirmInput>
+      <UpdateButton type='submit'>Update password</UpdateButton>
+      <Dialog open={open}>
+        <DialogContainer>
+          <DialogText>Password successfully updated!</DialogText>
+        </DialogContainer>
+      </Dialog>
     </PasswordForm>
   )
 };
-
-const PasswordForm = styled.form`
-`;
-
-export const Input = styled.input`
-  padding: 10px;
-  outline: none;
-  border-bottom: 3px solid ${props => props.theme.primary};
-  border-left: none;
-  border-top: none;
-  border-right: none;
-  background-color: transparent;
-  font-size: 16px;
-  color: ${props => props.theme.textColor};
-  margin-bottom: 20px;
-  width: 300px;
-  font-family: 'Trispace';
-  :focus {
-	background-color: ${props => props.theme.primary};
-  }
-  ::placeholder {
-	text-transform: uppercase;
-  }
-`;
-
-const PasswordButton = styled.button`
-  `;

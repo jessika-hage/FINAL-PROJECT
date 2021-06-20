@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaSignOutAlt, FaCog } from 'react-icons/fa';
 
-import { ThemeButtons } from '../theme/ThemeButtons';
 import { ButtonContainer, ButtonSignOut, ButtonSettings } from './Styling';
 
 export const Buttons = ({ onSettings, onClick }) => {

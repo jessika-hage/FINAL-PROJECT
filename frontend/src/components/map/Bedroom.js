@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import HotelIcon from '@material-ui/icons/Hotel';
 import { Tooltip } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 
@@ -9,7 +8,8 @@ import {
   DialogContainer, 
   InfoTitle, 
   InfoText, 
-  DialogButton } from './Styling';
+  DialogButton,
+  BedIcon } from './Styling';
 
 export const Bedroom = () => {
   const [openBedroom, setOpenBedroom] = useState(false);
@@ -21,9 +21,7 @@ export const Bedroom = () => {
   return (
     <Tooltip title='BEDROOM!'>
       <RoomBedroom onClick={onToggleBedroomDialog}>
-      <Icons>
-        <HotelIcon fontSize='large' />
-      </Icons>
+      <BedIcon />
       <Dialog open={openBedroom} onClick={onToggleBedroomDialog}>
         <DialogContainer>
           <InfoTitle>Get some rest!</InfoTitle>

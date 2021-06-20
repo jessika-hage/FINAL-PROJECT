@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { Tooltip } from '@material-ui/core';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
 import {
-	Icons,
 	DialogContainer,
 	InfoTitle,
 	InfoText,
 	StartGameButton,
 	RoomFarm,
+	FishIcon
 } from './Styling';
 
 export const Farm = () => {
@@ -22,9 +21,7 @@ export const Farm = () => {
 	return (
 		<Tooltip title='PROTIN FARM'>
 			<RoomFarm onClick={onToggleGameDialog}>
-				<Icons>
-					<InvertColorsIcon fontSize='large' />
-				</Icons>
+				<FishIcon />
 				<Dialog open={openGame} onClick={onToggleGameDialog}>
 					<DialogContainer>
 						<InfoTitle>Fish Farm</InfoTitle>

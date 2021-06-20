@@ -11,6 +11,10 @@ export const MainContainer = styled.main`
 	overflow: auto;
 	margin: 0 0 200px 0;
 	position: relative;
+  padding-top: 50px;
+  @media (min-width: 768px) {
+    padding-top: 40px;
+  }
 `;
 
 export const MathTitle = styled.h1`

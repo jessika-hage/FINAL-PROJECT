@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	margin-top: -40px;
+	padding-top: 10px;
 	color: ${(props) => props.theme.textColor};
 	background-color: ${(props) => props.theme.backgroundColor};
 `;
@@ -134,8 +134,8 @@ export const ButtonThree = styled(Button)`
  const animationFour = keyframes`
   0% { transform: translateX(0px)}
   10% { transform: translateX(200px)}
-  20% { transform: translateY(500px)}
-  30% { transform: translateX(-400px)}
+  20% { transform: translateY(400px)}
+  30% { transform: translateX(-300px)}
   40% { transform: translateY(200px)}
   50% { transform: translateX(200px)}
   60% { transform: translateX(600px)}
@@ -147,9 +147,13 @@ export const ButtonThree = styled(Button)`
 
 export const ButtonFour = styled(Button)`
 	background-color: #29BB89;
-	width: 160px;
-	height: 160px;
+	width: 120px;
+	height: 120px;
 	animation: ${animationFour} 13s linear infinite alternate-reverse;
+  @media (min-width: 768px) {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 const animationFive = keyframes`
