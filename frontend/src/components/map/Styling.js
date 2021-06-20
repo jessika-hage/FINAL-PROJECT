@@ -12,8 +12,9 @@ import {
 
 export const GridContainer = styled.section`
 	display: grid;
-	grid-template: repeat(7, 1fr) / repeat(12, 1fr);
+	grid-template: repeat(6, 1fr) / repeat(12, 1fr);
 	width: 100%;
+	min-height: 200px;
 	color: ${props => props.theme.textColor};
 `;
 

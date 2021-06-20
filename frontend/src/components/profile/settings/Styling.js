@@ -37,6 +37,7 @@ export const Label = styled.label`
     border: 2px solid ${props => props.theme.hover};
   }
 `;
+
 export const Avatar = styled.img`
   width: 30px;
   height: 30px;
@@ -45,6 +46,10 @@ export const Avatar = styled.img`
   cursor: pointer;
   outline: none;
   border: 2px solid ${props => props.theme.secondary};
+  @media (min-width: 400px) {
+    width: 36px;
+    height: 36px;
+  }
   @media (min-width: 768px) {
     width: 46px;
     height: 46px;
@@ -114,8 +119,8 @@ export const Input = styled.input`
   background-color: transparent;
   font-size: 14px;
   color: ${props => props.theme.textColor};
-  margin: 10px 20px 5px 0;
-  width: fit-content;
+  margin: 5px 5px 5px 0;
+  width: 160px;
   font-family: 'Trispace';
   :focus {
 	background-color: ${props => props.theme.primary};
@@ -123,9 +128,25 @@ export const Input = styled.input`
   ::placeholder {
 	text-transform: uppercase;
   }
+  // :last-of-type {
+  //   margin: 5px 0 5px 0;
+  // }
 `;
 
 export const ConfirmInput = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+export const ConfirmText = styled.p`
+  font-size: 12px;
+  margin: 2px 0 0 0;
+  ${props =>
+    props.success 
+    ?
+    ` color: #6DD704; `
+    :  
+    ` color: #e83715; `
+  };
 `;

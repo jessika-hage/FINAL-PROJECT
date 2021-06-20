@@ -61,7 +61,6 @@ export const MyCart = () => {
 		} else {
 			setOpenFail(true);
 			setOpen(false);
-			console.log('nähä');
 		}
 	};
 

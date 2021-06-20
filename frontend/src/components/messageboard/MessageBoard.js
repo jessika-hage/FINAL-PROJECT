@@ -22,6 +22,7 @@ export const MessageBoard = ({ onClick }) => {
   const [messageList, setMessageList] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const userId = useSelector((store) => store.profile.userId);
+  const accessToken = useSelector((store) => store.profile.accessToken);
 
   // Fetch all messages
   const fetchMessages = () => {
@@ -45,7 +46,10 @@ export const MessageBoard = ({ onClick }) => {
     fetch(CITIZEN_URL(`citizenmessage/${userId}`), {
       method: 'POST',
       body: JSON.stringify({ message: newMessage }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        Authorization: accessToken 
+      }
     })
     .then(res => res.json())
     .then(() => {

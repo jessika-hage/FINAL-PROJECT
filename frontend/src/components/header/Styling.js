@@ -108,13 +108,14 @@ export const CameraContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	position: fixed;
-	top: 60px;
+	top: 0;
 	z-index: 3;
 	margin: 0 auto 35px auto;
 	@media (min-width: 768px) {
 		background-color: transparent;
 		margin: 0 auto 30px auto;
 		position: relative;
+		top: 60px;
 	}
 `;
 

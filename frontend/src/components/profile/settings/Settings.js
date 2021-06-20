@@ -23,7 +23,7 @@ const SettingsContainer = styled.div`
   background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor};
   border: 2px solid ${props => props.theme.secondary};
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
 `;

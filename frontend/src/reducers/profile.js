@@ -121,6 +121,7 @@ export const updateAvatar = (avatar) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ avatar }),
 		};
@@ -144,6 +145,7 @@ export const updateBadges = (badges) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ badges }),
 		};
@@ -167,6 +169,7 @@ export const updateRanking = (ranking) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ ranking }),
 		};
@@ -191,6 +194,7 @@ export const updateCoins = (coins) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ coins }),
 		};
@@ -215,6 +219,7 @@ export const updateItems = (items) => {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify( { items } ),
 		};
@@ -239,6 +244,7 @@ export const updateInvestments = (investmentQuantity, investments) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ investmentQuantity, investments }),
 		};
@@ -264,6 +270,7 @@ export const updateEnergy = (energy) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ energy }),
 		};
@@ -288,6 +295,7 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ highscoreSpaceball }),
 		};
@@ -312,6 +320,7 @@ export const updateHighscoreFish = (highscoreFish) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ highscoreFish }),
 		};
@@ -336,6 +345,7 @@ export const updateHighscoreMath = (highscoreMath) => {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization: getState().profile.accessToken,
 			},
 			body: JSON.stringify({ highscoreMath }),
 		};
