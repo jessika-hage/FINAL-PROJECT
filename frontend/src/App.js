@@ -8,6 +8,7 @@ import { cart } from './reducers/cart';
 import { products } from './reducers/products';
 import { food } from './reducers/food';
 import { themes } from 'reducers/themes';
+import { ui } from 'reducers/ui';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
 import { Loader } from './components/loader/Loader';
@@ -23,6 +24,7 @@ import { housing } from 'reducers/housing';
 const reducer = combineReducers({
 	themes: themes.reducer,
 	profile: profile.reducer,
+	ui: ui.reducer,
 	cart: cart.reducer,
 	products: products.reducer,
 	food: food.reducer,
