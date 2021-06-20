@@ -1,6 +1,27 @@
 import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
 
+const X = keyframes`
+  0% {
+            transform: translate(-300px, 0);
+  }
+  100% {
+            transform: translate(300px, 0)
+  }
+`;
+
+const Y = keyframes`
+  25% {
+    transform: translate(0, -150px);
+  }
+  0%, 50%, 100% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, 150px);
+  }
+`;
+
 const Roller = keyframes`
 	0% {
 		transform: translate(50, 0);
@@ -26,6 +47,20 @@ const Roller = keyframes`
 		transform: translate(50, 0)
 	}
 	;`;
+
+export const RoundWrapper = styled.div`
+	position: absolute;
+	animation: ${X} 1s ease-in-out alternate infinite 0s both;
+`;
+export const Round1 = styled.div`
+	background: #fff;
+	border-radius: 100%;
+	height: 80px;
+	margin: 40px;
+	width: 80px;
+	opacity: 1;
+	animation: ${Y} 1s linear infinite 0s;
+`;
 
 const Roller2 = keyframes`
 	0% {

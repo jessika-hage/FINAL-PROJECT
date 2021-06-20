@@ -39,6 +39,8 @@ import {
 	ShowMobile,
 	HideContainer,
 	Water,
+	Round1,
+	RoundWrapper,
 } from '../components/farm/Styling';
 
 export const ProtinFarm = () => {
@@ -137,6 +139,9 @@ export const ProtinFarm = () => {
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 				<Water></Water>
 				<WaterContainer>
+					<RoundWrapper>
+						<Round1></Round1>
+					</RoundWrapper>
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
 						<Icon1 onClick={onClick1} />

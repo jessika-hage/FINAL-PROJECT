@@ -1,4 +1,3 @@
-import { Green } from 'components/map/Styling';
 import React from 'react';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
