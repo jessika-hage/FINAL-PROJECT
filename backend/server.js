@@ -231,7 +231,7 @@ app.patch('/citizen/:id/password', async (req, res) => {
 				},
 				{ new: true }
 			);
-			res.json({ success: true, message: 'password updated!' });
+			res.json({ success: true, updatedCitizen, message: 'password updated!' });
 		} else {
 			res.status(401).json({ success: false, message: 'Could not update password!' });
 		}
