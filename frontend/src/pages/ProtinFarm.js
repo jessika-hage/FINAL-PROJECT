@@ -10,7 +10,7 @@ import { Camera } from '../components/header/Camera';
 
 import {
 	Icon1,
-	Icon2,
+	// Icon2,
 	Icon3,
 	Icon4,
 	Icon5,
@@ -93,10 +93,10 @@ export const ProtinFarm = () => {
 		setScore(score + 1);
 		setDisabled1(true);
 	};
-	const onClick2 = () => {
-		setScore(score + 1);
-		setDisabled2(true);
-	};
+	// const onClick2 = () => {
+	// 	setScore(score + 1);
+	// 	setDisabled2(true);
+	// };
 	const onClick3 = () => {
 		setScore(score + 1);
 		setDisabled3(true);

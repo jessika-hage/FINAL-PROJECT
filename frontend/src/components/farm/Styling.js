@@ -149,7 +149,7 @@ export const Icon6 = styled.img`
 
 export const FishWrapper7 = styled.button`
 	background-color: transparent;
-	z-index: 1;
+	z-index: 2;
 	animation: ${Roller} 15s linear infinite;
 	top: 70%;
 	right: 50%;
