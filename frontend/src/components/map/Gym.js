@@ -4,7 +4,6 @@ import Dialog from '@material-ui/core/Dialog';
 
 import {
 	RoomGym,
-	Icons,
 	DialogContainer,
 	InfoTitle,
 	InfoText,

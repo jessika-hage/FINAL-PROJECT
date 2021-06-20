@@ -6,7 +6,6 @@ import Dialog from '@material-ui/core/Dialog';
 import { updateEnergy } from '../../reducers/profile';
 import { 
 	RoomRestaurant, 
-	Icons, 
 	DialogContainer, 
 	InfoText,
 	RestaurantIcon } from './Styling';

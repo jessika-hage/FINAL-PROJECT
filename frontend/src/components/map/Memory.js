@@ -3,13 +3,12 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { 
   RoomMemory, 
-  Icons, 
   DialogContainer, 
   InfoTitle, 
   InfoText, 
   StartGameButton,
   MemoryIcon } from './Styling';
-
+  
 export const Memory = () => {
   const [openGame, setOpenGame] = useState(false);
 

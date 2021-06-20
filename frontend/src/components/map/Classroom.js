@@ -3,7 +3,6 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { 
   RoomClassroom, 
-  Icons, 
   DialogContainer, 
   MathIcon,
   InfoTitle, 

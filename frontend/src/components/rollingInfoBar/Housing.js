@@ -12,7 +12,6 @@ import {
 	HouseTitle,
 	HouseTextContainer,
 	HouseText,
-	ChangeText,
 	ButtonContainer,
 	BuyButton,
 	HouseImage,
