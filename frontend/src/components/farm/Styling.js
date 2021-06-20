@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
-import fish from './assets/fish.png';
 
 const Roller = keyframes`
 	0% {
