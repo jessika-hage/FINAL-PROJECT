@@ -3,22 +3,22 @@ import { FaFish } from 'react-icons/fa';
 
 const X = keyframes`
   0% {
-            transform: translate(-300px, 0);
+            transform: translate(-100px, 0);
   }
   100% {
-            transform: translate(300px, 0)
+            transform: translate(100px, 0)
   }
 `;
 
 const Y = keyframes`
   25% {
-    transform: translate(0, -150px);
+    transform: translate(0, -30px);
   }
   0%, 50%, 100% {
     transform: translate(0, 0);
   }
   75% {
-    transform: translate(0, 150px);
+    transform: translate(0, 20px);
   }
 `;
 
@@ -49,17 +49,36 @@ const Roller = keyframes`
 	;`;
 
 export const RoundWrapper = styled.div`
-	position: absolute;
-	animation: ${X} 1s ease-in-out alternate infinite 0s both;
+	@media (max-width: 500px) {
+		margin-top: 150px;
+		position: absolute;
+		animation: ${X} 1s ease-in-out alternate infinite 0s both;
+	}
+`;
+export const RoundWrapper2 = styled(RoundWrapper)`
+	animation: ${X} 2s ease-in-out alternate infinite 0s both;
+`;
+export const RoundWrapper3 = styled(RoundWrapper)`
+	animation: ${X} 3s ease-in-out alternate infinite 0s both;
 `;
 export const Round1 = styled.div`
-	background: #fff;
-	border-radius: 100%;
-	height: 80px;
-	margin: 40px;
-	width: 80px;
-	opacity: 1;
-	animation: ${Y} 1s linear infinite 0s;
+	@media (max-width: 500px) {
+		z-index: 1;
+		background-color: #9de2fa;
+		border-radius: 100%;
+		height: 150px;
+		margin: 40px;
+		width: 400px;
+		animation: ${Y} 3s linear infinite 0s;
+	}
+`;
+export const Round2 = styled(Round1)`
+	animation: ${Y} 4s linear infinite 0s;
+	width: 450px;
+`;
+export const Round3 = styled(Round1)`
+	animation: ${Y} 4s linear infinite 0s;
+	width: 450px;
 `;
 
 const Roller2 = keyframes`
@@ -85,7 +104,6 @@ const Roller2 = keyframes`
 	}
 	;`;
 
-export const Water = styled.div``;
 export const FishWrapper1 = styled.button`
 	z-index: 1;
 	position: absolute;
@@ -266,14 +284,21 @@ export const Icon9 = styled(FaFish)`
 
 export const GameTitle = styled.h1`
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	left: 20px;
 	text-transform: uppercase;
 `;
 
 export const ScoreText = styled(GameTitle)`
-	font-size: 20px;
-	top: 60px;
+	font-size: 16px;
+	top: 80px;
+	left: 22px;
+	@media (min-width: 768px) {
+		font-size: 20px;
+	}
+`;
+export const CounterText = styled(ScoreText)`
+	top: 105px;
 	left: 22px;
 `;
 
@@ -291,29 +316,41 @@ export const HideContainer = styled.div`
 	width: 100%;
 	@media (min-width: 768px) {
 		display: flex;
+		width: 100%;
 	}
 `;
 
 export const ShowMobile = styled.div`
-	@media (max-width: 768px) {
-		z-index: 1;
+	@media (max-width: 500px) {
+		z-index: 3;
 		position: absolute;
 		bottom: 0;
 		width: 100%;
 		height: 60%;
-		background-color: #73bed9;
-		opacity: 0.4;
+		background-color: #9de2fa;
+		opacity: 1;
+	}
+`;
+
+export const BorderContainer = styled.div`
+	@media (max-width: 500px) {
+		z-index: 5;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 70%;
+		display: flex;
+		justify-content: center;
 	}
 `;
 
 export const WaterContainer = styled.div`
 	position: relative;
-	width: 90%;
-	height: 70%;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
-	border: 5px solid #68ab9e;
-	margin: 50px 0 0 0;
+	margin: 0 0 0 0;
 	background-color: #dcfcf7;
 	@media (min-width: 768px) {
 		width: 800px;
@@ -329,17 +366,12 @@ export const MainContainer = styled.main`
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	padding-top: 20px;
+	padding-top: 40px;
 	background-color: #d1fff4;
 `;
 
 export const DialogText = styled.p`
 	font-size: 16px;
-`;
-
-export const CounterText = styled(ScoreText)`
-	top: 85px;
-	left: 22px;
 `;
 
 export const DialogContainer = styled.div`
