@@ -7,7 +7,6 @@ import { Dialog } from '@material-ui/core';
 import { updateBadges, updateHighscoreFish } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-// import { Fishes } from '../components/farm/Fishes';
 
 import {
 	Icon1,
@@ -37,6 +36,8 @@ import {
 	FishWrapper7,
 	FishWrapper8,
 	FishWrapper9,
+	ShowMobile,
+	Water,
 } from '../components/farm/Styling';
 
 export const ProtinFarm = () => {
@@ -132,7 +133,7 @@ export const ProtinFarm = () => {
 				<GameTitle>Fish Farm</GameTitle>
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-
+				<Water></Water>
 				<WaterContainer>
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
@@ -197,12 +198,12 @@ export const ProtinFarm = () => {
 							onClick={onClick9}
 						/>
 					</FishWrapper9>
-
+					<ShowMobile></ShowMobile>
 					<Wave
 						fill='#73bed9'
 						paused={false}
 						options={{
-							height: 220,
+							height: 200,
 							amplitude: 50,
 							speed: 0.15,
 							points: 3,

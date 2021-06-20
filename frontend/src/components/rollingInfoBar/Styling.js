@@ -112,6 +112,7 @@ export const HousingText = styled(WeatherText)`
 `;
 
 export const PriceContainer = styled.div`
+	padding-top: 10px;
 `;
 
 export const HouseTextContainer = styled.div`

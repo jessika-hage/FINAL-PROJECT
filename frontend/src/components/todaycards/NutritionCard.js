@@ -15,33 +15,35 @@ export const NutritionCard = () => {
 
 	return (
 		<>
-		<ThinnerCard
-			title='Nutrition'
-			secondaryText='Pasta'
-			button='See more'
-			onClick={onToggleDialog}
-		/>
-		<Dialog open={open} onClose={onToggleDialog}>
-			<TableContainer>
-			<TableHead>
-				<TableTitle>Type</TableTitle>
-				<TableTitleLinks>Energy</TableTitleLinks>
-				<CitizenDaysLink>Protein</CitizenDaysLink>
-				<TableTitleLinks>Salt</TableTitleLinks>
-				<TableTitleLinks>Price</TableTitleLinks>
-			</TableHead>
-			{allFood.map((food) => (
-				<CitizensList key={food.id}>
-					<Citizen>{food.title}</Citizen>
-					<Citizen>{food.energy}kcal</Citizen>
-					<Citizen>{food.protein}g</Citizen>
-					<Citizen>{food.salt}g</Citizen>
-					<Citizen>{food.price}$ <BuyFood>Buy</BuyFood></Citizen>
-				</CitizensList>
-			 ))}
-		</TableContainer>
-	</Dialog>
-	</>
+			<ThinnerCard
+				title='Nutrition'
+				secondaryText='Pasta'
+				button='See more'
+				onClick={onToggleDialog}
+			/>
+			<Dialog open={open} onClose={onToggleDialog}>
+				<TableContainer>
+					<TableHead>
+						<TableTitle>Type</TableTitle>
+						<TableTitleLinks>Energy</TableTitleLinks>
+						<CitizenDaysLink>Protein</CitizenDaysLink>
+						<TableTitleLinks>Salt</TableTitleLinks>
+						<TableTitleLinks>Price</TableTitleLinks>
+					</TableHead>
+					{allFood.map((food) => (
+						<CitizensList key={food.id}>
+							<Citizen>{food.title}</Citizen>
+							<Citizen>{food.energy}kcal</Citizen>
+							<Citizen>{food.protein}g</Citizen>
+							<Citizen>{food.salt}g</Citizen>
+							<Citizen>
+								{food.price}$ <BuyFood>Buy</BuyFood>
+							</Citizen>
+						</CitizensList>
+					))}
+				</TableContainer>
+			</Dialog>
+		</>
 	);
 };
 
@@ -49,7 +51,7 @@ const ThinnerCard = styled(Card)`
 	width: 100%;
 	height: 120px;
 	margin: 0;
-	border-bottom: 2px solid ${props => props.theme.primary};
+	border-bottom: 2px solid ${(props) => props.theme.primary};
 	@media (min-width: 768px) {
 		height: 160px;
 	}
@@ -60,22 +62,22 @@ const TableContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px;
-	background-color: ${props => props.theme.backgroundColor};
-	color: ${props => props.theme.textColor};
+	background-color: ${(props) => props.theme.backgroundColor};
+	color: ${(props) => props.theme.textColor};
 	max-height: 320px;
 	min-width: 600px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border: 2px solid ${props => props.theme.secondary};
-  }
+		-webkit-appearance: none;
+		width: 15px;
+		height: 15px;
+		border: 2px solid ${(props) => props.theme.secondary};
+	}
 `;
 
 const TableHead = styled.div`
 	display: flex;
-	border-bottom: 2px solid ${props => props.theme.secondary};
+	border-bottom: 2px solid ${(props) => props.theme.secondary};
 `;
 
 const TableTitle = styled.div`
@@ -84,20 +86,21 @@ const TableTitle = styled.div`
 	margin: 0;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: ${props => props.theme.textColor};
+	color: ${(props) => props.theme.textColor};
 	font-size: 14px;
 `;
 
 const TableTitleLinks = styled(TableTitle)`
 	cursor: pointer;
 	width: 22%;
-	:hover, :focus {
+	:hover,
+	:focus {
 		text-decoration: underline;
 	}
 `;
 
 const CitizenDaysLink = styled(TableTitleLinks)`
-  display: none;
+	display: none;
 	@media (min-width: 768px) {
 		display: flex;
 	}
@@ -126,7 +129,7 @@ const CitizensList = styled.div`
 
 const BuyFood = styled.button`
 	padding: 5px;
-	margin: 0;
+	margin-left: 10px;
 	font-size: 12px;
 	cursor: pointer;
 	outline: none;

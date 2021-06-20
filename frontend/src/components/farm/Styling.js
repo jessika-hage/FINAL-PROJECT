@@ -49,6 +49,7 @@ const Roller2 = keyframes`
 	}
 	;`;
 
+export const Water = styled.div``;
 export const FishWrapper1 = styled.button`
 	z-index: 1;
 	position: absolute;
@@ -213,18 +214,31 @@ export const TransparentWrapper = styled.button`
 	height: 50%;
 `;
 
+export const ShowMobile = styled.div`
+	@media (max-width: 400px) {
+		z-index: 1;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 60%;
+		background-color: #73bed9;
+		opacity: 0.4;
+	}
+`;
+
 export const WaterContainer = styled.div`
 	position: relative;
 	width: 90%;
 	height: 70%;
 	display: flex;
 	justify-content: center;
-	border: 10px solid #68ab9e;
+	border: 5px solid #68ab9e;
 	margin: 50px 0 0 0;
 	background-color: #dcfcf7;
 	@media (min-width: 768px) {
 		width: 800px;
 		height: 600px;
+		border: 10px solid #68ab9e;
 	}
 `;
 
