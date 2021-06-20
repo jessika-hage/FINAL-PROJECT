@@ -10,7 +10,7 @@ import { Camera } from '../components/header/Camera';
 
 import {
 	Icon1,
-	// Icon2,
+	Icon2,
 	Icon3,
 	Icon4,
 	Icon5,
@@ -93,10 +93,10 @@ export const ProtinFarm = () => {
 		setScore(score + 1);
 		setDisabled1(true);
 	};
-	// const onClick2 = () => {
-	// 	setScore(score + 1);
-	// 	setDisabled2(true);
-	// };
+	const onClick2 = () => {
+		setScore(score + 1);
+		setDisabled2(true);
+	};
 	const onClick3 = () => {
 		setScore(score + 1);
 		setDisabled3(true);
@@ -132,6 +132,10 @@ export const ProtinFarm = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Fish Farm</GameTitle>
+					<Icon3
+							src={require('../assets/fish.png')} 
+							onClick={onClick3}
+						/>
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 				<Water></Water>
@@ -145,15 +149,14 @@ export const ProtinFarm = () => {
 					</FishWrapper1>
 					<TransparentWrapper disabled2='true'></TransparentWrapper>
 					<FishWrapper2 onClick={() => setDisabled2(true)} disabled={disabled2}>
-						{/* <Icon2
-							src={require('../components/farm/assets/fish.png')}
+						<Icon2
 							onClick={onClick2}
-						/> */}
+						/> 
 					</FishWrapper2>
 					<TransparentWrapper disabled3='true'></TransparentWrapper>
 					<FishWrapper3 onClick={() => setDisabled3(true)} disabled={disabled3}>
 						<Icon3
-							src={require('../assets/fish.png')}
+							src={require('../assets/fish.png')} 
 							onClick={onClick3}
 						/>
 					</FishWrapper3>

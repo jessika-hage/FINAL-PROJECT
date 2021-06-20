@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { FaFish } from 'react-icons/fa';
 
 const Roller = keyframes`
 	0% {
@@ -77,7 +78,6 @@ export const FishWrapper2 = styled.button`
 	right: 50%;
 	left: 50%;
 	position: absolute;
-	background-color: red;
 	height: 50px;
 	width: 50px;
 	&:disabled {
@@ -86,7 +86,10 @@ export const FishWrapper2 = styled.button`
 		height: 100px;
 	}
 `;
-export const Icon2 = styled.img``;
+export const Icon2 = styled(FaFish)`
+	font-size: 40px;
+	color: red;
+`;;
 
 export const FishWrapper3 = styled.button`
 	background-color: transparent;
@@ -261,7 +264,7 @@ export const MainContainer = styled.main`
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	padding-top: 10px;
+	padding-top: 20px;
 	background-color: #d1fff4;
 `;
 
