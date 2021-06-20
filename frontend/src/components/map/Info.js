@@ -4,7 +4,6 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { 
   RoomInfo, 
-  Icons, 
   DialogContainer, 
   InfoTitle,
   InfoIcon } from './Styling';
