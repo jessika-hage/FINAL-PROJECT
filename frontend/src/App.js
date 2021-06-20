@@ -15,6 +15,7 @@ import { Loader } from './components/loader/Loader';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
+import { Garden } from './pages/Garden';
 import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
@@ -44,6 +45,7 @@ export const App = () => {
 						<Route path='/signup' component={SignUp} />
 						<Route path='/classroom' component={MathGame} />
 						<Route path='/memorygame' component={MemoryGame} />
+						<Route path='/garden' component={Garden} />
 						<Route path='/store' component={Store} />
 						<Route path='/farm' component={ProtinFarm} />
 						<Route path='/spaceball' component={GameBall} />
