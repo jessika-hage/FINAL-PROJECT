@@ -2,8 +2,7 @@ import React from 'react';
 
 import { 
   ItemsContainer, 
-  ItemsTitle, 
-  ItemsQuantity } from './Styling';
+  ItemsTitle } from './Styling';
 
 export const ItemsProfile = ({ item }) => {
   return (
