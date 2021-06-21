@@ -312,11 +312,12 @@ export const TransparentWrapper = styled.button`
 `;
 
 export const HideContainer = styled.div`
-	display: none;
+	// display: none;
 	width: 100%;
-	@media (min-width: 768px) {
+	@media (min-width: 500px) {
 		display: flex;
 		width: 100%;
+		z-index: 10;
 	}
 `;
 
@@ -333,6 +334,7 @@ export const ShowMobile = styled.div`
 `;
 
 export const BorderContainer = styled.div`
+	display: flex;
 	@media (max-width: 500px) {
 		z-index: 5;
 		position: absolute;

@@ -182,20 +182,6 @@ export const ProtinFarm = () => {
 								onClick={onClick9}
 							/>
 						</FishWrapper9>
-
-						<HideContainer>
-							<Wave
-								fill='#73bed9'
-								paused={false}
-								options={{
-									height: 200,
-									amplitude: 50,
-									speed: 0.15,
-									points: 3,
-									opacity: 0.4,
-								}}
-							/>
-						</HideContainer>
 						<ShowMobile></ShowMobile>
 						<RoundWrapper>
 							<Round1></Round1>
@@ -208,6 +194,19 @@ export const ProtinFarm = () => {
 						</RoundWrapper3>
 					</WaterContainer>
 				</BorderContainer>
+				<HideContainer>
+					<Wave
+						fill='#73bed9'
+						paused={false}
+						options={{
+							height: 200,
+							amplitude: 50,
+							speed: 0.15,
+							points: 3,
+							opacity: 0.4,
+						}}
+					/>
+				</HideContainer>
 				<Dialog open={openFinishedDialog}>
 					<DialogContainer>
 						<DialogText>

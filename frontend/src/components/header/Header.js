@@ -28,7 +28,6 @@ export const Header = () => {
 	const createdAt = useSelector((store) => store.profile.createdAt);
 
 	const energy = useSelector((store) => store.profile.energy);
-
 	const createdAtDate = moment(createdAt);
 	const today2 = moment().add(1, 'day');
 	const difference = today2.diff(createdAtDate, 'days');

@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	updateBadges,
 	updateCoins,
-	updateInvestments } from '../../reducers/profile';
+	updateInvestments,
+} from '../../reducers/profile';
 import { InvestCard } from './InvestCard';
 import { PriceChange } from './PriceChange';
 import { InvestDialog } from './InvestDialog';
 import { ExchangeDialog } from './ExchangeDialog';
-
 
 export const Currency = () => {
 	const [currency, setCurrency] = useState([]);
@@ -51,11 +51,11 @@ export const Currency = () => {
 	};
 
 	// Calculates exchange rate
-	const totalExchange = exchangeValue * currency.price_usd / 2;
+	const totalExchange = (exchangeValue * currency.price_usd) / 2;
 
 	const onExchange = () => {
 		if (badges >= exchangeValue) {
-			dispatch(updateBadges(- exchangeValue));
+			dispatch(updateBadges(-exchangeValue));
 			dispatch(updateCoins(totalExchange));
 			setOpenConfirmExchange(true);
 			setExchangeSuccess(true);
@@ -69,13 +69,12 @@ export const Currency = () => {
 	// Toggle exchange confirmed dialog
 	const onToggleConfirmedExchange = () => {
 		setOpenConfirmExchange(!openConfirmExchange);
+		setOpenExchange(false);
 	};
-
 
 	// Toggle Investment Dialog
 	const onToggleInvestDialog = () => {
 		setOpenInvest(!openInvest);
-		setOpen(!open);
 	};
 
 	// Calculates investment
@@ -86,40 +85,45 @@ export const Currency = () => {
 			dispatch(updateInvestments(investValue, totalInvest));
 			dispatch(updateCoins(-totalInvest));
 			setOpenConfirmInvest(true);
-			setInvestSuccess(true)
+			setInvestSuccess(true);
 			setInvestValue('');
 		} else {
 			setOpenConfirmInvest(true);
-			setInvestSuccess(false)
+			setInvestSuccess(false);
 		}
 	};
 
 	const onToggleInvestConfirm = () => {
-		setOpenConfirmInvest(!openConfirmInvest)
+		setOpenConfirmInvest(!openConfirmInvest);
+		setOpenInvest(false);
 	};
 
 	return (
 		<>
 			<InvestCard onClick={onToggleDialog} />
 			<PriceChange
-				open={open} 
+				open={open}
 				onClose={onToggleDialog}
 				toggleExchangeDialog={onToggleExchangeDialog}
-				toggleInvestDialog={onToggleInvestDialog} />
-			<ExchangeDialog 
-				openExchange={openExchange} 
-				onCloseExchange={onToggleExchangeDialog} 
-				rate={currency.price_usd} 
+				toggleInvestDialog={onToggleInvestDialog}
+			/>
+			<ExchangeDialog
+				openExchange={openExchange}
+				onCloseExchange={onToggleExchangeDialog}
+				rate={currency.price_usd}
 				onChange={(e) => setExchangeValue(e.target.value)}
 				value={exchangeValue}
 				totalExchange={totalExchange.toFixed(2)}
 				onClick={onExchange}
-				open={openConfirmExchange} 
+				open={openConfirmExchange}
 				onClose={onToggleConfirmedExchange}
-				confirmText={exchangeSuccess
-							? 'You have now received some coins which you can see on your profile!'
-							: 'You do not have enough badges!'}
-				buttonText={exchangeSuccess ? 'Thanks!' : 'Okay!'} />
+				confirmText={
+					exchangeSuccess
+						? 'You have now received some coins which you can see on your profile!'
+						: 'You do not have enough badges!'
+				}
+				buttonText={exchangeSuccess ? 'Thanks!' : 'Okay!'}
+			/>
 			<InvestDialog
 				open={openInvest}
 				onClose={onToggleInvestDialog}
@@ -130,9 +134,11 @@ export const Currency = () => {
 				onClick={onInvest}
 				openConfirm={openConfirmInvest}
 				onCloseConfirm={onToggleInvestConfirm}
-				confirmText={investSuccess 
-					? 'You have now successfully invested in Space $ and can shortly see it on your profile'
-					: 'You do not have enough coins for this investment'}
+				confirmText={
+					investSuccess
+						? 'You have now successfully invested in Space $ and can shortly see it on your profile'
+						: 'You do not have enough coins for this investment'
+				}
 				buttonText={investSuccess ? 'Thanks!' : 'Okay'}
 			/>
 		</>
