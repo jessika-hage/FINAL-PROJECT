@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -31,9 +31,21 @@ export const Trivia = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-		fetchQuestion();
+  // Fetch questions
+	const fetchQuestion = useCallback(() => {
+		fetch(API)
+			.then((res) => res.json())
+			.then((data) => {
+        randomizeAnswer(data.results[0].incorrect_answers, data.results[0].correct_answer)
+				setQuestions(data.results);
+        setLoaded(true);
+        console.log(data)
+			});
 	}, []);
+
+  useEffect(() => {
+    fetchQuestion();
+	}, [fetchQuestion]);
 
   useEffect(() => {
     const timer =
@@ -45,18 +57,6 @@ export const Trivia = () => {
     const randomIndex = Math.floor(Math.random() * 2)
     array.splice(randomIndex, 0, correctAnswer)
   };
-
-  // Fetch questions
-	const fetchQuestion = () => {
-		fetch(API)
-			.then((res) => res.json())
-			.then((data) => {
-        randomizeAnswer(data.results[0].incorrect_answers, data.results[0].correct_answer)
-				setQuestions(data.results);
-        setLoaded(true);
-        console.log(data)
-			});
-	};
 
   // Checking answer and moving on to next question
   // If questions run out, load new ones
