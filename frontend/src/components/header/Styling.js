@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 // Header
 export const Main = styled.div`
@@ -48,6 +49,12 @@ export const Date = styled.p`
 		padding 0 20px;
 	}
 `;
+
+// export const AlertIcon = styled(FaExclamationTriangle)`
+// 	color: red;
+// 	animation: ${alert} 1s linear infinite alternate-reverse;
+// 	cursor: pointer;
+// `;
 
 export const IconsContainer = styled.div`
 	display: flex;

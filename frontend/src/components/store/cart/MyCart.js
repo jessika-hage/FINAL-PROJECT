@@ -5,21 +5,26 @@ import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
 import Badge from '@material-ui/core/Badge';
 
-import { updateCoins, updateItems, updateRanking } from '../../../reducers/profile';
+import {
+	updateCoins,
+	updateItems,
+	updateRanking,
+} from '../../../reducers/profile';
 import { cart } from '../../../reducers/cart';
 import { CartItem } from './CartItem';
 import { ConfirmationDialogs } from './ConfirmationDialogs';
-import { 
-	CartWrapper, 
-	DialogContainer, 
+import {
+	CartWrapper,
+	DialogContainer,
 	DialogHeader,
-	HeaderText, 
+	HeaderText,
 	TotalPrice,
-	TotalRanking, 
-	BuyButton, 
-	ShoppingCart, 
-	ShoppingButton, 
-	Icon } from './Styling';
+	TotalRanking,
+	BuyButton,
+	ShoppingCart,
+	ShoppingButton,
+	Icon,
+} from './Styling';
 
 export const MyCart = () => {
 	const coins = useSelector((store) => store.profile.coins);
@@ -39,11 +44,11 @@ export const MyCart = () => {
 	);
 
 	const totalRanking = useSelector((store) =>
-	store.cart.items.reduce(
-		(total, item) => total + item.ranking * item.quantity,
-		0
-	)
-);
+		store.cart.items.reduce(
+			(total, item) => total + item.ranking * item.quantity,
+			0
+		)
+	);
 
 	const onToggleDialog = () => {
 		setOpen(!open);
@@ -54,7 +59,7 @@ export const MyCart = () => {
 			dispatch(updateCoins(-totalPrice));
 			dispatch(updateItems(products));
 			dispatch(updateRanking(totalRanking));
-			dispatch(cart.actions.emptyCart())
+			dispatch(cart.actions.emptyCart());
 			setOpen(false);
 			setOpenConfirmation(true);
 		} else {
@@ -86,7 +91,9 @@ export const MyCart = () => {
 						<CartItem key={product.id} product={product} />
 					))}
 					<TotalPrice>Total Price: {totalPrice}$</TotalPrice>
-					<TotalRanking>Total Ranking: {totalRanking} <Icon /></TotalRanking>
+					<TotalRanking>
+						Total Ranking: {totalRanking} <Icon />
+					</TotalRanking>
 					<BuyButton onClick={buy}>Buy</BuyButton>
 				</DialogContainer>
 			</Dialog>
@@ -97,11 +104,12 @@ export const MyCart = () => {
 					</Badge>
 				</ShoppingButton>
 			</ShoppingCart>
-			<ConfirmationDialogs 
-				openConfirmation={openConfirmation} 
-				onConfirmed={onConfirmed} 
-				openFail={openFail} 
-				onFail={onFail} />
+			<ConfirmationDialogs
+				openConfirmation={openConfirmation}
+				onConfirmed={onConfirmed}
+				openFail={openFail}
+				onFail={onFail}
+			/>
 		</CartWrapper>
 	);
 };
