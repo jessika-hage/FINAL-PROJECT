@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaTimes } from 'react-icons/fa';
 
 // Avatars
 export const Container = styled.form`
@@ -144,5 +145,13 @@ export const EyeOne = styled.button`
 	}
 	:focus {
 		color: ${(props) => props.theme.hover};
+	}
+`;
+
+export const CloseIcon = styled(FaTimes)`
+	font-size: 20px;
+	cursor: pointer;
+	:hover {
+		transform: scale(1.2);
 	}
 `;

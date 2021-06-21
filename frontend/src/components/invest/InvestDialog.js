@@ -13,7 +13,8 @@ import {
   TotalValueText, 
   ConfirmationText, 
   ConfirmationDialog, 
-  ConfirmedButton } from './Styling';
+  ConfirmedButton,
+  CloseIcon } from './Styling';
 
 export const InvestDialog = ({ 
   open, 
@@ -32,7 +33,10 @@ export const InvestDialog = ({
     <>
       <Dialog open={open} onClose={onClose}>
         <DialogContainer>
-          <InvestTitle>Space Invest</InvestTitle>
+          <InvestTitle>
+            Space Invest
+            <CloseIcon onClick={onClose} />
+          </InvestTitle>
           <InvestInfo>You have an opportunity as a citizen to invest your money in SPACE$. This means that when you invest the money you lock the money
             in on the current price of the SPACE$. Since it is very volatile (price moves up and down) you can both make money but also lose money! So it
             is important to be careful and never invest more than you are ready to lose! So let's say if you invest 100$ when the price is 8$ and then 

@@ -217,6 +217,7 @@ export const ItemsContainer = styled.div`
   padding: 5px 0;
   margin: 0;
   width: fit-content;
+	font-family: 'Open Sans', serif;
 `;
 
 export const ItemsTitle = styled.p`
@@ -247,10 +248,11 @@ export const SellButton = styled.button`
 export const InvestmentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	font-family: 'Open Sans', serif;
 `;
 
 export const InvestmentText = styled(ItemsTitle)`
-	margin: 5px 0 5px 3px;
+	margin: 3px;
 `;
 
 export const InvestmentChange = styled(InvestmentText)`

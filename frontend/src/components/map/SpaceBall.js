@@ -15,7 +15,7 @@ import {
 	Purple,
 	Pink,
 	Green,
-} from './Styling';
+	CloseIcon } from './Styling';
 
 export const SpaceBall = () => {
 	const [openGame, setOpenGame] = useState(false);
@@ -31,7 +31,10 @@ export const SpaceBall = () => {
 			</Icons>
 			<Dialog open={openGame} onClick={onToggleGameDialog}>
 				<DialogContainer>
-					<InfoTitle>Space Ball</InfoTitle>
+					<InfoTitle>
+						Space Ball
+						<CloseIcon onClick={onToggleGameDialog} />
+					</InfoTitle>
 					<InfoText>
 						This game is to train your reflexes and see how fast you are, also an
 						important part of being a citizen! You have 30 seconds to collect as many

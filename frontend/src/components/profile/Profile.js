@@ -77,7 +77,7 @@ export const Profile = () => {
 			</BottomContainer>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />
 			<Dialog open={openSettings} onClose={toggleSettings}>
-				<Settings />
+				<Settings onClose={toggleSettings} />
 			</Dialog>
 		</ProfileContainer>
 	);

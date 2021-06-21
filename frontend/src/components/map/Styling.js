@@ -9,6 +9,7 @@ import {
 	FaBed,
 	FaTh,
 	FaDumbbell,
+	FaTimes
 } from 'react-icons/fa';
 
 export const GridContainer = styled.section`
@@ -204,6 +205,15 @@ export const GymIcon = styled(FaDumbbell)`
 	}
 `;
 
+export const CloseIcon = styled(FaTimes)`
+	font-size: 20px;
+	cursor: pointer;
+	margin: 7px;
+	:hover {
+		transform: scale(1.2);
+	}
+`;
+
 // Dialog Info
 export const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
@@ -222,6 +232,9 @@ export const DialogContainer = styled.div`
 export const InfoTitle = styled.h2`
 	font-size: 24px;
 	text-transform: uppercase;
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
 	margin: 0 0 5px 0;
 	padding: 0 0 5px 5px;
 	border-bottom: 2px solid ${(props) => props.theme.primary};
