@@ -16,32 +16,26 @@ export const PhoneContainer = styled.div`
 `;
 
 export const ShowMobile = styled.div`
-	@media (max-width: 500px) {
-		z-index: 1;
-		position: absolute;
-		top: 300;
-
-		bottom: 0;
-		width: 100%;
-		height: 50%;
-		background-color: #9de2fa;
-	}
+	z-index: 1;
+	position: absolute;
+	top: 300;
+	bottom: 0;
+	width: 100%;
+	height: 50%;
+	background-color: #9de2fa;
 `;
 
 export const BorderContainer = styled.div`
+	bottom: 0;
+	width: 100%;
+	height: 80%;
 	display: flex;
-	@media (max-width: 500px) {
-		bottom: 0;
-		width: 100%;
-		height: 80%;
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		margin: 0 0 0 0;
-		background-color: #dcfcf7;
-	}
+	flex-direction: column;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	margin: 0 0 0 0;
+	background-color: #dcfcf7;
 `;
 
 const X = keyframes`
@@ -66,12 +60,10 @@ const Y = keyframes`
 `;
 
 export const RoundWrapper = styled.div`
-	@media (max-width: 500px) {
-		z-index: 3;
-		margin-top: 150px;
-		position: absolute;
-		animation: ${X} 1s ease-in-out alternate infinite 0s both;
-	}
+	z-index: 3;
+	margin-top: 150px;
+	position: absolute;
+	animation: ${X} 1s ease-in-out alternate infinite 0s both;
 `;
 export const RoundWrapper2 = styled(RoundWrapper)`
 	z-index: 3;
@@ -82,15 +74,13 @@ export const RoundWrapper3 = styled(RoundWrapper)`
 	animation: ${X} 3s ease-in-out alternate infinite 0s both;
 `;
 export const Round1 = styled.div`
-	@media (max-width: 500px) {
-		z-index: 1;
-		background-color: #9de2fa;
-		border-radius: 100%;
-		height: 150px;
-		margin: 40px;
-		width: 500px;
-		animation: ${Y} 3s linear infinite 0s;
-	}
+	z-index: 1;
+	background-color: #9de2fa;
+	border-radius: 100%;
+	height: 150px;
+	margin: 40px;
+	width: 500px;
+	animation: ${Y} 3s linear infinite 0s;
 `;
 export const Round2 = styled(Round1)`
 	animation: ${Y} 3s linear infinite 0s;
