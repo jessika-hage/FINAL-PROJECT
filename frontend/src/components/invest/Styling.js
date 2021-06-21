@@ -38,6 +38,10 @@ export const ChangeContainer = styled.div`
 export const ChangeText = styled.p`
   padding: 0;
   margin: 4px 0;
+  font-size: 13px;
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const CoinChange = styled.span`
@@ -65,7 +69,7 @@ export const IconDown = styled(FaArrowDown)`
 export const SeeMoreButton = styled.button`
   background-color: ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
-  padding: 10px;
+  padding: 7px;
   border: ${props => props.theme.secondary};
   position: absolute;
   right: 0;
@@ -75,6 +79,9 @@ export const SeeMoreButton = styled.button`
   font-family: "Trispace", serif;
   :hover {
     background-color: ${props => props.theme.secondary};
+  }
+  @media (min-width: 768px) {
+    padding: 10px;
   }
 `; 
 

@@ -95,8 +95,8 @@ const BottomContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	padding: 0 20px;
-	margin: 40px 0 100px 0;
-	@media (min-width: 768px) {
+	margin: 40px 0 140px 0;
+	@media (min-width: 900px) {
 		padding: 0 40px;
 		flex-direction: row;
 		justify-content: space-evenly;
@@ -167,6 +167,5 @@ const CitizensContainer = styled.div`
 		flex-wrap: wrap;
 		padding: 0;
 		width: 100%;
-		// min-height: 320px;
 	}
 `;

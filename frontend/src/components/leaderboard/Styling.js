@@ -49,7 +49,7 @@ export const TableTitleLinks = styled(TableTitle)`
 
 export const CitizenDaysLink = styled(TableTitleLinks)`
   display: none;
-	@media (min-width: 950px) {
+	@media (min-width: 768px) {
 		display: flex;
 	}
 `;
@@ -93,8 +93,17 @@ export const Citizen = styled.p`
 
 export const CitizenDays = styled(Citizen)`
   display: none;
-	@media (min-width: 950px) {
+	@media (min-width: 768px) {
 		display: flex;
+	}
+`;
+
+export const Badges = styled(Citizen)`
+	margin-right: -20px;
+	margin-left: 10px;
+	@media (min-width: 768px) {
+		margin-right: -15px;
+		margin-left: 25px;
 	}
 `;
 

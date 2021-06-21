@@ -40,6 +40,10 @@ export const TotalPrice = styled.p`
 	margin: 10px 0 5px 0;
 	display: flex;
 	align-items: center;
+	font-size: 13px;
+	@media (min-width: 768px) {
+		font-size: 15px;
+	}
 `;
 
 export const TotalRanking = styled(TotalPrice)`
@@ -47,14 +51,14 @@ export const TotalRanking = styled(TotalPrice)`
 `;
 
 export const BuyButton = styled.button`
-	padding: 5px;
+	padding: 5px 8px;
 	margin-top: 10px;
 	font-size: 12px;
 	width: fit-content;
 	text-transform: uppercase;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.textColor};
-	border: 2px solid ${(props) => props.theme.secondary};
+	border: 1px solid ${(props) => props.theme.secondary};
 	:hover,
 	:focus {
 		background-color: ${(props) => props.theme.secondary};
@@ -130,7 +134,10 @@ export const ItemContainer = styled.div`
 	width: 100%;
 	border-bottom: 1px solid ${props => props.theme.secondary};
 	padding: 8px 3px;
-	min-width: 300px;
+	min-width: 260px;
+	@media (min-width: 768px) {
+		min-width: 300px;
+	}
 `;
 
 export const ImageTitleBox = styled.div`

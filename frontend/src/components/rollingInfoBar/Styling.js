@@ -11,25 +11,29 @@ export const MainBar = styled.div`
 	color: ${(props) => props.theme.textColor};
 	opacity: 0.85;
 	width: 100%;
+	overflow: hidden;
 	@media (min-width: 768px) {
 		bottom: 0;
 	}
 `;
 
 const Roller = keyframes`
-  5% { opacity: 0; transform: translateX(500px) }
+  5% { opacity: 0; transform: translateX(100%) }
   10% { opacity: 1 }
   95% { opacity: 1 }
-  100% { opacity: 0.6; transform: translateX(-1000px) }`;
+  100% { opacity: 0.6; transform: translateX(-100%) }`;
 
 export const RollingText = styled.div`
 	display: flex;
 	align-items: center;
-	font-size: 12px;
-	animation: ${Roller} 25s linear infinite;
+	font-size: 11px;
+	animation: ${Roller} 20s linear infinite;
 	opacity: 0;
 	padding: 0;
-	overflow: hidden;
+	width: 100%;
+	@media (min-width: 768px) {
+		animation: ${Roller} 30s linear infinite;
+	}
 	@media (min-width: 1024px) {
 		bottom: 14px;
 		font-size: 15px;
@@ -41,10 +45,14 @@ export const WeatherText = styled.div`
 	margin: 0;
 	display: flex;
 	align-items: center;
-	padding: 10px 20px 10px 10px;
+	padding: 10px 8px 10px 0;
 	text-transform: uppercase;
 	color: ${(props) => props.theme.textColor};
 	border-right: 2px solid ${(props) => props.theme.textColor};
+	@media (min-width: 768px) {
+		font-size: 14px;
+		padding: 10px 10px 10px 0;
+	}
 `;
 
 export const Button = styled.button`
@@ -52,12 +60,13 @@ export const Button = styled.button`
 	text-transform: uppercase;
 	background-color: transparent;
 	font-weight: 400;
-	margin-left: 10px;
-	font-size: 12px;
+	margin-left: 5px;
+	font-size: 11px;
 	color: ${(props) => props.theme.textColor};
 	text-decoration: underline;
-	@media (min-width: 1024px) {
+	@media (min-width: 768px) {
 		font-weight: bold;
+		margin-left: 10px;
 		font-size: 15px;
 	}
 `;
@@ -67,17 +76,21 @@ export const DialogContainer = styled.div`
 	border: 2px solid ${(props) => props.theme.primary};
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
+	padding: 10px;
 	max-width: 300px;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
 		max-width: 400px;
+		padding: 20px;
 	}
 `;
 
 export const ForecastTitle = styled.h2`
-	font-size: 24px;
+	font-size: 18px;
 	text-transform: uppercase;
+	@media (min-width: 768px) {
+		font-size: 22px;
+	}
 `;
 
 export const WeatherContainer = styled.div`
@@ -94,22 +107,32 @@ export const DayText = styled.p`
 
 //Housing
 export const HouseImage = styled.img`
-	width: 250px;
+	width: 200px;
+	@media (min-width: 768px) {
+		width: 250px;
+	}
 `;
 export const Title = styled.h1`
 	margin: 5 0 0 0;
-	font-size: 20px;
+	font-size: 18px;
+	@media (min-width: 768px) {
+		font-size: 20px
+	}
 `;
 
 export const HouseContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 40px;
 `;
 
 export const HousingText = styled(WeatherText)`
-	margin-left: 10px;
+	margin-left: 8px;
 	border-right: none;
+	@media (min-width: 768px) {
+		margin-left: 10px;
+	}
 `;
 
 export const PriceContainer = styled.div`
@@ -125,10 +148,10 @@ export const HouseTextContainer = styled.div`
 `;
 
 export const HouseText = styled.p`
-	font-size: 14px;
+	font-size: 13px;
 	margin: 0;
 	@media (min-width: 768px) {
-		font-size: 16px;
+		font-size: 15px;
 	}
 `;
 

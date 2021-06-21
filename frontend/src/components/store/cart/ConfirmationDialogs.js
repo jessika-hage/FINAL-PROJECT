@@ -5,7 +5,6 @@ import { ConfirmationDialog, Text, ConfirmedButton } from './Styling';
 
 export const ConfirmationDialogs = ({ 
   openConfirmation, 
-  onClose, 
   onConfirmed, 
   openFail, 
   onFail }) => {

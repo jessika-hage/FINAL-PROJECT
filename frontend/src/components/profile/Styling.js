@@ -10,7 +10,7 @@ export const ImageNameContainer = styled.div`
 	width: 100%;
   padding: 5px;
   margin: 0 10px;
-	border-bottom: 1px solid ${(props) => props.theme.primary};
+	border-bottom: 1px solid ${(props) => props.theme.secondary};
 `;
 
 export const ProfileAvatar = styled.img`
@@ -117,9 +117,8 @@ export const ProfileContainer = styled.section`
   align-items: center;
 	min-height: 100vh;
 	background-color: ${props => props.theme.backgroundColor};
-  padding: 10px 10px;
-  max-width: 350px;
-	min-width: 300px;
+  padding: 10px 7px;
+	width: 300px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -127,11 +126,9 @@ export const ProfileContainer = styled.section`
     height: 15px;
     border: 2px solid ${props => props.theme.secondary};
   }
-	@media (min-width: 768px) {
-		max-width: 450px;
-	}
 `;
 
+// Days on ship
 export const DaysContainer = styled(StatusContainer)`
   display: flex;
   flex-direction: column;
@@ -144,14 +141,14 @@ export const DaysContainer = styled(StatusContainer)`
 
 export const DaysText = styled.div`
   margin: 0;
-  padding: 3px 0;
+  padding: 2px 0;
 	display: flex;
 	align-items: center;
 	font-family: 'OPen Sans';
 	font-size: 12px;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
-		font-size: 14px;
+		font-size: 13px;
 	}
 `;
 
@@ -164,7 +161,7 @@ export const BottomContainer = styled.div`
 `;
 
 export const Items = styled.div`
-  padding: 10px 5px;
+  padding: 3px 0px 7px 3px;
   border-bottom: 1px solid ${(props) => props.theme.secondary};
 	width: 100%;
 	display: flex;
@@ -186,8 +183,8 @@ export const ButtonContainer = styled.div`
   align-items: center;
 	justify-content: space-between;
   padding: 10px 3px 7px 3px;
-	position: absolute;
-	left: 0;
+	position: fixed;
+	width: 300px;
 	right: 0;
 	bottom: 0px;
 	z-index: 1;
@@ -214,7 +211,7 @@ export const ItemsContainer = styled.div`
   display: flex;
   align-items: center;
 	justify-content: space-between;
-  padding: 5px 0;
+  padding: 0;
   margin: 0;
   width: fit-content;
 	font-family: 'Open Sans', serif;
@@ -223,12 +220,8 @@ export const ItemsContainer = styled.div`
 export const ItemsTitle = styled.p`
   font-size: 14px;
   color: ${props => props.theme.textColor};
-  margin: 0 0 0 3px;
+  margin: 0 0 3px 3px;
   padding: 0;
-`;
-
-export const ItemsQuantity = styled(ItemsTitle)`
-  margin: 0 0 0 5px;
 `;
 
 // InvestmentProfile
@@ -252,13 +245,13 @@ export const InvestmentContainer = styled.div`
 `;
 
 export const InvestmentText = styled(ItemsTitle)`
-	margin: 3px;
+	margin: 2px;
 `;
 
 export const InvestmentChange = styled(InvestmentText)`
 	display: flex;
 	flex-direction: column;
-	margin: 5px 0 5px 3px;
+	margin: 2px 0 5px 3px;
 `;
 
 export const IconUp = styled(FaArrowUp)`
@@ -292,7 +285,7 @@ export const EnergyContainer = styled.div`
 `;
 
 export const EnergyText = styled(ItemsTitle)`
-	margin: 5px 0 0 3px;
+	margin: 0 0 3px 3px;
 	font-family: 'Open Sans', serif;
 `;
 

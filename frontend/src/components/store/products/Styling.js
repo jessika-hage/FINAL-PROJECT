@@ -79,8 +79,8 @@ export const AddedText = styled.p`
 
 export const Text = styled.p`
 	color: ${(props) => props.theme.textColor};
-	margin: 3px 0;
-	padding: 0;
+	margin: 0;
+	padding: 3px 0;
 	font-size: 14px;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -124,7 +124,7 @@ export const TextWrapper = styled.div`
 	width: 100%;
 	flex-direction: column;
 	justify-content: space-evenly;
-	padding: 7px 7px 7px 13px;
+	padding: 7px;
 	margin: 0;
 `;
 
@@ -150,7 +150,7 @@ export const AddButton = styled.button`
 	font-family: 'Trispace', serif;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.textColor};
-	border: 2px solid ${(props) => props.theme.secondary};
+	border: 1px solid ${(props) => props.theme.secondary};
 	:hover,
 	:focus {
 		background-color: ${(props) => props.theme.secondary};

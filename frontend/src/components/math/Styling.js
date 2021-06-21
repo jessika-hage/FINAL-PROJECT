@@ -39,7 +39,6 @@ export const MathContainer = styled.div`
 	@media (min-width: 1400px) {
 		max-width: 70%;
 	}
-	${(props) => (props.blurred ? `filter: blur(4px);` : `filter: none;`)}
 `;
 
 export const TimerContainer = styled.div`

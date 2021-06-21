@@ -7,13 +7,17 @@ import {
 	TableContainer, 
 	TableHead, 
 	TableTitle, 
-  TableTitleLinks,
+  BubbleTitle,
+	FishTitle,
+	MathTitle,
 	CitizensList, 
   PositionContainer,
   Position,
 	CitizenAvatar, 
 	Citizen,
-	Score,
+	ScoreBubble,
+	ScoreFish,
+	ScoreMath,
 	MathIcon,
 	FishIcon } from './Styling';
 
@@ -34,9 +38,9 @@ export const HighscoreBoard = () => {
 		<>
 					<TableHead>
 				<TableTitle>Citizen</TableTitle>
-				<TableTitleLinks onClick={() => setSort('highscoreSpaceball')}><BubbleChartIcon fontSize='large' /></TableTitleLinks>
-				<TableTitleLinks onClick={() => setSort('highscoreFish')}><FishIcon /></TableTitleLinks>
-        <TableTitleLinks onClick={() => setSort('highscoreMath')}><MathIcon /></TableTitleLinks>
+				<BubbleTitle onClick={() => setSort('highscoreSpaceball')}><BubbleChartIcon fontSize='large' /></BubbleTitle>
+				<FishTitle onClick={() => setSort('highscoreFish')}><FishIcon /></FishTitle>
+        <MathTitle onClick={() => setSort('highscoreMath')}><MathIcon /></MathTitle>
 			</TableHead>
 		<TableContainer>
 			{highscoreBoard.map((citizen, index) => (
@@ -48,9 +52,9 @@ export const HighscoreBoard = () => {
 					 	{citizen.username}
           </Citizen>
           </PositionContainer>
-					<Score>{citizen.highscoreSpaceball}p</Score>
-          <Score>{citizen.highscoreFish}p</Score>
-          <Score>{citizen.highscoreMath}p</Score>
+					<ScoreBubble>{citizen.highscoreSpaceball}p</ScoreBubble>
+          <ScoreFish>{citizen.highscoreFish}p</ScoreFish>
+          <ScoreMath>{citizen.highscoreMath}p</ScoreMath>
 				</CitizensList>
 			 ))}
 		</TableContainer>

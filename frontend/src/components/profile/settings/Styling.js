@@ -1,6 +1,30 @@
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 
+// Settings
+export const SettingsContainer = styled.div`
+  background-color: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
+  border: 2px solid ${props => props.theme.secondary};
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SettingsTitle = styled.h2`
+  font-size: 20px;
+  padding: 0 3px 5px 3px;
+  display: flex;
+  margin: 0 0 5px 0;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  border-bottom: 1px solid ${props => props.theme.secondary};
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+`;
+
 // Avatars
 export const Container = styled.form`
 	display: flex;
@@ -138,8 +162,8 @@ export const EyeOne = styled.button`
 	color: ${(props) => props.theme.secondary};
 	font-size: 20px;
 	position: absolute;
-	right: 2%;
-	bottom: 2%;
+	right: 30%;
+	bottom: 0;
 	:hover {
 		color: ${(props) => props.theme.primary};
 	}

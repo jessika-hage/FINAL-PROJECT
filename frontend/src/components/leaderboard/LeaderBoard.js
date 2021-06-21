@@ -13,6 +13,7 @@ import {
 	CitizenAvatar, 
 	Citizen,
 	CitizenDays,
+	Badges,
 	Icon } from './Styling';
 
 export const LeaderBoard = () => {
@@ -49,8 +50,8 @@ export const LeaderBoard = () => {
 						<Citizen me={user === citizen.username}>{citizen.username}</Citizen>
 						<Citizen>{citizen.ranking.toFixed(1)}/100</Citizen>
 						<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
-						<Citizen>{citizen.badges}</Citizen>
-						<Citizen>{citizen.coins.toFixed(2)}</Citizen>
+						<Badges>{citizen.badges}</Badges>
+						<Badges>{citizen.coins.toFixed(2)}</Badges>
 					</CitizensList>
 				))}
 			</TableContainer>

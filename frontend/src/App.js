@@ -9,6 +9,7 @@ import { products } from './reducers/products';
 import { food } from './reducers/food';
 import { themes } from 'reducers/themes';
 import { ui } from 'reducers/ui';
+import { housing } from 'reducers/housing';
 import { Theme } from './components/theme/Theme';
 import { Store } from './pages/Store';
 import { Loader } from './components/loader/Loader';
@@ -20,7 +21,7 @@ import { MathGame } from './pages/MathGame';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
 import { GameBall } from './components/spaceball/GameBall';
-import { housing } from 'reducers/housing';
+import { Trivia } from './components/trivia/Trivia'
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -50,6 +51,7 @@ export const App = () => {
 						<Route path='/farm' component={ProtinFarm} />
 						<Route path='/spaceball' component={GameBall} />
 						<Route path='/loader' component={Loader} />
+						<Route path='/trivia' component={Trivia} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>

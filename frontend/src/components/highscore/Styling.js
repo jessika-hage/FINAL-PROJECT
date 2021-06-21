@@ -21,12 +21,13 @@ export const TableContainer = styled.div`
 export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
+	position: relative;
   align-items: center;
-	padding: 7px 20px 2px 20px;
+	padding: 15px 20px 10px 20px;
 	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 
-export const TableTitle = styled.div`
+export const TableTitle = styled.p`
 	width: 35%;
 	padding: 0 0 5px 5px;
 	margin: 0;
@@ -39,9 +40,26 @@ export const TableTitle = styled.div`
 	}
 `;
 
-export const TableTitleLinks = styled(TableTitle)`
+export const BubbleTitle = styled(TableTitle)`
 	cursor: pointer;
-	width: 20%;
+	position: absolute;
+	left: 40%;
+	:hover, :focus {
+		opacity: 0.7;
+	}
+`;
+
+export const FishTitle = styled(BubbleTitle)`
+	cursor: pointer;
+	left: 60%;
+	:hover, :focus {
+		opacity: 0.7;
+	}
+`;
+
+export const MathTitle = styled(BubbleTitle)`
+	cursor: pointer;
+	left: 80%;
 	:hover, :focus {
 		opacity: 0.7;
 	}
@@ -91,15 +109,24 @@ export const Citizen = styled.p`
 		: `font-weight: 400`}
 `;
 
-export const Score = styled(Citizen)`
-  margin-left: 5px;
-	text-align: center;
+export const ScoreBubble = styled(Citizen)`
+  position: absolute;
+	left: 42%;
+`;
+
+export const ScoreFish = styled(ScoreBubble)`
+  left: 64%;
+`;
+
+export const ScoreMath = styled(ScoreBubble)`
+  left: 87%;
 `;
 
 export const CitizensList = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 	padding: 6px 4px 4px 4px;
   width: 100%;
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
