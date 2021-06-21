@@ -22,7 +22,7 @@ export const TableHead = styled.div`
 	display: flex;
 	justify-content: space-between;
   align-items: center;
-	padding: 10px 20px 5px 20px;
+	padding: 7px 20px 2px 20px;
 	border-bottom: 2px solid ${props => props.theme.secondary};
 `;
 

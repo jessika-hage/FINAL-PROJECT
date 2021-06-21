@@ -9,8 +9,9 @@ import {
 	ButtonContainer,
 	ExchangeButton,
 	InvestmentButton,
-	PercentChange } from './Styling';
-  
+	PercentChange,
+  CloseIcon } from './Styling';
+
 export const PriceChange = ({ open, onClose, toggleExchangeDialog, toggleInvestDialog }) => {
   const [currency, setCurrency] = useState([]);
 
@@ -30,7 +31,10 @@ export const PriceChange = ({ open, onClose, toggleExchangeDialog, toggleInvestD
   return (
     <Dialog open={open} onClose={onClose}>
     <DialogContainer>
-      <CurrencyTitle>SPACE $</CurrencyTitle>
+      <CurrencyTitle>
+        SPACE $
+        <CloseIcon onClick={onClose} />
+      </CurrencyTitle>
       <TextContainer>
         <Text>Price: {currency.price_usd} $</Text>
       </TextContainer>

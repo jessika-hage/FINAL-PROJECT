@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import {
 	FaFish,
@@ -9,6 +9,7 @@ import {
 	FaBed,
 	FaTh,
 	FaDumbbell,
+	FaTimes
 } from 'react-icons/fa';
 
 export const GridContainer = styled.section`
@@ -24,6 +25,7 @@ export const RoomClassroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
+	border-top-left-radius: 150px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -38,6 +40,7 @@ export const RoomBedroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
+	border-bottom-left-radius: 150px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -108,13 +111,15 @@ export const RoomMemory = styled(RoomClassroom)`
 export const RoomFarm = styled(RoomClassroom)`
 	grid-column: 10 / span 3;
 	grid-row: 1 / span 3;
-	border-top-left-radius: 0px;
+	border-top-right-radius: 150px;
+	border-top-left-radius: 0;
 `;
 
 export const RoomSpace = styled(RoomBedroom)`
 	grid-column: 10 / span 3;
 	grid-row: 4 / span 3;
-	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 150px;
+	border-bottom-left-radius: 0;
 `;
 
 // Icons
@@ -159,9 +164,18 @@ export const MathIcon = styled(FaSquareRootAlt)`
 	}
 `;
 
+const infoAnimation = keyframes`
+	10% {  transform: scale(1) };
+	30% { transform: scale(1.1) };
+	50% {transform: scale(1) };
+	70% { transform: scale(1.1) };
+	100% { transform: scale(1) };
+`;
+
 export const InfoIcon = styled(FaInfoCircle)`
 	font-size: 16px;
 	text-align: center;
+	animation: ${infoAnimation} 4s linear;
 	@media (min-width: 768px) {
 		font-size: 40px;
 	}
@@ -191,6 +205,15 @@ export const GymIcon = styled(FaDumbbell)`
 	}
 `;
 
+export const CloseIcon = styled(FaTimes)`
+	font-size: 20px;
+	cursor: pointer;
+	margin: 7px;
+	:hover {
+		transform: scale(1.2);
+	}
+`;
+
 // Dialog Info
 export const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
@@ -198,20 +221,55 @@ export const DialogContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 20px;
+	padding: 20px 20px 20px 15px;
+	max-width: 300px;
 	color: ${(props) => props.theme.textColor};
+	@media (min-width: 500px) {
+		max-width: 450px;
+	}
 `;
 
 export const InfoTitle = styled.h2`
 	font-size: 24px;
 	text-transform: uppercase;
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+	margin: 0 0 5px 0;
+	padding: 0 0 5px 5px;
+	border-bottom: 2px solid ${(props) => props.theme.primary};
 `;
 
 export const InfoText = styled.p`
-	font-size: 12px;
-	margin: 5px;
+	font-size: 14px;
+	margin: 5px 0;
+	padding: 0 0 0 5px;
 	@media (min-width: 768px) {
 		font-size: 16px;
+	}
+`;
+
+export const DialogButton = styled.button`
+	padding: 5px;
+	margin-top: 10px;
+	font-size: 14px;
+	width: fit-content;
+	text-transform: uppercase;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.textColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	:hover,
+	:focus {
+		background-color: ${(props) => props.theme.secondary};
+	}
+	&:disabled {
+		opacity: 0.3;
+		:hover {
+			background-color: ${props => props.theme.primary}
+		}
+	}
+	@media (min-width: 768px) {
+		font-size: 18px;
 	}
 `;
 
@@ -241,24 +299,6 @@ export const StartGameButton = styled(Link)`
 	cursor: pointer;
 	:hover {
 		background-color: ${(props) => props.theme.hover};
-	}
-`;
-
-export const DialogButton = styled.button`
-	padding: 5px;
-	margin-top: 5px;
-	font-size: 14px;
-	width: fit-content;
-	text-transform: uppercase;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.textColor};
-	border: 2px solid ${(props) => props.theme.secondary};
-	:hover,
-	:focus {
-		background-color: ${(props) => props.theme.secondary};
-	}
-	@media (min-width: 768px) {
-		font-size: 18px;
 	}
 `;
 
@@ -299,19 +339,4 @@ export const Pink = styled(Circle)`
 
 export const Green = styled(Circle)`
 	background-color: #29bb89;
-`;
-
-// Restaurant
-export const SmallInfoIcon = styled(FaInfoCircle)`
-	font-size: 16px;
-	cursor: pointer;
-	:hover {
-		transform: scale(1.2);
-	}
-`;
-
-export const InfoContainer = styled(DialogContainer)`
-	max-width: 300px;
-	font-size: 14px;
-	font-family: 'Open Sans', serif;
 `;

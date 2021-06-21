@@ -47,7 +47,7 @@ export const LeaderBoard = () => {
 						{user === citizen.username ? <Icon /> : ""}
 						<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
 						<Citizen me={user === citizen.username}>{citizen.username}</Citizen>
-						<Citizen>{citizen.ranking}/100</Citizen>
+						<Citizen>{citizen.ranking.toFixed(1)}/100</Citizen>
 						<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 						<Citizen>{citizen.badges}</Citizen>
 						<Citizen>{citizen.coins.toFixed(2)}</Citizen>

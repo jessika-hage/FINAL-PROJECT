@@ -102,22 +102,34 @@ export const DialogContainer = styled.div`
   height: 100%;
   flex-directioN: column;
   align-items: center;
-  background-color: ${props => props.theme.primary};
+  max-width: 320px;
+  background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  border: 4px solid ${props => props.theme.hover};
+  border: 2px solid ${props => props.theme.secondary};
+  @media (min-width: 768px) {
+    max-width: 400px;
+  }
 `;
 
 export const Button = styled.button`
   padding: 10px 15px;
   margin-top: 20px;
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.hover};
-  color: ${props => props.theme.textColor};
+  background-color: ${(props) => props.theme.primary};
+  border: 2px solid ${(props) => props.theme.hover};
+  color: ${(props) => props.theme.textColor};
   font-size: 16px;
+  width: fit-content;
   text-transform: uppercase;
-  font-family: "Trispace";
+  font-family: 'Trispace';
+  cursor: pointer;
   :hover {
-    background-color: ${props => props.theme.hover};
+    background-color: ${(props) => props.theme.hover};
   }
 `;
+
+export const DialogText = styled.p`
+	font-size: 16px;
+  margin: 0;
+  text-align: center;
+`;
+

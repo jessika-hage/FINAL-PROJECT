@@ -6,7 +6,8 @@ import {
   RoomInfo, 
   DialogContainer, 
   InfoTitle,
-  InfoIcon } from './Styling';
+  InfoIcon,
+  CloseIcon } from './Styling';
 
 export const Info = () => {
   const [openInfo, setOpenInfo] = useState(false);
@@ -20,7 +21,10 @@ export const Info = () => {
         <InfoIcon />
         <Dialog open={openInfo} onClick={onToggleInfoDialog}>
           <DialogContainer>
-            <InfoTitle>ship info & rules</InfoTitle>
+            <InfoTitle>
+              Ship info & rules
+              <CloseIcon onClick={onToggleInfoDialog} />
+            </InfoTitle>
           </DialogContainer>
         </Dialog>
       </RoomInfo>

@@ -17,7 +17,6 @@ export const MemoryGame = () => {
 	const [gameResults, setGameResults] = useState({});
 	const [animation, setAnimation] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
-	const countPoints = Math.round(gameResults.flips * 0.5);
 
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -43,7 +42,7 @@ export const MemoryGame = () => {
 	const handleCollectBadges = () => {
 		setOpenWin(false);
 		setAnimation(true);
-		dispatch(updateBadges(countPoints));
+		dispatch(updateBadges(10));
 		setTimeout(() => {
 			history.push('/');
 		}, 2000);
@@ -62,15 +61,12 @@ export const MemoryGame = () => {
 				{gameStatus === GAME_STATUS.FINISHED && (
 					<FinishDialog
 						openWin={openWin}
-						status={
-							gameResults.flips < 30 ? 'GREAT job, you solved it!' : 'You solved it!'
-						}
 						results={gameResults}
 						handleCollect={handleCollectBadges}
 					/>
 				)}
 			</div>
-			{animation && <BadgesAnimation text={countPoints} />}
+			{animation && <BadgesAnimation text='10' />}
 		</MainContainer>
 	);
 };

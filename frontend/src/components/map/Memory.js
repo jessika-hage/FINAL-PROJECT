@@ -7,7 +7,8 @@ import {
   InfoTitle, 
   InfoText, 
   StartGameButton,
-  MemoryIcon } from './Styling';
+  MemoryIcon,
+  CloseIcon } from './Styling';
   
 export const Memory = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -20,8 +21,11 @@ export const Memory = () => {
         <MemoryIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
-            <InfoTitle>Memory</InfoTitle>
-            <InfoText>In here you practice your memory skills. You have 30 seconds to solve the memory game and will then get 10 badges.</InfoText>
+            <InfoTitle>
+              Memory
+              <CloseIcon onClick={onToggleGameDialog} />
+            </InfoTitle>
+            <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
             <StartGameButton to='/memorygame'>Lets start</StartGameButton>
           </DialogContainer>
         </Dialog>

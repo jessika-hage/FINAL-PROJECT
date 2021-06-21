@@ -8,8 +8,8 @@ import {
 	InfoText,
 	StartGameButton,
 	RoomFarm,
-	FishIcon
-} from './Styling';
+	FishIcon,
+	CloseIcon } from './Styling';
 
 export const Farm = () => {
 	const [openGame, setOpenGame] = useState(false);
@@ -24,7 +24,10 @@ export const Farm = () => {
 				<FishIcon />
 				<Dialog open={openGame} onClick={onToggleGameDialog}>
 					<DialogContainer>
-						<InfoTitle>Fish Farm</InfoTitle>
+						<InfoTitle>
+							Fish Farm
+							<CloseIcon onClick={onToggleGameDialog} />
+						</InfoTitle>
 						<InfoText>Catch the fishes.</InfoText>
 						<StartGameButton to='/farm'>Lets start</StartGameButton>
 					</DialogContainer>

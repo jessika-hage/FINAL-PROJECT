@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { ItemsContainer, ItemsTitle, ItemsQuantity } from './Styling';
+import { 
+  ItemsContainer, 
+  ItemsTitle } from './Styling';
 
 export const ItemsProfile = ({ item }) => {
   return (
     <ItemsContainer>
-      <ItemsTitle>{item.title}: </ItemsTitle>
-      <ItemsQuantity>{item.quantity}st</ItemsQuantity>
+      <ItemsTitle>{item.title} </ItemsTitle>
     </ItemsContainer>
   )
 };

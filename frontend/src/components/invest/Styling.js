@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaArrowUp, FaArrowDown, FaTimes } from 'react-icons/fa';
 
 // Card 
 export const Container = styled.div`
@@ -91,7 +91,10 @@ export const DialogContainer = styled.div`
 export const InvestTitle = styled.h3`
   border-bottom: 2px solid ${props => props.theme.hover};
   padding-bottom: 10px;
-  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-transform: uppercase;
   font-size: 20px;
   @media (min-width: 768px) {
@@ -233,4 +236,14 @@ export const PercentChange = styled(CoinChange)`
 // Invest
 export const InvestButton = styled(ExchangeButton)`
   margin: 0;
+`;
+
+// Close Dialog
+export const CloseIcon = styled(FaTimes)`
+	font-size: 20px;
+	cursor: pointer;
+	margin: 7px;
+	:hover {
+		transform: scale(1.2);
+	}
 `;

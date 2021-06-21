@@ -9,7 +9,8 @@ import {
   InfoText, 
   StartGameButton,
   List,
-  ListItem } from './Styling';
+  ListItem,
+  CloseIcon } from './Styling';
 
 export const Classroom = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -23,7 +24,10 @@ export const Classroom = () => {
         <MathIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
-            <InfoTitle>Classroom</InfoTitle>
+            <InfoTitle>
+              Classroom
+              <CloseIcon onClick={onToggleGameDialog} />
+            </InfoTitle>
             <InfoText>In the classroom you can get badges by solving mathematical problems. There are three:</InfoText>
             <List>
               <ListItem>BEGINNER: You will have 40s and the numbers are low. This of course reflects on how many badges you can make.</ListItem>

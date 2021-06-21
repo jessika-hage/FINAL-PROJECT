@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { ThemeButtons } from '../components/theme/ThemeButtons';
 import { Avatars } from '../components/signinupform/Avatars';
@@ -19,7 +20,6 @@ import {
 	EyeButtonSignUp,
 	ChooseText,
 	AvatarContainer,
-	// ResetPassword,
 } from '../components/signinupform/Styling';
 
 export const SignUp = () => {
@@ -160,9 +160,9 @@ export const SignUp = () => {
 						/>
 						<EyeButtonSignUp type='button' onClick={togglePassword}>
 							{showPassword ? (
-								<i className='fas fa-eye'></i>
+								<FaEye />
 							) : (
-								<i className='fas fa-eye-slash'></i>
+								<FaEyeSlash />
 							)}
 						</EyeButtonSignUp>
 						<ErrorMessageSignUp>{errorMessage}</ErrorMessageSignUp>
@@ -189,11 +189,6 @@ export const SignUp = () => {
 							link='/signin'
 							linkText='Board ship here!'
 						/>
-						{/* <ResetPassword
-					text='Forgot you password??'
-					link='/resetpassword'
-					linkText='Reset it here!'
-				/> */}
 					</Form>
 				</>
 			)}

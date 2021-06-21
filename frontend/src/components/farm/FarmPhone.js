@@ -5,7 +5,6 @@ import { Dialog } from '@material-ui/core';
 
 import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
 import { updateBadges, updateHighscoreFish } from '../../reducers/profile';
-
 import {
 	Icon1,
 	Icon2,
@@ -64,10 +63,9 @@ export const FarmPhone = () => {
 	const [disabled11, setDisabled11] = useState(false);
 	const [disabled12, setDisabled12] = useState(false);
 	const [animation, setAnimation] = useState(false);
-
+	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const highscore = useSelector((store) => store.profile.highscoreFish);
-	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 
 	const numOfBadges = Math.round(score);
 	const [counter, setCounter] = useState(30);
@@ -96,7 +94,7 @@ export const FarmPhone = () => {
 			history.push('/');
 		}, 1000);
 	};
-
+ console.log(score)
 	useEffect(() => {
 		if (counter === 0) {
 			setOpenFinishedDialog(true);
