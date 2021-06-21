@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
 
-import { DialogContainer, Button, DialogText, DialogTitle } from './Styling';
+import { DialogContainer, Button, DialogText } from './Styling';
 
 export const FinishDialog = ({ handleCollect, openWin, results }) => {
 	return (
