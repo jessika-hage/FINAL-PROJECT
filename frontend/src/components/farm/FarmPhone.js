@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
+import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
 import { updateBadges, updateHighscoreFish } from '../../reducers/profile';
 
 import {
@@ -62,6 +63,7 @@ export const FarmPhone = () => {
 	const [disabled10, setDisabled10] = useState(false);
 	const [disabled11, setDisabled11] = useState(false);
 	const [disabled12, setDisabled12] = useState(false);
+	const [animation, setAnimation] = useState(false);
 
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const highscore = useSelector((store) => store.profile.highscoreFish);
@@ -89,6 +91,7 @@ export const FarmPhone = () => {
 			dispatch(updateHighscoreFish(score));
 		}
 		dispatch(updateBadges(numOfBadges));
+		setAnimation(true);
 		setTimeout(() => {
 			history.push('/');
 		}, 1000);
@@ -227,6 +230,7 @@ export const FarmPhone = () => {
 					</DialogContainer>
 				</Dialog>
 			</MainContainer>
+			{animation && <BadgesAnimation text={numOfBadges} />}
 		</>
 	);
 };
