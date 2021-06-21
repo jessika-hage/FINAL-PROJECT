@@ -86,6 +86,9 @@ export const Citizen = styled.p`
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
+	${props => props.me 
+		? `font-weight: 600` 
+		: `font-weight: 400`}
 `;
 
 export const Score = styled(Citizen)`

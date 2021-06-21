@@ -306,7 +306,7 @@ export const SmallInfoIcon = styled(FaInfoCircle)`
 	font-size: 16px;
 	cursor: pointer;
 	:hover {
-		transform: scale(1.3);
+		transform: scale(1.2);
 	}
 `;
 

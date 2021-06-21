@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
+import moment from 'moment';
+import { FaTimes } from 'react-icons/fa';
 
 import { updateEnergy } from '../../reducers/profile';
 import {
@@ -16,8 +18,15 @@ import {
 export const Restaurant = () => {
 	const [open, setOpen] = useState(false);
 	const [openConfirmation, setOpenConfirmation] = useState(false);
+	const [openFail, setOpenFail] = useState(false);
 	const [openInfo, setOpenInfo] = useState(false);
 	const allFood = useSelector((store) => store.food);
+	const energy = useSelector((store) => store.profile.energy);
+	const createdAt = useSelector((store) => store.profile.createdAt);
+	const createdAtDate = moment(createdAt);
+	const today = moment().add(1, 'day');
+	const difference = today.diff(createdAtDate, 'days');
+	const averageEnergy = energy / difference;
 
 	const dispatch = useDispatch();
 
@@ -26,11 +35,18 @@ export const Restaurant = () => {
 	};
 
 	const onBuy = (energy) => {
-		setOpenConfirmation(true);
-		dispatch(updateEnergy(energy));
-		setTimeout(() => {
-			setOpenConfirmation(false);
-		}, 2000);
+		if (averageEnergy >= 3000) {
+			setOpenFail(true);
+			setTimeout(() => {
+				setOpenFail(false);
+			}, 2000);
+		} else {
+				setOpenConfirmation(true);
+				dispatch(updateEnergy(energy));
+				setTimeout(() => {
+					setOpenConfirmation(false);
+				}, 2000);
+			}
 	};
 
 	const onToggleInfo = () => {
@@ -43,7 +59,12 @@ export const Restaurant = () => {
 				<RestaurantIcon />
 			</RoomRestaurant>
 			<Dialog open={open} onClose={onToggleDialog}>
-				<Title>Restaurant <SmallInfoIcon onClick={onToggleInfo} /></Title>
+				<Title>Nutrition 
+					<IconContainer>
+						<SmallInfoIcon onClick={onToggleInfo} />
+						<CloseIcon onClick={onToggleDialog} />
+					</IconContainer>
+				</Title>
 				<TableHead>
 						<TableTitle>Type</TableTitle>
 						<TableTitle>Energy</TableTitle>
@@ -54,7 +75,7 @@ export const Restaurant = () => {
 				<TableContainer>
 					{allFood.map((food) => (
 						<FoodList key={food.id}>
-							<Food>{food.title}</Food>
+							<FoodType>{food.title}</FoodType>
 							<Food>{food.energy}kcal</Food>
 							<FoodHide>{food.protein}g</FoodHide>
 							<FoodHide>{food.salt}g</FoodHide>
@@ -67,7 +88,11 @@ export const Restaurant = () => {
 			</Dialog>
 			<Dialog open={openInfo} onClose={onToggleInfo}>
 				<InfoContainer>
-					It is very important that you get the energy that you need. You need to have a daily average intake of 2000 kcal. You can see yours on your profile and it will alert you when you are running low.
+					It is very important that you get the energy that you need. 
+					You need to have a daily average intake of 2000 kcal and
+					you keep track on your profile and it will alert you when you are running low.
+					And you can not buy food when you have 3000 or more, since the energy needs to be
+					divided between all the citizens!
 				</InfoContainer>
 			</Dialog>
 			<Dialog open={openConfirmation}>
@@ -77,10 +102,30 @@ export const Restaurant = () => {
 					</InfoText>
 				</DialogContainer>
 			</Dialog>
+			<Dialog open={openFail}>
+				<DialogContainer>
+					<InfoText>
+						You have more than 3000 in energy, you need to share with the other citizens!
+					</InfoText>
+				</DialogContainer>
+			</Dialog>
 		</>
 	);
 };
 
+
+const CloseIcon = styled(FaTimes)`
+	font-size: 17px;
+	cursor: pointer;
+	margin-left: 5px;
+	:hover {
+		transform: scale(1.2);
+	}
+`;
+
+const IconContainer = styled.div`
+	display: flex;
+`;
 
 const Title = styled.h4`
 	text-transform: uppercase;
@@ -122,7 +167,10 @@ const TableHead = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.secondary};
 	background-color: ${(props) => props.theme.backgroundColor};
 	color: ${(props) => props.theme.textColor};
-	padding: 12px 20px 8px 20px;
+	padding: 12px 30px 8px 15px;
+	@media (min-width: 768px) {
+		padding: 12px 20px 8px 18px;
+	}
 `;
 
 const TableTitle = styled.div`
@@ -143,13 +191,20 @@ const TableTitleHide = styled(TableTitle)`
 `;
 
 const Food = styled.p`
-	width: 20%;
-	margin: 0 ;
+	width: 30%;
+	text-align: right;
+	margin: 0;
 	font-size: 12px;
 	font-family: 'Open Sans', serif;
 	@media (min-width: 768px) {
 		font-size: 14px;
+		width: 20%;
+		text-align: left;
 	}
+`;
+
+const FoodType = styled(Food)`
+	text-align: left;
 `;
 
 const FoodHide = styled(Food)`

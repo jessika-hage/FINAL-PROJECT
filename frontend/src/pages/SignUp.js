@@ -156,6 +156,7 @@ export const SignUp = () => {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							minLength='5'
+							required
 						/>
 						<EyeButtonSignUp type='button' onClick={togglePassword}>
 							{showPassword ? (

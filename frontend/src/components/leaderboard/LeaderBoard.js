@@ -46,7 +46,7 @@ export const LeaderBoard = () => {
 					<CitizensList key={citizen._id}>
 						{user === citizen.username ? <Icon /> : ""}
 						<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-						<Citizen>{user === citizen.username ? 'Me' : citizen.username}</Citizen>
+						<Citizen me={user === citizen.username}>{citizen.username}</Citizen>
 						<Citizen>{citizen.ranking}/100</Citizen>
 						<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 						<Citizen>{citizen.badges}</Citizen>

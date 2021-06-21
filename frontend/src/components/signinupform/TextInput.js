@@ -16,6 +16,7 @@ export const TextInput = ({
 			value={value}
 			onChange={onChange}
 			minLength={minLength}
+      required
 		></Input>
 	);
 };
