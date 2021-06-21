@@ -28,7 +28,7 @@ export const GameBall = () => {
   const [animation, setAnimation] = useState(false);
   const accessToken = useSelector((store) => store.profile.accessToken);
   const highscore = useSelector((store) => store.profile.highscoreSpaceball);
-  const numOfBadges = Math.round(score / 2);
+  const numOfBadges = Math.round(score / 3);
 
   const dispatch = useDispatch();
   const history = useHistory();

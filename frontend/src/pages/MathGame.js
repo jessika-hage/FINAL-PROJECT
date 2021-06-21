@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { updateBadges, updateHighscoreMath } from '../reducers/profile';
-import { ProgressBar } from '../components/math/ProgressBar';
 import { MathForm } from '../components/math/MathForm';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
@@ -25,7 +24,7 @@ export const MathGame = () => {
 	const [start, setStart] = useState(false);
 	const [score, setScore] = useState(0);
 	const [mistakes, setMistakes] = useState(0);
-	const [counter, setCounter] = useState(30);
+	const [counter, setCounter] = useState(null);
 	const [easy, setEasy] = useState(false);
 	const [medium, setMedium] = useState(false);
 	const [hard, setHard] = useState(false);
@@ -115,7 +114,11 @@ export const MathGame = () => {
 			if (score > highscore) {
 				dispatch(updateHighscoreMath(score));
 			}
-			dispatch(updateBadges(score));
+			if(hard === true) {
+				dispatch(updateBadges(score * 2));
+			} else  {
+				dispatch(updateBadges(score));
+			}
 			setAnimation(true)
 			setOpenFinish(false);
 			setTimeout(() => {
@@ -153,7 +156,6 @@ export const MathGame = () => {
 							You have {score} points, and can make {3 - mistakes}{' '}
 							more mistakes.
 						</StatusText>
-						<ProgressBar score={score} />
 						<FinishGame
 							open={openFinish}
 							endText={!hard ? score : score * 2}
@@ -163,7 +165,7 @@ export const MathGame = () => {
 					</>
 				}
 			</MathContainer>
-			{ animation && <BadgesAnimation text={score} /> }
+			{ animation && <BadgesAnimation text={!hard ? score : score * 2} /> }
 		</MainContainer>
 	);
 };

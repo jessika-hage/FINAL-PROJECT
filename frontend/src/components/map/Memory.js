@@ -21,7 +21,7 @@ export const Memory = () => {
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>Memory</InfoTitle>
-            <InfoText>In here you practice your memory skills. You have 30 seconds to solve the memory game and will then get 10 badges.</InfoText>
+            <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
             <StartGameButton to='/memorygame'>Lets start</StartGameButton>
           </DialogContainer>
         </Dialog>

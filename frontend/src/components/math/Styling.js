@@ -63,17 +63,20 @@ export const StatusText = styled.p`
 
 // FinishGame
 export const DialogContainer = styled.div`
-	padding: 20px;
-	display: flex;
-	width: 100%;
-	height: 100%;
-	flex-direction: column;
-	align-items: center;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.textColor};
-	text-transform: uppercase;
-	font-family: 'Trispace';
-	border: 2px solid ${(props) => props.theme.hover};
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-directioN: column;
+  align-items: center;
+  background-color: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
+  border: 2px solid ${props => props.theme.secondary};
+`;
+
+export const DialogText = styled.p`
+	font-size: 16px;
+  margin: 0 0 20px 0;
 `;
 
 // MathForm
@@ -153,26 +156,4 @@ export const SendButton = styled(Button)`
   @media (min-width: 768px) {
     font-size: 16px;
   }
-`;
-
-// ProgressBar
-export const ProgressContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
-  margin: 0 0 10px 0;
-`; 
-
-export const ProgressBox = styled.div`
-  height: 20px;
-  width: 100%;
-  border: 1px solid ${props => props.theme.secondary};
-`;
-
-export const ProgressFiller = styled.div`
-  background: ${props => props.theme.hover};
-  width: 100%;
-  height: 100%;
-  transition: width 0.5s linear;
 `;

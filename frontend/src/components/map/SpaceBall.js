@@ -35,7 +35,7 @@ export const SpaceBall = () => {
 					<InfoText>
 						This game is to train your reflexes and see how fast you are, also an
 						important part of being a citizen! You have 30 seconds to collect as many
-						points as possible.
+						points as possible. 3 points equals 1 badge.
 					</InfoText>
 					<CirclePoint>
 						<Purple></Purple> - 1 point

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Dialog, DialogActions, DialogTitle } from '@material-ui/core';
+import { Dialog } from '@material-ui/core';
 
 import { ResetButton } from './ResetButton';
-import { DialogContainer } from './Styling';
+import { DialogContainer, DialogText } from './Styling';
 
 export const FinishGame = ({ 
 	open, 
@@ -13,13 +13,11 @@ export const FinishGame = ({
 	return (
 		<Dialog open={open}>
 			<DialogContainer>
-				<DialogTitle>You earned {endText} badges! </DialogTitle>
-				<DialogActions>
-					<ResetButton 
-						resetButton={resetButton} 
-						onClick={onClick} 
-						buttonText={buttonText} />
-				</DialogActions>
+				<DialogText>You earned {endText} badges! </DialogText>
+				<ResetButton 
+					resetButton={resetButton} 
+					onClick={onClick} 
+					buttonText={buttonText} />
 			</DialogContainer>
 		</Dialog>
 	);
