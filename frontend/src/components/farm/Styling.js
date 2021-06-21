@@ -19,9 +19,7 @@ export const ShowMobile = styled.div`
 	@media (max-width: 500px) {
 		z-index: 1;
 		position: absolute;
-		top: 300;
-
-		bottom: 0;
+		bottom: -20px;
 		width: 100%;
 		height: 50%;
 		background-color: #9de2fa;

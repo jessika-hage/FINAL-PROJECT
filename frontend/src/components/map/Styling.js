@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import {
 	FaFish,
@@ -163,9 +163,18 @@ export const MathIcon = styled(FaSquareRootAlt)`
 	}
 `;
 
+const infoAnimation = keyframes`
+	10% {  transform: scale(1) };
+	30% { transform: scale(1.1) };
+	50% {transform: scale(1) };
+	70% { transform: scale(1.1) };
+	100% { transform: scale(1) };
+`;
+
 export const InfoIcon = styled(FaInfoCircle)`
 	font-size: 16px;
 	text-align: center;
+	animation: ${infoAnimation} 4s linear;
 	@media (min-width: 768px) {
 		font-size: 40px;
 	}

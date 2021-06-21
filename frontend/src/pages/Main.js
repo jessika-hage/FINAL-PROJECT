@@ -39,14 +39,14 @@ export const Main = () => {
 					</CitizensContainer>
 				</WrapperLeaderBoard>
 				<WrapperCard>
-					<CardTitle>Game Highscores</CardTitle>
-					<CardContainer>
-						<HighscoreBoard />
-					</CardContainer>
-					<CardTitleInvest>Citizen Stock Exchange</CardTitleInvest>
-					<CardContainer>
-						<Currency />
-					</CardContainer>
+					<CardTitle>Citizen Stock Exchange</CardTitle>
+						<CardContainer>
+							<Currency />
+						</CardContainer>
+						<CardTitleHighscore>Game Highscores</CardTitleHighscore>
+						<CardContainer>
+							<HighscoreBoard />
+						</CardContainer>
 				</WrapperCard>
 				<RollingInfoBar />
 			</BottomContainer>
@@ -137,7 +137,7 @@ const CardTitle = styled.h4`
 	}
 `;
 
-const CardTitleInvest = styled(CardTitle)`
+const CardTitleHighscore  = styled(CardTitle)`
 	width: 100%;
 	margin-top: 20px;
 `;
