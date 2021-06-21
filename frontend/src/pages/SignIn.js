@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { CITIZEN_URL } from '../reusables/urls';
 import { profile } from '../reducers/profile';
@@ -125,9 +126,9 @@ export const SignIn = () => {
 						/>
 						<EyeButton type='button' onClick={togglePassword}>
 							{showPassword ? (
-								<i className='fas fa-eye'></i>
+								<FaEye />
 							) : (
-								<i className='fas fa-eye-slash'></i>
+								<FaEyeSlash />
 							)}
 						</EyeButton>
 						<ErrorMessage>{errorMessage}</ErrorMessage>
