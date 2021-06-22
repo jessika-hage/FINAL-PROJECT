@@ -91,6 +91,7 @@ export const profile = createSlice({
 			store.highscoreMath = action.payload;
 		},
 		setLogOut: () => {
+			localStorage.clear();
 			return {
 				username: null,
 				email: null,
