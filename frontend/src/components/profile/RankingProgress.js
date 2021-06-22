@@ -9,6 +9,7 @@ import {
 
 export const RankingProgress = () => {
   const ranking = useSelector((store) => store.profile.ranking);
+  
   return (
     <ProgressContainer>
       <ProgressText>{ranking === null ? ranking : ranking.toFixed(1)}/100</ProgressText>

@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { 
-  ItemsContainer, 
-  ItemsTitle } from './Styling';
+import { ItemsContainer, ItemsTitle } from './Styling';
 
 export const ItemsProfile = ({ item }) => {
   return (

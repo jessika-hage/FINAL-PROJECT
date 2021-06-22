@@ -8,7 +8,7 @@ export const TableContainer = styled.div`
 	padding: 10px 20px 20px 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
-	max-height: 320px;
+	max-height: 280px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
     -webkit-appearance: none;

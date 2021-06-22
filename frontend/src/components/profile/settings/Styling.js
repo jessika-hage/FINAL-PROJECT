@@ -32,6 +32,12 @@ export const Container = styled.form`
 	margin-bottom: 20px;
 `;
 
+export const ChangeTitle = styled.h3`
+	font-size: 14px;
+	margin: 10px 0 5px 0;
+	font-weight: 400;
+`;
+
 export const ButtonContainer = styled.div`
 	display: flex;
 	align-items: center;
@@ -39,12 +45,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const AvatarContainer = styled(ButtonContainer)``;
-
-export const ChangeTitle = styled.h3`
-	font-size: 14px;
-	margin: 10px 0 5px 0;
-	font-weight: 400;
-`;
 
 export const Label = styled.label`
 	display: flex;

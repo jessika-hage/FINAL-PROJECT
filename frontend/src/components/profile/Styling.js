@@ -28,13 +28,6 @@ export const ProfileAvatar = styled.img`
 	}
 `;
 
-export const StatusContainer = styled.div`
-	display: flex;
-  justify-content: center;
-  align-items: center;
-	width: 100%;
-`;
-
 export const Username = styled.h3`
 	font-size: 14px;
 	font-weight: bold;
@@ -44,6 +37,13 @@ export const Username = styled.h3`
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}
+`;
+
+export const StatusContainer = styled.div`
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	width: 100%;
 `;
 
 export const BadgesText = styled.div`
@@ -60,6 +60,10 @@ export const BadgesText = styled.div`
 	}
 `;
 
+export const BadgeIcon = styled.img`
+	margin: 0 5px 0 0;
+`;
+
 export const CoinsText = styled.div`
 	display: flex;
 	align-items: center;
@@ -72,10 +76,6 @@ export const CoinsText = styled.div`
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
-`;
-
-export const BadgeIcon = styled.img`
-	margin: 0 5px 0 0;
 `;
 
 export const CoinsIcon = styled.img`
@@ -91,6 +91,12 @@ export const ProgressContainer = styled.div`
   margin: 0 0 10px 0;
 `; 
 
+export const ProgressText = styled.p`
+  font-size: 10px;
+  margin: 0 2px 4px 0;
+  color: ${props => props.theme.textColor};
+`;
+
 export const ProgressBar = styled.div`
   height: 8px;
   width: 100%;
@@ -102,12 +108,6 @@ export const ProgressFiller = styled.div`
   width: 100%;
   height: 100%;
   transition: width 0.5s linear;
-`;
-
-export const ProgressText = styled.p`
-  font-size: 10px;
-  margin: 0 2px 4px 0;
-  color: ${props => props.theme.textColor};
 `;
 
 // Profile 
@@ -150,14 +150,6 @@ export const DaysText = styled.div`
 	@media (min-width: 768px) {
 		font-size: 13px;
 	}
-`;
-
-export const BottomContainer = styled.div`
-	display: flex;
-  flex-direction: column;
-	justify-content: center;
-  margin: 0 10px;
-  width: 100%;
 `;
 
 export const Items = styled.div`
@@ -225,19 +217,6 @@ export const ItemsTitle = styled.p`
 `;
 
 // InvestmentProfile
-export const SellButton = styled.button`
-	background-color: ${props => props.theme.primary};
-	border: 2px solid ${(props) => props.theme.secondary};
-	color: ${props => props.theme.textColor};
-	font-size: 14px;
-	margin-top: 7px;
-	padding: 5px;
-	width: fit-content;
-	:hover {
-		background-color: ${props => props.theme.secondary};
-	}
-`;
-
 export const InvestmentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -254,12 +233,10 @@ export const InvestmentChange = styled(InvestmentText)`
 	margin: 2px 0 5px 3px;
 `;
 
-export const IconUp = styled(FaArrowUp)`
-	margin: 4px 5px 0 0;
-`;
-
-export const IconDown = styled(FaArrowDown)`
-	margin: 4px 5px 0 0;
+export const ChangeBox = styled.span`
+	display: flex;
+	align-items: center;
+	margin: 0;
 `;
 
 export const ValueChange = styled(InvestmentText)`
@@ -272,10 +249,25 @@ export const ValueChange = styled(InvestmentText)`
 	};
 `;
 
-export const ChangeBox = styled.span`
-	display: flex;
-	align-items: center;
-	margin: 0;
+export const IconUp = styled(FaArrowUp)`
+	margin: 4px 5px 0 0;
+`;
+
+export const IconDown = styled(FaArrowDown)`
+	margin: 4px 5px 0 0;
+`;
+
+export const SellButton = styled.button`
+	background-color: ${props => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${props => props.theme.textColor};
+	font-size: 14px;
+	margin-top: 7px;
+	padding: 5px;
+	width: fit-content;
+	:hover {
+		background-color: ${props => props.theme.secondary};
+	}
 `;
 
 // Energy Profile
