@@ -188,8 +188,15 @@ export const Icon1 = styled(FaFish)`
 	opacity: 0.5;
 	color: #73bed9;
 `;
+
+export const HidePhone = styled.div`
+	display: none;
+	@media (min-width: 768px) {
+		display: flex;
+	}
+`;
 export const FishWrapper13 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -204,14 +211,14 @@ export const FishWrapper13 = styled.button`
 	}
 `;
 export const Icon13 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 40px;
 		opacity: 0.5;
 		color: #73bed9;
 	}
 `;
 export const FishWrapper14 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -226,7 +233,7 @@ export const FishWrapper14 = styled.button`
 	}
 `;
 export const Icon14 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 40px;
 		opacity: 0.5;
 		color: #73bed9;
@@ -234,7 +241,7 @@ export const Icon14 = styled(FaFish)`
 `;
 
 export const FishWrapper15 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -249,14 +256,14 @@ export const FishWrapper15 = styled.button`
 	}
 `;
 export const Icon15 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 60px;
 		opacity: 0.5;
 		color: #73bed9;
 	}
 `;
 export const FishWrapper16 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -271,14 +278,14 @@ export const FishWrapper16 = styled.button`
 	}
 `;
 export const Icon16 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 50px;
 		opacity: 0.5;
 		color: #73bed9;
 	}
 `;
 export const FishWrapper17 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -293,14 +300,14 @@ export const FishWrapper17 = styled.button`
 	}
 `;
 export const Icon17 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 40px;
 		opacity: 0.5;
 		color: #73bed9;
 	}
 `;
 export const FishWrapper18 = styled.button`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		z-index: 2;
 		opacity: 0.8;
 		position: absolute;
@@ -315,29 +322,29 @@ export const FishWrapper18 = styled.button`
 	}
 `;
 export const Icon18 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 40px;
 		opacity: 0.5;
 		color: #73bed9;
 	}
 `;
 export const FishWrapper19 = styled.button`
-	@media (min-width: 500px) {
-		z-index: 2;
-		opacity: 0.8;
-		position: absolute;
-		background-color: transparent;
-		right: 65%;
-		top: 70%;
-		left: 35%;
-		animation: ${Roller3} 12s linear infinite;
-		&:disabled {
-			opacity: 0;
-		}
+	@media (min-width: 768px) {
+	z-index: 2;
+	opacity: 0.8;
+	position: absolute;
+	background-color: transparent;
+	right: 65%;
+	top: 70%;
+	left: 35%;
+	animation: ${Roller3} 12s linear infinite;
+	&:disabled {
+		opacity: 0;
 	}
+	)
 `;
 export const Icon19 = styled(FaFish)`
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		font-size: 40px;
 		opacity: 0.5;
 		color: #73bed9;

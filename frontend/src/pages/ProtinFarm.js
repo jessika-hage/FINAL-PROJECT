@@ -64,6 +64,7 @@ import {
 	RoundWrapper,
 	RoundWrapper2,
 	RoundWrapper3,
+	HidePhone,
 } from '../components/farm/Styling';
 
 export const ProtinFarm = () => {
@@ -263,28 +264,30 @@ export const ProtinFarm = () => {
 					<FishWrapper12 onClick={() => setDisabled12(true)} disabled={disabled12}>
 						<Icon12 onClick={onClick12} />
 					</FishWrapper12>
-					<FishWrapper13 onClick={() => setDisabled13(true)} disabled={disabled13}>
-						<Icon13 onClick={onClick13} />
-					</FishWrapper13>
-					<FishWrapper14 onClick={() => setDisabled14(true)} disabled={disabled14}>
-						<Icon14 onClick={onClick14} />
-					</FishWrapper14>
-					<FishWrapper15 onClick={() => setDisabled15(true)} disabled={disabled15}>
-						<Icon15 onClick={onClick15} />
-					</FishWrapper15>
-					<FishWrapper16 onClick={() => setDisabled16(true)} disabled={disabled16}>
-						<Icon16 onClick={onClick16} />
-					</FishWrapper16>
-					<FishWrapper17 onClick={() => setDisabled17(true)} disabled={disabled17}>
-						<Icon17 onClick={onClick17} />
-					</FishWrapper17>
-					<FishWrapper18 onClick={() => setDisabled18(true)} disabled={disabled18}>
-						<Icon18 onClick={onClick18} />
-					</FishWrapper18>
-					<FishWrapper19 onClick={() => setDisabled19(true)} disabled={disabled19}>
-						<Icon19 onClick={onClick19} />
-					</FishWrapper19>
 
+					<HidePhone>
+						<FishWrapper13 onClick={() => setDisabled13(true)} disabled={disabled13}>
+							<Icon13 onClick={onClick13} />
+						</FishWrapper13>
+						<FishWrapper14 onClick={() => setDisabled14(true)} disabled={disabled14}>
+							<Icon14 onClick={onClick14} />
+						</FishWrapper14>
+						<FishWrapper15 onClick={() => setDisabled15(true)} disabled={disabled15}>
+							<Icon15 onClick={onClick15} />
+						</FishWrapper15>
+						<FishWrapper16 onClick={() => setDisabled16(true)} disabled={disabled16}>
+							<Icon16 onClick={onClick16} />
+						</FishWrapper16>
+						<FishWrapper17 onClick={() => setDisabled17(true)} disabled={disabled17}>
+							<Icon17 onClick={onClick17} />
+						</FishWrapper17>
+						<FishWrapper18 onClick={() => setDisabled18(true)} disabled={disabled18}>
+							<Icon18 onClick={onClick18} />
+						</FishWrapper18>
+						<FishWrapper19 onClick={() => setDisabled19(true)} disabled={disabled19}>
+							<Icon19 onClick={onClick19} />
+						</FishWrapper19>
+					</HidePhone>
 					<RoundWrapper>
 						<Round1></Round1>
 					</RoundWrapper>
