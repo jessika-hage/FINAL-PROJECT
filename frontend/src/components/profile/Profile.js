@@ -17,10 +17,14 @@ import {
 	DaysText, 
 	Items,
 	Investments,
+	InfoIcon,
+	InfoDialog,
+	CloseIcon,
 	ContainerTitle } from './Styling';
 
 export const Profile = () => {
 	const [openSettings, setOpenSettings] = useState(false);
+	const [openInfo, setOpenInfo] = useState(false);
 	const username = useSelector((store) => store.profile.username);
 	const avatar = useSelector((store) => store.profile.avatar);
 	const createdAt = useSelector((store) => store.profile.createdAt);
@@ -44,7 +48,11 @@ export const Profile = () => {
 
 	const toggleSettings = () => {
 		setOpenSettings(!openSettings)
-	}
+	};
+
+	const toggleInfo = () => {
+		setOpenInfo(!openInfo);
+	};
 
 	return (
 		<ProfileContainer>
@@ -69,7 +77,14 @@ export const Profile = () => {
 				{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
 			</Items>
 			<Investments>
-				<ContainerTitle>My investments</ContainerTitle>
+				<ContainerTitle>My investments 
+					<InfoIcon onClick={toggleInfo} />
+				</ContainerTitle>
+				<Dialog open={openInfo} onClose={toggleInfo}>
+					<InfoDialog>If you sell your investment with more than 10% up, your ranking will gå up 0.5!
+						<CloseIcon onClick={toggleInfo} />
+					</InfoDialog>
+				</Dialog>
 				<InvestmentProfile />
 			</Investments>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />

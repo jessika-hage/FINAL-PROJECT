@@ -5,7 +5,7 @@ height: 100vh;
 width: 100%;
 display: flex;
 justify-content: center;
-position: fixed;
+position: relative;
 padding-top: 10px;
 color: ${(props) => props.theme.textColor};
 background-color: ${(props) => props.theme.backgroundColor};
@@ -76,6 +76,12 @@ export const GameContainer = styled.div`
   color: ${props => props.theme.textColor};
   padding: 20px 10px;
   margin-top: 100px;
+  @media (max-height: 569px) {
+    margin-top: 550px;
+  }
+  @media (max-height: 667px) {
+    margin-top: 160px;
+  }
   @media (min-width: 768px) {
     margin-top: -20px;
     max-width: 90%;
@@ -86,7 +92,7 @@ export const GameContainer = styled.div`
   }
   @media (min-width: 1400px) {
     max-width: 70%;
-    margin-top: 0;
+    margin-top: -100px;
   }
 `; 
 

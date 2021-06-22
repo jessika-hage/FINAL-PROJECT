@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Button } from './Styling';
+import { CollectButton } from './Styling';
 
 export const ResetButton = ({ resetButton, onClick, buttonText }) => {
   return (
-    <Button
+    <CollectButton
       ref={resetButton}
       onClick={onClick}>
       {buttonText}
-    </Button>
+    </CollectButton>
   )
 };

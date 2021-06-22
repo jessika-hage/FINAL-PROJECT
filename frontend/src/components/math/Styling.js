@@ -181,3 +181,10 @@ export const SendButton = styled(Button)`
   padding: 10px 10px;
   font-size: 14px;
 `;
+
+export const CollectButton = styled(Button)`
+  padding: 10px 15px;
+  margin-top: 10px;
+  background-color: ${(props) => props.theme.primary};
+  border: 2px solid ${(props) => props.theme.hover};
+`;

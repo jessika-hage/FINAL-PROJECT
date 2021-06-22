@@ -112,8 +112,7 @@ export const DialogText = styled.p`
 
 export const Button = styled.button`
 	padding: 10px 15px;
-	margin-top: 20px;
-  margin: 20px;
+	margin: 20px 10px;
   background-color: ${props => props.theme.secondary};
 	color: ${(props) => props.theme.textColor};
 	font-size: 16px;
@@ -125,6 +124,13 @@ export const Button = styled.button`
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
+
+export const CollectButton = styled(Button)`
+  margin-top: 20px;
+  background-color: ${(props) => props.theme.primary};
+  border: 2px solid ${(props) => props.theme.hover};
+`;
+
 
 // TriviaStart
 export const Text = styled.h2`

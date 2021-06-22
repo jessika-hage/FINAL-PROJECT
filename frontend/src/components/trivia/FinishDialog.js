@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
 
-import { DialogContainer, DialogText, Button } from './Styling';
+import { DialogContainer, DialogText, CollectButton } from './Styling';
 
 export const FinishDialog = ({ 
 	open, 
@@ -13,7 +13,7 @@ export const FinishDialog = ({
 		<Dialog open={open}>
 			<DialogContainer>
 				<DialogText>You managed to get {endText} correct answers!</DialogText>
-				<Button onClick={onClick}>{buttonText}</Button>
+				<CollectButton onClick={onClick}>{buttonText}</CollectButton>
 			</DialogContainer>
 		</Dialog>
 	);

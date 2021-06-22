@@ -44,7 +44,7 @@ export const InvestmentProfile = () => {
 		dispatch(updateInvestments(-investmentQuantity, -investments));
 		dispatch(updateCoins(totalMarketValue));
 		if (percentDifference > 10) {
-			dispatch(updateRanking(1));
+			dispatch(updateRanking(0.5));
 		}
 	};
 

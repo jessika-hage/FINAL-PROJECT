@@ -2,12 +2,12 @@ import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
 
 const X = keyframes`
-  0% {
-            transform: translate(-100px, 0);
-  }
-  100% {
-            transform: translate(100px, 0)
-  }
+  0% { 
+		transform: translate(-100px, 0) 
+	};
+  100% { 
+		transform: translate(100px, 0) 
+	};
 `;
 
 const Y = keyframes`
@@ -24,29 +24,26 @@ const Y = keyframes`
 
 const Roller = keyframes`
 	0% {
-		transform: translate(200, 0);
+		transform: translate(200, 0)
 		transform: rotate(-90deg);
 	}
   10% {
-    transform: translate(-80px, 800);
+    transform: translate(-80px, 800)
   }
 	25% {
-		
-    transform: translate(-200px, -500px);
-		
+    transform: translate(-200px, -500px)
   }
   50% {
-    transform: translate(-500px, 110px);
+    transform: translate(-500px, 110px)
 		transform: rotate(-180deg);
   }
   75% {
-    transform: translate(200, 600px);
-		
+    transform: translate(200, 600px)
   }
 	100% {
 		transform: translate(50, 0)
 	}
-	;`;
+`;
 
 export const RoundWrapper = styled.div`
 	margin-top: 60%;
@@ -74,6 +71,7 @@ export const RoundWrapper2 = styled(RoundWrapper)`
 		margin-top: 22%;
 	}
 `;
+
 export const RoundWrapper3 = styled(RoundWrapper)`
 	animation: ${X} 3s ease-in-out alternate infinite 0s both;
 	@media (min-width: 500px) {
@@ -86,6 +84,7 @@ export const RoundWrapper3 = styled(RoundWrapper)`
 		margin-top: 22%;
 	}
 `;
+
 export const Round1 = styled.div`
 	z-index: 7;
 	border-top: 2px solid #fff;
@@ -102,6 +101,7 @@ export const Round1 = styled.div`
 		width: 2500px;
 	}
 `;
+
 export const Round2 = styled(Round1)`
 	z-index: 7;
 	animation: ${Y} 4s linear infinite 0s;
@@ -113,6 +113,7 @@ export const Round2 = styled(Round1)`
 		width: 2400px;
 	}
 `;
+
 export const Round3 = styled(Round1)`
 	animation: ${Y} 4s linear infinite 0s;
 	width: 450px;
@@ -145,7 +146,7 @@ const Roller2 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-	;`;
+`;
 
 const Roller3 = keyframes`
 	0% {
@@ -168,7 +169,7 @@ const Roller3 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-	;`;
+`;
 
 //Fishes for desktop
 export const FishWrapper1 = styled.button`
@@ -183,6 +184,7 @@ export const FishWrapper1 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon1 = styled(FaFish)`
 	font-size: 40px;
 	opacity: 0.5;
@@ -195,6 +197,7 @@ export const HidePhone = styled.div`
 		display: flex;
 	}
 `;
+
 export const FishWrapper13 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -210,6 +213,7 @@ export const FishWrapper13 = styled.button`
 		}
 	}
 `;
+
 export const Icon13 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -217,6 +221,7 @@ export const Icon13 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
+
 export const FishWrapper14 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -232,6 +237,7 @@ export const FishWrapper14 = styled.button`
 		}
 	}
 `;
+
 export const Icon14 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -255,6 +261,7 @@ export const FishWrapper15 = styled.button`
 		}
 	}
 `;
+
 export const Icon15 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 60px;
@@ -262,6 +269,7 @@ export const Icon15 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
+
 export const FishWrapper16 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -277,6 +285,7 @@ export const FishWrapper16 = styled.button`
 		}
 	}
 `;
+
 export const Icon16 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 50px;
@@ -284,6 +293,7 @@ export const Icon16 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
+
 export const FishWrapper17 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -299,6 +309,7 @@ export const FishWrapper17 = styled.button`
 		}
 	}
 `;
+
 export const Icon17 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -306,6 +317,7 @@ export const Icon17 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
+
 export const FishWrapper18 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -321,6 +333,7 @@ export const FishWrapper18 = styled.button`
 		}
 	}
 `;
+
 export const Icon18 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -328,6 +341,7 @@ export const Icon18 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
+
 export const FishWrapper19 = styled.button`
 	@media (min-width: 768px) {
 	z-index: 2;
@@ -341,8 +355,9 @@ export const FishWrapper19 = styled.button`
 	&:disabled {
 		opacity: 0;
 	}
-	)
+	}
 `;
+
 export const Icon19 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -367,6 +382,7 @@ export const FishWrapper2 = styled.button`
 		height: 100px;
 	}
 `;
+
 export const Icon2 = styled(FaFish)`
 	font-size: 40px;
 	opacity: 0.5;
@@ -387,6 +403,7 @@ export const FishWrapper3 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon3 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -408,6 +425,7 @@ export const FishWrapper4 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon4 = styled(FaFish)`
 	font-size: 40px;
 	color: #73bed9;
@@ -429,6 +447,7 @@ export const FishWrapper5 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon5 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -450,6 +469,7 @@ export const FishWrapper6 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon6 = styled(FaFish)`
 	font-size: 25px;
 	opacity: 0.5;
@@ -471,6 +491,7 @@ export const FishWrapper7 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon7 = styled(FaFish)`
 	font-size: 30px;
 	opacity: 0.5;
@@ -490,6 +511,7 @@ export const FishWrapper8 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon8 = styled(FaFish)`
 	font-size: 30px;
 	opacity: 0.5;
@@ -509,6 +531,7 @@ export const FishWrapper9 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon9 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -520,6 +543,7 @@ export const Icon10 = styled(FaFish)`
 	opacity: 0.5;
 	font-size: 50px;
 `;
+
 export const FishWrapper10 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -533,11 +557,13 @@ export const FishWrapper10 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon11 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
 	font-size: 50px;
 `;
+
 export const FishWrapper11 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -551,11 +577,13 @@ export const FishWrapper11 = styled.button`
 		opacity: 0;
 	}
 `;
+
 export const Icon12 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
 	font-size: 50px;
 `;
+
 export const FishWrapper12 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -587,11 +615,13 @@ export const ScoreText = styled(GameTitle)`
 		font-size: 20px;
 	}
 `;
+
 export const CounterText = styled(ScoreText)`
 	z-index: 5;
 	top: 105px;
 	left: 22px;
 `;
+
 export const TransparentWrapper = styled.button`
 	z-index: 5;
 	background: transparent;
@@ -653,6 +683,7 @@ export const DialogContainer = styled.div`
 	border: 2px solid ${(props) => props.theme.secondary};
 	color: ${(props) => props.theme.textColor};
 `;
+
 export const StartButton = styled.button`
 	padding: 10px 15px;
 	margin-top: 20px;

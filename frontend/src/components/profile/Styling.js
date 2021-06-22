@@ -1,5 +1,10 @@
 import styled, { keyframes } from 'styled-components';
-import { FaArrowUp, FaArrowDown, FaExclamationTriangle } from 'react-icons/fa';
+import { 
+	FaArrowUp, 
+	FaArrowDown, 
+	FaExclamationTriangle, 
+	FaTimes, 
+	FaInfoCircle } from 'react-icons/fa';
 
 // Profile Stats
 export const ImageNameContainer = styled.div`
@@ -167,6 +172,9 @@ export const Investments = styled(Items)`
 export const ContainerTitle = styled(Username)`
 	font-size: 15px;
 	margin: 7px 0 5px 3px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 `;
 
 // Buttons
@@ -223,6 +231,14 @@ export const InvestmentContainer = styled.div`
 	font-family: 'Open Sans', serif;
 `;
 
+export const InfoIcon = styled(FaInfoCircle)`
+	font-size: 14px;
+	cursor: pointer;
+	:hover {
+		transform: scale(1.1);
+	}
+`;
+
 export const InvestmentText = styled(ItemsTitle)`
 	margin: 2px;
 `;
@@ -267,6 +283,28 @@ export const SellButton = styled.button`
 	width: fit-content;
 	:hover {
 		background-color: ${props => props.theme.secondary};
+	}
+`;
+
+export const InfoDialog = styled.div`
+	padding: 10px;
+	font-size: 14px;
+	max-width: 300px;
+	position: relative;
+	background-color: ${props => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${props => props.theme.textColor};
+`;
+
+
+export const CloseIcon = styled(FaTimes)`
+	font-size: 17px;
+	cursor: pointer;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	:hover {
+		transform: scale(1.2);
 	}
 `;
 

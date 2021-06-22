@@ -42,7 +42,7 @@ export const EnergyProfile = () => {
 
 	return (
 		<EnergyContainer>
-			<EnergyText>My average intake: {averageEnergy} kcal 
+			<EnergyText>My average intake: {averageEnergy.toFixed(0)} kcal 
 				{alert && <AlertIcon onClick={onToggleDialog}></AlertIcon>}
 			</EnergyText>
 			<Dialog open={open} onClose={onToggleDialog}>
