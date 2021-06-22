@@ -58,6 +58,9 @@ export const RoundWrapper = styled.div`
 	@media (min-width: 1200px) {
 		margin-top: 25%;
 	}
+	@media (min-width: 2000px) {
+		margin-top: 22%;
+	}
 `;
 export const RoundWrapper2 = styled(RoundWrapper)`
 	animation: ${X} 2s ease-in-out alternate infinite 0s both;
@@ -67,6 +70,9 @@ export const RoundWrapper2 = styled(RoundWrapper)`
 	@media (min-width: 1200px) {
 		margin-top: 25%;
 	}
+	@media (min-width: 2000px) {
+		margin-top: 22%;
+	}
 `;
 export const RoundWrapper3 = styled(RoundWrapper)`
 	animation: ${X} 3s ease-in-out alternate infinite 0s both;
@@ -75,6 +81,9 @@ export const RoundWrapper3 = styled(RoundWrapper)`
 	}
 	@media (min-width: 1200px) {
 		margin-top: 25%;
+	}
+	@media (min-width: 2000px) {
+		margin-top: 22%;
 	}
 `;
 export const Round1 = styled.div`
@@ -89,6 +98,9 @@ export const Round1 = styled.div`
 	@media (min-width: 500px) {
 		width: 1200px;
 	}
+	@media (min-width: 2000px) {
+		width: 2500px;
+	}
 `;
 export const Round2 = styled(Round1)`
 	z-index: 7;
@@ -97,12 +109,18 @@ export const Round2 = styled(Round1)`
 	@media (min-width: 500px) {
 		width: 800px;
 	}
+	@media (min-width: 2000px) {
+		width: 2400px;
+	}
 `;
 export const Round3 = styled(Round1)`
 	animation: ${Y} 4s linear infinite 0s;
 	width: 450px;
 	@media (min-width: 500px) {
 		width: 1100px;
+	}
+	@media (min-width: 2000px) {
+		width: 1800px;
 	}
 `;
 
