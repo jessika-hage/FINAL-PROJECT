@@ -133,7 +133,7 @@ const Roller2 = keyframes`
     transform: translate(-120px, 770);
   }
 	25% {
-    transform: translate(100px, -160px);
+    transform: translate(100px, -250px);
   }
   50% {
     transform: translate(0, 0);
@@ -147,6 +147,30 @@ const Roller2 = keyframes`
 	}
 	;`;
 
+const Roller3 = keyframes`
+	0% {
+		transform: translate(0, 0);
+		transform: rotate(-90deg);
+	}
+  10% {
+    transform: translate(-200px, 900);
+  }
+	25% {
+    transform: translate(300px, -700px);
+  }
+  50% {
+    transform: translate(0, 0);
+		transform: rotate(90deg);
+  }
+  75% {
+    transform: translate(200, 500px);
+  }
+	100% {
+		transform: translate(0, 0)
+	}
+	;`;
+
+//Fishes for desktop
 export const FishWrapper1 = styled.button`
 	opacity: 0.8;
 	position: absolute;
@@ -163,6 +187,161 @@ export const Icon1 = styled(FaFish)`
 	font-size: 40px;
 	opacity: 0.5;
 	color: #73bed9;
+`;
+export const FishWrapper13 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 45%;
+		top: 70%;
+		left: 55%;
+		animation: ${Roller3} 6s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon13 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 40px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+export const FishWrapper14 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 30%;
+		top: 60%;
+		left: 70%;
+		animation: ${Roller3} 8s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon14 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 40px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+
+export const FishWrapper15 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 78%;
+		top: 67%;
+		left: 23%;
+		animation: ${Roller3} 5s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon15 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 60px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+export const FishWrapper16 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 60%;
+		top: 60%;
+		left: 40%;
+		animation: ${Roller3} 11s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon16 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 50px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+export const FishWrapper17 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 55%;
+		top: 65%;
+		left: 45%;
+		animation: ${Roller3} 6s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon17 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 40px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+export const FishWrapper18 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 30%;
+		top: 60%;
+		left: 70%;
+		animation: ${Roller3} 8s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon18 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 40px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
+`;
+export const FishWrapper19 = styled.button`
+	@media (min-width: 500px) {
+		z-index: 2;
+		opacity: 0.8;
+		position: absolute;
+		background-color: transparent;
+		right: 65%;
+		top: 70%;
+		left: 35%;
+		animation: ${Roller3} 12s linear infinite;
+		&:disabled {
+			opacity: 0;
+		}
+	}
+`;
+export const Icon19 = styled(FaFish)`
+	@media (min-width: 500px) {
+		font-size: 40px;
+		opacity: 0.5;
+		color: #73bed9;
+	}
 `;
 
 export const FishWrapper2 = styled.button`
@@ -423,6 +602,9 @@ export const BackgroundWater = styled.div`
 	height: 50%;
 	background-color: #9de2fa;
 	opacity: 1;
+	@media (min-width: 2000px) {
+		height: 50%;
+	}
 `;
 
 export const WaterContainer = styled.div`

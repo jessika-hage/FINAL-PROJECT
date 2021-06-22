@@ -22,6 +22,13 @@ import {
 	Icon10,
 	Icon11,
 	Icon12,
+	Icon13,
+	Icon14,
+	Icon15,
+	Icon16,
+	Icon17,
+	Icon18,
+	Icon19,
 	GameTitle,
 	ScoreText,
 	TransparentWrapper,
@@ -43,6 +50,13 @@ import {
 	FishWrapper10,
 	FishWrapper11,
 	FishWrapper12,
+	FishWrapper13,
+	FishWrapper14,
+	FishWrapper15,
+	FishWrapper16,
+	FishWrapper17,
+	FishWrapper18,
+	FishWrapper19,
 	BackgroundWater,
 	Round1,
 	Round2,
@@ -66,6 +80,13 @@ export const ProtinFarm = () => {
 	const [disabled10, setDisabled10] = useState(false);
 	const [disabled11, setDisabled11] = useState(false);
 	const [disabled12, setDisabled12] = useState(false);
+	const [disabled13, setDisabled13] = useState(false);
+	const [disabled14, setDisabled14] = useState(false);
+	const [disabled15, setDisabled15] = useState(false);
+	const [disabled16, setDisabled16] = useState(false);
+	const [disabled17, setDisabled17] = useState(false);
+	const [disabled18, setDisabled18] = useState(false);
+	const [disabled19, setDisabled19] = useState(false);
 	const [animation, setAnimation] = useState(false);
 
 	const accessToken = useSelector((store) => store.profile.accessToken);
@@ -154,6 +175,34 @@ export const ProtinFarm = () => {
 		setScore(score + 1);
 		setDisabled12(true);
 	};
+	const onClick13 = () => {
+		setScore(score + 1);
+		setDisabled12(true);
+	};
+	const onClick14 = () => {
+		setScore(score + 1);
+		setDisabled14(true);
+	};
+	const onClick15 = () => {
+		setScore(score + 1);
+		setDisabled15(true);
+	};
+	const onClick16 = () => {
+		setScore(score + 1);
+		setDisabled16(true);
+	};
+	const onClick17 = () => {
+		setScore(score + 1);
+		setDisabled17(true);
+	};
+	const onClick18 = () => {
+		setScore(score + 1);
+		setDisabled18(true);
+	};
+	const onClick19 = () => {
+		setScore(score + 1);
+		setDisabled19(true);
+	};
 
 	return (
 		<>
@@ -214,6 +263,27 @@ export const ProtinFarm = () => {
 					<FishWrapper12 onClick={() => setDisabled12(true)} disabled={disabled12}>
 						<Icon12 onClick={onClick12} />
 					</FishWrapper12>
+					<FishWrapper13 onClick={() => setDisabled13(true)} disabled={disabled13}>
+						<Icon13 onClick={onClick13} />
+					</FishWrapper13>
+					<FishWrapper14 onClick={() => setDisabled14(true)} disabled={disabled14}>
+						<Icon14 onClick={onClick14} />
+					</FishWrapper14>
+					<FishWrapper15 onClick={() => setDisabled15(true)} disabled={disabled15}>
+						<Icon15 onClick={onClick15} />
+					</FishWrapper15>
+					<FishWrapper16 onClick={() => setDisabled16(true)} disabled={disabled16}>
+						<Icon16 onClick={onClick16} />
+					</FishWrapper16>
+					<FishWrapper17 onClick={() => setDisabled17(true)} disabled={disabled17}>
+						<Icon17 onClick={onClick17} />
+					</FishWrapper17>
+					<FishWrapper18 onClick={() => setDisabled18(true)} disabled={disabled18}>
+						<Icon18 onClick={onClick18} />
+					</FishWrapper18>
+					<FishWrapper19 onClick={() => setDisabled19(true)} disabled={disabled19}>
+						<Icon19 onClick={onClick19} />
+					</FishWrapper19>
 
 					<RoundWrapper>
 						<Round1></Round1>
