@@ -2,43 +2,64 @@ import styled from 'styled-components';
 
 //MathGame - Main page
 export const MainContainer = styled.main`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
-	width: 100%;
-	height: 100vh;
-	overflow: auto;
-	margin: 0 0 200px 0;
-	position: relative;
-  padding-top: 50px;
-  @media (min-width: 768px) {
-    padding-top: 40px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  padding-top: 10px;
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const GameTitle = styled.h1`
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	text-transform: uppercase;
+  @media ( min-width: 768px) {
+    top: 10px;
   }
 `;
 
-export const MathTitle = styled.h1`
-	font-size: 30px;
-	color: ${(props) => props.theme.textColor};
-	text-transform: uppercase;
+export const ScoreText = styled(GameTitle)`
+	font-size: 20px;
+	top: 75px;
+	left: 22px;
+  @media ( min-width: 768px) {
+    top: 60px;
+  }
+`;
+
+export const CounterText = styled(ScoreText)`
+	top: 100px;
+	left: 22px;
+  @media ( min-width: 768px) {
+    top: 85px;
+  }
 `;
 
 export const MathContainer = styled.div`
-	margin: 10px 20px;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.textColor};
-	background-color: ${(props) => props.theme.primary};
-	border: 4px solid ${(props) => props.theme.hover};
-	padding: 20px;
-	position: relative;
-	@media (min-width: 768px) {
-		max-width: 85%;
-		padding: 30px;
-		margin-top: 30px;
-	}
-	@media (min-width: 1400px) {
-		max-width: 70%;
-	}
+  margin: 200px 20px;
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.primary};
+  border: 4px solid ${(props) => props.theme.secondary};
+  padding: 20px;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 85%;
+  @media (min-width: 768px) {
+    max-width: 65%;
+    padding: 30px;
+    margin: 160px 20px;
+  }
+  @media (min-width: 1400px) {
+    max-width: 45%;
+  }
 `;
 
 export const TimerContainer = styled.div`
@@ -102,14 +123,26 @@ export const NumberInput = styled.input`
   `;
 
 // MathStart
-export const Container = styled.div`
+export const StartContainer = styled.div`
+  margin: 200px 20px;
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.primary};
+  border: 4px solid ${(props) => props.theme.hover};
+  padding: 20px;
   display: flex;
+  height: fit-content;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 10px;
-  margin: 10px;
+  max-width: 85%;
   @media (min-width: 768px) {
-    padding: 20px;
+    max-width: 65%;
+    padding: 30px;
+    margin: 160px 20px;
+  }
+  @media (min-width: 1400px) {
+    max-width: 45%;
   }
 `;
 
@@ -130,9 +163,8 @@ export const Button = styled.button`
   padding: 7px;
   margin-top: 20px;
   margin: 0 5px;
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.hover};
-  color: ${props => props.theme.textColor};
+  background-color: ${props => props.theme.secondary};
+  color: ${(props) => props.theme.textColor};
   font-size: 13px;
   text-transform: uppercase;
   font-family: "Trispace";
@@ -147,12 +179,5 @@ export const Button = styled.button`
 
 export const SendButton = styled(Button)`
   padding: 10px 10px;
-  background-color: ${props => props.theme.hover};
   font-size: 14px;
-  :hover {
-    background-color: ${props => props.theme.primary};
-  }
-  @media (min-width: 768px) {
-    font-size: 16px;
-  }
 `;

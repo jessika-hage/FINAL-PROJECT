@@ -32,7 +32,10 @@ export const ChooseText = styled.p`
   color: ${props => props.theme.textColor};
   text-transform: uppercase;
   font-size: 14px;
-  margin-top: 30px;
+  margin: 15px 0 5px 0;
+  @media (min-width: 768px) {
+    margin: 20px 0 5px 0;
+  }
 `;
 
 // TextInput for Sign Up
@@ -77,7 +80,7 @@ export const Button = styled.button`
   color: ${props => props.theme.textColor};
   text-transform: uppercase;
   font-family: 'Trispace';
-  margin-top: 35px;
+  margin-top: 25px;
   :hover {
 	opacity: 0.7;
   }
@@ -125,18 +128,18 @@ export const ErrorMessageSignUp = styled.p`
   font-size: 12px;
   margin: 0;
   position: absolute;
-  bottom: 63%;
+  bottom: 53%;
   @media (min-width: 768px) {
-    bottom: 65%;
+    bottom: 57%;
   }
 `;
 
 export const EyeButtonSignUp = styled(EyeButton)`
-  bottom: 70%;
+  bottom: 60%;
   right: 5%;
   animation: none;
   @media (min-width: 768px) {
-    bottom: 72%;
+    bottom: 63%;
     right: 18%;
   }
 `;
@@ -146,6 +149,7 @@ export const ChangeText = styled.p`
   color: ${props => props.theme.textColor};
   text-transform: uppercase;
   font-size: 14px;
+  margin-bottom: 25px;
 `;
 
 export const ChangeLink = styled(Link)`

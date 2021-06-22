@@ -177,8 +177,6 @@ export const SignUp = () => {
 								/>
 							))}
 						</AvatarContainer>
-						<ChooseText>Color your spaceship:</ChooseText>
-						<ThemeButtons />
 						<SubmitButton
 							type='submit'
 							onClick={() => setMode('signup')}
@@ -190,6 +188,8 @@ export const SignUp = () => {
 							linkText='Board ship here!'
 						/>
 					</Form>
+					<ChooseText>Color your spaceship:</ChooseText>
+					<ThemeButtons />
 				</>
 			)}
 		</MainContainer>

@@ -13,17 +13,16 @@ import { MathStart } from '../components/math/MathStart';
 
 import { 
 	MainContainer, 
-	MathTitle, 
+	GameTitle, 
+	ScoreText,
+	CounterText,
 	MathContainer, 
-	TimerContainer, 
-	MathProblem, 
-	StatusText } from '../components/math/Styling';
+	MathProblem } from '../components/math/Styling';
 
 export const MathGame = () => {
 	const [openFinish, setOpenFinish] = useState(false);
 	const [start, setStart] = useState(false);
 	const [score, setScore] = useState(0);
-	const [mistakes, setMistakes] = useState(0);
 	const [counter, setCounter] = useState(null);
 	const [easy, setEasy] = useState(false);
 	const [medium, setMedium] = useState(false);
@@ -55,10 +54,10 @@ export const MathGame = () => {
 
 	// Opens dialog when game is finished
 	useEffect(() => {
-		if (mistakes === 3 || counter === 0) {
+		if (counter === 0) {
 			setOpenFinish(true);
 		}
-	}, [mistakes, counter]);
+	}, [counter]);
 
 	// Functions for difficulty level
 	const onClickEasy = () => {
@@ -101,7 +100,6 @@ export const MathGame = () => {
 			if (medium) setCurrentProblem(generateProblem(20))
 			if (hard) setCurrentProblem(generateProblem(30))
 		} else {
-			setMistakes((prev) => prev + 1);
 			setShowError(true);
 			setTimeout(() => setShowError(false), 400);
 		}
@@ -130,42 +128,41 @@ export const MathGame = () => {
 	};
 
 	return (
-		<MainContainer>
+		<>
 			<Header />
 			<Camera />
-			<MathTitle>Classroom</MathTitle>
-			<MathContainer>
-				{!start ?
-					<MathStart 
-						easy={onClickEasy} 
-						medium={onClickMedium} 
-						hard={onClickHard} />
-					:
-					<>
-						<TimerContainer>00:{counter.toString().padStart(2, '0')}</TimerContainer>
-						<MathProblem wrongAnswer={showError}>
-							{currentProblem.numberOne} {currentProblem.operator}{' '}
-							{currentProblem.numberTwo}
-						</MathProblem>
-						<MathForm
-							handleSubmit={handleSubmit}
-							answerField={answerField}
-							value={userAnswer}
-							onChange={(e) => setUserAnswer(e.target.value)} />
-						<StatusText>
-							You have {score} points, and can make {3 - mistakes}{' '}
-							more mistakes.
-						</StatusText>
-						<FinishGame
-							open={openFinish}
-							endText={!hard ? score : score * 2}
-							resetButton={resetButton}
-							onClick={resetGame}
-							buttonText={score > 0 ? 'Collect badges' : 'Try again later'}	/> 
-					</>
-				}
-			</MathContainer>
-			{ animation && <BadgesAnimation text={!hard ? score : score * 2} /> }
-		</MainContainer>
+			<MainContainer>
+				<GameTitle>Classroom</GameTitle>
+					{!start ?
+						<MathStart 
+							easy={onClickEasy} 
+							medium={onClickMedium} 
+							hard={onClickHard} />
+						:
+						<>
+							<ScoreText>Score: {score}</ScoreText>
+							<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+							<MathContainer>
+								<MathProblem wrongAnswer={showError}>
+									{currentProblem.numberOne} {currentProblem.operator}{' '}
+									{currentProblem.numberTwo}
+								</MathProblem>
+								<MathForm
+									handleSubmit={handleSubmit}
+									answerField={answerField}
+									value={userAnswer}
+									onChange={(e) => setUserAnswer(e.target.value)} />
+								<FinishGame
+									open={openFinish}
+									endText={!hard ? score : score * 2}
+									resetButton={resetButton}
+									onClick={resetGame}
+									buttonText={score > 0 ? 'Collect badges' : 'Try again later'}	/>
+							</MathContainer> 
+						</>
+					}
+				{ animation && <BadgesAnimation text={!hard ? score : score * 2} /> }
+			</MainContainer>
+		</>
 	);
 };

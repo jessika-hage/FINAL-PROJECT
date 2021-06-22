@@ -58,7 +58,7 @@ export const RoomRestaurant = styled(RoomBedroom)`
 	z-index: 1;
 `;
 
-export const RoomGarden = styled(Link)`
+export const RoomQuiz = styled.div`
 	grid-column: 4 / span 3;
 	grid-row: 1 / span 3;
 	border-radius: 0px;

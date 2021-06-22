@@ -49,10 +49,10 @@ export const MemoryGame = () => {
 	};
 
 	return (
-		<MainContainer>
+		<>
 			<Header />
 			<Camera />
-			<div>
+			<MainContainer>
 				<MemoryBoard
 					gameStatus={gameStatus}
 					onGameUpdate={handleStatusUpdate}
@@ -65,8 +65,8 @@ export const MemoryGame = () => {
 						handleCollect={handleCollectBadges}
 					/>
 				)}
-			</div>
 			{animation && <BadgesAnimation text='10' />}
 		</MainContainer>
+		</>
 	);
 };

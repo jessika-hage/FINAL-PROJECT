@@ -58,7 +58,7 @@ export const Header = () => {
 				<Tooltip title='My Profile'>
 					<ProfilImg onClick={() => setOpenProfile(true)}>
 						<Avatar src={require(`../../assets/${avatar}.png`)} />
-						{alert && <Badge badgeContent={'!'} color='secondary' showZero></Badge>}
+						{alert && <Badge badgeContent={'!'} color='secondary'></Badge>}
 					</ProfilImg>
 				</Tooltip>
 			</IconsContainer>

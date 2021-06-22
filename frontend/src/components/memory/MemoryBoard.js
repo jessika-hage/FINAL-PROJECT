@@ -5,7 +5,7 @@ import { GetImages } from './GetImages';
 import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from './constants';
 import {
 	Container,
-	MemoryTitle,
+	GameTitle,
 	GameContainer,
 	FlipText,
 	GameGrid,
@@ -146,10 +146,11 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 	}, [deck, checkGameFinished, gameStatus, onGameUpdate]);
 
 	return (
+		<>
+		<GameTitle>Memory Game</GameTitle>
+		<FlipText>Flips: {flipCounter.current}</FlipText>
 		<Container>
-			<MemoryTitle>Memory Game</MemoryTitle>
 			<GameContainer>
-				<FlipText>Flips: {flipCounter.current}</FlipText>
 				<GameGrid>
 					{Object.entries(deck).map(([key, value]) => {
 						return (
@@ -164,5 +165,6 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 				</GameGrid>
 			</GameContainer>
 		</Container>
+		</>
 	);
 };

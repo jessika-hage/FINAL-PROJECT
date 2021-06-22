@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${props => props.theme.backgroundColor};
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow: auto;
-  margin: 0;  
-  padding-top: 40px;
-  padding-bottom: 100px;
-  @media (min-width: 768px) {
-    padding-top: 20px;
-  }
+height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+position: fixed;
+padding-top: 10px;
+color: ${(props) => props.theme.textColor};
+background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 // Memory Card
@@ -52,15 +46,25 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  @media (min-width: 768px) {
-    padding: 20px;
+`;
+
+export const GameTitle = styled.h1`
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	text-transform: uppercase;
+  @media ( min-width: 768px) {
+    top: 10px;
   }
 `;
 
-export const MemoryTitle = styled.h1`
-  font-size: 30px;
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
+export const FlipText = styled(GameTitle)`
+	font-size: 20px;
+	top: 75px;
+	left: 22px;
+  @media ( min-width: 768px) {
+    top: 60px;
+  }
 `;
 
 export const GameContainer = styled.div`
@@ -68,24 +72,23 @@ export const GameContainer = styled.div`
   flex-direction: column;
   position: relative;
   background-color: ${props => props.theme.primary};
-  border: 4px solid ${props => props.theme.hover};
+  border: 4px solid ${props => props.theme.secondary};
   color: ${props => props.theme.textColor};
   padding: 20px 10px;
+  margin-top: 100px;
+  @media (min-width: 768px) {
+    margin-top: -20px;
+    max-width: 90%;
+  }
   @media (min-width: 1024px) {
     max-width: 85%;
     padding: 30px;
   }
   @media (min-width: 1400px) {
     max-width: 70%;
+    margin-top: 0;
   }
 `; 
-
-export const FlipText = styled.p`
-  font-size: 16px;
-  position: absolute;
-  left: 20px;
-  top: 0;
-`;
 
 export const GameGrid = styled.div`
   display: flex;
