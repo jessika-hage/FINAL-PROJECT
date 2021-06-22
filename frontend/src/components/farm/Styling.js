@@ -49,34 +49,51 @@ const Roller = keyframes`
 	;`;
 
 export const RoundWrapper = styled.div`
-	margin-top: 240px;
+	margin-top: 60%;
 	position: absolute;
 	animation: ${X} 1s ease-in-out alternate infinite 0s both;
 	@media (min-width: 500px) {
-		margin-top: 350px;
+		margin-top: 45%;
+	}
+	@media (min-width: 1200px) {
+		margin-top: 25%;
 	}
 `;
 export const RoundWrapper2 = styled(RoundWrapper)`
 	animation: ${X} 2s ease-in-out alternate infinite 0s both;
+	@media (min-width: 500px) {
+		margin-top: 45%;
+	}
+	@media (min-width: 1200px) {
+		margin-top: 25%;
+	}
 `;
 export const RoundWrapper3 = styled(RoundWrapper)`
 	animation: ${X} 3s ease-in-out alternate infinite 0s both;
+	@media (min-width: 500px) {
+		margin-top: 50%;
+	}
+	@media (min-width: 1200px) {
+		margin-top: 25%;
+	}
 `;
 export const Round1 = styled.div`
-	z-index: 1;
+	z-index: 7;
+	border-top: 2px solid #fff;
 	background-color: #9de2fa;
 	border-radius: 100%;
 	height: 150px;
 	margin: 40px;
-	width: 400px;
+	width: 450px;
 	animation: ${Y} 3s linear infinite 0s;
 	@media (min-width: 500px) {
 		width: 1200px;
 	}
 `;
 export const Round2 = styled(Round1)`
+	z-index: 7;
 	animation: ${Y} 4s linear infinite 0s;
-	width: 450px;
+	width: 500px;
 	@media (min-width: 500px) {
 		width: 800px;
 	}
@@ -85,7 +102,7 @@ export const Round3 = styled(Round1)`
 	animation: ${Y} 4s linear infinite 0s;
 	width: 450px;
 	@media (min-width: 500px) {
-		width: 1200px;
+		width: 1100px;
 	}
 `;
 
@@ -113,7 +130,6 @@ const Roller2 = keyframes`
 	;`;
 
 export const FishWrapper1 = styled.button`
-	z-index: 5;
 	opacity: 0.8;
 	position: absolute;
 	background-color: transparent;
@@ -133,7 +149,6 @@ export const Icon1 = styled(FaFish)`
 
 export const FishWrapper2 = styled.button`
 	background-color: transparent;
-	z-index: 5;
 	opacity: 0.8;
 	animation: ${Roller2} 18s linear infinite;
 	top: 50%;
@@ -156,7 +171,6 @@ export const Icon2 = styled(FaFish)`
 
 export const FishWrapper3 = styled.button`
 	background-color: transparent;
-	z-index: 5;
 	opacity: 0.8;
 	animation: ${Roller} 15s linear infinite;
 	top: 75%;
@@ -177,7 +191,7 @@ export const Icon3 = styled(FaFish)`
 
 export const FishWrapper4 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 17s linear infinite;
 	top: 70%;
@@ -198,7 +212,7 @@ export const Icon4 = styled(FaFish)`
 
 export const FishWrapper5 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 11s linear infinite;
 	top: 70%;
@@ -219,7 +233,7 @@ export const Icon5 = styled(FaFish)`
 
 export const FishWrapper6 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 13s linear infinite;
 	top: 76%;
@@ -240,7 +254,7 @@ export const Icon6 = styled(FaFish)`
 
 export const FishWrapper7 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 15s linear infinite;
 	top: 63%;
@@ -261,7 +275,7 @@ export const Icon7 = styled(FaFish)`
 
 export const FishWrapper8 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 7s linear infinite;
 	top: 80%;
@@ -280,7 +294,7 @@ export const Icon8 = styled(FaFish)`
 
 export const FishWrapper9 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 1;
 	opacity: 0.8;
 	animation: ${Roller} 18s linear infinite;
 	top: 75%;
@@ -304,7 +318,7 @@ export const Icon10 = styled(FaFish)`
 `;
 export const FishWrapper10 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 13s linear infinite;
 	top: 73%;
@@ -322,7 +336,7 @@ export const Icon11 = styled(FaFish)`
 `;
 export const FishWrapper11 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 9s linear infinite;
 	top: 84%;
@@ -340,7 +354,7 @@ export const Icon12 = styled(FaFish)`
 `;
 export const FishWrapper12 = styled.button`
 	background-color: transparent;
-	z-index: 5;
+	z-index: 2;
 	opacity: 0.8;
 	animation: ${Roller} 8s linear infinite;
 	top: 70%;
@@ -384,7 +398,7 @@ export const TransparentWrapper = styled.button`
 `;
 
 export const BackgroundWater = styled.div`
-	z-index: 1;
+	z-index: 4;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
