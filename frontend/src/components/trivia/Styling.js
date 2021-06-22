@@ -40,7 +40,7 @@ export const CounterText = styled(ScoreText)`
 `;
 
 export const TriviaContainer = styled.div`
-	margin: 100px 20px;
+	margin: 160px 20px;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.textColor};
 	background-color: ${(props) => props.theme.primary};
@@ -51,19 +51,22 @@ export const TriviaContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 85%;
 	@media (min-width: 768px) {
-		max-width: 85%;
+		max-width: 65%;
 		padding: 30px;
-		margin-top: 130px;
 	}
 	@media (min-width: 1400px) {
-		max-width: 70%;
+		max-width: 45%;
 	}
 `;
 
 export const Question = styled.h3`
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -96,7 +99,8 @@ export const DialogContainer = styled.div`
 
 export const DialogText = styled.p`
 	font-size: 16px;
-  margin: 0 0 20px 0;
+  margin: 0;
+  text-align: center;
 `;
 
 export const Button = styled.button`

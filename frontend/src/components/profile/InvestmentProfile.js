@@ -14,19 +14,19 @@ import {
 } from './Styling';
 
 export const InvestmentProfile = () => {
+	const [currency, setCurrency] = useState([]);
 	const investments = useSelector((store) => store.profile.investments);
 	const investmentQuantity = useSelector(
 		(store) => store.profile.investmentQuantity
 	);
-	const [currency, setCurrency] = useState([]);
-
+	
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		fetchCoin();
 	}, []);
 
-	// Fetch one random currency
+	// Fetch one currency
 	const fetchCoin = () => {
 		fetch('https://api.coinlore.net/api/ticker/?id=32360')
 			.then((res) => res.json())

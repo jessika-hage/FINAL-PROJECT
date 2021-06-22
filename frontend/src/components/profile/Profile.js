@@ -15,7 +15,6 @@ import {
 	ProfileContainer, 
 	DaysContainer, 
 	DaysText, 
-	BottomContainer, 
 	Items,
 	Investments,
 	ContainerTitle } from './Styling';
@@ -61,20 +60,18 @@ export const Profile = () => {
 					Days to destination: {timeToDestination}
 				</DaysText>
 			</DaysContainer>
-			<BottomContainer>
-				<Items>
-					<ContainerTitle>My energy</ContainerTitle>
-					<EnergyProfile />
-				</Items>
-				<Items>
-					<ContainerTitle>My items</ContainerTitle>
-					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
-				</Items>
-				<Investments>
-					<ContainerTitle>My investments</ContainerTitle>
-					<InvestmentProfile />
-				</Investments>
-			</BottomContainer>
+			<Items>
+				<ContainerTitle>My energy</ContainerTitle>
+				<EnergyProfile />
+			</Items>
+			<Items>
+				<ContainerTitle>My items</ContainerTitle>
+				{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
+			</Items>
+			<Investments>
+				<ContainerTitle>My investments</ContainerTitle>
+				<InvestmentProfile />
+			</Investments>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />
 			<Dialog open={openSettings} onClose={toggleSettings}>
 				<Settings onClose={toggleSettings} />
