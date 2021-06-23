@@ -65,7 +65,7 @@ import {
 	RoundWrapper2,
 	RoundWrapper3,
 	HidePhone,
-} from '../components/farm/Styling';
+} from '../components/protinFarm/Styling';
 
 export const ProtinFarm = () => {
 	const [score, setScore] = useState(0);
