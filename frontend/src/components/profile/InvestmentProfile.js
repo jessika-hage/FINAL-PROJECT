@@ -15,7 +15,6 @@ import {
 	ValueChange,
 	IconUp,
 	IconDown,
-	ChangeBox,
 	ConfirmDialog,
 	ButtonBox
 } from './Styling';
@@ -74,16 +73,11 @@ export const InvestmentProfile = () => {
 					</InvestmentText>
 					<InvestmentChange>
 						Since purchase:
-						<ChangeBox>
-							<ValueChange percent={difference < 0}>
-								{investments > totalMarketValue ? <IconDown /> : <IconUp />}
-								{difference.toFixed(2)} $
-							</ValueChange>
-							<ValueChange percent={difference < 0}>
-								{investments > totalMarketValue ? <IconDown /> : <IconUp />}
-								{percentDifference.toFixed(2)} %
-							</ValueChange>
-						</ChangeBox>
+						<ValueChange percent={difference < 0}>
+							{investments > totalMarketValue ? <IconDown /> : <IconUp />}
+							{percentDifference.toFixed(2)}% 
+							({difference.toFixed(2)}$)
+						</ValueChange>
 					</InvestmentChange>
 					<SellButton onClick={onToggleConfirm}>Sell investment</SellButton>
 					<Dialog open={openConfirm} onClose={onToggleConfirm}>

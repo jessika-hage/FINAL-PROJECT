@@ -250,14 +250,8 @@ export const InvestmentChange = styled(InvestmentText)`
 	margin: 2px 0 5px 3px;
 `;
 
-export const ChangeBox = styled.span`
-	display: flex;
-	align-items: center;
-	margin: 0;
-`;
-
 export const ValueChange = styled(InvestmentText)`
-	margin: 5px 35px 0 0;
+	margin: 5px 5px 0 0;
 	${props =>
 		props.percent ?
 		`color: #e83715;`
@@ -267,11 +261,11 @@ export const ValueChange = styled(InvestmentText)`
 `;
 
 export const IconUp = styled(FaArrowUp)`
-	margin: 4px 5px 0 0;
+	margin: 0 5px -1px 0;
 `;
 
 export const IconDown = styled(FaArrowDown)`
-	margin: 4px 5px 0 0;
+	margin: 0 5px -1px 0;
 `;
 
 export const SellButton = styled.button`
