@@ -3,23 +3,24 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { updateBadges, updateHighscoreMath } from '../reducers/profile';
-import { MathForm } from '../components/math/MathForm';
+import { NumberInput } from '../components/classroom/NumberInput';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-import { FinishGame } from '../components/math/FinishGame';
+import { FinishGame } from '../components/classroom/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-import { generateProblem } from '../components/math/MathHelpers';
-import { MathStart } from '../components/math/MathStart';
+import { generateProblem } from '../components/classroom/Helpers';
+import { StartGame } from '../components/classroom/StartGame';
 
-import { 
-	MainContainer, 
-	GameTitle, 
+import {
+	MainContainer,
+	GameTitle,
 	ScoreText,
 	CounterText,
-	MathContainer, 
-	MathProblem } from '../components/math/Styling';
+	MathContainer,
+	MathProblem,
+} from '../components/math/Styling';
 
-export const MathGame = () => {
+export const Classroom = () => {
 	const [openFinish, setOpenFinish] = useState(false);
 	const [start, setStart] = useState(false);
 	const [score, setScore] = useState(0);
@@ -47,9 +48,8 @@ export const MathGame = () => {
 
 	//Initializing the timer
 	useEffect(() => {
-		const timer =
-			counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-			return () => clearInterval(timer);
+		const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+		return () => clearInterval(timer);
 	}, [counter]);
 
 	// Opens dialog when game is finished
@@ -61,21 +61,21 @@ export const MathGame = () => {
 
 	// Functions for difficulty level
 	const onClickEasy = () => {
-		setCurrentProblem(generateProblem(10))
+		setCurrentProblem(generateProblem(10));
 		setEasy(true);
 		setStart(true);
 		setCounter(40);
 	};
 
 	const onClickMedium = () => {
-		setCurrentProblem(generateProblem(20))
+		setCurrentProblem(generateProblem(20));
 		setMedium(true);
 		setStart(true);
 		setCounter(30);
 	};
 
 	const onClickHard = () => {
-		setCurrentProblem(generateProblem(30))
+		setCurrentProblem(generateProblem(30));
 		setHard(true);
 		setStart(true);
 		setCounter(25);
@@ -96,9 +96,9 @@ export const MathGame = () => {
 		if (correctAnswer === parseInt(userAnswer, 10)) {
 			setScore((prev) => prev + 1);
 			setUserAnswer('');
-			if (easy) setCurrentProblem(generateProblem(10))
-			if (medium) setCurrentProblem(generateProblem(20))
-			if (hard) setCurrentProblem(generateProblem(30))
+			if (easy) setCurrentProblem(generateProblem(10));
+			if (medium) setCurrentProblem(generateProblem(20));
+			if (hard) setCurrentProblem(generateProblem(30));
 		} else {
 			setShowError(true);
 			setTimeout(() => setShowError(false), 400);
@@ -107,24 +107,24 @@ export const MathGame = () => {
 
 	// Collecting badges
 	// Returning to main
-	const resetGame = () => {
+	const collectBadges = () => {
 		if (score > 0) {
 			if (score > highscore) {
 				dispatch(updateHighscoreMath(score));
 			}
-			if(hard === true) {
+			if (hard === true) {
 				dispatch(updateBadges(score * 2));
-			} else  {
+			} else {
 				dispatch(updateBadges(score));
 			}
-			setAnimation(true)
+			setAnimation(true);
 			setOpenFinish(false);
 			setTimeout(() => {
-				history.push('/')
-			}, 2000)
+				history.push('/');
+			}, 2000);
 		} else {
 			history.push('/');
-		}	
+		}
 	};
 
 	return (
@@ -133,35 +133,34 @@ export const MathGame = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Classroom</GameTitle>
-					{!start ?
-						<MathStart 
-							easy={onClickEasy} 
-							medium={onClickMedium} 
-							hard={onClickHard} />
-						:
-						<>
-							<ScoreText>Score: {score}</ScoreText>
-							<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-							<MathContainer>
-								<MathProblem wrongAnswer={showError}>
-									{currentProblem.numberOne} {currentProblem.operator}{' '}
-									{currentProblem.numberTwo}
-								</MathProblem>
-								<MathForm
-									handleSubmit={handleSubmit}
-									answerField={answerField}
-									value={userAnswer}
-									onChange={(e) => setUserAnswer(e.target.value)} />
-								<FinishGame
-									open={openFinish}
-									endText={!hard ? score : score * 2}
-									resetButton={resetButton}
-									onClick={resetGame}
-									buttonText={score > 0 ? 'Collect badges' : 'Try again later'}	/>
-							</MathContainer> 
-						</>
-					}
-				{ animation && <BadgesAnimation text={!hard ? score : score * 2} /> }
+				{!start ? (
+					<StartGame easy={onClickEasy} medium={onClickMedium} hard={onClickHard} />
+				) : (
+					<>
+						<ScoreText>Score: {score}</ScoreText>
+						<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+						<MathContainer>
+							<MathProblem wrongAnswer={showError}>
+								{currentProblem.numberOne} {currentProblem.operator}{' '}
+								{currentProblem.numberTwo}
+							</MathProblem>
+							<NumberInput
+								handleSubmit={handleSubmit}
+								answerField={answerField}
+								value={userAnswer}
+								onChange={(e) => setUserAnswer(e.target.value)}
+							/>
+							<FinishGame
+								open={openFinish}
+								endText={!hard ? score : score * 2}
+								resetButton={resetButton}
+								onClick={collectBadges}
+								buttonText={score > 0 ? 'Collect badges' : 'Try again later'}
+							/>
+						</MathContainer>
+					</>
+				)}
+				{animation && <BadgesAnimation text={!hard ? score : score * 2} />}
 			</MainContainer>
 		</>
 	);

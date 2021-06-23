@@ -8,7 +8,7 @@ import { Store } from './Store';
 import { Info } from './Info';
 import { Gym } from './gym/Gym';
 import { Memory } from './Memory';
-import { Farm } from './Farm';
+import { ProtinFarm } from './ProtinFarm';
 import { SpaceBall } from './SpaceBall';
 import { GridContainer } from './Styling';
 
@@ -23,7 +23,7 @@ export const Map = () => {
 			<Info />
 			<Gym />
 			<Memory />
-			<Farm />
+			<ProtinFarm />
 			<SpaceBall />
 		</GridContainer>
 	);

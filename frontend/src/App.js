@@ -15,7 +15,7 @@ import { Store } from './pages/Store';
 import { Main } from './pages/Main';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
-import { MathGame } from './pages/MathGame';
+import { Classroom } from './pages/Classroom';
 import { MemoryGame } from './pages/MemoryGame';
 import { ProtinFarm } from './pages/ProtinFarm';
 import { GameBall } from './components/spaceball/GameBall';
@@ -42,7 +42,7 @@ export const App = () => {
 						<Route exact path='/' component={Main} />
 						<Route path='/signin' component={SignIn} />
 						<Route path='/signup' component={SignUp} />
-						<Route path='/classroom' component={MathGame} />
+						<Route path='/classroom' component={Classroom} />
 						<Route path='/memorygame' component={MemoryGame} />
 						<Route path='/store' component={Store} />
 						<Route path='/farm' component={ProtinFarm} />
