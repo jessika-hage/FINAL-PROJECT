@@ -9,6 +9,7 @@ import {
   InfoIcon,
   InfoItem,
   CloseIcon,
+  BottomText,
   EndText,
   Email } from './Styling';
 
@@ -43,13 +44,15 @@ export const Info = () => {
               COINS
               - You can use the coins to invest in Space$, buy food and other things in the store.
             </InfoItem>
-            <EndText>Your commanders,</EndText>
-            <EndText>Ylva Landoff Lindberg & Jessika Hage</EndText>
-            <Email 
-              href='mailto:commander@citizenship.se' 
-              target="_blank" 
-              rel="noopener noreferrer">commander@citizenship.se
-            </Email>
+            <BottomText>
+              <EndText>Your commanders,</EndText>
+              <EndText>Ylva Landoff Lindberg & Jessika Hage</EndText>
+              <Email 
+                href='mailto:commander@citizenship.se' 
+                target="_blank" 
+                rel="noopener noreferrer">commander@citizenship.se
+              </Email>
+            </BottomText>
           </DialogContainer>
         </Dialog>
       </RoomInfo>

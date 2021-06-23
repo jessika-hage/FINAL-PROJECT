@@ -399,6 +399,10 @@ export const ProgressFiller = styled.div`
   height: 100%;
 `;
 
+export const BottomText = styled.div`
+	margin-top: 12px;
+`;
+
 export const EndText = styled.p`
 	font-size: 10px;
 	margin: 5px 0;
