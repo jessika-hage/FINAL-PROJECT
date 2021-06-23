@@ -13,10 +13,10 @@ export const Main = styled.div`
 
 const X = keyframes`
   0% {
-            transform: translate(-100px, 0);
+    transform: translate(-100px, 0);
   }
   100% {
-            transform: translate(100px, 0)
+    transform: translate(100px, 0)
   }
 `;
 

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 import { Products } from '../components/store/products/AllProducts';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
+
+import { Wrapper, Main } from 'components/store/Styling';
 
 export const Store = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
@@ -28,17 +29,3 @@ export const Store = () => {
 		</Main>
 	);
 };
-
-const Wrapper = styled.div`
-	background-color: ${(props) => props.theme.backgroundColor};
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-`;
-
-const Main = styled.main`
-	background-color: ${(props) => props.theme.backgroundColor};
-	padding-top: 45px;
-`;
