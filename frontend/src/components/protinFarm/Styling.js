@@ -1,13 +1,14 @@
 import styled, { keyframes } from 'styled-components';
 import { FaFish } from 'react-icons/fa';
 
+//Wave animation
 const X = keyframes`
-  0% { 
-		transform: translate(-100px, 0) 
-	};
-  100% { 
-		transform: translate(100px, 0) 
-	};
+  0% {
+            transform: translate(-100px, 0);
+  }
+  100% {
+            transform: translate(100px, 0)
+  }
 `;
 
 const Y = keyframes`
@@ -22,108 +23,123 @@ const Y = keyframes`
   }
 `;
 
-const Roller = keyframes`
-	0% {
-		transform: translate(200, 0)
-		transform: rotate(-90deg);
-	}
-  10% {
-    transform: translate(-80px, 800)
-  }
-	25% {
-    transform: translate(-200px, -500px)
-  }
-  50% {
-    transform: translate(-500px, 110px)
-		transform: rotate(-180deg);
-  }
-  75% {
-    transform: translate(200, 600px)
-  }
-	100% {
-		transform: translate(50, 0)
-	}
-`;
-
 export const RoundWrapper = styled.div`
-	margin-top: 60%;
+	z-index: 1;
+	margin-top: 55%;
 	position: absolute;
 	animation: ${X} 1s ease-in-out alternate infinite 0s both;
 	@media (min-width: 500px) {
-		margin-top: 45%;
+		margin-top: 30%;
+	}
+	@media (min-width: 768px) {
+		margin-top: 20%;
 	}
 	@media (min-width: 1200px) {
-		margin-top: 25%;
+		margin-top: 17%;
 	}
 	@media (min-width: 2000px) {
-		margin-top: 22%;
+		margin-top: 18%;
 	}
 `;
 export const RoundWrapper2 = styled(RoundWrapper)`
+	z-index: 5;
 	animation: ${X} 2s ease-in-out alternate infinite 0s both;
-	@media (min-width: 500px) {
-		margin-top: 45%;
+	@media (min-width: 768px) {
+		margin-top: 27%;
 	}
 	@media (min-width: 1200px) {
-		margin-top: 25%;
+		margin-top: 18%;
 	}
 	@media (min-width: 2000px) {
-		margin-top: 22%;
+		margin-top: 17%;
 	}
 `;
-
 export const RoundWrapper3 = styled(RoundWrapper)`
 	animation: ${X} 3s ease-in-out alternate infinite 0s both;
-	@media (min-width: 500px) {
-		margin-top: 50%;
-	}
-	@media (min-width: 1200px) {
+	@media (min-width: 768px) {
 		margin-top: 25%;
 	}
+	@media (min-width: 1200px) {
+		margin-top: 17%;
+	}
 	@media (min-width: 2000px) {
-		margin-top: 22%;
+		margin-top: 18%;
 	}
 `;
-
 export const Round1 = styled.div`
 	z-index: 7;
 	border-top: 2px solid #fff;
 	background-color: #9de2fa;
 	border-radius: 100%;
 	height: 150px;
-	margin: 40px;
 	width: 450px;
 	animation: ${Y} 3s linear infinite 0s;
-	@media (min-width: 500px) {
+	@media (min-width: 768px) {
 		width: 1200px;
+	}
+	@media (min-width: 1200px) {
+		width: 2000px;
 	}
 	@media (min-width: 2000px) {
 		width: 2500px;
 	}
 `;
-
 export const Round2 = styled(Round1)`
 	z-index: 7;
 	animation: ${Y} 4s linear infinite 0s;
 	width: 500px;
-	@media (min-width: 500px) {
-		width: 800px;
+	@media (min-width: 768px) {
+		width: 1000px;
+	}
+	@media (min-width: 1200px) {
+		width: 1400px;
 	}
 	@media (min-width: 2000px) {
 		width: 2400px;
 	}
 `;
-
 export const Round3 = styled(Round1)`
+	z-index: 6;
 	animation: ${Y} 4s linear infinite 0s;
 	width: 450px;
-	@media (min-width: 500px) {
-		width: 1100px;
+	@media (min-width: 768px) {
+		width: 1200px;
+	}
+	@media (min-width: 1200px) {
+		width: 1800px;
 	}
 	@media (min-width: 2000px) {
 		width: 1800px;
 	}
 `;
+
+//Fish animation
+
+const Roller = keyframes`
+	0% {
+		transform: translate(200, 0);
+		transform: rotate(-90deg);
+	}
+  10% {
+    transform: translate(-80px, 800);
+  }
+	25% {
+		
+    transform: translate(-200px, -500px);
+		
+  }
+  50% {
+    transform: translate(-500px, 110px);
+		transform: rotate(-180deg);
+  }
+  75% {
+    transform: translate(200, 600px);
+		
+  }
+	100% {
+		transform: translate(50, 0)
+	}
+	;`;
 
 const Roller2 = keyframes`
 	0% {
@@ -146,7 +162,7 @@ const Roller2 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-`;
+	;`;
 
 const Roller3 = keyframes`
 	0% {
@@ -169,7 +185,7 @@ const Roller3 = keyframes`
 	100% {
 		transform: translate(0, 0)
 	}
-`;
+	;`;
 
 //Fishes for desktop
 export const FishWrapper1 = styled.button`
@@ -184,7 +200,6 @@ export const FishWrapper1 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon1 = styled(FaFish)`
 	font-size: 40px;
 	opacity: 0.5;
@@ -197,7 +212,6 @@ export const HidePhone = styled.div`
 		display: flex;
 	}
 `;
-
 export const FishWrapper13 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -213,7 +227,6 @@ export const FishWrapper13 = styled.button`
 		}
 	}
 `;
-
 export const Icon13 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -221,7 +234,6 @@ export const Icon13 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
-
 export const FishWrapper14 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -237,7 +249,6 @@ export const FishWrapper14 = styled.button`
 		}
 	}
 `;
-
 export const Icon14 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -261,7 +272,6 @@ export const FishWrapper15 = styled.button`
 		}
 	}
 `;
-
 export const Icon15 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 60px;
@@ -269,7 +279,6 @@ export const Icon15 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
-
 export const FishWrapper16 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -285,7 +294,6 @@ export const FishWrapper16 = styled.button`
 		}
 	}
 `;
-
 export const Icon16 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 50px;
@@ -293,7 +301,6 @@ export const Icon16 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
-
 export const FishWrapper17 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -309,7 +316,6 @@ export const FishWrapper17 = styled.button`
 		}
 	}
 `;
-
 export const Icon17 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -317,7 +323,6 @@ export const Icon17 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
-
 export const FishWrapper18 = styled.button`
 	@media (min-width: 768px) {
 		z-index: 2;
@@ -333,7 +338,6 @@ export const FishWrapper18 = styled.button`
 		}
 	}
 `;
-
 export const Icon18 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -341,7 +345,6 @@ export const Icon18 = styled(FaFish)`
 		color: #73bed9;
 	}
 `;
-
 export const FishWrapper19 = styled.button`
 	@media (min-width: 768px) {
 	z-index: 2;
@@ -355,9 +358,8 @@ export const FishWrapper19 = styled.button`
 	&:disabled {
 		opacity: 0;
 	}
-	}
+	)
 `;
-
 export const Icon19 = styled(FaFish)`
 	@media (min-width: 768px) {
 		font-size: 40px;
@@ -382,7 +384,6 @@ export const FishWrapper2 = styled.button`
 		height: 100px;
 	}
 `;
-
 export const Icon2 = styled(FaFish)`
 	font-size: 40px;
 	opacity: 0.5;
@@ -403,7 +404,6 @@ export const FishWrapper3 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon3 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -425,7 +425,6 @@ export const FishWrapper4 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon4 = styled(FaFish)`
 	font-size: 40px;
 	color: #73bed9;
@@ -447,7 +446,6 @@ export const FishWrapper5 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon5 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -469,7 +467,6 @@ export const FishWrapper6 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon6 = styled(FaFish)`
 	font-size: 25px;
 	opacity: 0.5;
@@ -491,7 +488,6 @@ export const FishWrapper7 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon7 = styled(FaFish)`
 	font-size: 30px;
 	opacity: 0.5;
@@ -511,7 +507,6 @@ export const FishWrapper8 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon8 = styled(FaFish)`
 	font-size: 30px;
 	opacity: 0.5;
@@ -531,7 +526,6 @@ export const FishWrapper9 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon9 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
@@ -543,7 +537,6 @@ export const Icon10 = styled(FaFish)`
 	opacity: 0.5;
 	font-size: 50px;
 `;
-
 export const FishWrapper10 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -557,13 +550,11 @@ export const FishWrapper10 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon11 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
 	font-size: 50px;
 `;
-
 export const FishWrapper11 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -577,13 +568,11 @@ export const FishWrapper11 = styled.button`
 		opacity: 0;
 	}
 `;
-
 export const Icon12 = styled(FaFish)`
 	color: #73bed9;
 	opacity: 0.5;
 	font-size: 50px;
 `;
-
 export const FishWrapper12 = styled.button`
 	background-color: transparent;
 	z-index: 2;
@@ -599,7 +588,7 @@ export const FishWrapper12 = styled.button`
 `;
 
 export const GameTitle = styled.h1`
-	z-index: 5;
+	z-index: 8;
 	position: absolute;
 	top: 30px;
 	left: 20px;
@@ -607,7 +596,7 @@ export const GameTitle = styled.h1`
 `;
 
 export const ScoreText = styled(GameTitle)`
-	z-index: 5;
+	z-index: 8;
 	font-size: 16px;
 	top: 80px;
 	left: 22px;
@@ -615,13 +604,11 @@ export const ScoreText = styled(GameTitle)`
 		font-size: 20px;
 	}
 `;
-
 export const CounterText = styled(ScoreText)`
-	z-index: 5;
+	z-index: 8;
 	top: 105px;
 	left: 22px;
 `;
-
 export const TransparentWrapper = styled.button`
 	z-index: 5;
 	background: transparent;
@@ -636,11 +623,14 @@ export const BackgroundWater = styled.div`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 50%;
+	height: 320px;
 	background-color: #9de2fa;
 	opacity: 1;
-	@media (min-width: 2000px) {
-		height: 50%;
+	@media (min-width: 768px) {
+		height: 400px;
+	}
+	@media (min-width: 1200px) {
+		height: 500px;
 	}
 `;
 
@@ -649,12 +639,18 @@ export const WaterContainer = styled.div`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 80%;
+	height: 600px;
 	display: flex;
 	justify-content: center;
 	margin: 0 0 0 0;
-	background-color: #dcfcf7;
+	background: transparent;
 	@media (min-width: 768px) {
+		height: 700px;
+	@media (min-width: 1200px) {
+		height: 800px;
+	}
+	@media (min-width: 2000px) {
+		height: 1000px;
 	}
 `;
 
@@ -666,7 +662,7 @@ export const MainContainer = styled.main`
 	align-items: center;
 	position: fixed;
 	padding-top: 40px;
-	background-color: #d1fff4;
+	background: linear-gradient(#dcfcf7, #dcfcf7, #9de2fa, #9de2fa, #9de2fa);
 `;
 
 export const DialogText = styled.p`
@@ -683,7 +679,6 @@ export const DialogContainer = styled.div`
 	border: 2px solid ${(props) => props.theme.secondary};
 	color: ${(props) => props.theme.textColor};
 `;
-
 export const StartButton = styled.button`
 	padding: 10px 15px;
 	margin-top: 20px;
@@ -695,6 +690,7 @@ export const StartButton = styled.button`
 	text-transform: uppercase;
 	font-family: 'Trispace';
 	cursor: pointer;
+
 	:hover {
 		background-color: ${(props) => props.theme.hover};
 	}
