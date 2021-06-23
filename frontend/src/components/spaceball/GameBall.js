@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
+import audio from '../../assets/ElectHitZap PE1030530.wav';
 import { updateBadges, updateHighscoreSpaceball } from '../../reducers/profile';
 import { Header } from '../header/Header';
 import { Camera } from '../header/Camera';
@@ -62,7 +63,8 @@ export const GameBall = () => {
     }
   }, [counter])
   
-  const onClickEasy = (number) => {
+  const onClickScore = (number) => {
+    new Audio(audio).play();
     setScore(score + number);
   };
 
@@ -75,11 +77,11 @@ export const GameBall = () => {
       <GameTitle>Space Ball</GameTitle>
       <ScoreText>Score: {score}</ScoreText>
       <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-      <ButtonOne onClick={() => onClickEasy(4)}></ButtonOne>
-      <ButtonTwo onClick={() => onClickEasy(3)}></ButtonTwo>
-      <ButtonThree onClick={() => onClickEasy(1)}></ButtonThree>
-      <ButtonFour onClick={() => onClickEasy(2)}></ButtonFour>
-      <ButtonFive onClick={() => onClickEasy(5)}></ButtonFive>
+      <ButtonOne onClick={() => onClickScore(4)}></ButtonOne>
+      <ButtonTwo onClick={() => onClickScore(3)}></ButtonTwo>
+      <ButtonThree onClick={() => onClickScore(1)}></ButtonThree>
+      <ButtonFour onClick={() => onClickScore(2)}></ButtonFour>
+      <ButtonFive onClick={() => onClickScore(5)}></ButtonFive>
       <Dialog open={openFinishedDialog}>
         <DialogContainer>
           <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>

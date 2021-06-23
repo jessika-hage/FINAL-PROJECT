@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { FaTimes } from 'react-icons/fa';
 
+import audio from '../../assets/Whoosh 6110_64_1.wav';
 import { CITIZEN_URL } from '../../reusables/urls';
 import { MessageForm } from './MessageForm';
 import { 
@@ -43,6 +44,7 @@ export const MessageBoard = ({ onClick }) => {
   const handleMessageSubmit = (e) => {
     e.preventDefault();
 
+    new Audio(audio).play();
     fetch(CITIZEN_URL(`citizenmessage/${userId}`), {
       method: 'POST',
       body: JSON.stringify({ message: newMessage }),

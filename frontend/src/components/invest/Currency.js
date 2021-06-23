@@ -10,6 +10,7 @@ import { InvestCard } from './InvestCard';
 import { PriceChange } from './PriceChange';
 import { InvestDialog } from './InvestDialog';
 import { ExchangeDialog } from './ExchangeDialog';
+import audio from '../../assets/CoinDrop 6103_48_4.wav';
 
 export const Currency = () => {
 	const [currency, setCurrency] = useState([]);
@@ -55,6 +56,7 @@ export const Currency = () => {
 
 	const onExchange = () => {
 		if (badges >= exchangeValue) {
+			new Audio(audio).play();
 			dispatch(updateBadges(-exchangeValue));
 			dispatch(updateCoins(totalExchange));
 			setOpenConfirmExchange(true);
@@ -82,6 +84,7 @@ export const Currency = () => {
 
 	const onInvest = () => {
 		if (totalInvest <= coins) {
+			new Audio(audio).play();
 			dispatch(updateInvestments(investValue, totalInvest));
 			dispatch(updateCoins(-totalInvest));
 			setOpenConfirmInvest(true);
