@@ -17,9 +17,9 @@ import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
 import { Classroom } from './pages/Classroom';
 import { MemoryGame } from './pages/MemoryGame';
-import { ProtinFarm } from './pages/ProtinFarm';
+import { ProteinFarm } from './pages/ProteinFarm';
 import { GameBall } from './components/spaceball/GameBall';
-import { Trivia } from './pages/Trivia';
+import { Quiz } from './pages/Quiz';
 
 const reducer = combineReducers({
 	themes: themes.reducer,
@@ -45,9 +45,9 @@ export const App = () => {
 						<Route path='/classroom' component={Classroom} />
 						<Route path='/memorygame' component={MemoryGame} />
 						<Route path='/store' component={Store} />
-						<Route path='/farm' component={ProtinFarm} />
+						<Route path='/farm' component={ProteinFarm} />
 						<Route path='/spaceball' component={GameBall} />
-						<Route path='/quiz' component={Trivia} />
+						<Route path='/quiz' component={Quiz} />
 					</Switch>
 				</BrowserRouter>
 			</Theme>

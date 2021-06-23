@@ -38,7 +38,6 @@ export const Weather = () => {
   useEffect(() => {
     fetchWeather();
     fetchForecast();
-    console.log(fetchWeather())
   }, [fetchWeather, fetchForecast]);
 
   const onToggleDialog = () => {
@@ -62,5 +61,5 @@ export const Weather = () => {
         </DialogContainer>
       </Dialog>
 		</>
-	);
+	)
 };

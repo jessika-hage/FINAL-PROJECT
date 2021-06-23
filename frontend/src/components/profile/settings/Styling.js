@@ -50,6 +50,7 @@ export const Label = styled.label`
 	display: flex;
 	align-items: center;
 	border-radius: 50%;
+	outline: none;
 	background-color: ${(props) => props.theme.secondary};
 	border: 2px solid transparent;
 	width: 100%;
@@ -57,7 +58,7 @@ export const Label = styled.label`
 	position: relative;
 	margin-right: 10px;
 	z-index: 1;
-	:hover {
+	:hover, :focus {
 		border: 2px solid ${(props) => props.theme.hover};
 	}
 `;
@@ -164,7 +165,7 @@ export const EyeOne = styled.button`
 	position: absolute;
 	right: 30%;
 	bottom: 0;
-	:hover {
+	:hover, :focus {
 		color: ${(props) => props.theme.primary};
 	}
 	:focus {
@@ -175,7 +176,11 @@ export const EyeOne = styled.button`
 export const CloseIcon = styled(FaTimes)`
 	font-size: 20px;
 	cursor: pointer;
-	:hover {
+	outline: none;
+	:hover, :focus {
 		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.primary}
 	}
 `;

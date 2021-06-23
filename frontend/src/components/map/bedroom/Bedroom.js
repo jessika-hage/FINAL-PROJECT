@@ -26,6 +26,9 @@ export const Bedroom = () => {
 		setOpenBedroom(!openBedroom);
 	};
 
+  // Check if more than 20 badges
+  // Different return messages
+  // Disable button for 30 min after sleep
   const onClickSleep = () => {
     if (badges >= 20) {
       dispatch(updateBadges(-20));
@@ -52,13 +55,16 @@ export const Bedroom = () => {
 
 
   return (
-    <RoomBedroom onClick={onToggleBedroomDialog}>
+    <RoomBedroom 
+      tabIndex='0' 
+      aria-label='Bedroom' 
+      onClick={onToggleBedroomDialog}>
       <BedIcon />
       <Dialog open={openBedroom} onClick={onToggleBedroomDialog}>
         <DialogContainer>
           <InfoTitle>
             Get some rest!
-						<CloseIcon onClick={onToggleBedroomDialog} />
+						<CloseIcon tabIndex='0' onClick={onToggleBedroomDialog} />
           </InfoTitle>
           <InfoText>
             As a citizen on this ship, we like it when you work hard. That's why it

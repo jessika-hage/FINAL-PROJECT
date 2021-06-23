@@ -35,7 +35,7 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   font-family: "Trispace", serif;
   font-size: 16px;
-  :hover {
+  :hover, :focus {
     background-color: ${props => props.theme.secondary};
   }
 `;

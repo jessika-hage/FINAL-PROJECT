@@ -49,7 +49,6 @@ export const Product = ({ product }) => {
 					</ProductContainer>
 				</DialogContainer>
 			</Dialog>
-
 			<ProductWrapper>
 				<ImageWrapper>
 					<ProductImage
@@ -58,7 +57,11 @@ export const Product = ({ product }) => {
 					/>
 				</ImageWrapper>
 				<TextWrapper>
-					<Text>{product.title}</Text>
+					<Text 
+						tabIndex='0' 
+						aria-label={product.title}>
+						{product.title}
+					</Text>
 					<TextDescription>{product.description}</TextDescription>
 					<Price>{product.price}$</Price>
 					<TextDescription>

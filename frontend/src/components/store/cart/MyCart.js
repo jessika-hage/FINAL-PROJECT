@@ -5,6 +5,7 @@ import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
 import Badge from '@material-ui/core/Badge';
 
+import audio from '../../../assets/Sci Fi 2 Audio Files_BellToneBendDown.wav';
 import {
 	updateCoins,
 	updateItems,
@@ -43,6 +44,7 @@ export const MyCart = () => {
 		)
 	);
 
+	// Calculating total ranking increase
 	const totalRanking = useSelector((store) =>
 		store.cart.items.reduce(
 			(total, item) => total + item.ranking * item.quantity,
@@ -54,8 +56,12 @@ export const MyCart = () => {
 		setOpen(!open);
 	};
 
+	// Function for buying items
+	// Updating items, coins and ranking
+	// Emptying the cart
 	const buy = () => {
 		if (totalPrice <= coins) {
+			new Audio(audio).play();
 			dispatch(updateCoins(-totalPrice));
 			dispatch(updateItems(products));
 			dispatch(updateRanking(totalRanking));
@@ -100,7 +106,11 @@ export const MyCart = () => {
 			<ShoppingCart>
 				<ShoppingButton>
 					<Badge badgeContent={products.length} color='secondary' showZero>
-						<LocalGroceryStoreIcon fontSize='large' onClick={onToggleDialog} />
+						<LocalGroceryStoreIcon 
+							tabIndex='0' 
+							aria-label='shoppingcart'
+							fontSize='large' 
+							onClick={onToggleDialog} />
 					</Badge>
 				</ShoppingButton>
 			</ShoppingCart>
@@ -111,5 +121,5 @@ export const MyCart = () => {
 				onFail={onFail}
 			/>
 		</CartWrapper>
-	);
+	)
 };

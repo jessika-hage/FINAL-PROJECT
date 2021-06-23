@@ -15,7 +15,7 @@ export const Settings = ({ onClose }) => {
     <SettingsContainer>
       <SettingsTitle>
         Settings
-        <CloseIcon onClick={onClose} />
+        <CloseIcon tabIndex='0' onClick={onClose} />
       </SettingsTitle>
       <SettingsAvatars />
       <ChangeTitle>Change your spaceship color:</ChangeTitle>

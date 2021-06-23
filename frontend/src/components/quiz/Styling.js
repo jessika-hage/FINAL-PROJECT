@@ -87,7 +87,7 @@ export const AnswerButton = styled.button`
 	background-color: ${(props) => props.theme.secondary};
 	color: ${(props) => props.theme.textColor};
 	animation: ${jumping} 0.4s linear infinite alternate-reverse;
-	:hover {
+	@media (hover:hover) {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -121,7 +121,7 @@ export const Button = styled.button`
 	text-transform: uppercase;
 	font-family: 'Trispace';
 	cursor: pointer;
-	:hover {
+	@media (hover:hover) {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -144,10 +144,10 @@ export const Text = styled.h2`
 // Animation
 const X = keyframes`
   0% {
-            transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
   }
   100% {
-            transform: translate(300px, 0)
+    transform: translate(300px, 0)
   }
 `;
 
@@ -253,6 +253,7 @@ export const Div5 = styled.div`
 	opacity: 0.3;
 	animation: ${Y} 2.4s linear infinite 0s;
 `;
+
 export const Div6 = styled.div`
 	background: #fff};
 	border-radius: 100%;
@@ -261,6 +262,7 @@ export const Div6 = styled.div`
 	opacity: 0.3;
 	animation: ${Y} 2.5s linear infinite 0s;
 `;
+
 export const Div7 = styled.div`
 	background: #fff;
 	border-radius: 100%;
@@ -269,6 +271,7 @@ export const Div7 = styled.div`
 	opacity: 0.2;
 	animation: ${Y} 2.6s linear infinite 0s;
 `;
+
 export const Div8 = styled.div`
 	background: #fff;
 	border-radius: 100%;
@@ -277,6 +280,7 @@ export const Div8 = styled.div`
 	opacity: 0.2;
 	animation: ${Y} 2.7s linear infinite 0s;
 `;
+
 export const Div9 = styled.div`
 	background: #fff;
 	border-radius: 100%;
@@ -285,6 +289,7 @@ export const Div9 = styled.div`
 	opacity: 0.2;
 	animation: ${Y} 2.8s linear infinite 0s;
 `;
+
 export const Div10 = styled.div`
 	background: #fff;
 	border-radius: 100%;
@@ -293,6 +298,7 @@ export const Div10 = styled.div`
 	opacity: 0.1;
 	animation: ${Y} 2.9s linear infinite 0s;
 `;
+
 export const Div11 = styled.div`
 	background: #fff;
 	border-radius: 100%;

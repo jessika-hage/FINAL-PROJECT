@@ -2,7 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 import { MemoryCard } from './MemoryCard';
 import { GetImages } from './GetImages';
-import { CARD_STATUS, GAME_STATUS, DECK_SIZE } from './constants';
+import { 
+	CARD_STATUS, 
+	GAME_STATUS, 
+	DECK_SIZE } from './constants';
 import {
 	Container,
 	GameTitle,
@@ -18,6 +21,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 	const [secondCard, setSecondCard] = useState(null);
 	const [openCardCounter, setOpenCardCounter] = useState(0);
 
+	// Setting timer and flip count
 	const timer = useRef(new Date());
 	const flipCounter = useRef(0);
 	const isMounted = useRef(false);
@@ -27,7 +31,6 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 		if (firstCard && secondCard) {
 			const first = { ...deck[firstCard.index] };
 			const second = { ...deck[secondCard.index] };
-
 			if (firstCard.id === secondCard.id) {
 				first.status = CARD_STATUS.MATCHED;
 				second.status = CARD_STATUS.MATCHED;
@@ -106,6 +109,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 		}
 	}, [checkPair, deck, openCardCounter, onGameUpdate, timer]);
 
+	// Start the game
 	const startGame = useCallback(async () => {
 		try {
 			const newDeck = await GetImages();
@@ -114,7 +118,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 			timer.current = new Date();
 			onGameUpdate(GAME_STATUS.IN_PROGRESS);
 		} catch (error) {
-			console.error(error);
+			alert(`Error: ${error}`);
 		}
 	}, [onGameUpdate]);
 
@@ -166,5 +170,5 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 			</GameContainer>
 		</Container>
 		</>
-	);
+	)
 };

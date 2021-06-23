@@ -197,7 +197,7 @@ export const ButtonSignOut = styled.button`
 	font-size: 30px;
 	padding: 0 10px 0 0;
 	color: ${props => props.theme.textColor};
-	:hover {
+	:hover, :focus {
 		color: ${props => props.theme.hover};
 	}
 `;
@@ -234,7 +234,7 @@ export const InvestmentContainer = styled.div`
 export const InfoIcon = styled(FaInfoCircle)`
 	font-size: 14px;
 	cursor: pointer;
-	:hover {
+	:hover, :focus {
 		transform: scale(1.1);
 	}
 `;
@@ -281,7 +281,7 @@ export const SellButton = styled.button`
 	margin: 7px 7px 0 0;
 	padding: 5px;
 	width: fit-content;
-	:hover {
+	:hover, :focus {
 		background-color: ${props => props.theme.secondary};
 	}
 `;
@@ -301,12 +301,12 @@ export const ConfirmDialog = styled.div`
 
 export const ButtonBox = styled.div`
 	display: flex;
-`
+	margin-top: 5px;
+`;
 
 export const InfoDialog = styled(ConfirmDialog)`
 	position: relative;
 `;
-
 
 export const CloseIcon = styled(FaTimes)`
 	font-size: 17px;
@@ -314,7 +314,7 @@ export const CloseIcon = styled(FaTimes)`
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	:hover {
+	:hover, :focus {
 		transform: scale(1.2);
 	}
 `;

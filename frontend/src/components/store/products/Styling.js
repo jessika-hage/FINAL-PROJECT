@@ -83,9 +83,13 @@ export const Text = styled.p`
 	padding: 3px 0;
 	font-size: 14px;
 	font-weight: 600;
+	outline: none;
 	text-transform: uppercase;
 	@media (min-width: 768px) {
 		font-size: 16px;
+	}
+	:focus {
+		color: ${(props) => props.theme.primary};
 	}
 `;
 

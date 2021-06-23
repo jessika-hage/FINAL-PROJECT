@@ -40,12 +40,16 @@ export const GameBall = () => {
 		}
 	}, [accessToken, history]);
 
+  // Initializing timer
   useEffect(() => {
     const timer =
     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
   }, [counter]);
 
+  // Collect badges after game
+  // Update highscore (if new highscore)
+  // Update badges, set animation and push to main
   const onCollectBadges = () => {
     if (score > highscore) {
       dispatch(updateHighscoreSpaceball(score))
@@ -57,6 +61,7 @@ export const GameBall = () => {
     }, 1000)
   };
 
+  // Finish game when time is up
   useEffect(() => {
     if (counter === 0) {
       setOpenFinishedDialog(true);
@@ -71,25 +76,25 @@ export const GameBall = () => {
 
   return (
     <>
-    <Header />
-    <Camera />
-    <MainContainer>
-      <GameTitle>Space Ball</GameTitle>
-      <ScoreText>Score: {score}</ScoreText>
-      <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-      <ButtonOne onClick={() => onClickScore(4)}></ButtonOne>
-      <ButtonTwo onClick={() => onClickScore(3)}></ButtonTwo>
-      <ButtonThree onClick={() => onClickScore(1)}></ButtonThree>
-      <ButtonFour onClick={() => onClickScore(2)}></ButtonFour>
-      <ButtonFive onClick={() => onClickScore(5)}></ButtonFive>
-      <Dialog open={openFinishedDialog}>
-        <DialogContainer>
-          <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
-          <StartButton onClick={onCollectBadges}>{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}</StartButton>
-        </DialogContainer>
-      </Dialog>
-    </MainContainer>
-    { animation && <BadgesAnimation text={numOfBadges} /> }
+      <Header />
+      <Camera />
+      <MainContainer>
+        <GameTitle>Space Ball</GameTitle>
+        <ScoreText>Score: {score}</ScoreText>
+        <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+        <ButtonOne onClick={() => onClickScore(4)}></ButtonOne>
+        <ButtonTwo onClick={() => onClickScore(3)}></ButtonTwo>
+        <ButtonThree onClick={() => onClickScore(1)}></ButtonThree>
+        <ButtonFour onClick={() => onClickScore(2)}></ButtonFour>
+        <ButtonFive onClick={() => onClickScore(5)}></ButtonFive>
+        <Dialog open={openFinishedDialog}>
+          <DialogContainer>
+            <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
+            <StartButton onClick={onCollectBadges}>{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}</StartButton>
+          </DialogContainer>
+        </Dialog>
+      </MainContainer>
+     { animation && <BadgesAnimation text={numOfBadges} /> }
     </>
   )
 };

@@ -68,7 +68,7 @@ export const MessageIcon = styled.button`
 	align-items: center;
 	justify-content: center;
 	margin-left: 2px;
-	:hover {
+	:hover, :focus {
 		background-color: ${(props) => props.theme.hover};
 		transform: scale(1.05);
 	}

@@ -26,6 +26,9 @@ export const Gym = () => {
 		setOpenGym(!openGym);
 	};
 
+	// Check if more than 20 badges
+	// Different return messages
+	// Disable button for 30 min after workout
 	const onClickWorkout = () => {
     if (badges >= 20) {
       dispatch(updateBadges(-20));
@@ -51,13 +54,16 @@ export const Gym = () => {
   };
 
 	return (
-		<RoomGym onClick={onToggleGymDialog}>
+		<RoomGym 
+			tabIndex='0' 
+			aria-label='Gym' 
+			onClick={onToggleGymDialog}>
 			<GymIcon />
 			<Dialog open={openGym} onClick={onToggleGymDialog}>
 				<DialogContainer>
 					<InfoTitle>
 						Get some workout!
-						<CloseIcon onClick={onToggleGymDialog} />
+						<CloseIcon tabIndex='0' onClick={onToggleGymDialog} />
 					</InfoTitle>
 					<InfoText>
 						As a citizen on this ship, it is very important that you exercise

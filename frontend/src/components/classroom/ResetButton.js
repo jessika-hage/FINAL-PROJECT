@@ -2,7 +2,11 @@ import React from "react";
 
 import { CollectButton } from './Styling';
 
-export const ResetButton = ({ resetButton, onClick, buttonText }) => {
+export const ResetButton = ({ 
+  resetButton, 
+  onClick, 
+  buttonText }) => {
+    
   return (
     <CollectButton
       ref={resetButton}

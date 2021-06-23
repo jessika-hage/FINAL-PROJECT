@@ -19,21 +19,21 @@ export const Dialogs = ({
           And you can not buy food when you have 3000 or more, since the energy needs to be
           divided between all the citizens!
         </InfoContainer>
-    </Dialog>
-    <Dialog open={openConfirmation}>
-      <DialogContainer>
-        <InfoText>
-          Purchase successfull! Your energyintake has now increased!
-        </InfoText>
-      </DialogContainer>
-    </Dialog>
-    <Dialog open={openFail}>
-      <DialogContainer>
-        <InfoText>
-          You have more than 3000 in energy, you need to share with the other citizens!
-        </InfoText>
-      </DialogContainer>
-    </Dialog>
-  </>
+      </Dialog>
+      <Dialog open={openConfirmation}>
+        <DialogContainer>
+          <InfoText>
+            Purchase successfull! Your energyintake has now increased!
+          </InfoText>
+        </DialogContainer>
+      </Dialog>
+      <Dialog open={openFail}>
+        <DialogContainer>
+          <InfoText>
+            You have more than 3000 in energy, you need to share with the other citizens!
+          </InfoText>
+        </DialogContainer>
+      </Dialog>
+    </>
   )
 };

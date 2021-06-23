@@ -18,7 +18,7 @@ export const InvestCard = ({ onClick }) => {
 		fetchCoin();
 	}, []);
 
-	// Fetch one random currency
+	// Fetch one currency
 	const fetchCoin = () => {
 		fetch('https://api.coinlore.net/api/ticker/?id=32360')
 			.then((res) => res.json())

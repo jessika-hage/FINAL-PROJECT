@@ -76,9 +76,6 @@ export const GameContainer = styled.div`
   color: ${props => props.theme.textColor};
   padding: 20px 10px;
   margin-top: 100px;
-  @media (max-height: 569px) {
-    margin-top: 550px;
-  }
   @media (max-height: 667px) {
     margin-top: 160px;
   }

@@ -37,7 +37,8 @@ export const ExchangeDialog = ({
             Space Exchange
             <CloseIcon onClick={onCloseExchange} />
           </InvestTitle>
-          <InvestInfo>Here you can exchange badges for coins! It's important to have some money since you need it to invest, buy things in the store etc.
+          <InvestInfo>
+            Here you can exchange badges for coins! It's important to have some money since you need it to invest, buy things in the store etc.
           </InvestInfo>
           <PriceInfo>Exchange rate: 2 badges = {rate} $</PriceInfo>
           <QuestionText>How many badges do you want to exchange?</QuestionText>

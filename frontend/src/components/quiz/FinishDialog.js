@@ -1,7 +1,10 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
 
-import { DialogContainer, DialogText, CollectButton } from './Styling';
+import { 
+	DialogContainer, 
+	DialogText, 
+	CollectButton } from './Styling';
 
 export const FinishDialog = ({ 
 	open, 
@@ -16,6 +19,6 @@ export const FinishDialog = ({
 				<CollectButton onClick={onClick}>{buttonText}</CollectButton>
 			</DialogContainer>
 		</Dialog>
-	);
+	)
 };
 

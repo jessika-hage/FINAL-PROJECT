@@ -25,7 +25,10 @@ export const SpaceBall = () => {
 	};
 
 	return (
-		<RoomSpace onClick={onToggleGameDialog}>
+		<RoomSpace 
+			tabIndex='0' 
+			aria-label='Spaceball' 
+			onClick={onToggleGameDialog}>
 			<Icons>
 				<BubbleChartIcon fontSize='large' />
 			</Icons>
@@ -33,7 +36,7 @@ export const SpaceBall = () => {
 				<DialogContainer>
 					<InfoTitle>
 						Space Ball
-						<CloseIcon onClick={onToggleGameDialog} />
+						<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
 					</InfoTitle>
 					<InfoText>
 						This game is to train your reflexes and see how fast you are, also an

@@ -3,12 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog } from '@material-ui/core';
 
+import audio from '../assets/Water Audio Files_BubblesBigBurstShort.wav'
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-
 import { updateBadges, updateHighscoreFish } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-
 import {
 	Icon1,
 	Icon2,
@@ -67,7 +66,7 @@ import {
 	HidePhone,
 } from '../components/farm/Styling';
 
-export const ProtinFarm = () => {
+export const ProteinFarm = () => {
 	const [score, setScore] = useState(0);
 	const [disabled1, setDisabled1] = useState(false);
 	const [disabled2, setDisabled2] = useState(false);
@@ -107,6 +106,7 @@ export const ProtinFarm = () => {
 	}, [accessToken, history]);
 
 	useEffect(() => {
+		new Audio(audio).play();
 		const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
 		return () => clearInterval(timer);
 	}, [counter]);

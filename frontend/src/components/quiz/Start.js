@@ -6,7 +6,7 @@ import {
   ButtonContainer, 
   Button } from './Styling';
 
-export const TriviaStart = ({ easy, hard }) => {
+export const Start = ({ easy, hard }) => {
   return (
     <TriviaContainer>
       <Text>Choose difficulty level: </Text>

@@ -10,6 +10,7 @@ export const FinishGame = ({
 	resetButton, 
 	onClick, 
 	buttonText }) => {
+
 	return (
 		<Dialog open={open}>
 			<DialogContainer>
@@ -20,5 +21,5 @@ export const FinishGame = ({
 					buttonText={buttonText} />
 			</DialogContainer>
 		</Dialog>
-	);
+	)
 };

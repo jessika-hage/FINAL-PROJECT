@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { Tooltip } from '@material-ui/core';
 
 import {
 	DialogContainer,
@@ -12,7 +11,7 @@ import {
 	CloseIcon,
 } from './Styling';
 
-export const ProtinFarm = () => {
+export const ProteinFarm = () => {
 	const [openGame, setOpenGame] = useState(false);
 
 	const onToggleGameDialog = () => {
@@ -20,20 +19,21 @@ export const ProtinFarm = () => {
 	};
 
 	return (
-		<Tooltip title='PROTIN FARM'>
-			<RoomFarm onClick={onToggleGameDialog}>
+			<RoomFarm 
+				tabIndex='0' 
+				aria-label='Protein Farm' 
+				onClick={onToggleGameDialog}>
 				<FishIcon />
 				<Dialog open={openGame} onClick={onToggleGameDialog}>
 					<DialogContainer>
 						<InfoTitle>
 							Protin Farm
-							<CloseIcon onClick={onToggleGameDialog} />
+							<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
 						</InfoTitle>
 						<InfoText>Catch the fishes.</InfoText>
 						<StartGameButton to='/farm'>Lets start</StartGameButton>
 					</DialogContainer>
 				</Dialog>
 			</RoomFarm>
-		</Tooltip>
-	);
+	)
 };

@@ -59,5 +59,5 @@ export const Housing = () => {
 				</DialogContainer>
 			</Dialog>
 		</>
-	);
+	)
 };

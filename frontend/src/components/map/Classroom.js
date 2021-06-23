@@ -20,13 +20,13 @@ export const Classroom = () => {
 	};
 
   return (
-      <RoomClassroom onClick={onToggleGameDialog}>
+      <RoomClassroom tabIndex='0' aria-label='Classroom' onClick={onToggleGameDialog}>
         <MathIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>
               Classroom
-              <CloseIcon onClick={onToggleGameDialog} />
+              <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
             </InfoTitle>
             <InfoText>In the classroom you can get badges by solving mathematical problems. There are three:</InfoText>
             <List>

@@ -59,7 +59,11 @@ export const CloseIcon = styled(FaTimes)`
 	font-size: 20px;
 	cursor: pointer;
 	margin-left: 7px;
+	outline: none;
 	:hover {
 		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.primary}
 	}
 `;

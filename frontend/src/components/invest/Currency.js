@@ -54,6 +54,9 @@ export const Currency = () => {
 	// Calculates exchange rate
 	const totalExchange = (exchangeValue * currency.price_usd) / 2;
 
+	// Update badges and coins
+	// Only if enough badges
+	// Set coin sound if successful
 	const onExchange = () => {
 		if (badges >= exchangeValue) {
 			new Audio(audio).play();
@@ -82,6 +85,9 @@ export const Currency = () => {
 	// Calculates investment
 	const totalInvest = investValue * currency.price_usd;
 
+	// Update investment and coins
+	// Only if enough coins
+	// Set coin sound
 	const onInvest = () => {
 		if (totalInvest <= coins) {
 			new Audio(audio).play();
@@ -96,6 +102,7 @@ export const Currency = () => {
 		}
 	};
 
+	// Toggle Invest confirmation dialog
 	const onToggleInvestConfirm = () => {
 		setOpenConfirmInvest(!openConfirmInvest);
 		setOpenInvest(false);
@@ -145,5 +152,5 @@ export const Currency = () => {
 				buttonText={investSuccess ? 'Thanks!' : 'Okay'}
 			/>
 		</>
-	);
+	)
 };

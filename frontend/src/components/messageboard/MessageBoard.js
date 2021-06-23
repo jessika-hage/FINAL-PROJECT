@@ -30,14 +30,11 @@ export const MessageBoard = ({ onClick }) => {
     fetch(CITIZEN_URL('citizenmessage'))
     .then((res) => res.json())
     .then((message) => setMessageList(message.citizenMessage))
-    .catch((err) => console.error(err));
+    .catch(err => alert(`Error: ${err}`));
   };
 
   useEffect(() => {
-    fetch(CITIZEN_URL('citizenmessage'))
-    .then((res) => res.json())
-    .then((message) => setMessageList(message.citizenMessage))
-    .catch((err) => console.error(err));
+    fetchMessages();
   }, []);
 
   // Post message
@@ -67,24 +64,24 @@ export const MessageBoard = ({ onClick }) => {
         <FaTimes onClick={onClick} />
       </CloseIcon>
       <MessageTitle>Citizens Messageboard</MessageTitle>
-        <MessageList>
-          {messageList.map((message, index) => (
-            <MessageBox key={index}>
-              <ImageUserBox>
-                <CitizenAvatar src={require(`../../assets/${message.user.avatar}.png`)} />
-                <Username>{message.user.username}</Username>
-              </ImageUserBox>
-              <TextBox>
-                <MessageText>{message.message}</MessageText>
-                <MessageCreated>{moment(message.createdAt).fromNow()}</MessageCreated>
-              </TextBox>
-            </MessageBox>
-          ))}
-        </MessageList>
-        <MessageForm 
-          handleSubmit={handleMessageSubmit} 
-          newMessage={newMessage} 
-          handleChange={(e) => setNewMessage(e.target.value)} />
+      <MessageList>
+        {messageList.map((message, index) => (
+          <MessageBox key={index}>
+            <ImageUserBox>
+              <CitizenAvatar src={require(`../../assets/${message.user.avatar}.png`)} />
+              <Username>{message.user.username}</Username>
+            </ImageUserBox>
+            <TextBox>
+              <MessageText>{message.message}</MessageText>
+              <MessageCreated>{moment(message.createdAt).fromNow()}</MessageCreated>
+            </TextBox>
+          </MessageBox>
+        ))}
+      </MessageList>
+      <MessageForm 
+        handleSubmit={handleMessageSubmit} 
+        newMessage={newMessage} 
+        handleChange={(e) => setNewMessage(e.target.value)} />
     </MessageContainer>
   )
 };

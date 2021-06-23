@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom';
 import { updateBadges } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-import { FinishDialog } from '../components/trivia/FinishDialog';
+import { FinishDialog } from '../components/quiz/FinishDialog';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
-import { TriviaStart } from '../components/trivia/TriviaStart';
-import { Animation } from '../components/trivia/Animation';
+import { Start } from '../components/quiz/Start';
+import { Animation } from '../components/quiz/Animation';
 import { 
   MainContainer, 
   GameTitle, 
@@ -17,10 +17,10 @@ import {
   TriviaContainer, 
   Question, 
   ButtonContainer, 
-  AnswerButton } from '../components/trivia/Styling';
+  AnswerButton } from '../components/quiz/Styling';
 
 
-export const Trivia = () => {
+export const Quiz = () => {
   const [questions, setQuestions] = useState([])
   const [loaded, setLoaded] = useState(false);
   const [difficulty, setDifficulty] = useState('easy');
@@ -114,7 +114,7 @@ export const Trivia = () => {
       <MainContainer>
         <GameTitle>Trivia</GameTitle>
         {!start ? 
-          <TriviaStart easy={() => handleDifficulty('easy')} hard={() => handleDifficulty('hard')} />
+          <Start easy={() => handleDifficulty('easy')} hard={() => handleDifficulty('hard')} />
           :
           <>
             <ScoreText>Score: {score}</ScoreText>

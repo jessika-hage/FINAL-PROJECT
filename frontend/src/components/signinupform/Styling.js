@@ -94,7 +94,7 @@ export const ButtonSignIn = styled(Button)`
   animation: ${input} 3.7s linear;
 `;
 
-// Error message and show password buttom
+// Error message and show password button
 export const ErrorMessage = styled.p`
   color: red;
   margin-top: 10px;
@@ -255,6 +255,7 @@ export const Label = styled.label`
     border: 2px solid ${props => props.theme.hover};
   }
 `;
+
 export const Avatar = styled.img`
   width: 40px;
   height: 40px;
@@ -284,4 +285,4 @@ export const Radio = styled.input`
   &:checked ~ ${Avatar} {
     border: 2px solid ${props => props.theme.hover};
   }
-  `;
+`;

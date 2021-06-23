@@ -61,5 +61,5 @@ export const Animation = () => {
 				<Div11></Div11>
 			</Wrapper11>
 		</>
-	);
+	)
 };

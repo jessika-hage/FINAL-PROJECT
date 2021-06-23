@@ -16,14 +16,18 @@ export const Memory = () => {
 	const onToggleGameDialog = () => {
 		setOpenGame(!openGame);
 	};
+  
   return (
-      <RoomMemory onClick={onToggleGameDialog}>
+      <RoomMemory 
+        tabIndex='0' 
+        aria-label='Memory' 
+        onClick={onToggleGameDialog}>
         <MemoryIcon />
         <Dialog open={openGame} onClick={onToggleGameDialog}>
           <DialogContainer>
             <InfoTitle>
               Memory
-              <CloseIcon onClick={onToggleGameDialog} />
+              <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
             </InfoTitle>
             <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
             <StartGameButton to='/memorygame'>Lets start</StartGameButton>

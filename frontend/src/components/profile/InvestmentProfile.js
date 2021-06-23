@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 
-import { updateCoins, updateInvestments, updateRanking } from '../../reducers/profile';
+import audio from '../../assets/CoinDrop 6103_48_4.wav';
+import { 
+	updateCoins, 
+	updateInvestments, 
+	updateRanking } from '../../reducers/profile';
 import {
 	InvestmentContainer,
 	InvestmentText,
@@ -41,13 +45,15 @@ export const InvestmentProfile = () => {
 
 	const onToggleConfirm = () => {
 		setOpenConfirm(!openConfirm);
-	}
+	};
+
 	// Variables to get get different values of investment
   const totalMarketValue = investmentQuantity * currency.price_usd;
   const difference = totalMarketValue - investments;
   const percentDifference = difference/investments * 100;
 
 	const onSellInvestment = () => {
+		new Audio(audio).play();
 		dispatch(updateInvestments(-investmentQuantity, -investments));
 		dispatch(updateCoins(totalMarketValue));
 		if (percentDifference > 10) {
@@ -80,10 +86,11 @@ export const InvestmentProfile = () => {
 						</ChangeBox>
 					</InvestmentChange>
 					<SellButton onClick={onToggleConfirm}>Sell investment</SellButton>
-					<Dialog open={openConfirm}>
+					<Dialog open={openConfirm} onClose={onToggleConfirm}>
 						<ConfirmDialog>
 							Are you sure you want to sell your investment?
 							You have {difference > 0 ? 'made' : 'lost'} {difference.toFixed(2)} $
+							{percentDifference >= 10 ? 'You have increased your investment with more than 10% so you will also gain 0.5 i ranking!' : ''}
 							<ButtonBox>
 								<SellButton onClick={onSellInvestment}>Yes, sell!</SellButton>
 								<SellButton onClick={onToggleConfirm}>No, cancel!</SellButton>
@@ -95,5 +102,5 @@ export const InvestmentProfile = () => {
 				<InvestmentText>You have no investments.</InvestmentText>
 			)}
 		</InvestmentContainer>
-	);
+	)
 };

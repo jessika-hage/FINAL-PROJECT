@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
 import { Hidden } from './Hidden';
-import { CameraContainer, Circle, InnerCircle } from './Styling';
+import { 
+  CameraContainer, 
+  Circle, 
+  InnerCircle } from './Styling';
 
 export const Camera = () => {
   const [background, setBackground] = useState(false);
+  
   const getBackground = () => {
     setBackground(true);
     setTimeout(() => {

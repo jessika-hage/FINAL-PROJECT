@@ -22,6 +22,7 @@ export const MemoryCard = ({ data, handleClick, index }) => {
 		setIsLoaded(true);
 	};
 
+	// Determining if card should be/stay flipped
 	let isFlipped = false;
 	if (isSelected) isFlipped = true;
 	if (isMatched) isFlipped = true;
@@ -39,5 +40,5 @@ export const MemoryCard = ({ data, handleClick, index }) => {
 				onLoad={handleImageLoad} 
 				isLoaded={isLoaded} />
 		</ReactCardFlip>
-	);
+	)
 };

@@ -85,8 +85,8 @@ export const ShoppingButton = styled.button`
 	padding: 0;
 	position: relative;
 	color: ${(props) => props.theme.textColor};
-	:hover {
-		color: ${(props) => props.theme.secondary};
+	:hover, :focus {
+		color: ${(props) => props.theme.primary};
 	}
 `;
 

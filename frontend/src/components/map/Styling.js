@@ -30,8 +30,9 @@ export const RoomClassroom = styled.div`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	outline: none;
 	background-color: ${(props) => props.theme.primary};
-	:hover {
+	:hover, :focus {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -45,8 +46,9 @@ export const RoomBedroom = styled.div`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	outline: none;
 	background-color: ${(props) => props.theme.primary};
-	:hover {
+	:hover, :focus {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -67,8 +69,9 @@ export const RoomQuiz = styled.div`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	outline: none;
 	background-color: ${(props) => props.theme.primary};
-	:hover {
+	:hover, :focus {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -81,9 +84,10 @@ export const RoomStore = styled(Link)`
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	outline: none;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.textColor};
-	:hover {
+	:hover, :focus {
 		background-color: ${(props) => props.theme.hover};
 	}
 `;
@@ -209,8 +213,12 @@ export const CloseIcon = styled(FaTimes)`
 	font-size: 20px;
 	cursor: pointer;
 	margin: 7px;
+	outline: none;
 	:hover {
 		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.primary}
 	}
 `;
 
@@ -339,4 +347,67 @@ export const Pink = styled(Circle)`
 
 export const Green = styled(Circle)`
 	background-color: #29bb89;
+`;
+
+// Info
+export const TextInfo = styled.p`
+	font-size: 12px;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+`;
+
+export const InfoItem = styled.div`
+	display: flex;
+	align-items: center;
+	margin: 5px 0;
+	font-size: 12px;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+`;
+
+export const BadgeIcon = styled.img`
+	margin: 0 5px 0 0;
+	width: 20px;
+`;
+
+export const CoinsIcon = styled.img`
+	margin: 0 5px 0 0;
+	width: 20px;
+`;
+
+export const ProgressBar = styled.div`
+  height: 8px;
+  width: 80PX;
+  border: 1px solid ${props => props.theme.secondary};
+	margin: 0 7px 0 0;
+`;
+
+export const ProgressFiller = styled.div`
+  background: ${props => props.theme.hover};
+  width: 50%;
+  height: 100%;
+`;
+
+export const EndText = styled.p`
+	font-size: 10px;
+	margin: 5px 0;
+	@media (min-width: 768px) {
+		font-size: 12px;
+	}
+`;
+
+export const Email = styled.a`
+	font-size: 10px;
+	text-decoration: underline;
+	color: ${props => props.theme.textColor};
+	cursor: pointer;
+	margin: 3px 0 0 0;
+	:hover {
+		color: ${props => props.theme.primary};
+	}
+	@media (min-width: 768px) {
+		font-size: 12px;
+	}
 `;

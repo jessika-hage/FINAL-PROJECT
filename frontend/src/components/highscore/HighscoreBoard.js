@@ -30,34 +30,34 @@ export const HighscoreBoard = () => {
     fetch(CITIZEN_URL(`citizens?sort=${sort}`))
     .then((res) => res.json())
     .then((data) => setHighscoreBoard(data.allCitizens))
-    .catch((err) => console.error(err));
+    .catch((err) => alert(`Error: ${err}`));
 	}, [sort]);
 
 
 	return (
 		<>
-					<TableHead>
+			<TableHead>
 				<TableTitle>Citizen</TableTitle>
 				<BubbleTitle onClick={() => setSort('highscoreSpaceball')}><BubbleChartIcon fontSize='large' /></BubbleTitle>
 				<FishTitle onClick={() => setSort('highscoreFish')}><FishIcon /></FishTitle>
         <MathTitle onClick={() => setSort('highscoreMath')}><MathIcon /></MathTitle>
 			</TableHead>
-		<TableContainer>
-			{highscoreBoard.map((citizen, index) => (
-				<CitizensList key={citizen._id}>
-          <PositionContainer>
-          <Position>{index +1}. </Position>
-           <CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-           <Citizen me={user === citizen.username}>
-					 	{citizen.username}
-          </Citizen>
-          </PositionContainer>
-					<ScoreBubble>{citizen.highscoreSpaceball}p</ScoreBubble>
-          <ScoreFish>{citizen.highscoreFish}p</ScoreFish>
-          <ScoreMath>{citizen.highscoreMath}p</ScoreMath>
-				</CitizensList>
-			 ))}
-		</TableContainer>
+			<TableContainer>
+				{highscoreBoard.map((citizen, index) => (
+					<CitizensList key={citizen._id}>
+						<PositionContainer>
+						<Position>{index +1}. </Position>
+						<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
+						<Citizen me={user === citizen.username}>
+							{citizen.username}
+						</Citizen>
+						</PositionContainer>
+						<ScoreBubble>{citizen.highscoreSpaceball}p</ScoreBubble>
+						<ScoreFish>{citizen.highscoreFish}p</ScoreFish>
+						<ScoreMath>{citizen.highscoreMath}p</ScoreMath>
+					</CitizensList>
+				))}
+			</TableContainer>
 		</>
-	);
+	)
 };

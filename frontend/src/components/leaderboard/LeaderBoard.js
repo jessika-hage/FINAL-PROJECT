@@ -25,13 +25,12 @@ export const LeaderBoard = () => {
 		fetch(CITIZEN_URL(`citizens?sort=${sort}`))
 			.then((res) => res.json())
 			.then((data) => setLeaderBoard(data.allCitizens))
-			.catch((err) => console.error(err));
+			.catch((err) => alert(`Error: ${err}`));
 	}, [sort])
 
 	useEffect(() => {
 		fetchCitizens();
 	}, [fetchCitizens]);
-
 
 	return (
 		<>
@@ -56,5 +55,5 @@ export const LeaderBoard = () => {
 				))}
 			</TableContainer>
 		</>
-	);
+	)
 };

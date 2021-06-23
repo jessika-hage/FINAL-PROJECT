@@ -33,5 +33,5 @@ export const Loader = () => {
 				<Div5></Div5>
 			</Wrapper5>
 		</Main>
-	);
+	)
 };

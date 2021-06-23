@@ -78,20 +78,20 @@ export const Profile = () => {
 			</Items>
 			<Investments>
 				<ContainerTitle>My investments 
-					<InfoIcon onClick={toggleInfo} />
+					<InfoIcon tabIndex='0' onClick={toggleInfo} />
 				</ContainerTitle>
 				<Dialog open={openInfo} onClose={toggleInfo}>
 					<InfoDialog>If you sell your investment with more than 10% up, your ranking will gå up 0.5!
-						<CloseIcon onClick={toggleInfo} />
+						<CloseIcon tabIndex='0' onClick={toggleInfo} />
 					</InfoDialog>
 				</Dialog>
 				<InvestmentProfile />
 			</Investments>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />
 			<Dialog open={openSettings} onClose={toggleSettings}>
-				<Settings onClose={toggleSettings} />
+				<Settings tabIndex='0' onClose={toggleSettings} />
 			</Dialog>
 		</ProfileContainer>
-	);
+	)
 };
 

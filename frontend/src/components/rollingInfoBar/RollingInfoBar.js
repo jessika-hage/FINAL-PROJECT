@@ -6,13 +6,12 @@ import { Housing } from './Housing';
 
 
 export const RollingInfoBar = () => {
-
-    return (
-        <MainBar>
-            <RollingText>
-                <Weather />
-                <Housing />
-            </RollingText>
-        </MainBar>
-    )
-}
+  return (
+    <MainBar>
+      <RollingText>
+        <Weather />
+        <Housing />
+      </RollingText>
+    </MainBar>
+  )
+};

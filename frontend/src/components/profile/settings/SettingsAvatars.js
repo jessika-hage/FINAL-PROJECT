@@ -23,6 +23,7 @@ export const SettingsAvatars = () => {
 
 	const avatars = ['woman', 'man2', 'hacker', 'woman3', 'woman2', 'man'];
 
+	// Updating avatar and settings success message
 	const handleAvatarUpdate = (e) => {
 		e.preventDefault();
 		dispatch(updateAvatar(avatar));
@@ -35,7 +36,7 @@ export const SettingsAvatars = () => {
 			<AvatarContainer>
 				{avatars.map((avatar) => (
 					<ButtonContainer>
-						<Label htmlFor={avatar} aria-label={avatar}>
+						<Label tabIndex='0' htmlFor={avatar} aria-label={avatar}>
 							<Radio
 								type='radio'
 								name='avatar'
@@ -52,7 +53,7 @@ export const SettingsAvatars = () => {
 			<ConfirmText success={success}>
 				{success ? 'Avatar successfully changed!' : ''}
 			</ConfirmText>
-			<UpdateButton type='sumbit'>Change avatar</UpdateButton>
+			<UpdateButton type='submit'>Change avatar</UpdateButton>
 		</Container>
-	);
+	)
 };

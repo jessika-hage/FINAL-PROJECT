@@ -22,7 +22,12 @@ export const CloseIcon = styled(FaTimes)`
 	font-size: 17px;
 	cursor: pointer;
 	margin-left: 5px;
+	outline: none;
 	:hover {
+		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.secondary};
 		transform: scale(1.2);
 	}
 `;
@@ -30,7 +35,12 @@ export const CloseIcon = styled(FaTimes)`
 export const SmallInfoIcon = styled(FaInfoCircle)`
 	font-size: 16px;
 	cursor: pointer;
+	outline: none;
 	:hover {
+		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.secondary};
 		transform: scale(1.2);
 	}
 `;

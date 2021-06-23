@@ -23,18 +23,20 @@ import {
 export const Header = () => {
 	const [openProfile, setOpenProfile] = useState(false);
 	const [openMessageBoard, setOpenMessageBoard] = useState(false);
+	const [alert, setAlert] = useState(false);
 	const avatar = useSelector((store) => store.profile.avatar);
-	const today = moment().add(60, 'year').format('DD/MM YYYY');
 	const createdAt = useSelector((store) => store.profile.createdAt);
-
 	const energy = useSelector((store) => store.profile.energy);
+
+	const today = moment().add(60, 'year').format('DD/MM YYYY');
+
+	// Variables for calculating average energy
 	const createdAtDate = moment(createdAt);
 	const today2 = moment().add(1, 'day');
 	const difference = today2.diff(createdAtDate, 'days');
 	const averageEnergy = energy / difference;
 
-	const [alert, setAlert] = useState(false);
-
+	// Alert icon in header if low energy
 	useEffect(() => {
 		if (averageEnergy < 1500) {
 			setAlert(true);
@@ -51,13 +53,13 @@ export const Header = () => {
 			</TitleDate>
 			<IconsContainer>
 				<Tooltip title='Citizens Messageboard'>
-					<MessageIcon onClick={() => setOpenMessageBoard(true)}>
+					<MessageIcon tabIndex='0' onClick={() => setOpenMessageBoard(true)}>
 						<FaCommentDots />
 					</MessageIcon>
 				</Tooltip>
 				<Tooltip title='My Profile'>
-					<ProfilImg onClick={() => setOpenProfile(true)}>
-						<Avatar src={require(`../../assets/${avatar}.png`)} />
+					<ProfilImg tabIndex='0' onClick={() => setOpenProfile(true)}>
+						<Avatar src={require(`../../assets/${avatar}.png`)} alt='avatar'/>
 						{alert && <Badge badgeContent={'!'} color='secondary'></Badge>}
 					</ProfilImg>
 				</Tooltip>

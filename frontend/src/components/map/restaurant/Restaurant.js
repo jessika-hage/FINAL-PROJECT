@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import moment from 'moment';
 
+import audio from '../../../assets/Sci Fi 2 Audio Files_BellToneBendDown.wav';
 import { updateEnergy } from '../../../reducers/profile';
 import { Dialogs } from './Dialogs';
 import { RoomRestaurant, RestaurantIcon } from '../Styling';
@@ -40,8 +41,10 @@ export const Restaurant = () => {
 		setOpen(!open);
 	};
 
+	// Only allow purchase if under 3000 average energy
 	const onBuy = (energy) => {
 		if (averageEnergy < 3000) {
+			new Audio(audio).play();
 			setOpenConfirmation(true);
 			dispatch(updateEnergy(energy));
 			setTimeout(() => {
@@ -61,14 +64,17 @@ export const Restaurant = () => {
 
 	return (
 		<>
-			<RoomRestaurant onClick={onToggleDialog}>
+			<RoomRestaurant 
+				tabIndex='0' 
+				aria-label='Restaurant' 
+				onClick={onToggleDialog}>
 				<RestaurantIcon />
 			</RoomRestaurant>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<Title>Nutrition 
 					<IconContainer>
-						<SmallInfoIcon onClick={onToggleInfo} />
-						<CloseIcon onClick={onToggleDialog} />
+						<SmallInfoIcon tabIndex='0' onClick={onToggleInfo} />
+						<CloseIcon tabIndex='0' onClick={onToggleDialog} />
 					</IconContainer>
 				</Title>
 				<TableHead>
@@ -98,5 +104,5 @@ export const Restaurant = () => {
 				openConfirmation={openConfirmation}
 				openFail={openFail} />
 		</>
-	);
+	)
 };

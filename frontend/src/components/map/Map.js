@@ -3,12 +3,12 @@ import React from 'react';
 import { Classroom } from './Classroom';
 import { Bedroom } from './bedroom/Bedroom';
 import { Restaurant } from './restaurant/Restaurant';
-import { Garden } from './Garden';
+import { Quiz } from './Quiz';
 import { Store } from './Store';
 import { Info } from './Info';
 import { Gym } from './gym/Gym';
 import { Memory } from './Memory';
-import { ProtinFarm } from './ProtinFarm';
+import { ProteinFarm } from './ProteinFarm';
 import { SpaceBall } from './SpaceBall';
 import { GridContainer } from './Styling';
 
@@ -18,13 +18,13 @@ export const Map = () => {
 			<Classroom />
 			<Bedroom />
 			<Restaurant />
-			<Garden />
+			<Quiz />
 			<Store />
 			<Info />
 			<Gym />
 			<Memory />
-			<ProtinFarm />
+			<ProteinFarm />
 			<SpaceBall />
 		</GridContainer>
-	);
+	)
 };

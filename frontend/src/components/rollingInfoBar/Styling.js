@@ -22,7 +22,8 @@ const Roller = keyframes`
   5% { opacity: 0; transform: translateX(100%) }
   10% { opacity: 1 }
   95% { opacity: 1 }
-  100% { opacity: 0.6; transform: translateX(-100%) }`;
+  100% { opacity: 0.6; transform: translateX(-100%) }
+`;
 
 export const RollingText = styled.div`
 	display: flex;

@@ -22,44 +22,44 @@ export const UpdatePassword = () => {
   const userId = useSelector(store => store.profile.userId);
   const accessToken = useSelector(store => store.profile.accessToken);
 
-  // const dispatch = useDispatch();
 
-const onUpdatePassword = (e) => {
-  e.preventDefault();
+  // PATCH for updating password
+  // Setting different response messages
+  const onUpdatePassword = (e) => {
+    e.preventDefault();
 
-  if (newPassword === confirmedPassword) {
-
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: accessToken
-      },
-      body: JSON.stringify({ password, newPassword }),
-    }
-    fetch(
-      `https://citizen-ship.herokuapp.com/citizen/${userId}/password`,
-      options
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setSuccess(true);
-          setNoMatch(false);
-          setFail(false);
-          setPassword('');
-          setNewPassword('');
-          setConfirmedPassword('');
-        } else {
-          setFail(true);
-          setNoMatch(false);
-        } 
-      })
-    } else {
-      setNoMatch(true);
-      setFail(false);
-    }
-};
+    if (newPassword === confirmedPassword) {
+      const options = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: accessToken
+        },
+        body: JSON.stringify({ password, newPassword }),
+      }
+      fetch(
+        `https://citizen-ship.herokuapp.com/citizen/${userId}/password`,
+        options
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setSuccess(true);
+            setNoMatch(false);
+            setFail(false);
+            setPassword('');
+            setNewPassword('');
+            setConfirmedPassword('');
+          } else {
+            setFail(true);
+            setNoMatch(false);
+          } 
+        })
+      } else {
+        setNoMatch(true);
+        setFail(false);
+      }
+  };
 
 const togglePassword = () => {
   if (!showPassword) setShowPassword(true);

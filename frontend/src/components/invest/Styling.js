@@ -197,7 +197,6 @@ export const ConfirmedButton = styled.button`
   }
 `;
 
-
 // Currency
 export const CurrencyTitle = styled(InvestTitle)`
   text-align: center;

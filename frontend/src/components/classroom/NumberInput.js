@@ -3,7 +3,12 @@ import React from 'react';
 import { SubmitButton } from './SubmitButton';
 import { Form, Input } from './Styling';
 
-export const NumberInput = ({ handleSubmit, answerField, value, onChange }) => {
+export const NumberInput = ({ 
+	handleSubmit, 
+	answerField, 
+	value, 
+	onChange }) => {
+
 	return (
 		<Form onSubmit={handleSubmit} action=''>
 			<Input
@@ -16,5 +21,5 @@ export const NumberInput = ({ handleSubmit, answerField, value, onChange }) => {
 			/>
 			<SubmitButton />
 		</Form>
-	);
+	)
 };

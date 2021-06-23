@@ -12,5 +12,5 @@ export const Hidden = () => {
 				title='malfunction'
 			></Background>
 		</Wrapper>
-	);
+	)
 };
