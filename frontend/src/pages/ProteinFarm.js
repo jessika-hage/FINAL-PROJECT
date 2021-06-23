@@ -64,7 +64,7 @@ import {
 	RoundWrapper2,
 	RoundWrapper3,
 	HidePhone,
-} from '../components/protinFarm/Styling';
+} from '../components/proteinfarm/Styling';
 
 export const ProteinFarm = () => {
 	const [score, setScore] = useState(0);
@@ -88,13 +88,10 @@ export const ProteinFarm = () => {
 	const [disabled18, setDisabled18] = useState(false);
 	const [disabled19, setDisabled19] = useState(false);
 	const [animation, setAnimation] = useState(false);
-
+	const [counter, setCounter] = useState(30);
+	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const highscore = useSelector((store) => store.profile.highscoreFish);
-	const [openFinishedDialog, setOpenFinishedDialog] = useState(false);
-
-	const numOfBadges = Math.round(score);
-	const [counter, setCounter] = useState(30);
 
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -105,101 +102,125 @@ export const ProteinFarm = () => {
 		}
 	}, [accessToken, history]);
 
+	// Initialize timer and sound
 	useEffect(() => {
 		new Audio(audio).play();
 		const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
 		return () => clearInterval(timer);
 	}, [counter]);
 
+	// Collect badges and set animation
+	// Update highscore if new 
 	const onCollectBadges = () => {
 		if (score > highscore) {
 			dispatch(updateHighscoreFish(score));
 		}
-		dispatch(updateBadges(numOfBadges));
+		dispatch(updateBadges(score));
 		setAnimation(true);
 		setTimeout(() => {
 			history.push('/');
 		}, 1000);
 	};
 
+	// Finish game when time is up
 	useEffect(() => {
 		if (counter === 0) {
 			setOpenFinishedDialog(true);
 		}
 	}, [counter]);
 
+	// Functions for increasing score
+	// Make fishes disappear when clicking
 	const onClick1 = () => {
 		setScore(score + 1);
 		setDisabled1(true);
 	};
+
 	const onClick2 = () => {
 		setScore(score + 1);
 		setDisabled2(true);
 	};
+
 	const onClick3 = () => {
 		setScore(score + 1);
 		setDisabled3(true);
 	};
+
 	const onClick4 = () => {
 		setScore(score + 1);
 		setDisabled4(true);
 	};
+
 	const onClick5 = () => {
 		setScore(score + 1);
 		setDisabled5(true);
 	};
+
 	const onClick6 = () => {
 		setScore(score + 1);
 		setDisabled6(true);
 	};
+
 	const onClick7 = () => {
 		setScore(score + 1);
 		setDisabled7(true);
 	};
+
 	const onClick8 = () => {
 		setScore(score + 1);
 		setDisabled8(true);
 	};
+
 	const onClick9 = () => {
 		setScore(score + 1);
 		setDisabled9(true);
 	};
+
 	const onClick10 = () => {
 		setScore(score + 1);
 		setDisabled10(true);
 	};
+
 	const onClick11 = () => {
 		setScore(score + 1);
 		setDisabled11(true);
 	};
+
 	const onClick12 = () => {
 		setScore(score + 1);
 		setDisabled12(true);
 	};
+
 	const onClick13 = () => {
 		setScore(score + 1);
 		setDisabled12(true);
 	};
+
 	const onClick14 = () => {
 		setScore(score + 1);
 		setDisabled14(true);
 	};
+
 	const onClick15 = () => {
 		setScore(score + 1);
 		setDisabled15(true);
 	};
+
 	const onClick16 = () => {
 		setScore(score + 1);
 		setDisabled16(true);
 	};
+
 	const onClick17 = () => {
 		setScore(score + 1);
 		setDisabled17(true);
 	};
+
 	const onClick18 = () => {
 		setScore(score + 1);
 		setDisabled18(true);
 	};
+
 	const onClick19 = () => {
 		setScore(score + 1);
 		setDisabled19(true);
@@ -211,10 +232,8 @@ export const ProteinFarm = () => {
 			<Camera />
 			<MainContainer>
 				<GameTitle>Fish Farm</GameTitle>
-
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
-
 				<WaterContainer>
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
@@ -303,7 +322,7 @@ export const ProteinFarm = () => {
 				<Dialog open={openFinishedDialog}>
 					<DialogContainer>
 						<DialogText>
-							You managed to catch {score} fishes which gives you {numOfBadges} badges!
+							You managed to catch {score} fishes which gives you {score} badges!
 						</DialogText>
 						<StartButton onClick={onCollectBadges}>
 							{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}
@@ -311,7 +330,7 @@ export const ProteinFarm = () => {
 					</DialogContainer>
 				</Dialog>
 			</MainContainer>
-			{animation && <BadgesAnimation text={numOfBadges} />}
+			{animation && <BadgesAnimation text={score} />}
 		</>
-	);
+	)
 };

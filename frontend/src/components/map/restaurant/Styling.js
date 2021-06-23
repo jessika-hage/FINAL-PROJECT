@@ -153,18 +153,18 @@ export const BuyFood = styled.button`
 // Dialogs
 export const DialogContainer = styled.div`
 	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.secondary};
 	display: flex;
 	flex-direction: column;
+	max-width: 300px;
 	justify-content: center;
-	padding: 20px;
+	padding: 15px;
 	color: ${(props) => props.theme.textColor};
 `;
 
 export const InfoContainer = styled(DialogContainer)`
 	max-width: 300px;
 	font-size: 14px;
-	font-family: 'Open Sans', serif;
   @media (min-width: 768px) {
 		max-width: 400px;
 	}

@@ -8,7 +8,7 @@ import {
 	EnergyContainer, 
 	EnergyText, 
 	AlertIcon, 
-	AlertContainer,
+	InfoDialog,
 	CloseIcon } from './Styling';
 
 export const EnergyProfile = () => {
@@ -49,10 +49,10 @@ export const EnergyProfile = () => {
 				{alert && <AlertIcon tabIndex='0' onClick={onToggleDialog}></AlertIcon>}
 			</EnergyText>
 			<Dialog open={open} onClose={onToggleDialog}>
-				<AlertContainer>
-					<EnergyText>Your energy intake is running dangerously low! You need to eat something or you're ranking will go down with 1.</EnergyText>
+				<InfoDialog>
+					Your energy intake is running dangerously low! You need to eat something or you're ranking will go down with 1.
 					<CloseIcon tabIndex='0' onClick={onToggleDialog} />
-				</AlertContainer>
+				</InfoDialog>
 			</Dialog>
 			<EnergyText>Needed average: 2000 kcal</EnergyText>
 		</EnergyContainer>

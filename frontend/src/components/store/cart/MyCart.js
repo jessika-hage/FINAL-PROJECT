@@ -5,7 +5,7 @@ import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Dialog from '@material-ui/core/Dialog';
 import Badge from '@material-ui/core/Badge';
 
-import audio from '../../../assets/Sci Fi 2 Audio Files_BellToneBendDown.wav';
+import audio from '../../../assets/Whoosh 6110_64_1.wav';
 import {
 	updateCoins,
 	updateItems,

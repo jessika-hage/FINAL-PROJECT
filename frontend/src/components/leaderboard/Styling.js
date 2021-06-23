@@ -8,7 +8,7 @@ export const TableContainer = styled.div`
 	padding: 10px 20px 20px 20px;
 	background-color: ${props => props.theme.backgroundColor};
 	color: ${props => props.theme.textColor};
-	max-height: 280px;
+	max-height: 220px;
 	overflow: scroll;
 	&::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -17,7 +17,7 @@ export const TableContainer = styled.div`
     border: 2px solid ${props => props.theme.secondary};
   }
   @media (min-width: 768px) {
-    max-height: 413px;
+    max-height: 406px;
   }
 `;
 

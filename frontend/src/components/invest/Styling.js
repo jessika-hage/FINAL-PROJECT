@@ -82,6 +82,7 @@ export const SeeMoreButton = styled.button`
   }
   @media (min-width: 768px) {
     padding: 10px;
+    font-size: 14px;
   }
 `; 
 
@@ -91,8 +92,11 @@ export const DialogContainer = styled.div`
   border: 2px solid ${props => props.theme.primary};
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 15px;
   color: ${props => props.theme.textColor};
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 export const InvestTitle = styled.h3`
@@ -134,17 +138,18 @@ export const InputAmount = styled.input`
   padding: 5px;
   border: 2px solid ${props => props.theme.secondary};
   color: ${props => props.theme.textColor};
-  font-size: 16px;
+  font-size: 13px;
   outline: none;
   background-color: ${props => props.theme.primary};
   margin-right: 15px;
-  max-width: fit-content;
+  max-width: 55%;
   font-family: 'Trispace', serif;
   :focus {
     background-color: ${props => props.theme.secondary};
   }
   @media (min-width: 768px) {
     width: 153px;
+    font-size: 15px;
   }
 `;
 

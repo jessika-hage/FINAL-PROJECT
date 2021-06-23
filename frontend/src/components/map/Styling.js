@@ -9,7 +9,8 @@ import {
 	FaBed,
 	FaTh,
 	FaDumbbell,
-	FaTimes
+	FaTimes,
+	FaQuestion
 } from 'react-icons/fa';
 
 export const GridContainer = styled.section`
@@ -202,6 +203,14 @@ export const MemoryIcon = styled(FaTh)`
 `;
 
 export const GymIcon = styled(FaDumbbell)`
+	font-size: 20px;
+	text-align: center;
+	@media (min-width: 768px) {
+		font-size: 40px;
+	}
+`;
+
+export const QuizIcon = styled(FaQuestion)`
 	font-size: 20px;
 	text-align: center;
 	@media (min-width: 768px) {

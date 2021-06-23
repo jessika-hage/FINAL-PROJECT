@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import audio from '../../assets/BUG-ZAPPER-ELECTRONIC_6EXT8-10522.wav';
 import { Hidden } from './Hidden';
 import { 
   CameraContainer, 
@@ -10,6 +11,7 @@ export const Camera = () => {
   const [background, setBackground] = useState(false);
   
   const getBackground = () => {
+    new Audio(audio).play();
     setBackground(true);
     setTimeout(() => {
       setBackground(false);

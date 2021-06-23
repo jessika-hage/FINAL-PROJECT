@@ -1,14 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-//Daily intake
-// Energy: 8,400kJ/2,000kcal
-// Total fat: less than 70g
-// Saturates: less than 20g
-// Carbohydrate: 260g
-// Total sugars: 90g
-// Protein: 50g
-// Salt: less than 6g
-
 const foodData = [
 	{
 		id: 1,

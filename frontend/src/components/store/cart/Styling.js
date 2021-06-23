@@ -98,9 +98,9 @@ export const ConfirmationDialog = styled.div`
 	flex-direction: column;
 	padding: 20px;
 	max-width: 300px;
-	background-color: ${(props) => props.theme.primary};
-	border: 3px solid ${(props) => props.theme.secondary};
-	color: ${(props) => props.theme.textColor};
+	background-color: ${props => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${props => props.theme.textColor};
 `;
 
 export const Text = styled.p`

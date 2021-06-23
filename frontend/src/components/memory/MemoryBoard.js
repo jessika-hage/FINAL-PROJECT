@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
+import audio from '../../assets/Cards 6010_56_6.wav';
 import { MemoryCard } from './MemoryCard';
 import { GetImages } from './GetImages';
 import { 
@@ -69,6 +70,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 	};
 
 	const handleClick = (index, id) => {
+		new Audio(audio).play();
 		if (isChecking) return;
 
 		flipCounter.current++;

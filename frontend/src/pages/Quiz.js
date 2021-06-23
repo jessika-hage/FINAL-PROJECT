@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import audio from '../assets/FreezeBee2ch SEG020118.wav';
 import { updateBadges } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
@@ -49,7 +50,6 @@ export const Quiz = () => {
         randomizeAnswer(data.results[0].incorrect_answers, data.results[0].correct_answer)
 				setQuestions(data.results);
         setLoaded(true);
-        console.log(data)
 			});
 	}, [difficulty]);
 
@@ -70,16 +70,19 @@ export const Quiz = () => {
     array.splice(randomIndex, 0, correctAnswer);
   };
 
+  // Choose easy or hard
+  // Start timer
   const handleDifficulty = (level) => {
     setDifficulty(level);
     setStart(true);
     setCounter(30);
-  }
+  };
 
   // Checking answer and moving on to next question
   // If questions run out, load new ones
   const handleAnswer = (e, answer) => {
     e.preventDefault();
+    new Audio(audio).play();
 
     if(answer === questions[questionIndex].correct_answer) {
       setScore(score + 1);
@@ -93,12 +96,14 @@ export const Quiz = () => {
      }
  };
 
+ // Finish dialog when time is up
   useEffect(() => {
     if (counter === 0) {
       setOpenFinish(true);
     }
   }, [counter]);
 
+  // Collect badges after finished game
   const onCollectBadges = () => {
     dispatch(updateBadges(score));
     setAnimation(true);
@@ -114,7 +119,9 @@ export const Quiz = () => {
       <MainContainer>
         <GameTitle>Trivia</GameTitle>
         {!start ? 
-          <Start easy={() => handleDifficulty('easy')} hard={() => handleDifficulty('hard')} />
+          <Start 
+            easy={() => handleDifficulty('easy')} 
+            hard={() => handleDifficulty('hard')} />
           :
           <>
             <ScoreText>Score: {score}</ScoreText>

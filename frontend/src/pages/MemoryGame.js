@@ -29,7 +29,6 @@ export const MemoryGame = () => {
 
 	// Checking for game updates
 	// If status is finished, set win dialog
-	// If timer gets to 0, set lose dialog
 	const handleStatusUpdate = (newStatus, results) => {
 		setGameStatus(newStatus);
 		if (newStatus === GAME_STATUS.FINISHED) {
@@ -68,5 +67,5 @@ export const MemoryGame = () => {
 			{animation && <BadgesAnimation text='10' />}
 		</MainContainer>
 		</>
-	);
+	)
 };

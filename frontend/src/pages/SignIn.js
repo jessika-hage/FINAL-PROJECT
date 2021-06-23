@@ -147,5 +147,5 @@ export const SignIn = () => {
 				</>
 			)}
 		</MainContainer>
-	);
+	)
 };

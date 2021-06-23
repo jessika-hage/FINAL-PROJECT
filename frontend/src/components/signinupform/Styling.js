@@ -13,6 +13,7 @@ export const Form = styled.form`
 export const MainContainer = styled.main`
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

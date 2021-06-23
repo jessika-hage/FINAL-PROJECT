@@ -234,8 +234,9 @@ export const InvestmentContainer = styled.div`
 export const InfoIcon = styled(FaInfoCircle)`
 	font-size: 14px;
 	cursor: pointer;
+	outline: none;
 	:hover, :focus {
-		transform: scale(1.1);
+		color: ${props => props.theme.primary};
 	}
 `;
 
@@ -340,14 +341,8 @@ export const AlertIcon = styled(FaExclamationTriangle)`
 	animation: ${alert} 1s linear infinite alternate-reverse;
 	margin-left: 10px;
 	cursor: pointer;
-`;
-
-export const AlertContainer = styled.div`
-	background-color: ${props => props.theme.primary};
-	border: 2px solid ${props => props.theme.secondary};
-	max-width: 250px;
-	padding: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	outline: none;
+	:focus {
+		outline: 1px solid red;
+	}
 `;

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import moment from 'moment';
 
-import audio from '../../../assets/Sci Fi 2 Audio Files_BellToneBendDown.wav';
+import audio from '../../../assets/Whoosh 6110_64_1.wav';
 import { updateEnergy } from '../../../reducers/profile';
 import { Dialogs } from './Dialogs';
 import { RoomRestaurant, RestaurantIcon } from '../Styling';

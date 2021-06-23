@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import audioTwo from '../assets/ElectronicBeep PS01_62_1.wav';
+import audio from '../assets/BuzzerGameShow MIX64_36_7.wav';
 import { updateBadges, updateHighscoreMath } from '../reducers/profile';
 import { NumberInput } from '../components/classroom/NumberInput';
 import { Header } from '../components/header/Header';
@@ -94,12 +96,14 @@ export const Classroom = () => {
 			correctAnswer = currentProblem.numberOne * currentProblem.numberTwo;
 
 		if (correctAnswer === parseInt(userAnswer, 10)) {
+			new Audio(audioTwo).play();
 			setScore((prev) => prev + 1);
 			setUserAnswer('');
 			if (easy) setCurrentProblem(generateProblem(10));
 			if (medium) setCurrentProblem(generateProblem(20));
 			if (hard) setCurrentProblem(generateProblem(30));
 		} else {
+			new Audio(audio).play();
 			setShowError(true);
 			setTimeout(() => setShowError(false), 400);
 		}

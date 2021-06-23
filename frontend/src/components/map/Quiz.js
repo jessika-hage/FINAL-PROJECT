@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 
 import { 
 	RoomQuiz, 
@@ -8,6 +7,7 @@ import {
 	DialogContainer, 
 	InfoTitle, 
 	CloseIcon, 
+	QuizIcon,
 	InfoText, 
 	List, 
 	ListItem, 
@@ -26,7 +26,7 @@ export const Quiz = () => {
 			aria-label='Quiz' 
 			onClick={onToggleGameDialog}>
 			<Icons>
-				<LocalFloristIcon fontSize='large' />
+				<QuizIcon />
 			</Icons>
 			<Dialog open={openGame} onClick={onToggleGameDialog}>
 				<DialogContainer>

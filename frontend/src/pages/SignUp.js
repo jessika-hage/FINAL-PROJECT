@@ -193,5 +193,5 @@ export const SignUp = () => {
 				</>
 			)}
 		</MainContainer>
-	);
+	)
 };
