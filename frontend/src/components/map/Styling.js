@@ -404,8 +404,15 @@ export const BottomText = styled.div`
 `;
 
 export const EndText = styled.p`
+	font-size: 12px;
+	margin: 5px 0 0 0;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+`;
+
+export const EndTextName = styled(EndText)`
 	font-size: 10px;
-	margin: 5px 0;
 	@media (min-width: 768px) {
 		font-size: 12px;
 	}
@@ -416,7 +423,7 @@ export const Email = styled.a`
 	text-decoration: underline;
 	color: ${props => props.theme.textColor};
 	cursor: pointer;
-	margin: 3px 0 0 0;
+	margin: 0;
 	:hover {
 		color: ${props => props.theme.primary};
 	}

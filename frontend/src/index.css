@@ -1,7 +1,6 @@
 html {
   height: 100%;
 }
-
 body {
   margin: 0;
   font-family: "Trispace", serif;
@@ -16,6 +15,8 @@ code {
 
 * {
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 a {

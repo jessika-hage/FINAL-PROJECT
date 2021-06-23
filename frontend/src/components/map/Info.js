@@ -11,6 +11,7 @@ import {
   CloseIcon,
   BottomText,
   EndText,
+  EndTextName,
   Email } from './Styling';
 
 export const Info = () => {
@@ -46,7 +47,7 @@ export const Info = () => {
             </InfoItem>
             <BottomText>
               <EndText>Your commanders,</EndText>
-              <EndText>Ylva Landoff Lindberg & Jessika Hage</EndText>
+              <EndTextName>Ylva Landoff Lindberg & Jessika Hage</EndTextName>
               <Email 
                 href='mailto:commander@citizenship.se' 
                 target="_blank" 

@@ -81,7 +81,7 @@ export const Profile = () => {
 					<InfoIcon tabIndex='0' onClick={toggleInfo} />
 				</ContainerTitle>
 				<Dialog open={openInfo} onClose={toggleInfo}>
-					<InfoDialog>If you sell your investment with more than 10% up, your ranking will gå up 0.5!
+					<InfoDialog>If you sell your investment with more than 10% up, your ranking will go up 0.5!
 						<CloseIcon tabIndex='0' onClick={toggleInfo} />
 					</InfoDialog>
 				</Dialog>
