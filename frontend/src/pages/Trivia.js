@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { updateBadges } from '../reducers/profile';
@@ -30,9 +30,16 @@ export const Trivia = () => {
   const [score, setScore] = useState(0);
   const [openFinish, setOpenFinish] = useState(false);
   const [animation, setAnimation] = useState(false);
+  const accessToken = useSelector((store) => store.profile.accessToken);
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+	useEffect(() => {
+		if (!accessToken) {
+			history.push('/signin');
+		}
+	}, [accessToken, history]);
 
   // Fetch questions
 	const fetchQuestion = useCallback(() => {
@@ -50,12 +57,14 @@ export const Trivia = () => {
     fetchQuestion();
 	}, [fetchQuestion]);
 
+  // Initialize the timer
   useEffect(() => {
     const timer =
     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
   }, [counter]);
 
+  // Mix together incorrect and correct
   const randomizeAnswer = (array, correctAnswer) => {
     const randomIndex = Math.floor(Math.random() * 2);
     array.splice(randomIndex, 0, correctAnswer);

@@ -6,7 +6,7 @@ import {
   ButtonContainer, 
   Button } from './Styling';
 
-export const MathStart = ({ easy, medium, hard }) => {
+export const StartGame = ({ easy, medium, hard }) => {
   return (
     <StartContainer>
       <Text>Choose difficulty level: </Text>

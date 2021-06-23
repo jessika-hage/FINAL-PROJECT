@@ -106,7 +106,7 @@ export const Form = styled.form`
   margin: 50px 0;
 `;
 
-export const NumberInput = styled.input`
+export const Input = styled.input`
   padding: 7px;
   background-color: ${props => props.theme.primary};
   border-top: none;

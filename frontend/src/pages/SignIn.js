@@ -3,6 +3,7 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
+import audio from '../assets/Whoosh 6110_59_2.wav';
 import { CITIZEN_URL } from '../reusables/urls';
 import { profile } from '../reducers/profile';
 import { ui } from '../reducers/ui';
@@ -37,7 +38,7 @@ export const SignIn = () => {
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
-
+		new Audio(audio).play();
 		dispatch(ui.actions.setLoading(true));
 
 		const options = {

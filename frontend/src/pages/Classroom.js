@@ -18,7 +18,7 @@ import {
 	CounterText,
 	MathContainer,
 	MathProblem,
-} from '../components/math/Styling';
+} from '../components/classroom/Styling';
 
 export const Classroom = () => {
 	const [openFinish, setOpenFinish] = useState(false);

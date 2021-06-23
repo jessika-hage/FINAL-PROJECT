@@ -287,7 +287,7 @@ export const SellButton = styled.button`
 `;
 
 export const InfoDialog = styled.div`
-	padding: 10px;
+	padding: 15px;
 	font-size: 14px;
 	max-width: 300px;
 	position: relative;
