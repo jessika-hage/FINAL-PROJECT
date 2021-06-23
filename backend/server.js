@@ -160,58 +160,6 @@ app.get('/citizens', async (req, res) => {
 	}
 });
 
-//use to generate a random link to reset password
-// const randomString = (length) => {
-// 	let text = '';
-// 	const possible = 'abcdefghijklmnopqrstuvwxyx123456789_-.';
-// 	for (let i = 0; i < length; i++) {
-// 		text += possible.charAt(Math.floor(Math.random() * possible.length));
-// 	}
-// 	return text;
-// };
-
-// app.put('/citizen/password', authenticateCitizen);
-// app.put('/citizen/password', async (req, res) => {
-// 	if (!req.body) return res.status(400).json({ message: 'No request body' });
-// 	if (!req.body.email)
-// 		return res.status(400).json({ message: 'No email in request body' });
-
-// 	const token = randomString(40);
-// 	const emailData = {
-// 		to: req.body.email,
-// 		subject: 'Hello ✔', // Subject line
-// 		text: 'Hello world?', // plain text body
-// 		html: '<b>Hello world?</b>',
-// 	};
-// 	return Citizen.update(
-// 		{ email: req.body.email },
-// 		{ $set: { resetPassLink: token } },
-// 		function (error, feedback) {
-// 			if (error) return res.send(error);
-// 			else {
-// 				sendEmail(emailData);
-// 				return res
-// 					.status(200)
-// 					.json({ message: `Email has been sent to ${req.body.email}` });
-// 			}
-// 		}
-// 	);
-// });
-
-// app.put('/api/resetpass', async (req, res) => {
-// 	const { resetPassLink, newPassword } = req.body;
-// 	Citizen.hashPassword(newPassword).then((hashPassword) => {
-// 		return Citizen.update(
-// 			{ resetPassLink },
-// 			{ $set: { password: hashedPass, reserPassLink: '' } },
-// 			function (error, feedback) {
-// 				if (error) return res.send(error);
-// 				return res.send(feedback);
-// 			}
-// 		);
-// 	});
-// });
-
 //update password when you remember your old password
 app.patch('/citizen/:id/password', authenticateCitizen);
 app.patch('/citizen/:id/password', async (req, res) => {
@@ -237,28 +185,6 @@ app.patch('/citizen/:id/password', async (req, res) => {
 		res.status(400).json({ success: false, message: 'Invalid request', error });
 	}
 });
-
-//update password when you forgot your old password
-// app.patch('/citizen/newpassword', authenticateCitizen);
-// app.patch('/citizen/newpassword', async (req, res) => {
-// 	const { _id } = req.citizen;
-// 	const { newPassword } = req.body;
-
-// 	try {
-// 		const salt = bcrypt.genSaltSync();
-
-// 		const updatedCitizen = await Citizen.findByIdAndUpdate(
-// 			_id,
-// 			{
-// 				password: bcrypt.hashSync(newPassword, salt),
-// 			},
-// 			{ new: true }
-// 		);
-// 		res.json({ success: true });
-// 	} catch (error) {
-// 		res.status(400).json({ success: false, error });
-// 	}
-// });
 
 // POST for signing up
 app.post('/signup', async (req, res) => {
@@ -388,7 +314,6 @@ app.patch('/citizen/:id/avatar', async (req, res) => {
 		res.status(400).json({ message: 'Invalid request', error });
 	}
 });
-
 
 // PATCH for increasing badges
 app.patch('/citizen/:id/badges', authenticateCitizen);
