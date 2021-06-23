@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Dialog from '@material-ui/core/Dialog';
 
 import { updateCoins, updateInvestments, updateRanking } from '../../reducers/profile';
 import {
@@ -11,10 +12,13 @@ import {
 	IconUp,
 	IconDown,
 	ChangeBox,
+	ConfirmDialog,
+	ButtonBox
 } from './Styling';
 
 export const InvestmentProfile = () => {
 	const [currency, setCurrency] = useState([]);
+	const [openConfirm, setOpenConfirm] = useState(false);
 	const investments = useSelector((store) => store.profile.investments);
 	const investmentQuantity = useSelector(
 		(store) => store.profile.investmentQuantity
@@ -35,6 +39,9 @@ export const InvestmentProfile = () => {
 			});
 	};
 
+	const onToggleConfirm = () => {
+		setOpenConfirm(!openConfirm);
+	}
 	// Variables to get get different values of investment
   const totalMarketValue = investmentQuantity * currency.price_usd;
   const difference = totalMarketValue - investments;
@@ -72,7 +79,17 @@ export const InvestmentProfile = () => {
 							</ValueChange>
 						</ChangeBox>
 					</InvestmentChange>
-					<SellButton onClick={onSellInvestment}>Sell investment</SellButton>
+					<SellButton onClick={onToggleConfirm}>Sell investment</SellButton>
+					<Dialog open={openConfirm}>
+						<ConfirmDialog>
+							Are you sure you want to sell your investment?
+							You have {difference > 0 ? 'made' : 'lost'} {difference.toFixed(2)} $
+							<ButtonBox>
+								<SellButton onClick={onSellInvestment}>Yes, sell!</SellButton>
+								<SellButton onClick={onToggleConfirm}>No, cancel!</SellButton>
+							</ButtonBox>
+						</ConfirmDialog>
+					</Dialog>
 				</>
 			) : (
 				<InvestmentText>You have no investments.</InvestmentText>

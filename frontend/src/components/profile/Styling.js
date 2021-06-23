@@ -278,7 +278,7 @@ export const SellButton = styled.button`
 	border: 2px solid ${(props) => props.theme.secondary};
 	color: ${props => props.theme.textColor};
 	font-size: 14px;
-	margin-top: 7px;
+	margin: 7px 7px 0 0;
 	padding: 5px;
 	width: fit-content;
 	:hover {
@@ -286,14 +286,25 @@ export const SellButton = styled.button`
 	}
 `;
 
-export const InfoDialog = styled.div`
+export const ConfirmDialog = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	padding: 15px;
 	font-size: 14px;
 	max-width: 300px;
-	position: relative;
 	background-color: ${props => props.theme.backgroundColor};
 	border: 2px solid ${(props) => props.theme.secondary};
 	color: ${props => props.theme.textColor};
+`;
+
+export const ButtonBox = styled.div`
+	display: flex;
+`
+
+export const InfoDialog = styled(ConfirmDialog)`
+	position: relative;
 `;
 
 
