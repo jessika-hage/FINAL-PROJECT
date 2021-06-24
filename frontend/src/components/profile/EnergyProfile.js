@@ -4,12 +4,13 @@ import moment from 'moment';
 import Dialog from '@material-ui/core/Dialog';
 
 import { updateRanking } from 'reducers/profile';
-import { 
-	EnergyContainer, 
-	EnergyText, 
-	AlertIcon, 
+import {
+	EnergyContainer,
+	EnergyText,
+	AlertIcon,
 	InfoDialog,
-	CloseIcon } from './Styling';
+	CloseIcon,
+} from './Styling';
 
 export const EnergyProfile = () => {
 	const [alert, setAlert] = useState(false);
@@ -29,11 +30,11 @@ export const EnergyProfile = () => {
 	// Alerting when energy is low
 	// Decrease ranking after 30min if not buying food
 	useEffect(() => {
-		if (averageEnergy < 1500) {
+		if (averageEnergy < 2200) {
 			setAlert(true);
 			setTimeout(() => {
-				dispatch(updateRanking(-1))
-			}, delay)
+				dispatch(updateRanking(-1));
+			}, delay);
 		} else {
 			setAlert(false);
 		}
@@ -45,16 +46,18 @@ export const EnergyProfile = () => {
 
 	return (
 		<EnergyContainer>
-			<EnergyText>My average intake: {averageEnergy.toFixed(0)} kcal 
+			<EnergyText>
+				My average intake: {averageEnergy.toFixed(0)} kcal
 				{alert && <AlertIcon tabIndex='0' onClick={onToggleDialog}></AlertIcon>}
 			</EnergyText>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<InfoDialog>
-					Your energy intake is running dangerously low! You need to eat something or you're ranking will go down with 1.
+					Your energy intake is running dangerously low! You need to eat something or
+					you're ranking will go down with 1.
 					<CloseIcon tabIndex='0' onClick={onToggleDialog} />
 				</InfoDialog>
 			</Dialog>
 			<EnergyText>Needed average: 2000 kcal</EnergyText>
 		</EnergyContainer>
-	)
+	);
 };

@@ -38,7 +38,7 @@ export const Header = () => {
 
 	// Alert icon in header if low energy
 	useEffect(() => {
-		if (averageEnergy < 1500) {
+		if (averageEnergy < 2200) {
 			setAlert(true);
 		} else {
 			setAlert(false);
@@ -59,7 +59,7 @@ export const Header = () => {
 				</Tooltip>
 				<Tooltip title='My Profile'>
 					<ProfilImg tabIndex='0' onClick={() => setOpenProfile(true)}>
-						<Avatar src={require(`../../assets/${avatar}.png`)} alt='avatar'/>
+						<Avatar src={require(`../../assets/${avatar}.png`)} alt='avatar' />
 						{alert && <Badge badgeContent={'!'} color='secondary'></Badge>}
 					</ProfilImg>
 				</Tooltip>
