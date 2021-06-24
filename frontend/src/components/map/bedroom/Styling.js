@@ -56,14 +56,21 @@ export const InfoText = styled.p`
 `;
 
 export const CloseIcon = styled(FaTimes)`
+font-size: 16px;
+cursor: pointer;
+position: absolute;
+top: 10px;
+right: 10px;
+outline: none;
+:hover {
+	transform: scale(1.2);
+}
+:focus {
+	color: ${props => props.theme.primary}
+}
+@media (min-width: 768px) {
 	font-size: 20px;
-	cursor: pointer;
-	margin-left: 7px;
-	outline: none;
-	:hover {
-		transform: scale(1.2);
-	}
-	:focus {
-		color: ${props => props.theme.primary}
-	}
+	top: 12px;
+	right: 12px;
+}
 `;

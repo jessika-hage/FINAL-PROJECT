@@ -28,7 +28,7 @@ export const Classroom = () => {
               Classroom
               <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
             </InfoTitle>
-            <InfoText>In the classroom you can get badges by solving mathematical problems. There are three:</InfoText>
+            <InfoText>In the classroom you can get badges by solving mathematical problems. You can choose between three levels:</InfoText>
             <List>
               <ListItem>BEGINNER: You will have 40s and the numbers are low. This of course reflects on how many badges you can make.</ListItem>
               <ListItem>AVERAGE: Everything is pretty average here.</ListItem>

@@ -27,7 +27,7 @@ export const ProteinFarm = () => {
 				<Dialog open={openGame} onClick={onToggleGameDialog}>
 					<DialogContainer>
 						<InfoTitle>
-							Protin Farm
+							Protein Farm
 							<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
 						</InfoTitle>
 						<InfoText>Catch the fishes.</InfoText>
