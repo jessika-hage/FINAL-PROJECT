@@ -34,7 +34,7 @@ export const Quiz = () => {
 						Quiz time!
 						<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
 					</InfoTitle>
-					<InfoText>In here there is a quiz with true or false question. But there is a challenge with jumping buttons.
+					<InfoText>In here there is a quiz with true or false question. But there is a challenge with jumping circles and buttons.
 						But at least you get to choose the difficulty level of the questions between: 
 					</InfoText>
 					<List>
