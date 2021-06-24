@@ -38,7 +38,7 @@ export const Header = () => {
 
 	// Alert icon in header if low energy
 	useEffect(() => {
-		if (averageEnergy < 2200) {
+		if (averageEnergy < 1500) {
 			setAlert(true);
 		} else {
 			setAlert(false);
