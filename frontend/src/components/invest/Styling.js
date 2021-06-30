@@ -93,6 +93,7 @@ export const DialogContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
+  min-width: 305px;
   color: ${props => props.theme.textColor};
   @media (min-width: 768px) {
     padding: 20px;

@@ -30,7 +30,7 @@ export const EnergyProfile = () => {
 	// Alerting when energy is low
 	// Decrease ranking after 30min if not buying food
 	useEffect(() => {
-		if (averageEnergy < 2200) {
+		if (averageEnergy < 1500) {
 			setAlert(true);
 			setTimeout(() => {
 				dispatch(updateRanking(-1));

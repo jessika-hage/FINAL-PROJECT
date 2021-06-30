@@ -231,7 +231,7 @@ export const ProteinFarm = () => {
 			<Header />
 			<Camera />
 			<MainContainer>
-				<GameTitle>Fish Farm</GameTitle>
+				<GameTitle>Protein Farm</GameTitle>
 				<ScoreText>Catches: {score}</ScoreText>
 				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
 				<WaterContainer>

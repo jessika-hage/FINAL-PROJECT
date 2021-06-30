@@ -219,15 +219,22 @@ export const QuizIcon = styled(FaQuestion)`
 `;
 
 export const CloseIcon = styled(FaTimes)`
-	font-size: 20px;
+	font-size: 16px;
 	cursor: pointer;
-	margin: 7px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 	outline: none;
 	:hover {
 		transform: scale(1.2);
 	}
 	:focus {
 		color: ${props => props.theme.primary}
+	}
+	@media (min-width: 768px) {
+		font-size: 20px;
+		top: 12px;
+		right: 12px;
 	}
 `;
 
@@ -238,11 +245,13 @@ export const DialogContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 20px 20px 20px 15px;
+	padding: 15px;
+	min-width: 280px;
 	max-width: 300px;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 500px) {
 		max-width: 450px;
+		padding: 20px 20px 20px 15px;
 	}
 `;
 
@@ -293,11 +302,12 @@ export const DialogButton = styled.button`
 export const List = styled.ul`
 	list-style-type: square;
 	padding: 0 20px;
+	margin: 5px 0 0 0;
 `;
 
 export const ListItem = styled.li`
 	font-size: 12px;
-	margin: 5px;
+	margin: 5px 0;
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}
@@ -305,7 +315,7 @@ export const ListItem = styled.li`
 
 export const StartGameButton = styled(Link)`
 	padding: 10px 15px;
-	margin-top: 20px;
+	margin-top: 15px;
 	background-color: ${(props) => props.theme.primary};
 	border: 2px solid ${(props) => props.theme.hover};
 	color: ${(props) => props.theme.textColor};

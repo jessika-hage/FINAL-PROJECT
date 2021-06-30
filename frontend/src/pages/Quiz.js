@@ -128,7 +128,7 @@ export const Quiz = () => {
             <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
             {loaded && 
               <TriviaContainer>
-                <Question>{questions[questionIndex].question}</Question> 
+                <Question>{questions[questionIndex].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}</Question> 
                 <ButtonContainer>
                   {questions[questionIndex].incorrect_answers.map((option) => {
                     return (
