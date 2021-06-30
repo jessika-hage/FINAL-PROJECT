@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import {
 	FaFish,
@@ -19,6 +19,10 @@ export const GridContainer = styled.section`
 	width: 100%;
 	min-height: 200px;
 	color: ${(props) => props.theme.textColor};
+	@media (min-width: 768px) {
+		min-height: 280px;
+		max-height: 400px;
+	}
 `;
 
 // Rooms

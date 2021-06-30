@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
 
 export const TableContainer = styled.div`
@@ -16,7 +16,10 @@ export const TableContainer = styled.div`
     height: 15px;
     border: 2px solid ${props => props.theme.secondary};
   }
-  @media (min-width: 768px) {
+	@media (min-width: 768px) {
+    max-height: 340px;
+  }
+  @media (min-width: 1024px) {
     max-height: 406px;
   }
 `;

@@ -1,30 +1,40 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 // MessageForm
 export const Form = styled.form`
 `;
 
 export const MessageInput = styled.textarea`
-  font-size: 14px;
+  font-size: 12px;
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 360px;
+  width: 317px;
   background-color: ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
   padding: 10px 10px 20px 10px;
   outline: none;
-  border: 2px solid ${props => props.theme.secondary};
+  border-top: 2px solid ${props => props.theme.secondary};
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
   ::placeholder {
     color: ${props => props.theme.textColor};
   }
   :focus {
     background-color: ${props => props.theme.secondary};
   }
+  @media (max-width: 320px) {
+    width: 277px;
+  }
+  @media (min-width: 768px) {
+    width: 360px;
+    font-size: 14px;
+  }
 `;
 
 export const SubmitButton = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   padding: 5px;
@@ -32,8 +42,8 @@ export const SubmitButton = styled.button`
   color: ${props => props.theme.textColor};
   border: 2px solid ${props => props.theme.secondary};
   background-color: ${props => props.theme.primary};
-  border-radius: 5px;
-  font-family: "Trispace", serif;
+  border-radius: 4px;
+  font-family: 'Trispace', serif;
   font-size: 15px;
   :hover, :focus {
     background-color: ${props => props.theme.secondary};
@@ -51,33 +61,54 @@ export const MessageContainer = styled.section`
   background-color: ${props => props.theme.backgroundColor};
   border-left: 3px solid ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
-  padding: 20px;
+  padding: 14px;
   min-height: 100vh;
   position: relative;
+  width: 320px;
+  @media (max-width: 320px) {
+    width: 280px;
+  }
+  @media (min-width: 768px) {
+    padding: 20px;
+    width: 363px;
+  }
 `;
 
 export const CloseIcon = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: fixed;
+  top: 8px;
+  right: 5px;
   background-color: transparent;
   font-size: 20px;
   color: ${props => props.theme.textColor};
   :hover, :focus {
     color: ${props => props.theme.hover};
   }
+  @media (max-width: 320px) {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    top: 10px;
+    right: 10px;
+  }
 `;
 
 export const MessageTitle = styled.h3`
   text-transform: uppercase;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   border-bottom: 2px solid ${props => props.theme.hover};
   padding-bottom: 5px;
+  @media (max-width: 320px) {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const MessageList = styled.div`
-  max-width: 320px;
+  width: 100%;
   overflow: scroll;
   height: 100vh;
   &::-webkit-scrollbar {
@@ -105,23 +136,35 @@ export const ImageUserBox = styled.div`
 `;
 
 export const TextBox = styled(ImageUserBox)`
-  margin-left: 6px;
+  padding: 10px;
   align-items: flex-start;
   justify-content: space-between;;
   width: 100%;
 `;
 
 export const MessageText = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 0 5px 0;
+  @media (max-width: 320px) {
+    font-size: 11px;
+  }
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const MessageCreated = styled.p`
-  font-size: 11px;
+  font-size: 9px;
   width: 100%;
   margin: 0 15px 0 0;
   text-align: right;
   opacity: 0.7;
+  @media (max-width: 320px) {
+    font-size: 8px;
+  }
+  @media (min-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 export const CitizenAvatar = styled.img`
@@ -138,6 +181,12 @@ export const CitizenAvatar = styled.img`
 `;
 
 export const Username = styled.p`
-  font-size: 12px;
+  font-size: 11px;
   margin: 0;
+  @media (max-width: 320px) {
+    font-size: 10px;
+  }
+  @media (min-width: 768px) {
+    font-size: 12px;
+  }
 `;

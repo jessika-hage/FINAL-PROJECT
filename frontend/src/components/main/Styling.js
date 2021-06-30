@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const MainContainer = styled.main`
 	display: flex;
@@ -29,9 +29,12 @@ export const Container = styled.section`
 export const MapContainer = styled.div`
 	width: 100%;
 	@media (min-width: 768px) {
+		width: 90%;
+		display: flex;
+	}
+	@media (min-width: 1024px) {
 		width: 80%;
 		height: 35vh;
-		display: flex;
 	}
 `;
 
