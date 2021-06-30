@@ -12,7 +12,7 @@ import {
 	CloseIcon,
 } from './Styling';
 
-export const EnergyProfile = () => {
+export const EnergyProfile = ({ openEnergy, toggleEnergy }) => {
 	const [alert, setAlert] = useState(false);
 	const [open, setOpen] = useState(false);
 	const energy = useSelector((store) => store.profile.energy);
@@ -58,6 +58,12 @@ export const EnergyProfile = () => {
 				</InfoDialog>
 			</Dialog>
 			<EnergyText>Needed average: 2000 kcal</EnergyText>
+			<Dialog open={openEnergy} onClose={toggleEnergy}>
+				<InfoDialog>To be a strong citizen you're average intake should be minimum 2000 kcal and if you're falling below 
+					1500 kcal you need to eat within 30 minutes, otherwise you will lose ranking!
+					<CloseIcon tabIndex='0' onClick={toggleEnergy} />
+				</InfoDialog>
+			</Dialog>
 		</EnergyContainer>
 	);
 };

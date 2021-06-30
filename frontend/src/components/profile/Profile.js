@@ -24,6 +24,7 @@ import {
 
 export const Profile = () => {
 	const [openSettings, setOpenSettings] = useState(false);
+	const [openEnergy, setOpenEnergy] = useState(false);
 	const [openInfo, setOpenInfo] = useState(false);
 	const username = useSelector((store) => store.profile.username);
 	const avatar = useSelector((store) => store.profile.avatar);
@@ -50,6 +51,10 @@ export const Profile = () => {
 		setOpenSettings(!openSettings)
 	};
 
+	const toggleEnergy = () => {
+		setOpenEnergy(!openEnergy);
+	};
+
 	const toggleInfo = () => {
 		setOpenInfo(!openInfo);
 	};
@@ -69,8 +74,12 @@ export const Profile = () => {
 				</DaysText>
 			</DaysContainer>
 			<Items>
-				<ContainerTitle>My energy</ContainerTitle>
-				<EnergyProfile />
+				<ContainerTitle>My energy
+					<InfoIcon tabIndex='0' onClick={toggleEnergy} />
+				</ContainerTitle>
+				<EnergyProfile 
+					openEnergy={openEnergy}
+					toggleEnergy={toggleEnergy} />
 			</Items>
 			<Items>
 				<ContainerTitle>My items</ContainerTitle>
