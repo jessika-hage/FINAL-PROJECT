@@ -17,14 +17,20 @@ import {
 	HouseImage,
 	Title,
 	PriceContainer,
-} from './Styling';
+	CloseIcon,
+	BuyDialog } from './Styling';
 
 export const Housing = () => {
 	const [open, setOpen] = useState(false);
+	const [openBuy, setOpenBuy] = useState(false);
 	const housing = useSelector((store) => store.housing);
 
 	const onToggleDialog = () => {
 		setOpen(!open);
+	};
+
+	const onToggleBuy = () => {
+		setOpenBuy(!openBuy);
 	};
 
 	return (
@@ -35,6 +41,7 @@ export const Housing = () => {
 			</HousingText>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>
+					<CloseIcon onClick={onToggleDialog} />
 					<HouseTitle>LET YOUR DREAM COME TRUE</HouseTitle>
 					<Carousel autoPlay='true' infiniteLoop='true'>
 						{housing.map((house) => (
@@ -54,9 +61,15 @@ export const Housing = () => {
 						))}
 					</Carousel>
 					<ButtonContainer>
-						<BuyButton>Buy House</BuyButton>
+						<BuyButton onClick={onToggleBuy}>Buy House</BuyButton>
 					</ButtonContainer>
 				</DialogContainer>
+			</Dialog>
+			<Dialog open={openBuy} onClose={onToggleBuy}>
+				<BuyDialog>
+				<CloseIcon onClick={onToggleBuy} />
+					You have not nearly enough money to afford this!
+				</BuyDialog>
 			</Dialog>
 		</>
 	)

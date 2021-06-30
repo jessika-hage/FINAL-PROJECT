@@ -24,6 +24,9 @@ export const MainContainer = styled.main`
   @media (max-width: 320px) {
     padding-bottom: 20px;
   }
+  @media (min-width: 768px) {
+    padding-bottom: 30px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -98,6 +101,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   font-family: 'Trispace';
   margin-top: 25px;
+  font-size: 15px;
   :hover {
 	opacity: 0.7;
   }
@@ -106,6 +110,7 @@ export const Button = styled.button`
   }
   @media (max-width: 320px) {
     padding: 10px 20px;
+    font-size: 13px;
   }
 `;
 
@@ -120,7 +125,10 @@ export const ErrorMessage = styled.p`
   margin-top: 10px;
   font-size: 12px;
   position: absolute;
-  bottom: 40%;
+  bottom: 43%;
+  @media (max-width: 320px) {
+    bottom: 41%;
+  }
 `;
 
 export const EyeButton = styled.button`
@@ -132,7 +140,7 @@ export const EyeButton = styled.button`
   font-size: 16px;
   position: absolute;
   animation: ${input} 3.5s linear;
-  right: 1%;
+  right: 2%;
   bottom: 62%;
   :hover {
     color: ${props => props.theme.primary};
@@ -151,7 +159,7 @@ export const ErrorMessageSignUp = styled.p`
   font-size: 12px;
   margin: 0;
   position: absolute;
-  bottom: 53%;
+  bottom: 54%;
   @media (max-width: 320px) {
     font-size: 10px;
     bottom: 52%;
@@ -162,14 +170,15 @@ export const ErrorMessageSignUp = styled.p`
 `;
 
 export const EyeButtonSignUp = styled(EyeButton)`
-  bottom: 60%;
-  right: 5%;
+  bottom: 61%;
+  right: 4%;
   animation: none;
   @media (max-width: 320px) {
     right: 6%;
+    bottom: 60%;
   }
   @media (min-width: 768px) {
-    bottom: 63%;
+    bottom: 64%;
     right: 18%;
   }
 `;

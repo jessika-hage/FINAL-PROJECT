@@ -93,7 +93,7 @@ export const DialogContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
-  min-width: 320px;
+  min-width: 300px;
   color: ${props => props.theme.textColor};
   @media (min-width: 768px) {
     padding: 20px;
@@ -160,9 +160,7 @@ export const TotalValueText = styled.p`
 `;
 
 export const Text = styled.p`
-  text-transform: none;
   display: flex;
-  text-align: center;
   font-size: 13px;
   text-align: left;
   margin: 8px 0;

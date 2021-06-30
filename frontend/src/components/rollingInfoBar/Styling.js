@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { FaTimes } from 'react-icons/fa';
 
 // Rolling info bar
 export const MainBar = styled.div`
@@ -47,13 +48,12 @@ export const WeatherText = styled.div`
 	margin: 0;
 	display: flex;
 	align-items: center;
-	padding: 10px 10px 10px 0;
+	padding: 10px 10px 5px 0;
 	text-transform: uppercase;
 	color: ${(props) => props.theme.textColor};
 	border-right: 2px solid ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
 		font-size: 14px;
-		padding: 10px 10px 10px 0;
 	}
 `;
 
@@ -79,11 +79,11 @@ export const DialogContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	max-width: 300px;
+	max-width: 320px;
 	color: ${(props) => props.theme.textColor};
 	@media (min-width: 768px) {
-		max-width: 400px;
-		padding: 20px;
+		max-width: 350px;
+		padding: 15px;
 	}
 `;
 
@@ -99,7 +99,6 @@ export const WeatherContainer = styled.div`
 	border-bottom: 2px solid ${(props) => props.theme.primary};
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 `;
 
 export const DayText = styled.p`
@@ -130,7 +129,7 @@ export const HouseContainer = styled.div`
 export const HouseImage = styled.img`
 	width: 200px;
 	@media (min-width: 768px) {
-		width: 250px;
+		width: 220px;
 	}
 `;
 
@@ -170,7 +169,7 @@ export const ButtonContainer = styled.div`
 
 export const BuyButton = styled.button`
 	padding: 8px;
-	margin-top: -30px;
+	margin-top: -50px;
 	width: fit-content;
 	text-transform: uppercase;
 	font-family: 'Trispace', serif;
@@ -181,4 +180,37 @@ export const BuyButton = styled.button`
 	:focus {
 		background-color: ${(props) => props.theme.secondary};
 	}
+`;
+
+export const CloseIcon = styled(FaTimes)`
+	font-size: 16px;
+	cursor: pointer;
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	outline: none;
+	:hover {
+		transform: scale(1.2);
+	}
+	:focus {
+		color: ${props => props.theme.primary}
+	}
+	@media (min-width: 768px) {
+		font-size: 20px;
+		top: 10px;
+		right: 10px;
+	}
+`;
+
+export const BuyDialog = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 15px;
+	font-size: 14px;
+	max-width: 300px;
+	background-color: ${props => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${props => props.theme.textColor};
 `;

@@ -4,12 +4,13 @@ import Dialog from '@material-ui/core/Dialog';
 import { WEATHER_API } from '../../reusables/urls';
 import { FORECAST_API } from '../../reusables/urls';
 import {   
-    WeatherText, 
-    Button, 
-    DialogContainer, 
-    ForecastTitle, 
-    WeatherContainer, 
-    DayText } from './Styling';
+  WeatherText, 
+  Button, 
+  DialogContainer, 
+  ForecastTitle, 
+  WeatherContainer, 
+  DayText,
+  CloseIcon } from './Styling';
 
 export const Weather = () => {
   const [weather, setWeather] = useState([]);
@@ -51,6 +52,7 @@ export const Weather = () => {
       </WeatherText>
       <Dialog open={open} onClose={onToggleDialog}>
         <DialogContainer>
+          <CloseIcon onClick={onToggleDialog} />
           <ForecastTitle>Forecast at destination</ForecastTitle>
           {forecast.map((item, index) => (
             <WeatherContainer key={index}>

@@ -4,7 +4,6 @@ import Dialog from '@material-ui/core/Dialog';
 import {
 	DialogContainer,
 	CurrencyTitle,
-	TextContainer,
 	Text,
 	ButtonContainer,
 	ExchangeButton,
@@ -35,36 +34,26 @@ export const PriceChange = ({ open, onClose, toggleExchangeDialog, toggleInvestD
           SPACE $
           <CloseIcon onClick={onClose} />
         </CurrencyTitle>
-        <TextContainer>
           <Text>Price: {currency.price_usd} $</Text>
-        </TextContainer>
-        <TextContainer>
           <Text>
             Change in last hour:
             <PercentChange percent={currency.percent_change_1h < 0}>
-              {currency.percent_change_1h} %
+              {currency.percent_change_1h}%
             </PercentChange>
           </Text>
-        </TextContainer>
-        <TextContainer>
           <Text>
             Change in last 24 hours:
             <PercentChange percent={currency.percent_change_24h < 0}>
-              {currency.percent_change_24h} %
+              {currency.percent_change_24h}%
             </PercentChange>
           </Text>
-        </TextContainer>
-        <TextContainer>
           <Text>
             Change in the last week:
             <PercentChange percent={currency.percent_change_7d < 0}>
-              {currency.percent_change_7d} %
+              {currency.percent_change_7d}%
             </PercentChange>
           </Text>
-        </TextContainer>
-        <TextContainer>
           <Text>Exchange rate: 2 badge = {currency.price_usd} $</Text>
-        </TextContainer>
         <ButtonContainer>
           <ExchangeButton 
             onClick={toggleExchangeDialog}>
