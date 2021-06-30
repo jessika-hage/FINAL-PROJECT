@@ -6,10 +6,10 @@ export const Form = styled.form`
 
 export const MessageInput = styled.textarea`
   font-size: 14px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 360px;
   background-color: ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
   padding: 10px 10px 20px 10px;
@@ -27,16 +27,20 @@ export const SubmitButton = styled.button`
   position: absolute;
   bottom: 10px;
   right: 10px;
-  padding: 7px;
+  padding: 5px;
   text-transform: uppercase;
   color: ${props => props.theme.textColor};
   border: 2px solid ${props => props.theme.secondary};
   background-color: ${props => props.theme.primary};
   border-radius: 5px;
   font-family: "Trispace", serif;
-  font-size: 16px;
+  font-size: 15px;
   :hover, :focus {
     background-color: ${props => props.theme.secondary};
+  }
+  @media (min-width: 768px) {
+    padding: 7px;
+    font-size: 16px;
   }
 `;
 

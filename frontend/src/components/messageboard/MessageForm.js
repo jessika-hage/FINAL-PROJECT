@@ -14,9 +14,9 @@ export const MessageForm = ({
     <Form onSubmit={handleSubmit}>
       <MessageInput
         placeholder='Type your message..'
-        rows='5'
+        rows='4'
         minLength='2'
-        maxLength='40'
+        maxLength='140'
         required
         value={newMessage}
         onChange={handleChange}>
