@@ -14,6 +14,7 @@ export const ProductsWrapper = styled.div`
 	justify-content: center;
 	flex-wrap: wrap;
 	margin: auto 0;
+	margin-bottom: 100px;
 `;
 
 export const Main = styled.main`
@@ -132,7 +133,6 @@ export const TextWrapper = styled.div`
 	margin: 0;
 `;
 
-
 export const TextDescription = styled.p`
 	color: ${(props) => props.theme.textColor};
 	margin: 2px 0;
@@ -143,7 +143,6 @@ export const TextDescription = styled.p`
 		font-size: 14px;
 	}
 `;
-
 
 export const AddButton = styled.button`
 	padding: 5px;
