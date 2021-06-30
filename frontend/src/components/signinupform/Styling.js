@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
 // For Sign in and up pages
@@ -15,6 +15,7 @@ export const MainContainer = styled.main`
   height: 100vh;
   max-height: 100vh;
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
   flex-direction: column;
