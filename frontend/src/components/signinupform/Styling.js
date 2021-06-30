@@ -14,12 +14,16 @@ export const MainContainer = styled.main`
   width: 100%;
   height: 100vh;
   max-height: 100vh;
+  padding-bottom: 50px;
   display: flex;
   position: fixed;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: ${props => props.theme.backgroundColor};
+  @media (max-width: 320px) {
+    padding-bottom: 20px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -28,6 +32,10 @@ export const Title = styled.h1`
   font-size: 40px;
   display: flex;
   margin-bottom: 40px;
+  @media (max-width: 320px) {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const ChooseText = styled.p`
@@ -35,6 +43,9 @@ export const ChooseText = styled.p`
   text-transform: uppercase;
   font-size: 14px;
   margin: 15px 0 5px 0;
+  @media (max-width: 320px) {
+    font-size: 12px;
+  }
   @media (min-width: 768px) {
     margin: 20px 0 5px 0;
   }
@@ -59,6 +70,10 @@ export const Input = styled.input`
   }
   ::placeholder {
 	text-transform: uppercase;
+  }
+  @media (max-width: 320px) {
+    font-size: 12px;
+    width: 260px;
   }
 `;
 
@@ -88,6 +103,9 @@ export const Button = styled.button`
   }
   :focus {
 	border: 2px solid ${props => props.theme.hover};
+  }
+  @media (max-width: 320px) {
+    padding: 10px 20px;
   }
 `;
 
@@ -122,6 +140,9 @@ export const EyeButton = styled.button`
   :focus {
     color: ${props => props.theme.hover};
   }
+  @media (max-width: 320px) {
+    right: 3%;
+  }
 `;
 
 export const ErrorMessageSignUp = styled.p`
@@ -131,6 +152,10 @@ export const ErrorMessageSignUp = styled.p`
   margin: 0;
   position: absolute;
   bottom: 53%;
+  @media (max-width: 320px) {
+    font-size: 10px;
+    bottom: 52%;
+  }
   @media (min-width: 768px) {
     bottom: 57%;
   }
@@ -140,6 +165,9 @@ export const EyeButtonSignUp = styled(EyeButton)`
   bottom: 60%;
   right: 5%;
   animation: none;
+  @media (max-width: 320px) {
+    right: 6%;
+  }
   @media (min-width: 768px) {
     bottom: 63%;
     right: 18%;
@@ -152,6 +180,10 @@ export const ChangeText = styled.p`
   text-transform: uppercase;
   font-size: 14px;
   margin-bottom: 25px;
+  @media (max-width: 320px) {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const ChangeLink = styled(Link)`
@@ -266,6 +298,10 @@ export const Avatar = styled.img`
   cursor: pointer;
   outline: none;
   border: 2px solid ${props => props.theme.secondary};
+  @media (max-width: 320px) {
+    width: 34px;
+    height: 34px;
+  }
   @media (min-width: 768px) {
     width: 64px;
     height: 64px;
