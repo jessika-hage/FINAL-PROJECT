@@ -14,7 +14,7 @@ export const MainContainer = styled.main`
   width: 100%;
   height: 100vh;
   max-height: 100vh;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   display: flex;
   position: fixed;
   justify-content: center;
