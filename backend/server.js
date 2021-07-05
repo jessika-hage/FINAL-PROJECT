@@ -125,7 +125,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.json(listEndpoints(app));
+	res.send('Hello world');
 });
 
 // GET all citizens
