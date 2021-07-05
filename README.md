@@ -21,7 +21,7 @@ The main goal of this game is to get as high of a ranking as possible (you start
 * Fish Game (Protein Farm)
  - In here we have a wave and fishes that jump out of it. The goal is to catch the fishes. You press on the fishes and they will disappear and you get one point which equals one badge.
 
- * Quiz
+* Quiz
   - Here we're using a Trivia API to fetch random boolean questions. We made it a bit harder with buttons that are not still and an animation that jumps in front of the questions. You have 30 seconds and every correct answer equals one badge.
 
 * Space Ball
