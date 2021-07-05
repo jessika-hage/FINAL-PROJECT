@@ -17,6 +17,7 @@ export const EnergyProfile = ({ openEnergy, toggleEnergy }) => {
 	const [open, setOpen] = useState(false);
 	const energy = useSelector((store) => store.profile.energy);
 	const createdAt = useSelector((store) => store.profile.createdAt);
+	const ranking = useSelector((store) => store.profile.ranking);
 
 	const dispatch = useDispatch();
 
@@ -32,13 +33,15 @@ export const EnergyProfile = ({ openEnergy, toggleEnergy }) => {
 	useEffect(() => {
 		if (averageEnergy < 1500) {
 			setAlert(true);
-			setTimeout(() => {
-				dispatch(updateRanking(-1));
-			}, delay);
+			if (ranking >= 1) {
+				setTimeout(() => {
+					dispatch(updateRanking(-1));
+				}, delay);
+			}
 		} else {
 			setAlert(false);
 		}
-	}, [averageEnergy, delay, dispatch]);
+	}, [averageEnergy, delay, dispatch, ranking]);
 
 	const onToggleDialog = () => {
 		setOpen(!open);

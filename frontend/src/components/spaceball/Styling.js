@@ -8,8 +8,8 @@ export const MainContainer = styled.div`
 	align-items: center;
 	position: fixed;
 	padding-top: 10px;
-	color: ${(props) => props.theme.textColor};
-	background-color: ${(props) => props.theme.backgroundColor};
+	color: #fff;
+	background-color: #090909;
 `;
 
 export const DialogContainer = styled.div`
