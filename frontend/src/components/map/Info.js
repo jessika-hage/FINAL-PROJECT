@@ -33,7 +33,7 @@ export const Info = () => {
         <DialogContainer>
           <InfoTitle>
             Ship info
-            <CloseIcon tabIndex='0' onClose={onToggleDialog} />
+            <CloseIcon tabIndex='0' onClick={onToggleDialog} />
           </InfoTitle>
           <TextInfo>There are a number of things to think about as a citizen. The most important one 
             is the ranking. To get higher ranking you need to collect badges and coins. Things that effect your ranking

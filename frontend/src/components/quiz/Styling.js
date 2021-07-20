@@ -127,9 +127,12 @@ export const Button = styled.button`
 `;
 
 export const CollectButton = styled(Button)`
-	margin-top: 20px;
+	margin: 20px 0 0 0;
 	background-color: ${(props) => props.theme.primary};
 	border: 2px solid ${(props) => props.theme.hover};
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
 `;
 
 // TriviaStart
