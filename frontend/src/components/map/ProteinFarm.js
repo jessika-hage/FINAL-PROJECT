@@ -19,21 +19,23 @@ export const ProteinFarm = () => {
 	};
 
 	return (
+		<>
 			<RoomFarm 
 				tabIndex='0' 
 				aria-label='Protein Farm' 
 				onClick={onToggleGameDialog}>
 				<FishIcon />
-				<Dialog open={openGame} onClick={onToggleGameDialog}>
-					<DialogContainer>
-						<InfoTitle>
-							Protein Farm
-							<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
-						</InfoTitle>
-						<InfoText>Catch the fishes.</InfoText>
-						<StartGameButton to='/farm'>Lets start</StartGameButton>
-					</DialogContainer>
-				</Dialog>
 			</RoomFarm>
+			<Dialog open={openGame} onClose={onToggleGameDialog}>
+				<DialogContainer>
+					<InfoTitle>
+						Protein Farm
+						<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
+					</InfoTitle>
+					<InfoText>Catch the fishes.</InfoText>
+					<StartGameButton to='/farm'>Lets start</StartGameButton>
+				</DialogContainer>
+			</Dialog>
+		</>			
 	)
 };

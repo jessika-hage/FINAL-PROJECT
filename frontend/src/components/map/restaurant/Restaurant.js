@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import moment from 'moment';
 
 import audio from '../../../assets/Whoosh 6110_64_1.wav';
-import { updateEnergy } from '../../../reducers/profile';
+import { updateEnergy, updateCoins } from '../../../reducers/profile';
 import { Dialogs } from './Dialogs';
 import { RoomRestaurant, RestaurantIcon } from '../Styling';
 import { 
@@ -42,11 +42,12 @@ export const Restaurant = () => {
 	};
 
 	// Only allow purchase if under 3000 average energy
-	const onBuy = (energy) => {
+	const onBuy = (energy, price) => {
 		if (averageEnergy < 3000) {
 			new Audio(audio).play();
 			setOpenConfirmation(true);
 			dispatch(updateEnergy(energy));
+			dispatch(updateCoins(- price))
 			setTimeout(() => {
 				setOpenConfirmation(false);
 			}, 2000);
@@ -92,7 +93,7 @@ export const Restaurant = () => {
 							<FoodHide>{food.protein}g</FoodHide>
 							<FoodHide>{food.salt}g</FoodHide>
 							<Food>
-								{food.price}$<BuyFood onClick={() => onBuy(food.energy)}>Buy</BuyFood>
+								{food.price}$<BuyFood onClick={() => onBuy(food.energy, food.price)}>Buy</BuyFood>
 							</Food>
 						</FoodList>
 					))}

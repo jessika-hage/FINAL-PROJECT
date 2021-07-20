@@ -28,9 +28,9 @@ export const HighscoreBoard = () => {
 
 	useEffect(() => {
     fetch(CITIZEN_URL(`citizens?sort=${sort}`))
-    .then((res) => res.json())
-    .then((data) => setHighscoreBoard(data.allCitizens))
-    .catch((err) => alert(`Error: ${err}`));
+			.then((res) => res.json())
+			.then((data) => setHighscoreBoard(data.allCitizens))
+			.catch((err) => alert(`Error: ${err}`));
 	}, [sort]);
 
 
@@ -46,11 +46,11 @@ export const HighscoreBoard = () => {
 				{highscoreBoard.map((citizen, index) => (
 					<CitizensList key={citizen._id}>
 						<PositionContainer>
-						<Position>{index +1}. </Position>
-						<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-						<Citizen me={user === citizen.username}>
-							{citizen.username}
-						</Citizen>
+							<Position>{index +1}. </Position>
+							<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
+							<Citizen me={user === citizen.username}>
+								{citizen.username}
+							</Citizen>
 						</PositionContainer>
 						<ScoreBubble>{citizen.highscoreSpaceball}p</ScoreBubble>
 						<ScoreFish>{citizen.highscoreFish}p</ScoreFish>

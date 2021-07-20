@@ -55,12 +55,14 @@ export const Bedroom = () => {
 
 
   return (
-    <RoomBedroom 
-      tabIndex='0' 
-      aria-label='Bedroom' 
-      onClick={onToggleBedroomDialog}>
-      <BedIcon />
-      <Dialog open={openBedroom} onClick={onToggleBedroomDialog}>
+    <>
+      <RoomBedroom 
+        tabIndex='0' 
+        aria-label='Bedroom' 
+        onClick={onToggleBedroomDialog}>
+        <BedIcon />
+      </RoomBedroom>
+      <Dialog open={openBedroom} onClose={onToggleBedroomDialog}>
         <DialogContainer>
           <InfoTitle>
             Get some rest!
@@ -77,6 +79,7 @@ export const Bedroom = () => {
       <Dialogs 
         openConfirm={openConfirm} 
         confirmText={success ? 'Good morning! Hope you are rested!' : 'You do not have enough badges to deserve some rest!'} />
-    </RoomBedroom>
+    
+    </>
   )
 };

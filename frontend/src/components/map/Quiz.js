@@ -3,7 +3,6 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { 
 	RoomQuiz, 
-	Icons, 
 	DialogContainer, 
 	InfoTitle, 
 	CloseIcon, 
@@ -21,14 +20,14 @@ export const Quiz = () => {
 	};
 
 	return (
-		<RoomQuiz 
-			tabIndex='0' 
-			aria-label='Quiz' 
-			onClick={onToggleGameDialog}>
-			<Icons>
+		<>
+			<RoomQuiz 
+				tabIndex='0' 
+				aria-label='Quiz' 
+				onClick={onToggleGameDialog}>
 				<QuizIcon />
-			</Icons>
-			<Dialog open={openGame} onClick={onToggleGameDialog}>
+			</RoomQuiz>
+			<Dialog open={openGame} onClose={onToggleGameDialog}>
 				<DialogContainer>
 					<InfoTitle>
 						Quiz time!
@@ -44,6 +43,6 @@ export const Quiz = () => {
 					<StartGameButton to='/quiz'>Lets start</StartGameButton>
 				</DialogContainer>
 			</Dialog>
-		</RoomQuiz>
+		</>
 	)
 };

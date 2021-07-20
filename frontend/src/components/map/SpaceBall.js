@@ -25,14 +25,16 @@ export const SpaceBall = () => {
 	};
 
 	return (
-		<RoomSpace 
-			tabIndex='0' 
-			aria-label='Spaceball' 
-			onClick={onToggleGameDialog}>
-			<Icons>
-				<BubbleChartIcon fontSize='large' />
-			</Icons>
-			<Dialog open={openGame} onClick={onToggleGameDialog}>
+		<>
+			<RoomSpace 
+				tabIndex='0' 
+				aria-label='Spaceball' 
+				onClick={onToggleGameDialog}>
+				<Icons>
+					<BubbleChartIcon fontSize='large' />
+				</Icons>
+			</RoomSpace>
+			<Dialog open={openGame} onClose={onToggleGameDialog}>
 				<DialogContainer>
 					<InfoTitle>
 						Space Ball
@@ -61,6 +63,6 @@ export const SpaceBall = () => {
 					<StartGameButton to='/spaceball'>Lets start</StartGameButton>
 				</DialogContainer>
 			</Dialog>
-		</RoomSpace>
+		</>
 	);
 };

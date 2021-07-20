@@ -54,12 +54,14 @@ export const Gym = () => {
   };
 
 	return (
-		<RoomGym 
-			tabIndex='0' 
-			aria-label='Gym' 
-			onClick={onToggleGymDialog}>
-			<GymIcon />
-			<Dialog open={openGym} onClick={onToggleGymDialog}>
+		<>
+			<RoomGym 
+				tabIndex='0' 
+				aria-label='Gym' 
+				onClick={onToggleGymDialog}>
+				<GymIcon />
+			</RoomGym>
+			<Dialog open={openGym} onClose={onToggleGymDialog}>
 				<DialogContainer>
 					<InfoTitle>
 						Get some workout!
@@ -77,6 +79,6 @@ export const Gym = () => {
 			<Dialogs 
 				openConfirm={openConfirm} 
 				confirmText={success ? 'Great workout!' : 'You do not have enough badges to enter the gym!'} />
-		</RoomGym>
+		</>
 	);
 };

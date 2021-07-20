@@ -163,13 +163,16 @@ export const EyeOne = styled.button`
 	color: ${(props) => props.theme.secondary};
 	font-size: 20px;
 	position: absolute;
-	right: 30%;
+	right: 32%;
 	bottom: 0;
 	:hover, :focus {
 		color: ${(props) => props.theme.primary};
 	}
 	:focus {
 		color: ${(props) => props.theme.hover};
+	}
+	@media (min-width: 768px) {
+		right: 47%;
 	}
 `;
 

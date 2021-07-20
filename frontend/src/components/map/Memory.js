@@ -18,21 +18,23 @@ export const Memory = () => {
 	};
   
   return (
+    <>
       <RoomMemory 
         tabIndex='0' 
         aria-label='Memory' 
         onClick={onToggleGameDialog}>
         <MemoryIcon />
-        <Dialog open={openGame} onClick={onToggleGameDialog}>
-          <DialogContainer>
-            <InfoTitle>
-              Memory
-              <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
-            </InfoTitle>
-            <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
-            <StartGameButton to='/memorygame'>Lets start</StartGameButton>
-          </DialogContainer>
-        </Dialog>
       </RoomMemory>
+      <Dialog open={openGame} onClose={onToggleGameDialog}>
+        <DialogContainer>
+          <InfoTitle>
+            Memory
+            <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
+          </InfoTitle>
+          <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
+          <StartGameButton to='/memorygame'>Lets start</StartGameButton>
+        </DialogContainer>
+      </Dialog>
+    </>
   )
 };
