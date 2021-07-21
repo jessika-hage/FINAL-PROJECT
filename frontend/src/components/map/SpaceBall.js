@@ -49,7 +49,7 @@ export const SpaceBall = () => {
 						<Purple></Purple> - 1 point
 					</CirclePoint>
 					<CirclePoint>
-						<Green></Green> - 1 points
+						<Green></Green> - 1 point
 					</CirclePoint>
 					<CirclePoint>
 						<Pink></Pink> - 2 points

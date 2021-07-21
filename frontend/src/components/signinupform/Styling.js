@@ -196,12 +196,12 @@ export const ChangeText = styled.p`
 `;
 
 export const ChangeLink = styled(Link)`
-  text-decoration: none;
+  text-decoration: underline;
   color: ${props => props.theme.textColor};
   cursor: pointer;
   margin-left: 7px;
   :hover, :focus {
-	text-decoration: underline;
+    color: ${props => props.theme.secondary};
   }
 `;
 

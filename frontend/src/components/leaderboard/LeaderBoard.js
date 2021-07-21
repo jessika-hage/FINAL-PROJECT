@@ -37,7 +37,7 @@ export const LeaderBoard = () => {
 			<TableHead>
 				<TableTitle>Citizen</TableTitle>
 				<TableTitleLinks onClick={() => setSort('highestRanking')}>Ranking</TableTitleLinks>
-				<CitizenDaysLink onClick={() => setSort('senior')}>On Ship</CitizenDaysLink>
+				<CitizenDaysLink onClick={() => setSort('senior')}>Days On Ship</CitizenDaysLink>
 				<TableTitleLinks onClick={() => setSort('mostBadges')}>Badges</TableTitleLinks>
 				<TableTitleLinks onClick={() => setSort('richest')}>Coins</TableTitleLinks>
 			</TableHead>

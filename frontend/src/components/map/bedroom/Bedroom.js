@@ -71,7 +71,7 @@ export const Bedroom = () => {
           <InfoText>
             As a citizen on this ship, we like it when you work hard. That's why it
             is important that you also sleep a little bit sometimes. You will lose 20
-            badges but will gain 0.2 ranking! But you can not sleep to often so we lock the room afterwards.
+            badges but will gain 0.2 ranking! But you can not sleep too often so we lock the room afterwards.
           </InfoText>
           <DialogButton onClick={onClickSleep} disabled={disabled}>Sleep!</DialogButton>
         </DialogContainer>
