@@ -10,12 +10,18 @@ export const TableContainer = styled.div`
 	color: ${props => props.theme.textColor};
 	max-height: 220px;
 	overflow: scroll;
+	overflow-x: hidden;
 	&::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 12px;
     border: 2px solid ${props => props.theme.secondary};
   }
+	::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.secondary};
+		:hover {
+			background-color: ${props => props.theme.primary};
+		}
+	}
 	@media (min-width: 768px) {
     max-height: 340px;
   }

@@ -131,7 +131,7 @@ export const ProfileContainer = styled.section`
   align-items: center;
 	min-height: 100vh;
 	background-color: ${props => props.theme.backgroundColor};
-  padding: 10px 7px 50px 7px;
+  padding: 10px 7px 70px 7px;
 	width: 100%;
   overflow: scroll;
   height: 100vh;
@@ -141,6 +141,12 @@ export const ProfileContainer = styled.section`
     height: 10px;
     border: 2px solid ${props => props.theme.secondary};
   }
+	::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.secondary};
+		:hover {
+			background-color: ${props => props.theme.primary};
+		}
+	}
 `;
 
 // Days on ship

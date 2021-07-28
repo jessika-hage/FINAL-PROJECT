@@ -61,7 +61,7 @@ export const MessageContainer = styled.section`
   background-color: ${props => props.theme.backgroundColor};
   border-left: 3px solid ${props => props.theme.primary};
   color: ${props => props.theme.textColor};
-  padding: 14px;
+  padding: 7px;
   min-height: 100vh;
   position: relative;
   width: 320px;
@@ -69,7 +69,7 @@ export const MessageContainer = styled.section`
     width: 280px;
   }
   @media (min-width: 768px) {
-    padding: 20px;
+    padding: 10px;
     width: 363px;
   }
 `;
@@ -117,6 +117,12 @@ export const MessageList = styled.div`
     height: 10px;
     border: 2px solid ${props => props.theme.secondary};
   }
+  ::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.secondary};
+		:hover {
+			background-color: ${props => props.theme.primary};
+		}
+	}
 `;
 
 export const MessageBox = styled.div`

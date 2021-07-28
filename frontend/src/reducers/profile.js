@@ -117,7 +117,6 @@ export const profile = createSlice({
 // Thunk for updating avatar
 export const updateAvatar = (avatar) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -132,10 +131,9 @@ export const updateAvatar = (avatar) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setAvatar(data.avatar));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
@@ -158,14 +156,13 @@ export const updateBadges = (badges) => {
 			.then((data) => {
 				dispatch(profile.actions.setBadges(data.badges));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating ranking
 export const updateRanking = (ranking) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -180,17 +177,15 @@ export const updateRanking = (ranking) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setRanking(data.ranking));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating coins
 export const updateCoins = (coins) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -205,17 +200,15 @@ export const updateCoins = (coins) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setCoins(data.coins));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating bought items
 export const updateItems = (items) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'POST',
 			headers: {
@@ -230,17 +223,15 @@ export const updateItems = (items) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setItems(data.items));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating investments
 export const updateInvestments = (investmentQuantity, investments) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -258,14 +249,13 @@ export const updateInvestments = (investmentQuantity, investments) => {
 				dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
 				dispatch(profile.actions.setInvestments(data.investments));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating energy intake
 export const updateEnergy = (energy) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -280,17 +270,15 @@ export const updateEnergy = (energy) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setEnergy(data.energy));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating highscore spaceball
 export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -305,17 +293,15 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setHighscoreSpaceball(data.highscoreSpaceball));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating highscore fish farm
 export const updateHighscoreFish = (highscoreFish) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -330,17 +316,15 @@ export const updateHighscoreFish = (highscoreFish) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setHighscoreFish(data.highscoreFish));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
 
 // Thunk for updating highscore math
 export const updateHighscoreMath = (highscoreMath) => {
 	return (dispatch, getState) => {
-		console.log(getState());
 		const options = {
 			method: 'PATCH',
 			headers: {
@@ -355,9 +339,8 @@ export const updateHighscoreMath = (highscoreMath) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(profile.actions.setHighscoreMath(data.highscoreMath));
 			})
-			.catch((err) => console.error(err));
+			.catch();
 	};
 };
