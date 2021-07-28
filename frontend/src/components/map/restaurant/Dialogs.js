@@ -7,7 +7,8 @@ export const Dialogs = ({
   openInfo, 
   onToggleInfo, 
   openConfirmation, 
-  openFail }) => {
+  openFail,
+  failText }) => {
 
   return (
     <>
@@ -30,7 +31,7 @@ export const Dialogs = ({
       <Dialog open={openFail}>
         <DialogContainer>
           <InfoText>
-            You have more than 3000 in energy, you need to share with the other citizens!
+            Sorry, purchase was denied. {failText}
           </InfoText>
         </DialogContainer>
       </Dialog>

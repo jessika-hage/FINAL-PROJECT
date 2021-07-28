@@ -116,19 +116,29 @@ export const ProgressFiller = styled.div`
 `;
 
 // Profile 
+
+export const Main = styled.main`
+	min-height: 100vh;
+	position: relative;
+	width: 300px;
+	@media (min-width: 768px) {
+		width: 320px;
+	}
+`;
 export const ProfileContainer = styled.section`
 	display: flex;
 	flex-direction: column;
   align-items: center;
 	min-height: 100vh;
 	background-color: ${props => props.theme.backgroundColor};
-  padding: 10px 7px;
-	width: 300px;
-	overflow: scroll;
-	&::-webkit-scrollbar {
+  padding: 10px 7px 50px 7px;
+	width: 100%;
+  overflow: scroll;
+  height: 100vh;
+  &::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border: 2px solid ${props => props.theme.secondary};
   }
 `;
@@ -190,6 +200,9 @@ export const ButtonContainer = styled.div`
 	z-index: 1;
 	background-color: ${props => props.theme.primary};
 	border-top: 1px solid ${(props) => props.theme.secondary};
+	@media (min-width: 768px) {
+		width: 320px;
+	}
 `;
 
 export const ButtonSignOut = styled.button`

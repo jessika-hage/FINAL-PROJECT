@@ -12,6 +12,7 @@ import { EnergyProfile } from './EnergyProfile';
 import { Settings } from './settings/Settings';
 import { Buttons } from './Buttons';
 import { 
+	Main,
 	ProfileContainer, 
 	DaysContainer, 
 	DaysText, 
@@ -60,6 +61,7 @@ export const Profile = () => {
 	};
 
 	return (
+		<Main>
 		<ProfileContainer>
 			<ProfileStats 
 				avatar={require(`../../assets/${avatar}.png`)}
@@ -96,11 +98,13 @@ export const Profile = () => {
 				</Dialog>
 				<InvestmentProfile />
 			</Investments>
+			</ProfileContainer>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />
 			<Dialog open={openSettings} onClose={toggleSettings}>
 				<Settings tabIndex='0' onClose={toggleSettings} />
 			</Dialog>
-		</ProfileContainer>
+		
+		</Main>
 	)
 };
 

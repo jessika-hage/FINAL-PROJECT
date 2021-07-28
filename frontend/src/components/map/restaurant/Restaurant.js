@@ -30,6 +30,7 @@ export const Restaurant = () => {
 	const allFood = useSelector((store) => store.food);
 	const energy = useSelector((store) => store.profile.energy);
 	const createdAt = useSelector((store) => store.profile.createdAt);
+	const coins = useSelector((store) => store.profile.coins);
 	const createdAtDate = moment(createdAt);
 	const today = moment().add(1, 'day');
 	const difference = today.diff(createdAtDate, 'days');
@@ -43,7 +44,7 @@ export const Restaurant = () => {
 
 	// Only allow purchase if under 3000 average energy
 	const onBuy = (energy, price) => {
-		if (averageEnergy < 3000) {
+		if (averageEnergy < 3000 && price < coins) {
 			new Audio(audio).play();
 			setOpenConfirmation(true);
 			dispatch(updateEnergy(energy));
@@ -103,7 +104,8 @@ export const Restaurant = () => {
 				openInfo={openInfo} 
 				onToggleInfo={onToggleInfo}
 				openConfirmation={openConfirmation}
-				openFail={openFail} />
+				openFail={openFail}
+				failText={averageEnergy > 3000 ? 'Your energy is already too high.' : 'You do not have enough money.'} />
 		</>
 	)
 };

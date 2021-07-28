@@ -113,8 +113,8 @@ export const MessageList = styled.div`
   height: 100vh;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border: 2px solid ${props => props.theme.secondary};
   }
 `;
