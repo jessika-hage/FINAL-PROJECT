@@ -4,11 +4,7 @@ import {
 	FaUtensils,
 	FaShoppingCart,
 	FaSquareRootAlt,
-	FaInfoCircle,
-	FaBed,
 	FaTh,
-	FaDumbbell,
-	FaTimes,
 	FaQuestion
 } from 'react-icons/fa';
 

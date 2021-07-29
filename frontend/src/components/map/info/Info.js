@@ -8,16 +8,7 @@ import { SecondInfo } from './SecondInfo';
 import { ThirdInfo } from './ThirdInfo';
 import { FourthInfo } from './FourthInfo';
 import { RoomInfo, CloseIcon, InfoIcon } from '../Styling';
-import { 
-  InfoContainer, 
-  ShipInfo,
-  InfoPage,
-  PageTitle,
-  InfoItem,
-  BottomText,
-  EndText,
-  EndTextName,
-  Email } from './Styling';
+import { InfoContainer, ShipInfo } from './Styling';
 
 export const Info = () => {
   const [open, setOpen] = useState(false);
