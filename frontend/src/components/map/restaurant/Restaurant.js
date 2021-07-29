@@ -8,6 +8,7 @@ import { updateEnergy, updateCoins } from '../../../reducers/profile';
 import { Dialogs } from './Dialogs';
 import { RoomRestaurant, RestaurantIcon } from '../Styling';
 import { 
+	Container,
 	Title, 
 	IconContainer, 
 	CloseIcon, 
@@ -73,6 +74,7 @@ export const Restaurant = () => {
 				<RestaurantIcon />
 			</RoomRestaurant>
 			<Dialog open={open} onClose={onToggleDialog}>
+				<Container>
 				<Title>Nutrition 
 					<IconContainer>
 						<SmallInfoIcon tabIndex='0' onClick={onToggleInfo} />
@@ -80,12 +82,12 @@ export const Restaurant = () => {
 					</IconContainer>
 				</Title>
 				<TableHead>
-						<TableTitle>Type</TableTitle>
-						<TableTitle>Energy</TableTitle>
-						<TableTitleHide>Protein</TableTitleHide>
-						<TableTitleHide>Salt</TableTitleHide>
-						<TableTitle>Price</TableTitle>
-					</TableHead>
+					<TableTitle>Type</TableTitle>
+					<TableTitle>Energy</TableTitle>
+					<TableTitleHide>Protein</TableTitleHide>
+					<TableTitleHide>Salt</TableTitleHide>
+					<TableTitle>Price</TableTitle>
+				</TableHead>
 				<TableContainer>
 					{allFood.map((food) => (
 						<FoodList key={food.id}>
@@ -99,6 +101,7 @@ export const Restaurant = () => {
 						</FoodList>
 					))}
 				</TableContainer>
+				</Container>
 			</Dialog>
 			<Dialogs 
 				openInfo={openInfo} 

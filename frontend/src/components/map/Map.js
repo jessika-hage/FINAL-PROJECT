@@ -5,7 +5,7 @@ import { Bedroom } from './bedroom/Bedroom';
 import { Restaurant } from './restaurant/Restaurant';
 import { Quiz } from './Quiz';
 import { Store } from './Store';
-import { Info } from './Info';
+import { Info } from './info/Info';
 import { Gym } from './gym/Gym';
 import { Memory } from './Memory';
 import { ProteinFarm } from './ProteinFarm';

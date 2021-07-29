@@ -30,6 +30,7 @@ export const RoomClassroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 1 / span 3;
 	border: 2px solid white;
+	border-right: none;
 	border-top-left-radius: 150px;
 	display: flex;
 	align-items: center;
@@ -46,6 +47,8 @@ export const RoomBedroom = styled.div`
 	grid-column: 1 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
+	border-top: none;
+	border-right: none;
 	border-bottom-left-radius: 150px;
 	display: flex;
 	align-items: center;
@@ -62,6 +65,7 @@ export const RoomRestaurant = styled(RoomBedroom)`
 	grid-column: 3 / span 2;
 	grid-row: 3 / span 2;
 	border-radius: 50%;
+	border: 2px solid white;
 	z-index: 1;
 `;
 
@@ -70,6 +74,7 @@ export const RoomQuiz = styled.div`
 	grid-row: 1 / span 3;
 	border-radius: 0px;
 	border: 2px solid white;
+	border-bottom: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -85,6 +90,7 @@ export const RoomStore = styled(Link)`
 	grid-column: 4 / span 3;
 	grid-row: 4 / span 3;
 	border: 2px solid white;
+	border-right: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -102,6 +108,7 @@ export const RoomInfo = styled(RoomBedroom)`
 	grid-row: 3 / span 2;
 	z-index: 1;
 	border-radius: 0px;
+	border: 2px solid white;
 `;
 
 export const RoomGym = styled(RoomBedroom)`
@@ -109,6 +116,10 @@ export const RoomGym = styled(RoomBedroom)`
 	grid-row: 1 / span 3;
 	z-index: 0;
 	border-radius: 0px;
+	border: 2px solid white;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
 `;
 
 export const RoomMemory = styled(RoomClassroom)`
@@ -122,6 +133,8 @@ export const RoomFarm = styled(RoomClassroom)`
 	grid-row: 1 / span 3;
 	border-top-right-radius: 150px;
 	border-top-left-radius: 0;
+	border: 2px solid white;
+	border-bottom: none;
 `;
 
 export const RoomSpace = styled(RoomBedroom)`
@@ -129,6 +142,7 @@ export const RoomSpace = styled(RoomBedroom)`
 	grid-row: 4 / span 3;
 	border-bottom-right-radius: 150px;
 	border-bottom-left-radius: 0;
+	border: 2px solid white;
 `;
 
 // Icons
@@ -373,11 +387,37 @@ export const Green = styled(Circle)`
 `;
 
 // Info
+export const InfoContainer = styled(DialogContainer)`
+	padding: 15px;
+`;
+
+export const ShipInfo = styled(InfoTitle)`
+	margin: 5px;
+`;
+
+export const InfoPage = styled.div`
+	padding: 10px 10px 50px 10px;
+`;
+
+export const PageTitle = styled.h3`
+	font-size: 14px;
+	text-align: left;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
+`;
+
 export const TextInfo = styled.p`
 	font-size: 12px;
+	text-align: left;
+	// padding: 30px 30px 100px 30px;
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
+`;
+
+export const MoveText = styled.p`
+	font-size: 12px;
 `;
 
 export const InfoItem = styled.div`
@@ -390,9 +430,12 @@ export const InfoItem = styled.div`
 	}
 `;
 
-export const BadgeIcon = styled.img`
-	margin: 0 5px 0 0;
-	width: 20px;
+export const Fish = styled(FaFish)`
+	font-size: 30px;
+`;
+
+export const Math = styled(FaSquareRootAlt)`
+	font-size: 30px;
 `;
 
 export const CoinsIcon = styled.img`

@@ -31,3 +31,15 @@ button {
   cursor: pointer;
   font-family: "Trispace", serif;
 }
+
+.carousel .thumbs-wrapper {
+  margin: 0 !important;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+    background: rgba(0,0,0,0.1) !important;
+}
+
+.carousel.carousel-slider .control-arrow {
+    left: -20px !important;
+}
