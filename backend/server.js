@@ -160,6 +160,33 @@ app.get('/citizens', async (req, res) => {
 	}
 });
 
+// GET one citizen
+app.get('/citizen/:username', async (req,res) => {
+	const { username } = req.params;
+	try {
+		const citizenProfile = await Citizen.findOne({ username }).exec();
+		res.json({
+			success: true,
+			username: citizenProfile.username,
+			userId: citizenProfile._id,
+			badges: citizenProfile.badges,
+			ranking: citizenProfile.ranking,
+			coins: citizenProfile.coins,
+			avatar: citizenProfile.avatar,
+			items: citizenProfile.items,
+			createdAt: citizenProfile.createdAt,
+			investments: citizenProfile.investments,
+			investmentQuantity: citizenProfile.investmentQuantity,
+			energy: citizenProfile.energy,
+			highscoreSpaceball: citizenProfile.highscoreSpaceball,
+			highscoreFish: citizenProfile.highscoreFish,
+			highscoreMath: citizenProfile.highscoreMath,
+		})
+	} catch (error) {
+		res.status(400).json({ message: 'Someting went wrong', error });
+	}
+});
+
 //update password when you remember your old password
 app.patch('/citizen/:id/password', authenticateCitizen);
 app.patch('/citizen/:id/password', async (req, res) => {
