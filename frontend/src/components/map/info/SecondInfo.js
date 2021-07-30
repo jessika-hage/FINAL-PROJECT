@@ -1,4 +1,5 @@
 import React from 'react';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 
 import { 
   InfoPage,
@@ -21,7 +22,7 @@ import {
         <InfoItem>
           <Fish />
           <GameText>
-            The ships Protein Farm. Catch as many fishes as possible, one badge for each catch.
+            The ships Protein Farm. Catch fishes.
           </GameText>
         </InfoItem>
         <InfoItem>
@@ -43,9 +44,9 @@ import {
           </GameText>
         </InfoItem>
         <InfoItem>
-          <Fish />
+        <BubbleChartIcon fontSize='small' />
           <GameText>
-            The ships Space Room. Click the different coloured space balls as many times as possible.
+            The ships Space Room. Collect points by clicking on the colored balls.
           </GameText>
         </InfoItem>
       </InfoPage>

@@ -37,7 +37,7 @@ export const ShipInfo = styled.h2`
 `;
 
 export const InfoPage = styled.div`
-	padding: 10px;
+	padding: 10px 10px 30px 10px;
   height: fit-content;
 `;
 
@@ -56,9 +56,9 @@ export const PageTitle = styled.h3`
 export const TextInfo = styled.p`
 	font-size: 12px;
 	text-align: left;
-  margin: 5px 0 20px 0;
+  margin: 7px 0;
 	@media (min-width: 768px) {
-		font-size: 14px;
+		font-size: 13px;
 	}
 `;
 
@@ -69,15 +69,15 @@ export const MoveText = styled.p`
 export const InfoItem = styled.div`
 	display: flex;
   flex-direction: column;
-	margin: 7px 0;
+	margin: 6px 0 0 0;
 `;
 
 export const GameText = styled.p`
-  font-size: 12px;  
+  font-size: 12px;
   text-align: left;
-  margin-top: 5px;
+  margin: 3px 0 5px 0;
   @media (min-width: 768px) {
-		font-size: 14px;
+		font-size: 13px;
 	}
 `;
 
@@ -103,7 +103,7 @@ export const Cutlery = styled(FaUtensils)`
 
 export const Shop = styled(FaShoppingCart)`
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const CoinsIcon = styled.img`

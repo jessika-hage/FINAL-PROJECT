@@ -13,18 +13,21 @@ Email } from './Styling';
     return (
       <InfoPage>
       <PageTitle>Dear Citizen,</PageTitle>
-        <TextInfo>Now that you are onboard our ship, there are things you need to know. There are
-          many days left to our destination so it's important that you know how life
-          on the ship works. The most important part of being a citizen is the ranking, you're status. 
-          You can increase your ranking e.g. when you purchase items in the shop, 
-          make a successful investment, sleep or workout. But these things do not come by themself,
-          you need badges and coins to be able to do the things that can increase your ranking.
+        <TextInfo>We're glad to have you on onboard our space ship. There are
+          many years left to our destination so it's important that you know how life
+          on the ship works. The most important part of being a citizen is the ranking. 
+          You can increase your ranking when you purchase items in the shop, 
+          make a successful investment, sleep or workout. To get there you need to
+          collect badges and exchange them for coins.
         </TextInfo>
         <TextInfo>
-          You can access your profile on your avatar in the corner. There you can
-          keep track on your ranking, badges, coins, energy, items you own and your 
+          The avatar in the corner gives you access to your profile where you can 
+          see your ranking, badges, coins, energy, items you own and your 
           investments. There is also a settings page where you can change your avatar,
-          color on your spaceship and your avatar.
+          color your spaceship and your avatar.
+        </TextInfo>
+        <TextInfo>
+          Next to your profile we have our Citizen Messageboard, where everyone can make a post.
         </TextInfo>
         <BottomText>
           <EndText>Your commanders,</EndText>

@@ -26,14 +26,12 @@ export const CitizenProfile = ({ username }) => {
 	return (
     <>
 		<ProfileContainer>
-			<TableContainer>
 						{/* <CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} /> */}
 						<Citizen>{username}</Citizen>
 						{/* <Citizen>{citizen.ranking.toFixed(1)}/100</Citizen> */}
 						{/* <CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays> */}
 						{/* <Badges>{citizen.badges}</Badges> */}
 						{/* <Badges>{citizen.coins.toFixed(2)}</Badges> */}
-			</TableContainer>
 		</ProfileContainer>
     </>
 	)

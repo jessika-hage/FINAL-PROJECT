@@ -132,22 +132,20 @@ export const ProfileContainer = styled.section`
 	display: flex;
 	flex-direction: column;
   align-items: center;
-	min-height: 100vh;
 	background-color: ${props => props.theme.backgroundColor};
   padding: 10px 7px 70px 7px;
-	width: 100%;
-  overflow: scroll;
-  height: 100vh;
-  &::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
-    border: 2px solid ${props => props.theme.secondary};
-  }
-	::-webkit-scrollbar-thumb {
-		background-color: ${props => props.theme.secondary};
-		:hover {
-			background-color: ${props => props.theme.primary};
-		}
-	}
+	max-width: 300px;
+  // overflow: scroll;
+  // &::-webkit-scrollbar {
+  //   -webkit-appearance: none;
+  //   width: 10px;
+  //   height: 10px;
+  //   border: 2px solid ${props => props.theme.secondary};
+  // }
+	// ::-webkit-scrollbar-thumb {
+	// 	background-color: ${props => props.theme.secondary};
+	// 	:hover {
+	// 		background-color: ${props => props.theme.primary};
+	// 	}
+	// }
 `;
