@@ -23,8 +23,8 @@ Email } from './Styling';
         <TextInfo>
           The avatar in the corner gives you access to your profile where you can 
           see your ranking, badges, coins, energy, items you own and your 
-          investments. There is also a settings page where you can change your avatar,
-          color your spaceship and your avatar.
+          investments. There is also a settings page where you can change your avatar, your password and
+          color your spaceship.
         </TextInfo>
         <TextInfo>
           Next to your profile we have our Citizen Messageboard, where everyone can make a post.

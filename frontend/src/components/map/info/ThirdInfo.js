@@ -20,14 +20,14 @@ import {
           <InfoItem>
             <Shop />
             <GameText>
-              - Our Space Shop where you can buy important
+              Our Space Shop where you can buy important
               items to have on the ship, owning more items will give you higher ranking.
             </GameText>
           </InfoItem>
           <InfoItem>
             <Cutlery />
             <GameText>
-              - Our Restaurant. One very important thing as a citizen is 
+              Our Restaurant. One very important thing as a citizen is 
               to eat so you have a good energy intake. In the restaurant you can buy your food
               and also see how much energy it gives you. If your daily average energy
               goes below 1500 you will get too weak and your ranking will decrease if

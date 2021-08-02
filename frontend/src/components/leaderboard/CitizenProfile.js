@@ -12,16 +12,6 @@ import {
 	Icon } from './Styling';
 
 export const CitizenProfile = ({ username }) => {
-  // const [citizen, setCitizen] = useState();
-  // const { username } = useParams();
-
-  // useEffect(() => {
-  //   fetch(CITIZEN_URL(`citizen/${username}`))
-  //   .then(res => res.json())
-  //   .then((json) => {
-  //     setCitizen(json) 
-  //   })
-  // }, [username])
 
 	return (
     <>
