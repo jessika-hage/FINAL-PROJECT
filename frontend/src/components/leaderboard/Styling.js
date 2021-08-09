@@ -58,6 +58,7 @@ export const TableTitleLinks = styled(TableTitle)`
 
 export const CitizenDaysLink = styled(TableTitleLinks)`
   display: none;
+	width: 24%;
 	@media (min-width: 768px) {
 		display: flex;
 	}
@@ -149,8 +150,9 @@ export const ProfileContainer = styled.section`
 	color: ${props => props.theme.textColor};
 	border: 2px solid ${props => props.theme.secondary};
 	font-size: 20px;
-  padding: 10px;
-	min-width: 400px;
+  padding: 10px 5px;
+	min-width: 300px;
+	max-width: 450px;
   overflow: scroll;
 	overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -166,7 +168,9 @@ export const ProfileContainer = styled.section`
 		}
 	}
 	@media (min-width: 768px) {
-		padding: 10px 5px;
+		padding: 10px 10px;
+		min-width: 400px;
+		max-width: 450px;
 	}
 `;
 
@@ -176,22 +180,24 @@ export const InvestItemsContainer = styled.div`
 `;
 
 export const Items = styled.div`
-  padding: 3px 0px 7px 10px;
+  padding: 3px 0px 7px 5px;
 	width: 50%;
-	margin-left: 5px;
+	margin-left: 4px;
 	display: flex;
 	flex-direction: column;
 	@media (min-width: 768px) {
-		padding: 3px 0px 7px 5px;
+		padding: 3px 0px 7px 10px;
+		margin-left: 5px;
 	}
 `;
 
 export const ContainerTitle = styled.p`
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: bold;
 	margin: 7px 0 5px 3px;
 	color: ${(props) => props.theme.textColor};
 	text-transform: uppercase;
+	word-wrap: break-word;
 	@media (min-width: 768px) {
 		font-size: 16px;
 	}

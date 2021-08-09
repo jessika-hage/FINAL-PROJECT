@@ -12,7 +12,7 @@ export const InvestmentContainer = styled.div`
 `;
 
 export const InvestmentText = styled.p`
-	font-size: 13px;
+	font-size: 12px;
 	color: ${props => props.theme.textColor};
 	margin: 0 0 3px 3px;
 	padding: 0;

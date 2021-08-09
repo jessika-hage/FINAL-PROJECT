@@ -23,11 +23,13 @@ export const CitizenInvestments = ({
         <>
           <InvestmentText>Quantity: {investmentQuantity}st</InvestmentText>
           <InvestmentText>
-            Initial investment: {investments}$
+            Initial investment:
           </InvestmentText>
+          <InvestmentText>{investments}$</InvestmentText>
           <InvestmentText>
-            Current value: {totalMarketValue}$
+            Current value:
           </InvestmentText>
+          <InvestmentText>{totalMarketValue}$</InvestmentText>
           <InvestmentChange>
             Since purchase:
             <ValueChange percent={percent}>
