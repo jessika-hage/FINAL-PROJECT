@@ -11,12 +11,13 @@ import {
   CoinsIcon } from './Styling';
   import { RankingProgress } from './RankingProgress';
 
-export const ProfileStats = ({ avatar, username, badges, coins }) => {
+export const ProfileStats = ({ avatar, username, badges, coins, ranking }) => {
+
   return (
     <ImageNameContainer>
       <ProfileAvatar src={avatar} />
       <Username>{username}</Username>
-      <RankingProgress />
+      <RankingProgress ranking={ranking} />
       <StatusContainer>
         <BadgesText>
           <BadgeIcon src={require(`../../assets/badge.png`)} /> 
@@ -27,6 +28,6 @@ export const ProfileStats = ({ avatar, username, badges, coins }) => {
           <CoinsIcon src={require(`../../assets/money2.png`)} /> 
         </CoinsText>
       </StatusContainer>
-  </ImageNameContainer>
+    </ImageNameContainer>
   )
 };

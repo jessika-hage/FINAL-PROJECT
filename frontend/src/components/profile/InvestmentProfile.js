@@ -56,7 +56,7 @@ export const InvestmentProfile = () => {
 		dispatch(updateInvestments(-investmentQuantity, -investments));
 		dispatch(updateCoins(totalMarketValue));
 		if (percentDifference > 10) {
-			dispatch(updateRanking(0.5));
+			dispatch(updateRanking(1));
 		}
 	};
 
@@ -84,7 +84,7 @@ export const InvestmentProfile = () => {
 						<ConfirmDialog>
 							Are you sure you want to sell your investment?
 							You have {difference > 0 ? 'made' : 'lost'} {difference.toFixed(2)} $
-							{percentDifference >= 10 ? 'You have increased your investment with more than 10% so you will also gain 0.5 i ranking!' : ''}
+							{percentDifference >= 10 ? 'You have increased your investment with more than 10% so you will also gain 1 i ranking!' : ''}
 							<ButtonBox>
 								<SellButton onClick={onSellInvestment}>Yes, sell!</SellButton>
 								<SellButton onClick={onToggleConfirm}>No, cancel!</SellButton>

@@ -1,7 +1,8 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 
-import { DialogContainer, InfoContainer, InfoText } from './Styling';
+import { SmallDialog } from '../../dialogs/SmallDialog';
+import { DialogContainer, InfoText } from './Styling';
 
 export const Dialogs = ({ 
   openInfo, 
@@ -12,22 +13,19 @@ export const Dialogs = ({
 
   return (
     <>
-      <Dialog open={openInfo} onClose={onToggleInfo}>
-        <InfoContainer>
-          It is very important that you get the energy that you need. 
-          You need to have a daily average intake of 2000 kcal and
-          you keep track on your profile and it will alert you when you are running low.
-          And you can not buy food when you have 3000 or more, since the energy needs to be
-          divided between all the citizens!
-        </InfoContainer>
-      </Dialog>
-      <Dialog open={openConfirmation}>
-        <DialogContainer>
-          <InfoText>
-            Purchase successfull! Your energyintake has now increased!
-          </InfoText>
-        </DialogContainer>
-      </Dialog>
+      <SmallDialog
+        open={openInfo}
+        headerText='Citizen Restaurant'
+        onClose={onToggleInfo}
+        text='It is very important that you get the energy that you need. 
+        You need to have a daily average intake of 2000 kcal and
+        you keep track on your profile and it will alert you when you are running low.
+        And you can not buy food when you have 3000 or more, since the energy needs to be
+        divided between all the citizens!' />
+      <SmallDialog
+        open={openConfirmation}
+        headerText='Citizen Restaurant'
+        text='Purchase successfull! Your energyintake has now increased!' />
       <Dialog open={openFail}>
         <DialogContainer>
           <InfoText>

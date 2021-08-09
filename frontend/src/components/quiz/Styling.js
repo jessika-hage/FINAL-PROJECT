@@ -88,7 +88,9 @@ export const AnswerButton = styled.button`
 	color: ${(props) => props.theme.textColor};
 	animation: ${jumping} 0.4s linear infinite alternate-reverse;
 	@media (hover:hover) {
-		background-color: ${(props) => props.theme.hover};
+		&:hover {
+			background-color: ${(props) => props.theme.hover};
+		}
 	}
 `;
 
@@ -122,7 +124,9 @@ export const Button = styled.button`
 	font-family: 'Trispace';
 	cursor: pointer;
 	@media (hover:hover) {
-		background-color: ${(props) => props.theme.hover};
+		&:hover {
+			background-color: ${(props) => props.theme.hover};
+		}
 	}
 `;
 

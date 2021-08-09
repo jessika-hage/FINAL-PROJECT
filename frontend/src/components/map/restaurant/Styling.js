@@ -206,14 +206,6 @@ export const DialogContainer = styled.div`
 	color: ${(props) => props.theme.textColor};
 `;
 
-export const InfoContainer = styled(DialogContainer)`
-	max-width: 300px;
-	font-size: 14px;
-  @media (min-width: 768px) {
-		max-width: 400px;
-	}
-`;
-
 export const InfoText = styled.p`
 	font-size: 12px;
 	margin: 5px;

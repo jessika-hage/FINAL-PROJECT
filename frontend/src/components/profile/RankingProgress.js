@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { 
   ProgressContainer, 
@@ -7,12 +6,11 @@ import {
   ProgressBar, 
   ProgressFiller } from './Styling';
 
-export const RankingProgress = () => {
-  const ranking = useSelector((store) => store.profile.ranking);
+export const RankingProgress = ({ ranking }) => {
   
   return (
     <ProgressContainer>
-      <ProgressText>{ranking === null ? ranking : ranking.toFixed(1)}/100</ProgressText>
+      {ranking && ( <ProgressText>{ranking}/100</ProgressText> )}
       <ProgressBar>
         <ProgressFiller style={{ width: `${ranking}%` }}></ProgressFiller>
       </ProgressBar>

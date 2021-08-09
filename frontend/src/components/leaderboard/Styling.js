@@ -92,12 +92,26 @@ export const Citizen = styled.p`
 	margin: 0;
 	font-size: 12px;
 	text-align: left;
+	cursor: pointer;
+	:hover {
+		text-decoration: underline;
+	}
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
 	${props => props.me 
 		? `font-weight: 600` 
 		: `font-weight: 400`}
+`;
+
+export const CitizenRank = styled.p`
+width: 25%;
+	margin: 0;
+	font-size: 12px;
+	text-align: left;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 export const CitizenDays = styled(Citizen)`
@@ -131,21 +145,55 @@ export const CitizensList = styled.div`
 export const ProfileContainer = styled.section`
 	display: flex;
 	flex-direction: column;
-  align-items: center;
 	background-color: ${props => props.theme.backgroundColor};
-  padding: 10px 7px 70px 7px;
-	max-width: 300px;
-  // overflow: scroll;
-  // &::-webkit-scrollbar {
-  //   -webkit-appearance: none;
-  //   width: 10px;
-  //   height: 10px;
-  //   border: 2px solid ${props => props.theme.secondary};
-  // }
-	// ::-webkit-scrollbar-thumb {
-	// 	background-color: ${props => props.theme.secondary};
-	// 	:hover {
-	// 		background-color: ${props => props.theme.primary};
-	// 	}
-	// }
+	color: ${props => props.theme.textColor};
+	border: 2px solid ${props => props.theme.secondary};
+	font-size: 20px;
+  padding: 10px;
+	min-width: 400px;
+  overflow: scroll;
+	overflow-x: hidden;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border: 2px solid ${props => props.theme.secondary};
+  }
+	::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.secondary};
+		:hover {
+			background-color: ${props => props.theme.primary};
+		}
+	}
+	@media (min-width: 768px) {
+		padding: 10px 5px;
+	}
 `;
+
+export const InvestItemsContainer = styled.div`
+	display: flex;
+	width: 100%;
+`;
+
+export const Items = styled.div`
+  padding: 3px 0px 7px 10px;
+	width: 50%;
+	margin-left: 5px;
+	display: flex;
+	flex-direction: column;
+	@media (min-width: 768px) {
+		padding: 3px 0px 7px 5px;
+	}
+`;
+
+export const ContainerTitle = styled.p`
+	font-size: 14px;
+	font-weight: bold;
+	margin: 7px 0 5px 3px;
+	color: ${(props) => props.theme.textColor};
+	text-transform: uppercase;
+	@media (min-width: 768px) {
+		font-size: 16px;
+	}
+`;
+

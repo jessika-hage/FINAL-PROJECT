@@ -11,6 +11,7 @@ import { InvestmentProfile } from './InvestmentProfile';
 import { EnergyProfile } from './EnergyProfile';
 import { Settings } from './settings/Settings';
 import { Buttons } from './Buttons';
+import { SmallDialog } from '../dialogs/SmallDialog';
 import { 
 	Main,
 	ProfileContainer, 
@@ -19,8 +20,6 @@ import {
 	Items,
 	Investments,
 	InfoIcon,
-	InfoDialog,
-	CloseIcon,
 	ContainerTitle } from './Styling';
 
 export const Profile = () => {
@@ -62,48 +61,47 @@ export const Profile = () => {
 
 	return (
 		<Main>
-		<ProfileContainer>
-			<ProfileStats 
-				avatar={require(`../../assets/${avatar}.png`)}
-				username={username} 
-				badges={badges} 
-				ranking={ranking} 
-				coins={coins === null ? coins : coins.toFixed(2)} />
-			<DaysContainer>
-				<DaysText>Time on ship: {moment(createdAt).toNow(true)}</DaysText>
-				<DaysText>
-					Days to destination: {timeToDestination}
-				</DaysText>
-			</DaysContainer>
-			<Items>
-				<ContainerTitle>My energy
-					<InfoIcon tabIndex='0' onClick={toggleEnergy} />
-				</ContainerTitle>
-				<EnergyProfile 
-					openEnergy={openEnergy}
-					toggleEnergy={toggleEnergy} />
-			</Items>
-			<Items>
-				<ContainerTitle>My items</ContainerTitle>
-				{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
-			</Items>
-			<Investments>
-				<ContainerTitle>My investments 
-					<InfoIcon tabIndex='0' onClick={toggleInfo} />
-				</ContainerTitle>
-				<Dialog open={openInfo} onClose={toggleInfo}>
-					<InfoDialog>If you sell your investment with more than 10% up, your ranking will go up 0.5!
-						<CloseIcon tabIndex='0' onClick={toggleInfo} />
-					</InfoDialog>
-				</Dialog>
-				<InvestmentProfile />
-			</Investments>
+			<ProfileContainer>
+				<ProfileStats 
+					avatar={require(`../../assets/${avatar}.png`)}
+					username={username} 
+					badges={badges} 
+					ranking={ranking === null ? ranking : ranking.toFixed(1)} 
+					coins={coins === null ? coins : coins.toFixed(2)} />
+				<DaysContainer>
+					<DaysText>Time on ship: {moment(createdAt).toNow(true)}</DaysText>
+					<DaysText>
+						Days to destination: {timeToDestination}
+					</DaysText>
+				</DaysContainer>
+				<Items>
+					<ContainerTitle>My energy
+						<InfoIcon tabIndex='0' onClick={toggleEnergy} />
+					</ContainerTitle>
+					<EnergyProfile 
+						openEnergy={openEnergy}
+						toggleEnergy={toggleEnergy} />
+				</Items>
+				<Items>
+					<ContainerTitle>My items</ContainerTitle>
+					{myItems.map((key) => <ItemsProfile key={key} item={items[key]} />)}
+				</Items>
+				<Investments>
+					<ContainerTitle>My investments 
+						<InfoIcon tabIndex='0' onClick={toggleInfo} />
+					</ContainerTitle>
+					<SmallDialog
+						open={openInfo}
+						headerText='citizen invest' 
+						onClose={toggleInfo} 
+						text='If you sell your investment with more than 10% up, your ranking will go up 1!' />
+					<InvestmentProfile />
+				</Investments>
 			</ProfileContainer>
 			<Buttons onSettings={toggleSettings} onClick={onLogout} />
 			<Dialog open={openSettings} onClose={toggleSettings}>
 				<Settings tabIndex='0' onClose={toggleSettings} />
 			</Dialog>
-		
 		</Main>
 	)
 };

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
-import Dialog from '@material-ui/core/Dialog';
 
 import { updateRanking } from 'reducers/profile';
+import { SmallDialog } from '../dialogs/SmallDialog';
 import {
 	EnergyContainer,
 	EnergyText,
-	AlertIcon,
-	InfoDialog,
-	CloseIcon,
-} from './Styling';
+	AlertIcon } from './Styling';
 
 export const EnergyProfile = ({ openEnergy, toggleEnergy }) => {
 	const [alert, setAlert] = useState(false);
@@ -53,20 +50,19 @@ export const EnergyProfile = ({ openEnergy, toggleEnergy }) => {
 				My average intake: {averageEnergy.toFixed(0)} kcal
 				{alert && <AlertIcon tabIndex='0' onClick={onToggleDialog}></AlertIcon>}
 			</EnergyText>
-			<Dialog open={open} onClose={onToggleDialog}>
-				<InfoDialog>
-					Your energy intake is running dangerously low! You need to eat something or
-					you're ranking will go down with 1.
-					<CloseIcon tabIndex='0' onClick={onToggleDialog} />
-				</InfoDialog>
-			</Dialog>
+			<SmallDialog
+				open={open}
+				headerText='Citizen Energy'
+				onClose={onToggleDialog}
+				text='Your energy intake is running dangerously low! You need to eat something or
+				your ranking will go down with 1.' />
 			<EnergyText>Needed average: 2000 kcal</EnergyText>
-			<Dialog open={openEnergy} onClose={toggleEnergy}>
-				<InfoDialog>To be a strong citizen you're average intake should be minimum 2000 kcal and if you're falling below 
-					1500 kcal you need to eat within 30 minutes, otherwise you will lose ranking!
-					<CloseIcon tabIndex='0' onClick={toggleEnergy} />
-				</InfoDialog>
-			</Dialog>
+			<SmallDialog
+				open={openEnergy}
+				headerText='Citizen Energy'
+				onClose={toggleEnergy}
+				text='To be a strong citizen your average intake should be minimum 2000 kcal and if you are falling below 
+				1500 kcal you need to eat within 30 minutes, otherwise you will lose ranking!' />
 		</EnergyContainer>
 	);
 };

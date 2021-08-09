@@ -318,10 +318,6 @@ export const ButtonBox = styled.div`
 	margin-top: 5px;
 `;
 
-export const InfoDialog = styled(ConfirmDialog)`
-	position: relative;
-`;
-
 export const CloseIcon = styled(FaTimes)`
 	font-size: 17px;
 	cursor: pointer;

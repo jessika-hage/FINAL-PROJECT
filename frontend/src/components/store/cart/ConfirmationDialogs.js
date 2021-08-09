@@ -1,30 +1,25 @@
 import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
 
-import { ConfirmationDialog, Text, ConfirmedButton } from './Styling';
+import { SmallDialog } from '../../dialogs/SmallDialog';
 
-export const ConfirmationDialogs = ({ 
-  openConfirmation, 
-  onConfirmed, 
-  openFail, 
-  onFail }) => {
+export const ConfirmationDialogs = ({ openConfirmation, onConfirmed, openFail, onFail }) => {
 
   return (
     <>
-      <Dialog open={openConfirmation}>
-        <ConfirmationDialog>
-          <Text>
-            Purchase successful! You can now see your items on your profile.
-          </Text>
-          <ConfirmedButton onClick={onConfirmed}>Thanks!</ConfirmedButton>
-        </ConfirmationDialog>
-      </Dialog>
-      <Dialog open={openFail}>
-        <ConfirmationDialog>
-          <Text>Your purchase was denied due to insufficient funds.</Text>
-          <ConfirmedButton onClick={onFail}>Keep on making money!</ConfirmedButton>
-        </ConfirmationDialog>
-      </Dialog>
+      <SmallDialog
+        open={openConfirmation}
+        headerText='Citizen Shop'
+        onClose={onConfirmed}
+        text='Purchase successful! You can now see your items on your profile.'
+        confirmButton='Thanks'
+        onClick={onConfirmed} />
+      <SmallDialog
+        open={openFail}
+        headerText='Citizen Shop'
+        onClose={onFail}
+        text='Your purchase was denied due to insufficient funds.'
+        confirmButton='Keep on making money!'
+        onClick={onFail} />
     </>
     )
 };
