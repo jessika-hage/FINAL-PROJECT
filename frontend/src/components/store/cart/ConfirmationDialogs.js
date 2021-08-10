@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SmallDialog } from '../../dialogs/SmallDialog';
+import { SmallDialog } from '../../reusables/SmallDialog';
 
 export const ConfirmationDialogs = ({ openConfirmation, onConfirmed, openFail, onFail }) => {
 

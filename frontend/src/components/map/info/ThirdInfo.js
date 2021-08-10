@@ -16,7 +16,7 @@ import {
         <TextInfo>On the main page you have a section with our currency Space$. 
           There you can choose to exchange your badges for coins at the current
           market value. You can then invest the money in Space$, more info on that
-          and how it works can be read there.
+          and how it works can be read there.</TextInfo>
           <InfoItem>
             <Shop />
             <GameText>
@@ -35,8 +35,6 @@ import {
               You will then see an alert icon on your avatar and in your profile.
             </GameText>
           </InfoItem> 
-
-        </TextInfo>
     </InfoPage>
     )
   };

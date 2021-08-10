@@ -9,7 +9,7 @@ export const BadgeContainer = styled.div`
   display: flex;
   align-items: center;
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 25px;
   right: 24px;
   z-index: 3;

@@ -88,10 +88,10 @@ export const DialogContainer = styled.div`
 `;
 
 export const ForecastTitle = styled.h2`
-	font-size: 18px;
+	font-size: 16px;
 	text-transform: uppercase;
 	@media (min-width: 768px) {
-		font-size: 22px;
+		font-size: 18px;
 	}
 `;
 
@@ -123,7 +123,7 @@ export const HouseContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 30px;
+	padding-bottom: 20px;
 `;
 
 export const HouseImage = styled.img`
@@ -143,33 +143,33 @@ export const HouseTextContainer = styled.div`
 
 export const Title = styled.h1`
 	margin: 5 0 0 0;
-	font-size: 18px;
+	font-size: 12px;
 	@media (min-width: 768px) {
-		font-size: 20px
+		font-size: 14px
 	}
 `;
 
 export const HouseText = styled.p`
-	font-size: 12px;
+	font-size: 11px;
 	margin: 0;
 	@media (min-width: 768px) {
-		font-size: 15px;
+		font-size: 13px;
 	}
 `;
 
 export const PriceContainer = styled.div`
-	padding-top: 10px;
+	padding-top: 5px;
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
+	margin-top: 10px;
 	justify-content: space-between;
 	align-items: center;
 `;
 
 export const BuyButton = styled.button`
-	padding: 8px;
-	margin-top: -50px;
+	padding: 4px;
 	width: fit-content;
 	text-transform: uppercase;
 	font-family: 'Trispace', serif;

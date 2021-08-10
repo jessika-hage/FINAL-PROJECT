@@ -101,9 +101,9 @@ export const DialogContainer = styled.div`
 `;
 
 export const InvestTitle = styled.h3`
-  border-bottom: 2px solid ${props => props.theme.hover};
-  padding-bottom: 10px;
-  margin: 0;
+  border-bottom: 2px solid ${props => props.theme.secondary};
+  padding: 0 0 5px 0;
+  margin: 0 0 5px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -169,42 +169,11 @@ export const Text = styled.p`
   }
 `;
 
-// Confirmation dialogs
-// Exchange & Invest, fail and success
-export const ConfirmationDialog = styled.div`
-  displaY: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  max-width: 300px;
-  background-color: ${props => props.theme.backgroundColor};
-  border: 3px solid ${props => props.theme.secondary};
-  color: ${props => props.theme.textColor};
-`;
-
-export const ConfirmationText = styled(Text)`
-  text-align: center;
-`;
-
-export const ConfirmedButton = styled.button`
-  outline: none;
-  border: none;
-  background-color: ${props => props.theme.primary};
-  border: 2px solid ${props => props.theme.secondary};
-  font-size: 14px;
-  padding: 8px;
-  font-family: 'Trispace', serif;
-  color: ${props => props.theme.textColor};
-  :hover, :focus {
-    background-color: ${props => props.theme.secondary};
-  }
-`;
-
 // Currency
 export const CurrencyTitle = styled(InvestTitle)`
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   font-size: 20px;
   @media (min-width: 768px) {
     font-size: 24px;
@@ -252,7 +221,9 @@ export const InvestButton = styled(ExchangeButton)`
 export const CloseIcon = styled(FaTimes)`
 	font-size: 20px;
 	cursor: pointer;
-	margin: 7px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 	:hover {
 		transform: scale(1.2);
 	}

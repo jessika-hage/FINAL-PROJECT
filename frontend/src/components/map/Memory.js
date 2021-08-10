@@ -1,14 +1,7 @@
 import React, { useState} from 'react';
-import Dialog from '@material-ui/core/Dialog';
 
-import { 
-  RoomMemory, 
-  DialogContainer, 
-  InfoTitle, 
-  InfoText, 
-  StartGameButton,
-  MemoryIcon,
-  CloseIcon } from './Styling';
+import { BigDialog } from '../reusables/BigDialog';
+import { RoomMemory, MemoryIcon } from './Styling';
   
 export const Memory = () => {
   const [openGame, setOpenGame] = useState(false);
@@ -25,16 +18,14 @@ export const Memory = () => {
         onClick={onToggleGameDialog}>
         <MemoryIcon />
       </RoomMemory>
-      <Dialog open={openGame} onClose={onToggleGameDialog}>
-        <DialogContainer>
-          <InfoTitle>
-            Memory
-            <CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
-          </InfoTitle>
-          <InfoText>In here you practice your memory skills. If you solve it you will get 10 badges.</InfoText>
-          <StartGameButton to='/memorygame'>Lets start</StartGameButton>
-        </DialogContainer>
-      </Dialog>
+      <BigDialog
+        open={openGame}
+        onClose={onToggleGameDialog}
+        titleText='Memory'
+        text='In here you practice your memory skills. If you solve it with 24 or less flips you will
+        get 20 badges otherwise you will get 10 badges.'
+        gameLink='/memorygame'
+        gameButton='Lets start' />
     </>
   )
 };

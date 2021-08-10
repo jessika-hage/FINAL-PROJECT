@@ -14,7 +14,7 @@ import { MainContainer } from '../components/memory/Styling';
 export const MemoryGame = () => {
 	const [openWin, setOpenWin] = useState(false);
 	const [gameStatus, setGameStatus] = useState(GAME_STATUS.CREATING);
-	const [gameResults, setGameResults] = useState({});
+	const [gameResults, setGameResults] = useState(0);
 	const [animation, setAnimation] = useState(false);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
@@ -37,11 +37,17 @@ export const MemoryGame = () => {
 		}
 	};
 
+	console.log(gameResults)
 	// Collect badges when finished game
 	const handleCollectBadges = () => {
 		setOpenWin(false);
 		setAnimation(true);
-		dispatch(updateBadges(10));
+		if (gameResults.flips <= 24) {
+			dispatch(updateBadges(20));
+		}
+		if (gameResults.flips > 24) {
+			dispatch(updateBadges(10));
+		}
 		setTimeout(() => {
 			history.push('/');
 		}, 2000);
@@ -64,7 +70,7 @@ export const MemoryGame = () => {
 						handleCollect={handleCollectBadges}
 					/>
 				)}
-			{animation && <BadgesAnimation text='10' />}
+			{animation && <BadgesAnimation text={gameResults.flips > 24 ? '10' : '20'} />}
 		</MainContainer>
 		</>
 	)

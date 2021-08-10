@@ -46,7 +46,7 @@ export const BottomContainer = styled.div`
 	padding: 0 20px;
 	margin: 40px 0 140px 0;
 	overflow: hidden;
-	@media (min-width: 900px) {
+	@media (min-width: 1000px) {
 		padding: 0 40px;
 		flex-direction: row;
 		justify-content: space-evenly;

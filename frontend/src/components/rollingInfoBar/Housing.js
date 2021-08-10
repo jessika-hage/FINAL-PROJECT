@@ -43,7 +43,7 @@ export const Housing = () => {
 				<DialogContainer>
 					<CloseIcon onClick={onToggleDialog} />
 					<HouseTitle>LET YOUR DREAM COME TRUE</HouseTitle>
-					<Carousel autoPlay='true' infiniteLoop='true'>
+					<Carousel showThumbs={false} autoPlay='true' infiniteLoop='true'>
 						{housing.map((house) => (
 							<HouseContainer key={house.id}>
 								<HouseImage
@@ -56,13 +56,13 @@ export const Housing = () => {
 									<PriceContainer>
 										<HouseText> Price from: {house.price} $</HouseText>
 									</PriceContainer>
+									<ButtonContainer>
+										<BuyButton onClick={onToggleBuy}>Buy House</BuyButton>
+									</ButtonContainer>
 								</HouseTextContainer>
 							</HouseContainer>
 						))}
 					</Carousel>
-					<ButtonContainer>
-						<BuyButton onClick={onToggleBuy}>Buy House</BuyButton>
-					</ButtonContainer>
 				</DialogContainer>
 			</Dialog>
 			<Dialog open={openBuy} onClose={onToggleBuy}>

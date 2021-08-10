@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 
-import { updateBadges, updateRanking } from '../../../reducers/profile';
-import { Dialogs } from './Dialogs';
-import { RoomGym, GymIcon } from '../Styling';
-import {   
-	DialogContainer, 
-	InfoTitle, 
-	InfoText, 
-	DialogButton,
-	CloseIcon } from './Styling';
+import { updateBadges, updateRanking } from '../../reducers/profile';
+import { SmallDialog } from '../reusables/SmallDialog';
+import { BigDialog } from '../reusables/BigDialog';
+import { RoomGym, GymIcon } from './Styling';
 
 export const Gym = () => {
 	const [openGym, setOpenGym] = useState(false);
@@ -61,24 +55,21 @@ export const Gym = () => {
 				onClick={onToggleGymDialog}>
 				<GymIcon />
 			</RoomGym>
-			<Dialog open={openGym} onClose={onToggleGymDialog}>
-				<DialogContainer>
-					<InfoTitle>
-						Get some workout!
-						<CloseIcon tabIndex='0' onClick={onToggleGymDialog} />
-					</InfoTitle>
-					<InfoText>
-						As a citizen on this ship, it is very important that you exercise
-						regularly. Week citizens won't last for long! The price for entering the
-						gym is 20 badges but it will increase your ranking with 0.2 since you will
-						become a stronger citizen. After workout the gym will be locked for a while, other citizens wants to workout too.
-					</InfoText>
-					<DialogButton onClick={onClickWorkout} disabled={disabled}>Workout!</DialogButton>
-				</DialogContainer>
-			</Dialog>
-			<Dialogs 
-				openConfirm={openConfirm} 
-				confirmText={success ? 'Great workout!' : 'You do not have enough badges to enter the gym!'} />
+			<BigDialog
+				open={openGym}
+				onClose={onToggleGymDialog}
+				titleText='Get some workout!'
+				text='As a citizen on this ship, it is very important that you exercise
+				regularly. Week citizens will not last for long! The price for entering the
+				gym is 20 badges but it will increase your ranking with 0.2 since you will
+				become a stronger citizen. After workout the gym will be locked for a while, other citizens wants to workout too.'
+				onClick={onClickWorkout}
+				disabled={disabled}
+				dialogButton='Workout' />
+			<SmallDialog
+				open={openConfirm} 
+				headerText='Citizen Gym'
+				text={success ? 'Great workout!' : 'You do not have enough badges to enter the gym!'} />
 		</>
 	);
 };

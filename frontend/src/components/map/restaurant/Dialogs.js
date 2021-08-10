@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 
-import { SmallDialog } from '../../dialogs/SmallDialog';
+import { SmallDialog } from '../../reusables/SmallDialog';
 import { DialogContainer, InfoText } from './Styling';
 
 export const Dialogs = ({ 

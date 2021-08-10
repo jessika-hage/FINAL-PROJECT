@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Classroom } from './Classroom';
-import { Bedroom } from './bedroom/Bedroom';
+import { Bedroom } from './Bedroom';
 import { Restaurant } from './restaurant/Restaurant';
 import { Quiz } from './Quiz';
 import { Store } from './Store';
 import { Info } from './info/Info';
-import { Gym } from './gym/Gym';
+import { Gym } from './Gym';
 import { Memory } from './Memory';
 import { ProteinFarm } from './ProteinFarm';
 import { SpaceBall } from './SpaceBall';

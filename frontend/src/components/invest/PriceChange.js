@@ -38,7 +38,7 @@ export const PriceChange = ({ open, onClose, toggleExchangeDialog, toggleInvestD
           <Text>
             Change in last hour:
             <PercentChange percent={currency.percent_change_1h < 0}>
-              {currency.percent_change_1h}%
+              {currency.percent_change_1h === null ? '0' : currency.percent_change_1h}%
             </PercentChange>
           </Text>
           <Text>

@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
-import Dialog from '@material-ui/core/Dialog';
 
-import { 
-	RoomQuiz, 
-	DialogContainer, 
-	InfoTitle, 
-	CloseIcon, 
-	QuizIcon,
-	InfoText, 
-	List, 
-	ListItem, 
-	StartGameButton } from './Styling';
+import { BigDialog } from '../reusables/BigDialog';
+import { RoomQuiz, QuizIcon } from './Styling';
 
 export const Quiz = () => {
 	const [openGame, setOpenGame] = useState(false);
@@ -27,22 +18,17 @@ export const Quiz = () => {
 				onClick={onToggleGameDialog}>
 				<QuizIcon />
 			</RoomQuiz>
-			<Dialog open={openGame} onClose={onToggleGameDialog}>
-				<DialogContainer>
-					<InfoTitle>
-						Quiz time!
-						<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
-					</InfoTitle>
-					<InfoText>In here there is a quiz with true or false question. But there is a challenge with jumping circles and buttons.
-						But at least you get to choose the difficulty level of the questions between: 
-					</InfoText>
-					<List>
-						<ListItem>EASY!</ListItem>
-						<ListItem>HARD!</ListItem>
-					</List>
-					<StartGameButton to='/quiz'>Lets start</StartGameButton>
-				</DialogContainer>
-			</Dialog>
+			<BigDialog
+				open={openGame}
+				onClose={onToggleGameDialog}
+				titleText='Quiz time!'
+				text='In here there is a quiz with true or false question. But there is a challenge with jumping circles and buttons.
+				But at least you get to choose the difficulty level of the questions between:'
+				list
+				itemOne='EASY!'
+				itemTwo='HARD!'
+				gameLink='/quiz'
+				gameButton='Lets start' />
 		</>
 	)
 };

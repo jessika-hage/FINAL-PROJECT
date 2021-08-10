@@ -15,13 +15,13 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px;
+  padding: 5px;
   min-width: 280px;
   max-width: 300px;
   color: ${(props) => props.theme.textColor};
   @media (min-width: 500px) {
 		max-width: 450px;
-		padding: 20px 20px 20px 15px;
+		padding: 10px;
 	}
 `;
 

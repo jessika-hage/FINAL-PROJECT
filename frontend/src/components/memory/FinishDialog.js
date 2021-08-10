@@ -11,7 +11,7 @@ export const FinishDialog = ({ handleCollect, openWin, results }) => {
 		<Dialog open={openWin}>
 			<DialogContainer>
 				<DialogText>
-					You made it with {results.flips} flips and it took you {results.time}!
+					You made it with {results.flips} flips!
 				</DialogText>
 				<Button onClick={handleCollect}>Collect badges</Button>
 			</DialogContainer>

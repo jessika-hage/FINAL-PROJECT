@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 
 import { updateRanking } from 'reducers/profile';
-import { SmallDialog } from '../dialogs/SmallDialog';
+import { SmallDialog } from '../reusables/SmallDialog';
 import {
 	EnergyContainer,
 	EnergyText,

@@ -11,7 +11,7 @@ import { InvestmentProfile } from './InvestmentProfile';
 import { EnergyProfile } from './EnergyProfile';
 import { Settings } from './settings/Settings';
 import { Buttons } from './Buttons';
-import { SmallDialog } from '../dialogs/SmallDialog';
+import { SmallDialog } from '../reusables/SmallDialog';
 import { 
 	Main,
 	ProfileContainer, 

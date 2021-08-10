@@ -22,8 +22,7 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 	const [secondCard, setSecondCard] = useState(null);
 	const [openCardCounter, setOpenCardCounter] = useState(0);
 
-	// Setting timer and flip count
-	const timer = useRef(new Date());
+	// Setting flip count
 	const flipCounter = useRef(0);
 	const isMounted = useRef(false);
 
@@ -102,14 +101,13 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 			if (matches.length === DECK_SIZE) {
 				onGameUpdate(GAME_STATUS.FINISHED, {
 					flips: flipCounter.current,
-					time: `${(new Date() - timer.current) / 1000} seconds`,
 				});
 			}
 		} else if (openCardCounter === 2) {
 			setOpenCardCounter(0);
 			checkPair();
 		}
-	}, [checkPair, deck, openCardCounter, onGameUpdate, timer]);
+	}, [checkPair, deck, openCardCounter, onGameUpdate]);
 
 	// Start the game
 	const startGame = useCallback(async () => {
@@ -117,7 +115,6 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 			const newDeck = await GetImages();
 			setDeck(newDeck);
 			flipCounter.current = 0;
-			timer.current = new Date();
 			onGameUpdate(GAME_STATUS.IN_PROGRESS);
 		} catch (error) {
 			alert(`Error: ${error}`);

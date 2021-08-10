@@ -46,7 +46,7 @@ export const SubmitButton = styled.button`
   font-family: 'Trispace', serif;
   font-size: 15px;
   :hover, :focus {
-    background-color: ${props => props.theme.secondary};
+    background-color: ${props => props.theme.backgroundColor};
   }
   @media (min-width: 768px) {
     padding: 7px;
@@ -75,9 +75,9 @@ export const MessageContainer = styled.section`
 `;
 
 export const CloseIcon = styled.button`
-  position: fixed;
-  top: 8px;
-  right: 5px;
+  position: absolute;
+  top: 4px;
+  right: 1px;
   background-color: transparent;
   font-size: 20px;
   color: ${props => props.theme.textColor};
@@ -88,8 +88,8 @@ export const CloseIcon = styled.button`
     font-size: 16px;
   }
   @media (min-width: 768px) {
-    top: 10px;
-    right: 10px;
+    top: 7px;
+    right: 5px;
   }
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 
+import { SmallDialog } from '../reusables/SmallDialog';
 import { 
   DialogContainer, 
   InvestTitle, 
@@ -11,9 +12,6 @@ import {
   InputContainer, 
   InputAmount, 
   TotalValueText, 
-  ConfirmationText, 
-  ConfirmationDialog, 
-  ConfirmedButton,
   CloseIcon } from './Styling';
 
 export const InvestDialog = ({ 
@@ -55,14 +53,13 @@ export const InvestDialog = ({
           <InvestButton onClick={onClick}>Make Investment</InvestButton>
         </DialogContainer>
       </Dialog>
-      <Dialog 
-        open={openConfirm} 
-        onClose={onCloseConfirm}>
-        <ConfirmationDialog>
-          <ConfirmationText>{confirmText}</ConfirmationText>
-          <ConfirmedButton onClick={onCloseConfirm}>{buttonText}</ConfirmedButton>
-        </ConfirmationDialog>
-      </Dialog>
+      <SmallDialog 
+        open={openConfirm}
+        onClose={onCloseConfirm}
+        headerText='Citizen Invest'
+        text={confirmText}
+        onClick={onCloseConfirm}
+        confirmButton={buttonText} />
     </>
   )
 };

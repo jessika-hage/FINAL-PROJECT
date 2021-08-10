@@ -13,6 +13,7 @@ import {
           want to be on top of the leaderboard. It is automatically sorted on
           the highest ranking. But if you click the titles you can also sort on
           most badges, coins and days on ship. Also important things that defines you as a citizen.
+          You can click on the citizens names and see their profiles too!
         </TextInfo>
         <PageTitle>Game Highscores</PageTitle>
         <TextInfo>

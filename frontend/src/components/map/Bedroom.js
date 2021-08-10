@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 
-import { updateBadges, updateRanking } from '../../../reducers/profile';
-import { Dialogs } from './Dialogs';
-import { RoomBedroom, BedIcon } from '../Styling';
-import {   
-  DialogContainer, 
-  InfoTitle, 
-  InfoText, 
-  DialogButton,
-  CloseIcon} from './Styling';
+import { updateBadges, updateRanking } from '../../reducers/profile';
+import { BigDialog } from '../reusables/BigDialog';
+import { SmallDialog } from '../reusables/SmallDialog';
+import { RoomBedroom, BedIcon } from './Styling';
 
 export const Bedroom = () => {
   const [openBedroom, setOpenBedroom] = useState(false);
@@ -39,7 +33,7 @@ export const Bedroom = () => {
       setTimeout(() => {
         setOpenConfirm(false);
         setOpenBedroom(false);
-      });
+      }, 2000);
       setTimeout(() => {
         setDisabled(false);
       }, delay)
@@ -62,24 +56,20 @@ export const Bedroom = () => {
         onClick={onToggleBedroomDialog}>
         <BedIcon />
       </RoomBedroom>
-      <Dialog open={openBedroom} onClose={onToggleBedroomDialog}>
-        <DialogContainer>
-          <InfoTitle>
-            Get some rest!
-						<CloseIcon tabIndex='0' onClick={onToggleBedroomDialog} />
-          </InfoTitle>
-          <InfoText>
-            As a citizen on this ship, we like it when you work hard. That's why it
-            is important that you also sleep a little bit sometimes. You will lose 20
-            badges but will gain 0.2 ranking! But you can not sleep too often so we lock the room afterwards.
-          </InfoText>
-          <DialogButton onClick={onClickSleep} disabled={disabled}>Sleep!</DialogButton>
-        </DialogContainer>
-      </Dialog>
-      <Dialogs 
-        openConfirm={openConfirm} 
-        confirmText={success ? 'Good morning! Hope you are rested!' : 'You do not have enough badges to deserve some rest!'} />
-    
+      <BigDialog 
+        open={openBedroom}
+        onClose={onToggleBedroomDialog}
+        titleText='Get some rest!'
+        text='As a citizen on this ship, we like it when you work hard. That is why it
+        is important that you also sleep a little bit sometimes. You will lose 20
+        badges but will gain 0.2 ranking! But you can not sleep too often so we lock the room afterwards.'
+        onClick={onClickSleep}
+        disabled={disabled}
+        dialogButton='Sleep!' />
+      <SmallDialog
+        open={openConfirm} 
+        headerText='Citizen Bedroom'
+        text={success ? 'Good morning! Hope you are rested!' : 'You do not have enough badges to deserve some rest!'} />
     </>
   )
 };

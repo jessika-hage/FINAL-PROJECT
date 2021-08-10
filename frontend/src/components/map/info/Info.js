@@ -31,7 +31,7 @@ export const Info = () => {
             Ship info
             <CloseIcon tabIndex='0' onClick={onToggleDialog} />
           </ShipInfo>
-          <Carousel>
+          <Carousel showThumbs={false}>
             <FirstInfo />
             <SecondInfo />
             <ThirdInfo />

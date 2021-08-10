@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
-import Dialog from '@material-ui/core/Dialog';
 
-import {
-	DialogContainer,
-	InfoTitle,
-	InfoText,
-	StartGameButton,
-	RoomFarm,
-	FishIcon,
-	CloseIcon,
-} from './Styling';
+import { BigDialog } from '../reusables/BigDialog';
+import { RoomFarm, FishIcon } from './Styling';
 
 export const ProteinFarm = () => {
 	const [openGame, setOpenGame] = useState(false);
@@ -26,16 +18,13 @@ export const ProteinFarm = () => {
 				onClick={onToggleGameDialog}>
 				<FishIcon />
 			</RoomFarm>
-			<Dialog open={openGame} onClose={onToggleGameDialog}>
-				<DialogContainer>
-					<InfoTitle>
-						Protein Farm
-						<CloseIcon tabIndex='0' onClick={onToggleGameDialog} />
-					</InfoTitle>
-					<InfoText>Catch the fishes.</InfoText>
-					<StartGameButton to='/farm'>Lets start</StartGameButton>
-				</DialogContainer>
-			</Dialog>
+			<BigDialog
+				open={openGame}
+				onClose={onToggleGameDialog}
+				titleText='Protein Farm'
+				text='Catch the fishes.'
+				gameLink='/farm'
+				gameButton='Lets Start' />
 		</>			
 	)
 };

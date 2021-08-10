@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.main`
-height: 100vh;
+min-height: 100vh;
 width: 100%;
 display: flex;
 justify-content: center;
@@ -43,9 +43,9 @@ export const ImageCard = styled.img`
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 10px;
+  margin-top: 130px;
 `;
 
 export const GameTitle = styled.h1`
@@ -75,12 +75,7 @@ export const GameContainer = styled.div`
   border: 4px solid ${props => props.theme.secondary};
   color: ${props => props.theme.textColor};
   padding: 20px 10px;
-  margin-top: 100px;
-  @media (max-height: 667px) {
-    margin-top: 160px;
-  }
   @media (min-width: 768px) {
-    margin-top: -20px;
     max-width: 90%;
   }
   @media (min-width: 1024px) {
@@ -89,7 +84,6 @@ export const GameContainer = styled.div`
   }
   @media (min-width: 1400px) {
     max-width: 70%;
-    margin-top: -100px;
   }
 `; 
 

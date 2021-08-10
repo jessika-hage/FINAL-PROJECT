@@ -88,19 +88,26 @@ export const MyCart = () => {
 		<CartWrapper>
 			<Dialog open={open} onClose={onToggleDialog}>
 				<DialogContainer>
-					<DialogHeader>
-						<HeaderText>Product</HeaderText>
-						<HeaderText>Quantity</HeaderText>
-						<HeaderText>Price</HeaderText>
-					</DialogHeader>
-					{products.map((product) => (
-						<CartItem key={product.id} product={product} />
-					))}
-					<TotalPrice>Total Price: {totalPrice}$</TotalPrice>
-					<TotalRanking>
-						Total Ranking: {totalRanking} <Icon />
-					</TotalRanking>
-					<BuyButton onClick={buy}>Buy</BuyButton>
+					{products.length > 0 ? (
+						<>
+							<DialogHeader>
+								<HeaderText>Product</HeaderText>
+								<HeaderText>Quantity</HeaderText>
+								<HeaderText>Price</HeaderText>
+							</DialogHeader>
+							{products.map((product) => (
+								<CartItem key={product.id} product={product} />
+							))}
+							<TotalPrice>Total Price: {totalPrice}$</TotalPrice>
+							<TotalRanking>
+								Total Ranking: {totalRanking} <Icon />
+							</TotalRanking>
+							<BuyButton onClick={buy}>Buy</BuyButton>
+						</>
+					)
+					: (
+					<TotalPrice>Your cart is empty.</TotalPrice>
+					)}
 				</DialogContainer>
 			</Dialog>
 			<ShoppingCart>

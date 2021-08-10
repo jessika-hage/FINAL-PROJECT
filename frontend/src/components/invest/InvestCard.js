@@ -38,7 +38,7 @@ export const InvestCard = ({ onClick }) => {
           <ChangeText>Last hour:</ChangeText>
           <CoinChange percent={currency.percent_change_1h < 0}>
             {currency.percent_change_1h < 0 ? <IconDown /> : <IconUp />}
-            {currency.percent_change_1h} %
+            {currency.percent_change_1h === null ? '0' : currency.percent_change_1h} %
           </CoinChange>
         </ChangeContainer>
       </TextContainer>
