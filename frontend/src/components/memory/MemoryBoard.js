@@ -3,15 +3,15 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import audio from '../../assets/Cards 6010_56_6.wav';
 import { MemoryCard } from './MemoryCard';
 import { GetImages } from './GetImages';
+import { GameTitle } from '../reusables/GameTitle';
+import { GameScore } from '../reusables/GameScore';
 import { 
 	CARD_STATUS, 
 	GAME_STATUS, 
 	DECK_SIZE } from './constants';
 import {
 	Container,
-	GameTitle,
 	GameContainer,
-	FlipText,
 	GameGrid,
 } from './Styling';
 
@@ -150,8 +150,10 @@ export const MemoryBoard = ({ gameStatus, onGameUpdate }) => {
 
 	return (
 		<>
-		<GameTitle>Memory Game</GameTitle>
-		<FlipText>Flips: {flipCounter.current}</FlipText>
+		<GameTitle text='Memory Game' />
+		<GameScore 
+			type='Flips:'
+			score={flipCounter.current || '0'} />
 		<Container>
 			<GameContainer>
 				<GameGrid>

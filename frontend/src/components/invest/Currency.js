@@ -52,7 +52,7 @@ export const Currency = () => {
 	};
 
 	// Calculates exchange rate
-	const totalExchange = (exchangeValue * currency.price_usd) / 2;
+	const totalExchange = (exchangeValue * currency.price_usd) / 5;
 
 	// Update badges and coins
 	// Only if enough badges
@@ -123,6 +123,7 @@ export const Currency = () => {
 				rate={currency.price_usd}
 				onChange={(e) => setExchangeValue(e.target.value)}
 				value={exchangeValue}
+				badges={badges}
 				totalExchange={totalExchange.toFixed(2)}
 				onClick={onExchange}
 				open={openConfirmExchange}
@@ -141,6 +142,7 @@ export const Currency = () => {
 				value={investValue}
 				onChange={(e) => setInvestValue(e.target.value)}
 				spaceValue={totalInvest.toFixed(2)}
+				coins={coins === null ? coins : coins.toFixed(2)}
 				onClick={onInvest}
 				openConfirm={openConfirmInvest}
 				onCloseConfirm={onToggleInvestConfirm}

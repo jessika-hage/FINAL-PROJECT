@@ -33,7 +33,7 @@ export const InvestCard = ({ onClick }) => {
         <Title>
           Space $
         </Title>
-        <ChangeText>Exchange rate: 2 badges = {currency.price_usd} $</ChangeText>
+        <ChangeText>Exchange rate: 5 badges = {currency.price_usd} $</ChangeText>
         <ChangeContainer>
           <ChangeText>Last hour:</ChangeText>
           <CoinChange percent={currency.percent_change_1h < 0}>

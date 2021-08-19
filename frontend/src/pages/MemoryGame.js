@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import { updateBadges } from '../reducers/profile';
 import { MemoryBoard } from '../components/memory/MemoryBoard';
-import { FinishDialog } from '../components/memory/FinishDialog';
+import { GameFinish } from '../components/reusables/GameFinish';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
@@ -37,7 +37,6 @@ export const MemoryGame = () => {
 		}
 	};
 
-	console.log(gameResults)
 	// Collect badges when finished game
 	const handleCollectBadges = () => {
 		setOpenWin(false);
@@ -64,11 +63,15 @@ export const MemoryGame = () => {
 					onReset={handleStatusUpdate}
 				/>
 				{gameStatus === GAME_STATUS.FINISHED && (
-					<FinishDialog
-						openWin={openWin}
-						results={gameResults}
-						handleCollect={handleCollectBadges}
-					/>
+					<GameFinish
+						open={openWin}
+						topText='You made it with'
+						score={gameResults.flips}
+						textTwo='flips, which gives you'
+						points={gameResults.flips > 24 ? '10' : '20'}
+						textThree='badges!'
+						onClick={handleCollectBadges}
+						button='Collect badges' />
 				)}
 			{animation && <BadgesAnimation text={gameResults.flips > 24 ? '10' : '20'} />}
 		</MainContainer>

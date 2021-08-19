@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Dialog } from '@material-ui/core';
 
 import audio from '../assets/Water Audio Files_BubblesBigBurstShort.wav'
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { updateBadges, updateHighscoreFish } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
+import { GameTitle } from '../components/reusables/GameTitle';
+import { GameScore } from '../components/reusables/GameScore';
+import { GameFinish } from '../components/reusables/GameFinish';
 import {
 	Icon1,
 	Icon2,
@@ -28,15 +30,9 @@ import {
 	Icon17,
 	Icon18,
 	Icon19,
-	GameTitle,
-	ScoreText,
 	TransparentWrapper,
 	WaterContainer,
 	MainContainer,
-	DialogText,
-	CounterText,
-	DialogContainer,
-	StartButton,
 	FishWrapper1,
 	FishWrapper2,
 	FishWrapper3,
@@ -231,9 +227,11 @@ export const ProteinFarm = () => {
 			<Header />
 			<Camera />
 			<MainContainer>
-				<GameTitle>Protein Farm</GameTitle>
-				<ScoreText>Catches: {score}</ScoreText>
-				<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+				<GameTitle text='Protein Farm' />
+				<GameScore 
+					type='Catches:' 
+					score={score || '0'}
+					counter={counter.toString().padStart(2, '0')} />
 				<WaterContainer>
 					<TransparentWrapper disabled1='true'></TransparentWrapper>
 					<FishWrapper1 onClick={() => setDisabled1(true)} disabled={disabled1}>
@@ -318,17 +316,15 @@ export const ProteinFarm = () => {
 					</RoundWrapper3>
 					<BackgroundWater></BackgroundWater>
 				</WaterContainer>
-
-				<Dialog open={openFinishedDialog}>
-					<DialogContainer>
-						<DialogText>
-							You managed to catch {score} fishes which gives you {score} badges!
-						</DialogText>
-						<StartButton onClick={onCollectBadges}>
-							{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}
-						</StartButton>
-					</DialogContainer>
-				</Dialog>
+				<GameFinish
+					open={openFinishedDialog}
+					topText='You managed to catch'
+					score={score}
+					textTwo='fishes which gives you'
+					points={score}
+					textThree='badges!'
+					onClick={onCollectBadges}
+					button={score > 0 ? 'Collect badges' : 'Sorry, no badges this time'} />
 			</MainContainer>
 			{animation && <BadgesAnimation text={score} />}
 		</>

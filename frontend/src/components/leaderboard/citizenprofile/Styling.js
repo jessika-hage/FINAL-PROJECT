@@ -21,10 +21,16 @@ export const InvestmentText = styled.p`
 	}
 `;
 
-export const InvestmentChange = styled(InvestmentText)`
+export const InvestmentChange = styled.div`
 	display: flex;
 	flex-direction: column;
+	font-size: 12px;
+	color: ${props => props.theme.textColor};
 	margin: 2px 0 5px 3px;
+	padding: 0;
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 export const ValueChange = styled(InvestmentText)`

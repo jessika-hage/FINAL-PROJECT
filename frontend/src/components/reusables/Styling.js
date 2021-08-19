@@ -255,3 +255,67 @@ export const DialogButton = styled.button`
 		font-size: 18px;
 	}
 `;
+
+// Game Title
+export const GameTitleText = styled.h1`
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	text-transform: uppercase;
+	@media (min-width: 768px) {
+		top: 10px;
+	}
+`;
+
+// GameScore
+export const ScoreText = styled(GameTitleText)`
+	font-size: 20px;
+	top: 75px;
+	left: 22px;
+  @media ( min-width: 768px) {
+    top: 60px;
+  }
+`;
+
+export const CounterText = styled(ScoreText)`
+	top: 100px;
+	left: 22px;
+  @media ( min-width: 768px) {
+    top: 85px;
+  }
+`;
+
+// Game Finish
+export const FinishContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	max-width: 400px;
+	background-color: ${(props) => props.theme.backgroundColor};
+	border: 2px solid ${(props) => props.theme.secondary};
+	color: ${(props) => props.theme.textColor};
+`;
+
+export const FinishText = styled.p`
+	font-size: 16px;
+	text-align: center;
+	margin: 5px 0 0 0;
+`;
+
+export const FinishButton = styled.button`
+	padding: 10px 15px;
+	margin-top: 20px;
+	background-color: ${(props) => props.theme.primary};
+	border: 2px solid ${(props) => props.theme.hover};
+	color: ${(props) => props.theme.textColor};
+	font-size: 16px;
+	width: fit-content;
+	text-transform: uppercase;
+	font-family: 'Trispace';
+	cursor: pointer;
+	:hover {
+		background-color: ${(props) => props.theme.hover};
+	}
+`;

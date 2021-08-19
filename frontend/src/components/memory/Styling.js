@@ -48,25 +48,6 @@ export const Container = styled.section`
   margin-top: 130px;
 `;
 
-export const GameTitle = styled.h1`
-	position: absolute;
-	top: 30px;
-	left: 20px;
-	text-transform: uppercase;
-  @media ( min-width: 768px) {
-    top: 10px;
-  }
-`;
-
-export const FlipText = styled(GameTitle)`
-	font-size: 20px;
-	top: 75px;
-	left: 22px;
-  @media ( min-width: 768px) {
-    top: 60px;
-  }
-`;
-
 export const GameContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,44 +73,5 @@ export const GameGrid = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-`;
-
-// Finish Dialog
-export const DialogContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-directioN: column;
-  align-items: center;
-  max-width: 320px;
-  background-color: ${props => props.theme.backgroundColor};
-  color: ${props => props.theme.textColor};
-  border: 2px solid ${props => props.theme.secondary};
-  @media (min-width: 768px) {
-    max-width: 400px;
-  }
-`;
-
-export const Button = styled.button`
-  padding: 10px 15px;
-  margin-top: 20px;
-  background-color: ${(props) => props.theme.primary};
-  border: 2px solid ${(props) => props.theme.hover};
-  color: ${(props) => props.theme.textColor};
-  font-size: 16px;
-  width: fit-content;
-  text-transform: uppercase;
-  font-family: 'Trispace';
-  cursor: pointer;
-  :hover {
-    background-color: ${(props) => props.theme.hover};
-  }
-`;
-
-export const DialogText = styled.p`
-	font-size: 16px;
-  margin: 0;
-  text-align: center;
 `;
 

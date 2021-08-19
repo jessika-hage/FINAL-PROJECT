@@ -106,23 +106,24 @@ export const Citizen = styled.p`
 `;
 
 export const CitizenRank = styled.p`
-width: 25%;
+	width: 25%;
 	margin: 0;
 	font-size: 12px;
 	text-align: left;
+	cursor: auto;
 	@media (min-width: 768px) {
 		font-size: 14px;
 	}
 `;
 
-export const CitizenDays = styled(Citizen)`
+export const CitizenDays = styled(CitizenRank)`
   display: none;
 	@media (min-width: 768px) {
 		display: flex;
 	}
 `;
 
-export const Badges = styled(Citizen)`
+export const Badges = styled(CitizenRank)`
 	margin-right: -20px;
 	margin-left: 10px;
 	@media (min-width: 768px) {

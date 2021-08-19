@@ -30,6 +30,7 @@
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
+    "react-spring": "^9.2.4",
     "react-timer-hook": "^3.0.3",
     "redux-thunk": "^2.3.0",
     "styled-component": "^2.8.0",

@@ -263,10 +263,13 @@ export const InvestmentText = styled(ItemsTitle)`
 	margin: 2px;
 `;
 
-export const InvestmentChange = styled(InvestmentText)`
+export const InvestmentChange = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 2px 0 5px 3px;
+	font-size: 14px;
+  color: ${props => props.theme.textColor};
+  padding: 0;
 `;
 
 export const ValueChange = styled(InvestmentText)`

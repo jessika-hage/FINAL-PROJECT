@@ -154,6 +154,11 @@ export const InputAmount = styled.input`
   }
 `;
 
+export const Available = styled.p`
+  font-size: 12px;
+  margin: -3px 0 12px 0;
+`;
+
 export const TotalValueText = styled.p`
   font-size: 16px;
   margin-right: 20px;

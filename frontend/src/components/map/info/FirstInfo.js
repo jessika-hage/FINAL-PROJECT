@@ -27,7 +27,7 @@ Email } from './Styling';
           color your spaceship.
         </TextInfo>
         <TextInfo>
-          Next to your profile we have our Citizen Messageboard, where everyone can make a post.
+          Next to your profile we have our Citizen Messageboard, where everyone can make a post. 
         </TextInfo>
         <BottomText>
           <EndText>Your commanders,</EndText>

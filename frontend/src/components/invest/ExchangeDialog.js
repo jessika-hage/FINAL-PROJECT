@@ -11,6 +11,7 @@ import {
   InvestButton, 
   InputContainer, 
   InputAmount, 
+  Available,
   TotalValueText,
   CloseIcon } from './Styling';
 
@@ -23,6 +24,7 @@ export const ExchangeDialog = ({
   onClick, 
   value,
   open,
+  badges,
   onClose,
   confirmText,
   buttonText }) => {
@@ -38,7 +40,7 @@ export const ExchangeDialog = ({
           <InvestInfo>
             Here you can exchange badges for coins! It's important to have some money since you need it to invest, buy things in the store etc.
           </InvestInfo>
-          <PriceInfo>Exchange rate: 2 badges = {rate} $</PriceInfo>
+          <PriceInfo>Exchange rate: 5 badges = {rate} $</PriceInfo>
           <QuestionText>How many badges do you want to exchange?</QuestionText>
           <InputContainer>
             <InputAmount 
@@ -48,6 +50,7 @@ export const ExchangeDialog = ({
               value={value}></InputAmount>
             <TotalValueText> = {totalExchange} $</TotalValueText>
           </InputContainer>
+          <Available>Your available badges: {badges} </Available>
           <InvestButton onClick={onClick}>Make Exchange</InvestButton>
         </DialogContainer>
         <SmallDialog

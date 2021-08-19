@@ -8,7 +8,8 @@ import {
   InvestInfo, 
   PriceInfo,
   QuestionText,
-  InvestButton, 
+  InvestButton,
+  Available, 
   InputContainer, 
   InputAmount, 
   TotalValueText, 
@@ -19,7 +20,8 @@ export const InvestDialog = ({
   onClose, 
   rate,
   onChange, 
-  spaceValue, 
+  spaceValue,
+  coins, 
   onClick, 
   value, 
   openConfirm,
@@ -50,6 +52,7 @@ export const InvestDialog = ({
               value={value}></InputAmount>
             <TotalValueText> = {spaceValue} $</TotalValueText>
           </InputContainer>
+          <Available>Your available coins: {coins}$</Available>
           <InvestButton onClick={onClick}>Make Investment</InvestButton>
         </DialogContainer>
       </Dialog>

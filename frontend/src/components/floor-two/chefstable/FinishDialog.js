@@ -3,17 +3,19 @@ import { Dialog } from '@material-ui/core';
 
 import { 
 	DialogContainer, 
-	Button, 
+	FinishButton, 
 	DialogText } from './Styling';
 
-export const FinishDialog = ({ handleCollect, openWin, results }) => {
+export const FinishDialog = ({ handleCollect, open, text, status }) => {
 	return (
-		<Dialog open={openWin}>
+		<Dialog open={open}>
 			<DialogContainer>
 				<DialogText>
-					You made it with {results.flips} flips!
+					{text}
 				</DialogText>
-				<Button onClick={handleCollect}>Collect badges</Button>
+				<FinishButton onClick={handleCollect}>
+          {status}
+        </FinishButton>
 			</DialogContainer>
 		</Dialog>
 	)

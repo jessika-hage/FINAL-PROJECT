@@ -27,7 +27,7 @@ export const grayTheme = {
   primary: "#333333",
   secondary: "#424242",
   textColor: "#fff",
-  hover: "#1A90FF"
+  hover: "#FA7D09"
 };
 
 export const brownTheme = {

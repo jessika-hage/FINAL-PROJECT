@@ -595,20 +595,6 @@ export const GameTitle = styled.h1`
 	text-transform: uppercase;
 `;
 
-export const ScoreText = styled(GameTitle)`
-	z-index: 8;
-	font-size: 16px;
-	top: 80px;
-	left: 22px;
-	@media (min-width: 768px) {
-		font-size: 20px;
-	}
-`;
-export const CounterText = styled(ScoreText)`
-	z-index: 8;
-	top: 105px;
-	left: 22px;
-`;
 export const TransparentWrapper = styled.button`
 	z-index: 5;
 	background: transparent;
@@ -665,33 +651,3 @@ export const MainContainer = styled.main`
 	background: linear-gradient(#dcfcf7, #dcfcf7, #9de2fa, #9de2fa, #9de2fa);
 `;
 
-export const DialogText = styled.p`
-	font-size: 16px;
-`;
-
-export const DialogContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.secondary};
-	color: ${(props) => props.theme.textColor};
-`;
-export const StartButton = styled.button`
-	padding: 10px 15px;
-	margin-top: 20px;
-	background-color: ${(props) => props.theme.primary};
-	border: 2px solid ${(props) => props.theme.hover};
-	color: ${(props) => props.theme.textColor};
-	font-size: 16px;
-	width: fit-content;
-	text-transform: uppercase;
-	font-family: 'Trispace';
-	cursor: pointer;
-
-	:hover {
-		background-color: ${(props) => props.theme.hover};
-	}
-`;

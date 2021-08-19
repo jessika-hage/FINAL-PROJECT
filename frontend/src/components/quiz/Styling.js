@@ -22,23 +22,6 @@ export const GameTitle = styled.h1`
 	}
 `;
 
-export const ScoreText = styled(GameTitle)`
-	font-size: 20px;
-	top: 75px;
-	left: 22px;
-	@media (min-width: 768px) {
-		top: 60px;
-	}
-`;
-
-export const CounterText = styled(ScoreText)`
-	top: 100px;
-	left: 22px;
-	@media (min-width: 768px) {
-		top: 85px;
-	}
-`;
-
 export const TriviaContainer = styled.div`
 	margin: 200px 20px;
 	background-color: ${(props) => props.theme.primary};
@@ -94,25 +77,6 @@ export const AnswerButton = styled.button`
 	}
 `;
 
-// FinishGame
-export const DialogContainer = styled.div`
-	padding: 20px;
-	display: flex;
-	width: 100%;
-	height: 100%;
-	flex-direction: column;
-	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
-	color: ${(props) => props.theme.textColor};
-	border: 2px solid ${(props) => props.theme.secondary};
-`;
-
-export const DialogText = styled.p`
-	font-size: 16px;
-	margin: 0;
-	text-align: center;
-`;
-
 export const Button = styled.button`
 	padding: 10px 15px;
 	margin: 20px 10px;
@@ -127,15 +91,6 @@ export const Button = styled.button`
 		&:hover {
 			background-color: ${(props) => props.theme.hover};
 		}
-	}
-`;
-
-export const CollectButton = styled(Button)`
-	margin: 20px 0 0 0;
-	background-color: ${(props) => props.theme.primary};
-	border: 2px solid ${(props) => props.theme.hover};
-	:hover {
-		background-color: ${(props) => props.theme.hover};
 	}
 `;
 

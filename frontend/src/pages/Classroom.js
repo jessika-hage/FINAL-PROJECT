@@ -8,16 +8,15 @@ import { updateBadges, updateHighscoreMath } from '../reducers/profile';
 import { NumberInput } from '../components/classroom/NumberInput';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-import { FinishGame } from '../components/classroom/FinishGame';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { generateProblem } from '../components/classroom/Helpers';
 import { StartGame } from '../components/classroom/StartGame';
+import { GameTitle } from '../components/reusables/GameTitle';
+import { GameScore } from '../components/reusables/GameScore';
+import { GameFinish } from '../components/reusables/GameFinish';
 
 import {
 	MainContainer,
-	GameTitle,
-	ScoreText,
-	CounterText,
 	MathContainer,
 	MathProblem,
 } from '../components/classroom/Styling';
@@ -35,7 +34,6 @@ export const Classroom = () => {
 	const [showError, setShowError] = useState(false);
 	const [animation, setAnimation] = useState(false);
 	const answerField = useRef(null);
-	const resetButton = useRef(null);
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const highscore = useSelector((store) => store.profile.highscoreMath);
 
@@ -136,13 +134,15 @@ export const Classroom = () => {
 			<Header />
 			<Camera />
 			<MainContainer>
-				<GameTitle>Classroom</GameTitle>
+				<GameTitle text='Classroom' />
 				{!start ? (
 					<StartGame easy={onClickEasy} medium={onClickMedium} hard={onClickHard} />
 				) : (
 					<>
-						<ScoreText>Score: {score}</ScoreText>
-						<CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+						<GameScore 
+							score={score || '0'}
+							type='Score:'
+							counter={counter.toString().padStart(2, '0')} />
 						<MathContainer>
 							<MathProblem wrongAnswer={showError}>
 								{currentProblem.numberOne} {currentProblem.operator}{' '}
@@ -154,13 +154,15 @@ export const Classroom = () => {
 								value={userAnswer}
 								onChange={(e) => setUserAnswer(e.target.value)}
 							/>
-							<FinishGame
+							<GameFinish
 								open={openFinish}
-								endText={!hard ? score : score * 2}
-								resetButton={resetButton}
+								topText='You managed to get'
+								score={score}
+								textTwo=' correct answers, which gives you'
+								points={!hard ? score : score * 2}
+								textThree='badges!'
 								onClick={collectBadges}
-								buttonText={score > 0 ? 'Collect badges' : 'Try again later'}
-							/>
+								button={score > 0 ? 'Collect badges' : 'Try again later'} />
 						</MathContainer>
 					</>
 				)}

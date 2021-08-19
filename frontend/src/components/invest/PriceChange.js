@@ -53,7 +53,7 @@ export const PriceChange = ({ open, onClose, toggleExchangeDialog, toggleInvestD
               {currency.percent_change_7d}%
             </PercentChange>
           </Text>
-          <Text>Exchange rate: 2 badge = {currency.price_usd} $</Text>
+          <Text>Exchange rate: 5 badge = {currency.price_usd} $</Text>
         <ButtonContainer>
           <ExchangeButton 
             onClick={toggleExchangeDialog}>

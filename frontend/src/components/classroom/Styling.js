@@ -12,33 +12,6 @@ export const MainContainer = styled.main`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
-export const GameTitle = styled.h1`
-	position: absolute;
-	top: 30px;
-	left: 20px;
-	text-transform: uppercase;
-  @media ( min-width: 768px) {
-    top: 10px;
-  }
-`;
-
-export const ScoreText = styled(GameTitle)`
-	font-size: 20px;
-	top: 75px;
-	left: 22px;
-  @media ( min-width: 768px) {
-    top: 60px;
-  }
-`;
-
-export const CounterText = styled(ScoreText)`
-	top: 100px;
-	left: 22px;
-  @media ( min-width: 768px) {
-    top: 85px;
-  }
-`;
-
 export const MathContainer = styled.div`
   margin: 200px 20px;
   background-color: ${(props) => props.theme.primary};
@@ -79,24 +52,6 @@ export const StatusText = styled.p`
 	color: ${(props) => props.theme.textColor};
 	text-align: center;
 	font-size: 14px;
-`;
-
-// FinishGame
-export const DialogContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-directioN: column;
-  align-items: center;
-  background-color: ${props => props.theme.backgroundColor};
-  color: ${props => props.theme.textColor};
-  border: 2px solid ${props => props.theme.secondary};
-`;
-
-export const DialogText = styled.p`
-	font-size: 16px;
-  margin: 0 0 20px 0;
 `;
 
 // MathForm

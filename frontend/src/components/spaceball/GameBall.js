@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Dialog } from '@material-ui/core';
 
 import audio from '../../assets/ElectHitZap PE1030530.wav';
 import { updateBadges, updateHighscoreSpaceball } from '../../reducers/profile';
 import { Header } from '../header/Header';
 import { Camera } from '../header/Camera';
 import { BadgesAnimation } from '../../components/animations/BadgesAnimation';
+import { GameTitle } from '../reusables/GameTitle';
+import { GameScore } from '../reusables/GameScore';
+import { GameFinish } from '../reusables/GameFinish';
 import { 
-  MainContainer, 
-  GameTitle, 
-  ScoreText, 
-  CounterText, 
+  MainContainer,  
   ButtonOne, 
   ButtonTwo, 
   ButtonThree, 
   ButtonFour,
-  ButtonFive,
-  DialogContainer, 
-  DialogText, 
-  StartButton } from './Styling';
+  ButtonFive } from './Styling';
 
 export const GameBall = () => {
   const [score, setScore] = useState(0);
@@ -79,20 +75,25 @@ export const GameBall = () => {
       <Header />
       <Camera />
       <MainContainer>
-        <GameTitle>Space Ball</GameTitle>
-        <ScoreText>Score: {score}</ScoreText>
-        <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+        <GameTitle text='Space Ball' />
+        <GameScore
+          type='Score:'
+          score={score || '0'}
+          counter={counter.toString().padStart(2, '0')} />
         <ButtonOne onClick={() => onClickScore(4)}></ButtonOne>
         <ButtonTwo onClick={() => onClickScore(3)}></ButtonTwo>
         <ButtonThree onClick={() => onClickScore(1)}></ButtonThree>
         <ButtonFour onClick={() => onClickScore(2)}></ButtonFour>
         <ButtonFive onClick={() => onClickScore(5)}></ButtonFive>
-        <Dialog open={openFinishedDialog}>
-          <DialogContainer>
-            <DialogText>You managed to get {score} points which is {numOfBadges} badges!</DialogText>
-            <StartButton onClick={onCollectBadges}>{score > 0 ? 'Collect badges' : 'Sorry, no badges this time'}</StartButton>
-          </DialogContainer>
-        </Dialog>
+        <GameFinish
+          open={openFinishedDialog}
+          topText='You managed to get'
+          score={score}
+          textTwo='points which is'
+          points={numOfBadges}
+          textThree='badges!' 
+          onClick={onCollectBadges}
+          button={score > 0 ? 'Collect badges' : 'Sorry, no badges this time'} />
       </MainContainer>
      { animation && <BadgesAnimation text={numOfBadges} /> }
     </>

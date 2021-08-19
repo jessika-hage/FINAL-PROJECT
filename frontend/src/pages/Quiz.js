@@ -6,15 +6,14 @@ import audio from '../assets/FreezeBee2ch SEG020118.wav';
 import { updateBadges } from '../reducers/profile';
 import { Header } from '../components/header/Header';
 import { Camera } from '../components/header/Camera';
-import { FinishDialog } from '../components/quiz/FinishDialog';
 import { BadgesAnimation } from '../components/animations/BadgesAnimation';
 import { Start } from '../components/quiz/Start';
 import { Animation } from '../components/quiz/Animation';
+import { GameTitle } from '../components/reusables/GameTitle';
+import { GameScore } from '../components/reusables/GameScore';
+import { GameFinish } from '../components/reusables/GameFinish';
 import { 
   MainContainer, 
-  GameTitle, 
-  ScoreText, 
-  CounterText, 
   TriviaContainer, 
   Question, 
   ButtonContainer, 
@@ -117,15 +116,17 @@ export const Quiz = () => {
       <Header />
       <Camera />
       <MainContainer>
-        <GameTitle>Trivia</GameTitle>
+        <GameTitle text='Trivia:' />
         {!start ? 
           <Start 
             easy={() => handleDifficulty('easy')} 
             hard={() => handleDifficulty('hard')} />
           :
           <>
-            <ScoreText>Score: {score}</ScoreText>
-            <CounterText>00:{counter.toString().padStart(2, '0')}</CounterText>
+            <GameScore 
+              type='Score:'
+              score={score || '0'}
+              counter={counter.toString().padStart(2, '0')} />
             {loaded && 
               <TriviaContainer>
                 <Question>{questions[questionIndex].question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}</Question> 
@@ -143,11 +144,15 @@ export const Quiz = () => {
                 <Animation />
               </TriviaContainer>
             }
-            <FinishDialog 							
+            <GameFinish
               open={openFinish}
-              endText={score}
+              topText='You managed to get'
+              score={score}
+              textTwo='correct answers, which gives you'
+              points={score}
+              textThree='badges!'
               onClick={onCollectBadges}
-              buttonText={score > 0 ? 'Collect badges' : 'Try again later'} />
+              button={score > 0 ? 'Collect badges' : 'Try again later'} />
           </>
         }
       </MainContainer>

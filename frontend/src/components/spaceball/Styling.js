@@ -12,64 +12,6 @@ export const MainContainer = styled.div`
 	background-color: #090909;
 `;
 
-export const DialogContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 20px;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.secondary};
-	color: ${(props) => props.theme.textColor};
-`;
-
-export const DialogText = styled.p`
-	font-size: 16px;
-`;
-
-export const StartButton = styled.button`
-	padding: 10px 15px;
-	margin-top: 20px;
-	background-color: ${(props) => props.theme.primary};
-	border: 2px solid ${(props) => props.theme.hover};
-	color: ${(props) => props.theme.textColor};
-	font-size: 16px;
-	width: fit-content;
-	text-transform: uppercase;
-	font-family: 'Trispace';
-	cursor: pointer;
-	:hover {
-		background-color: ${(props) => props.theme.hover};
-	}
-`;
-
-export const GameTitle = styled.h1`
-	position: absolute;
-	top: 30px;
-	left: 20px;
-	text-transform: uppercase;
-  @media ( min-width: 768px) {
-    top: 10px;
-  }
-`;
-
-export const ScoreText = styled(GameTitle)`
-	font-size: 20px;
-	top: 75px;
-	left: 22px;
-  @media ( min-width: 768px) {
-    top: 60px;
-  }
-`;
-
-export const CounterText = styled(ScoreText)`
-	top: 100px;
-	left: 22px;
-  @media ( min-width: 768px) {
-    top: 85px;
-  }
-`;
-
 const Button = styled.button`
   border-radius: 50%;
   :hover {
