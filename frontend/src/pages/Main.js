@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { RollingInfoBar } from '../components/rollingInfoBar/RollingInfoBar';
 import { Header } from '../components/header/Header';
@@ -25,13 +25,13 @@ import {
 export const Main = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			history.push('/signin');
+			navigate('/signin');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
 	return (
 		<MainContainer>

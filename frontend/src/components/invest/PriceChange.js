@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@mui/material/Dialog';
 
 import {
 	DialogContainer,

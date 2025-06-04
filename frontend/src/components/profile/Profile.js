@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
-import { useHistory } from 'react-router-dom';
-import Dialog from '@material-ui/core/Dialog';
+import { useNavigate } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
 
 import { profile } from '../../reducers/profile';
 import { ItemsProfile } from './ItemsProfile';
@@ -40,11 +40,11 @@ export const Profile = () => {
 	const timeToDestination = arrivalDate.diff(today, 'days');
 
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const onLogout = () => {
 		dispatch(profile.actions.setLogOut())
-		history.push('/');
+		navigate('/');
 	};
 
 	const toggleSettings = () => {

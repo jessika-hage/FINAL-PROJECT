@@ -18,6 +18,7 @@ const initialState = localStorage.getItem('profile')
 	highscoreSpaceball: JSON.parse(localStorage.getItem('profile')).highscoreSpaceball,
 	highscoreFish: JSON.parse(localStorage.getItem('profile')).highscoreFish,
 	highscoreMath: JSON.parse(localStorage.getItem('profile')).highscoreMath,
+	errorMessage: null
 }
 : {
 	username: null,
@@ -36,6 +37,7 @@ const initialState = localStorage.getItem('profile')
 	highscoreSpaceball: null,
 	highscoreFish: null,
 	highscoreMath: null,
+	errorMessage: null
 }
 
 export const profile = createSlice({
@@ -73,7 +75,8 @@ export const profile = createSlice({
 			store.items = action.payload;
 		},
 		setInvestments: (store, action) => {
-			store.investments = action.payload;
+			store.investmentQuantity = action.payload.quantity;
+			store.investments = action.payload.amount;
 		},
 		setInvestmentQuantity: (store, action) => {
 			store.investmentQuantity = action.payload;
@@ -89,6 +92,9 @@ export const profile = createSlice({
 		},
 		setHighscoreMath: (store, action) => {
 			store.highscoreMath = action.payload;
+		},
+		setErrorMessage: (store, action) => {
+			store.errorMessage = action.payload;
 		},
 		setLogOut: () => {
 			localStorage.clear();
@@ -109,6 +115,7 @@ export const profile = createSlice({
 				highscoreSpaceball: null,
 				highscoreFish: null,
 				highscoreMath: null,
+				errorMessage: null
 			};
 		},
 	},

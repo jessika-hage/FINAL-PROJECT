@@ -1,5 +1,5 @@
 import React from 'react';
-import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import BubbleChart from '@mui/icons-material/BubbleChart';
 
 import { 
   InfoPage,
@@ -44,7 +44,7 @@ import {
           </GameText>
         </InfoItem>
         <InfoItem>
-        <BubbleChartIcon fontSize='small' />
+        <BubbleChart fontSize='small' />
           <GameText>
             The ships Space Room. Collect points by clicking on the colored balls.
           </GameText>

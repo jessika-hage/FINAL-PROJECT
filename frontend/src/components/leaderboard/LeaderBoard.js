@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@mui/material/Dialog';
 
 import { CitizenStats } from './citizenprofile/CitizenStats';
 import { CitizenInvestments } from './citizenprofile/CitizenInvestments';

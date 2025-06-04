@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Dialog } from '@material-ui/core';
+import Dialog from '@mui/material/Dialog';
 
 import { checkWin } from './Helpers';
 

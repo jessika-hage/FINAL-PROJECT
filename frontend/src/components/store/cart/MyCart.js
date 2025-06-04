@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import Dialog from '@material-ui/core/Dialog';
-import Badge from '@material-ui/core/Badge';
+import { useNavigate } from 'react-router-dom';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import Dialog from '@mui/material/Dialog';
+import Badge from '@mui/material/Badge';
 
 import audio from '../../../assets/Whoosh 6110_64_1.wav';
 import {

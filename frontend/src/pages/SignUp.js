@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { ThemeButtons } from '../components/theme/ThemeButtons';
@@ -33,15 +33,15 @@ export const SignUp = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 	const loading = useSelector((store) => store.ui.isLoading);
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const avatars = ['woman', 'man2', 'hacker', 'woman3', 'woman2', 'man'];
 
 	useEffect(() => {
 		if (accessToken) {
-			history.push('/');
+			navigate('/');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
 	const handleFormSubmit = (e) => {
 		e.preventDefault();

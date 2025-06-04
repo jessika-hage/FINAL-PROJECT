@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Tooltip } from "@material-ui/core";
+import { Tooltip } from "@mui/material";
 
 import { themes } from '../../reducers/themes';
 import { 

@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
