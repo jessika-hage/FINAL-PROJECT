@@ -11,12 +11,12 @@ export const CartWrapper = styled.div`
 `;
 
 export const DialogContainer = styled.ul`
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.colors.background};
+	border: 2px solid ${(props) => props.theme.colors.primary};
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	margin: 0;
 `;
 
@@ -84,9 +84,9 @@ export const ShoppingButton = styled.button`
 	cursor: pointer;
 	padding: 0;
 	position: relative;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	:hover, :focus {
-		color: ${(props) => props.theme.primary};
+		color: ${(props) => props.theme.colors.primary};
 	}
 `;
 

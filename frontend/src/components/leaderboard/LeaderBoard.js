@@ -7,6 +7,7 @@ import { CitizenStats } from './citizenprofile/CitizenStats';
 import { CitizenInvestments } from './citizenprofile/CitizenInvestments';
 import { CitizenItems } from './citizenprofile/CitizenItems';
 import { CITIZEN_URL } from '../../reusables/urls';
+import defaultAvatar from '../../assets/man.png';
 import { 
 	TableContainer, 
 	TableHead, 
@@ -28,19 +29,28 @@ import {
 export const LeaderBoard = () => {
 	const [leaderBoard, setLeaderBoard] = useState([]);
 	const [sort, setSort] = useState('highestRanking');
-	const [query, setQuery] = useState('Jessie');
-	const [prof, setProf] = useState();
-	const [currency, setCurrency] = useState([]);
+	const [query, setQuery] = useState('');
+	const [prof, setProf] = useState(null);
+	const [currency, setCurrency] = useState({ price_usd: 0 });
 	const [open, setOpen] = useState(false);
+	const [error, setError] = useState(null);
 	const user = useSelector((store) => store.profile.username);
 
 	//Fetch all citizens
 	const fetchCitizens = useCallback(() => {
 		fetch(CITIZEN_URL(`citizens?sort=${sort}`))
 			.then((res) => res.json())
-			.then((data) => setLeaderBoard(data.allCitizens))
-			.catch((err) => alert(`Error: ${err}`));
-	}, [sort])
+			.then((data) => {
+				if (data.allCitizens) {
+					setLeaderBoard(data.allCitizens);
+					setError(null);
+				}
+			})
+			.catch((err) => {
+				console.error('Error fetching citizens:', err);
+				setError('Failed to load citizens');
+			});
+	}, [sort]);
 
 	useEffect(() => {
 		fetchCitizens();
@@ -48,10 +58,29 @@ export const LeaderBoard = () => {
 
 	// Fetch for profile on citizen
 	useEffect(() => {
+		if (!query) return;
+
 		fetch(CITIZEN_URL(`citizen/${query}`))
-		.then((res) => res.json())
-		.then((data) => setProf(data))
-		.catch((err) => alert(`Error: ${err}`));
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error('Citizen not found');
+				}
+				return res.json();
+			})
+			.then((data) => {
+				if (data.success) {
+					setProf(data);
+					setError(null);
+				} else {
+					setProf(null);
+					setError('Citizen not found');
+				}
+			})
+			.catch((err) => {
+				console.error('Error fetching citizen profile:', err);
+				setProf(null);
+				setError('Failed to load citizen profile');
+			});
 	}, [query]);
 
 	// Fetch one currency
@@ -63,7 +92,11 @@ export const LeaderBoard = () => {
 		fetch('https://api.coinlore.net/api/ticker/?id=32360')
 			.then((res) => res.json())
 			.then((json) => {
-				setCurrency(json[0]);
+				setCurrency(json[0] || { price_usd: 0 });
+			})
+			.catch((err) => {
+				console.error('Error fetching currency:', err);
+				setCurrency({ price_usd: 0 });
 			});
 	};
 
@@ -71,6 +104,38 @@ export const LeaderBoard = () => {
 	const onToggle = () => {
 		setOpen(!open);
 	};
+
+	// Helper function to safely format numbers
+	const safeToFixed = (num, decimals = 2) => {
+		if (num === null || num === undefined) return '0';
+		return Number(num).toFixed(decimals);
+	};
+
+	// Helper function to calculate investment values
+	const calculateInvestmentValues = (investments = 0, quantity = 0, price = 0) => {
+		const totalMarketValue = quantity * price;
+		const difference = totalMarketValue - investments;
+		const percentDifference = investments > 0 ? (difference / investments * 100) : 0;
+
+		return {
+			totalMarketValue: safeToFixed(totalMarketValue),
+			difference: safeToFixed(difference),
+			percentDifference: safeToFixed(percentDifference)
+		};
+	};
+
+	// Helper function to safely get avatar image
+	const getAvatarImage = (avatarName) => {
+		try {
+			return require(`../../assets/${avatarName || 'man'}.png`);
+		} catch (e) {
+			return defaultAvatar;
+		}
+	};
+
+	if (error) {
+		return <div style={{ color: 'red', textAlign: 'center', padding: '20px' }}>{error}</div>;
+	}
 
 	return (
 		<>
@@ -85,12 +150,20 @@ export const LeaderBoard = () => {
 				{leaderBoard.map((citizen) => (
 					<CitizensList key={citizen._id}>
 						{user === citizen.username ? <Icon /> : ""}
-						<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-						<Citizen onClick={() => { setQuery(`${citizen.username}`); setOpen(true)}} me={user === citizen.username}>{citizen.username}</Citizen>
-						<CitizenRank>{citizen.ranking.toFixed(1)}/100</CitizenRank>
+						<CitizenAvatar src={getAvatarImage(citizen.avatar)} alt={citizen.username} />
+						<Citizen 
+							onClick={() => { 
+								setQuery(citizen.username); 
+								setOpen(true);
+							}} 
+							$isCurrentUser={user === citizen.username}
+						>
+							{citizen.username}
+						</Citizen>
+						<CitizenRank>{safeToFixed(citizen.ranking, 1)}/100</CitizenRank>
 						<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
-						<Badges>{citizen.badges}</Badges>
-						<Badges>{citizen.coins.toFixed(2)}</Badges>
+						<Badges>{citizen.badges || 0}</Badges>
+						<Badges>{safeToFixed(citizen.coins)}</Badges>
 					</CitizensList>
 				))}
 			</TableContainer>
@@ -99,28 +172,36 @@ export const LeaderBoard = () => {
 					<ProfileContainer>
 						<CitizenStats
 							username={prof.username}
-							ranking={prof.ranking === null ? prof.ranking : prof.ranking.toFixed(1)}
-							avatar={require(`../../assets/${prof.avatar}.png`)}
-							badges={prof.badges}
-							coins={prof.coins === null ? prof.coins : prof.coins.toFixed(2)}
-							created={moment(prof.createdAt).toNow(true)} />
+							ranking={safeToFixed(prof.ranking, 1)}
+							avatar={getAvatarImage(prof.avatar)}
+							badges={prof.badges || 0}
+							coins={safeToFixed(prof.coins)}
+							created={moment(prof.createdAt).toNow(true)} 
+						/>
 						<InvestItemsContainer>
-							<CitizenInvestments
-								username={prof.username}
-								investments={prof.investments.toFixed(2)}
-								investmentQuantity={prof.investmentQuantity}
-								totalMarketValue={(prof.investmentQuantity * currency.price_usd).toFixed(2)}
-								percent={(prof.investmentQuantity * currency.price_usd) - prof.investments < 0}
-								percentDifference={(((prof.investmentQuantity * currency.price_usd) - prof.investments) / prof.investments * 100).toFixed(2)}
-								difference={((prof.investmentQuantity * currency.price_usd) - prof.investments).toFixed(2)} />
+							{prof.investments !== undefined && (
+								<CitizenInvestments
+									username={prof.username}
+									investments={safeToFixed(prof.investments)}
+									investmentQuantity={prof.investmentQuantity || 0}
+									{...calculateInvestmentValues(
+										prof.investments,
+										prof.investmentQuantity,
+										currency.price_usd
+									)}
+									percent={((prof.investmentQuantity || 0) * (currency.price_usd || 0)) - (prof.investments || 0) < 0}
+								/>
+							)}
 							<Items>
 								<ContainerTitle>{prof.username} items</ContainerTitle>
-								{Object.keys(prof.items).map((key) => <CitizenItems key={key} item={prof.items[key]} />)}
+								{prof.items && Object.keys(prof.items).map((key) => (
+									<CitizenItems key={key} item={prof.items[key]} />
+								))}
 							</Items>
 						</InvestItemsContainer>
 					</ProfileContainer>
 				</Dialog>
 			)}
 		</>
-	)
+	);
 };

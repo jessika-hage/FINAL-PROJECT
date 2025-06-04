@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { API_URL } from '../utils/utils';
 
 const initialState = localStorage.getItem('profile') 
 ? {
@@ -156,7 +157,7 @@ export const updateBadges = (badges) => {
 			body: JSON.stringify({ badges }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/badges`,
+			API_URL(`citizen/${getState().profile.userId}/badges`),
 			options
 		)
 			.then((res) => res.json())
@@ -202,7 +203,7 @@ export const updateCoins = (coins) => {
 			body: JSON.stringify({ coins }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/coins`,
+			API_URL(`citizen/${getState().profile.userId}/coins`),
 			options
 		)
 			.then((res) => res.json())
@@ -248,7 +249,7 @@ export const updateInvestments = (investmentQuantity, investments) => {
 			body: JSON.stringify({ investmentQuantity, investments }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/investments`,
+			API_URL(`citizen/${getState().profile.userId}/investments`),
 			options
 		)
 			.then((res) => res.json())
@@ -272,7 +273,7 @@ export const updateEnergy = (energy) => {
 			body: JSON.stringify({ energy }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/energy`,
+			API_URL(`citizen/${getState().profile.userId}/energy`),
 			options
 		)
 			.then((res) => res.json())

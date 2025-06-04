@@ -8,8 +8,8 @@ export const MainContainer = styled.main`
   justify-content: center;
   position: fixed;
   padding-top: 10px;
-  color: ${(props) => props.theme.textColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 export const MathContainer = styled.div`
@@ -49,7 +49,7 @@ export const MathProblem = styled.h2`
 `;
 
 export const StatusText = styled.p`
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	text-align: center;
 	font-size: 14px;
 `;

@@ -4,13 +4,18 @@ import mongoose from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/spaceAPI';
+const mongoUrl = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/spaceAPI';
 mongoose.connect(mongoUrl, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,
 	useFindAndModify: false,
+}).then(() => {
+	console.log('Connected to MongoDB');
+}).catch((error) => {
+	console.error('Failed to connect to MongoDB:', error);
 });
+
 mongoose.Promise = Promise;
 
 const Citizen = mongoose.model('Citizen', {
@@ -121,7 +126,12 @@ const authenticateCitizen = async (req, res, next) => {
 const port = process.env.PORT || 8080;
 const app = express();
 
-app.use(cors());
+app.use(cors({
+	origin: ['http://localhost:3000', 'http://localhost:3001'],
+	methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+	credentials: true
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -165,6 +175,14 @@ app.get('/citizen/:username', async (req,res) => {
 	const { username } = req.params;
 	try {
 		const citizenProfile = await Citizen.findOne({ username }).exec();
+		
+		if (!citizenProfile) {
+			return res.status(404).json({
+				success: false,
+				message: `Citizen ${username} not found`
+			});
+		}
+
 		res.json({
 			success: true,
 			username: citizenProfile.username,
@@ -181,9 +199,13 @@ app.get('/citizen/:username', async (req,res) => {
 			highscoreSpaceball: citizenProfile.highscoreSpaceball,
 			highscoreFish: citizenProfile.highscoreFish,
 			highscoreMath: citizenProfile.highscoreMath,
-		})
+		});
 	} catch (error) {
-		res.status(400).json({ message: 'Someting went wrong', error });
+		res.status(400).json({ 
+			success: false,
+			message: 'Something went wrong while fetching citizen profile',
+			error: error.message 
+		});
 	}
 });
 
@@ -226,6 +248,7 @@ app.post('/signup', async (req, res) => {
 			password: bcrypt.hashSync(password, salt),
 			avatar,
 		}).save();
+
 		res.json({
 			success: true,
 			username: newCitizen.username,
@@ -248,20 +271,41 @@ app.post('/signup', async (req, res) => {
 	} catch (error) {
 		if (error.code === 11000) {
 			if (error.keyValue.username) {
-				res.status(400).json({
+				return res.status(400).json({
 					success: false,
 					message: 'Another citizen already has that username',
 					error,
 				});
 			} else if (error.keyValue.email) {
-				res.status(400).json({
+				return res.status(400).json({
 					success: false,
 					message: 'You can not have the same email as another citizen',
 					error,
 				});
 			}
 		}
-		res.status(400).json({ success: false, message: 'Invalid request', error });
+		
+		if (error.name === 'ValidationError') {
+			return res.status(400).json({
+				success: false,
+				message: 'Validation failed',
+				error: {
+					code: 400,
+					errors: Object.keys(error.errors).reduce((acc, key) => {
+						acc[key] = {
+							message: error.errors[key].message
+						};
+						return acc;
+					}, {})
+				}
+			});
+		}
+
+		return res.status(400).json({ 
+			success: false, 
+			message: 'Could not create citizen', 
+			error 
+		});
 	}
 });
 
@@ -292,12 +336,10 @@ app.post('/signin', async (req, res) => {
 				highscoreMath: citizen.highscoreMath,
 			});
 		} else {
-			res.status(404).json({ success: false, message: 'Citizen not found' });
+			res.status(401).json({ success: false, message: 'Invalid username or password' });
 		}
 	} catch (error) {
-		res
-			.status(400)
-			.json({ success: false, message: 'Invalid request', error });
+		res.status(400).json({ success: false, message: 'Invalid request', error });
 	}
 });
 

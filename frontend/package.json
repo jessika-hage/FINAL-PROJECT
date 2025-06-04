@@ -5,10 +5,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.10",
     "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@reduxjs/toolkit": "^1.9.7",
     "classnames": "^2.5.1",
+    "css-loader": "^7.1.2",
+    "dom-helpers": "^5.2.1",
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-card-flip": "^1.2.2",
@@ -21,10 +24,12 @@
     "react-scripts": "5.0.1",
     "react-spring": "^9.7.3",
     "react-timer-hook": "^3.0.7",
+    "react-transition-group": "^4.4.5",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "sass": "^1.71.0",
-    "styled-components": "^6.1.8",
+    "source-map-loader": "^5.0.0",
+    "styled-components": "^6.1.18",
     "unsplash-js": "^7.0.18"
   },
   "scripts": {

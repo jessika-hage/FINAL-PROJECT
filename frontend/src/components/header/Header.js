@@ -9,7 +9,7 @@ import Badge from '@mui/material/Badge';
 import { Profile } from '../profile/Profile';
 import { MessageBoard } from '../messageboard/MessageBoard';
 import {
-	Main,
+	HeaderContainer,
 	TitleDate,
 	NavLink,
 	Date,
@@ -46,7 +46,7 @@ export const Header = () => {
 	}, [averageEnergy]);
 
 	return (
-		<Main>
+		<HeaderContainer>
 			<TitleDate>
 				<NavLink to='/'>Citizen Ship</NavLink>
 				<Date>{today}</Date>
@@ -80,6 +80,6 @@ export const Header = () => {
 					<Profile />
 				</DrawerContainer>
 			</Drawer>
-		</Main>
+		</HeaderContainer>
 	);
 };

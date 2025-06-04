@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.colors.background};
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -10,6 +10,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.colors.background};
 	padding-top: 45px;
 `;

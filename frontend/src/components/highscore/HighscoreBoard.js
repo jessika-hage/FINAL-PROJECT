@@ -48,7 +48,7 @@ export const HighscoreBoard = () => {
 						<PositionContainer>
 							<Position>{index +1}. </Position>
 							<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-							<Citizen me={user === citizen.username}>
+							<Citizen $isCurrentUser={user === citizen.username}>
 								{citizen.username}
 							</Citizen>
 						</PositionContainer>

@@ -1,14 +1,47 @@
 import styled, { keyframes } from 'styled-components';
 
 export const Main = styled.div`
-	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
 	display: flex;
 	justify-content: center;
-	margin: 0;
-	min-height: 100vh;
-	padding: 0;
-	width: 100vw;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: ${props => props.theme.colors.background};
+	z-index: 999;
+`;
+
+const loading = keyframes`
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(40px);
+	}
+`;
+
+export const LoaderWrapper = styled.div`
+	width: 80px;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
+
+export const LoaderBall = styled.div`
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: ${(props) => props.theme.colors.text};
+	animation: ${loading} 0.5s ease-in-out infinite alternate;
+	&:nth-child(2) {
+		animation-delay: 0.1s;
+	}
+	&:nth-child(3) {
+		animation-delay: 0.2s;
+	}
 `;
 
 const X = keyframes`

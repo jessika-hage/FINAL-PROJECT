@@ -49,7 +49,7 @@ export const SignIn = () => {
 				body: JSON.stringify({ username, password })
 			};
 
-			const response = await fetch(API_URL('citizen/signin'), options);
+			const response = await fetch(API_URL('signin'), options);
 			const data = await response.json();
 
 			if (data.success) {

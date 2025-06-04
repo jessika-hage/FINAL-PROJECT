@@ -7,7 +7,7 @@ import {
 	ButtonContainer,
 	Container,
 	ChangeTitle,
-	Label,
+	AvatarLabel,
 	Radio,
 	Avatar,
 	AvatarContainer,
@@ -36,7 +36,7 @@ export const SettingsAvatars = () => {
 			<AvatarContainer>
 				{avatars.map((avatar) => (
 					<ButtonContainer>
-						<Label tabIndex='0' htmlFor={avatar} aria-label={avatar}>
+						<AvatarLabel tabIndex='0' htmlFor={avatar} aria-label={avatar}>
 							<Radio
 								type='radio'
 								name='avatar'
@@ -46,7 +46,7 @@ export const SettingsAvatars = () => {
 								required
 							/>
 							<Avatar src={require(`../../../assets/${avatar}.png`)} />
-						</Label>
+						</AvatarLabel>
 					</ButtonContainer>
 				))}
 			</AvatarContainer>

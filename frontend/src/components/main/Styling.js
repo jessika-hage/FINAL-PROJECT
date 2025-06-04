@@ -4,7 +4,7 @@ export const MainContainer = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.colors.background};
 	width: 100%;
 	padding-top: 80px;
 	min-height: 100vh;
@@ -28,13 +28,15 @@ export const Container = styled.section`
 
 export const MapContainer = styled.div`
 	width: 100%;
+	height: 50vh;
 	@media (min-width: 768px) {
 		width: 90%;
 		display: flex;
+		height: 60vh;
 	}
 	@media (min-width: 1024px) {
 		width: 80%;
-		height: 35vh;
+		height: 70vh;
 	}
 `;
 
@@ -44,13 +46,13 @@ export const BottomContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	padding: 0 20px;
-	margin: 40px 0 140px 0;
+	margin: 20px 0 140px 0;
 	overflow: hidden;
 	@media (min-width: 1000px) {
 		padding: 0 40px;
 		flex-direction: row;
 		justify-content: space-evenly;
-		margin: 40px 0 80px 0;
+		margin: 20px 0 80px 0;
 		align-items: flex-start;
 	}
 	@media (min-width: 1400px) {
@@ -78,16 +80,16 @@ export const WrapperLeaderBoard = styled(WrapperCard)`
 
 export const CardTitle = styled.h4`
 	text-transform: uppercase;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	padding: 7px 10px;
 	margin: 0;
-	background-color: ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.colors.primary};
 	@media (min-width: 768px) {
 		width: fit-content;
 	}
 `;
 
-export const CardTitleHighscore  = styled(CardTitle)`
+export const CardTitleHighscore = styled(CardTitle)`
 	width: 100%;
 	margin-top: 20px;
 `;
@@ -96,8 +98,8 @@ export const CardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 100%;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.colors.background};
+	border: 2px solid ${(props) => props.theme.colors.primary};
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
@@ -110,8 +112,8 @@ export const CitizensContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 100%;
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.colors.background};
+	border: 2px solid ${(props) => props.theme.colors.primary};
 	box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 8px;
 	@media (min-width: 768px) {
 		flex-wrap: wrap;
