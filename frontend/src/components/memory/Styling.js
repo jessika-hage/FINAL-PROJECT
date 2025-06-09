@@ -7,8 +7,8 @@ display: flex;
 justify-content: center;
 position: relative;
 padding-top: 10px;
-color: ${(props) => props.theme.textColor};
-background-color: ${(props) => props.theme.backgroundColor};
+color: ${(props) => props.theme.colors.text};
+background-color: ${(props) => props.theme.colors.background};
 `;
 
 // Memory Card

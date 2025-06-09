@@ -8,8 +8,8 @@ export const MainContainer = styled.div`
 	justify-content: center;
 	position: fixed;
 	padding-top: 10px;
-	color: ${(props) => props.theme.textColor};
-	background-color: ${(props) => props.theme.backgroundColor};
+	color: ${(props) => props.theme.colors.text};
+	background-color: ${(props) => props.theme.colors.background};
 `;
 
 export const GameTitle = styled.h1`

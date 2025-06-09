@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@mui/material/Dialog';
 
 import { WEATHER_API } from '../../reusables/urls';
 import { FORECAST_API } from '../../reusables/urls';

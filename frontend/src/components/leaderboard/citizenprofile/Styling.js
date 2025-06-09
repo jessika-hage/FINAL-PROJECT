@@ -149,3 +149,26 @@ export const CoinsText = styled.div`
 export const CoinsIcon = styled.img`
 	margin: 0 0 0 7px
 `;
+
+export const InvestContainer = styled.div`
+	padding: 15px;
+	background: ${(props) => props.theme.colors.secondary};
+	border-radius: 5px;
+	margin-bottom: 10px;
+`;
+
+export const InvestTitle = styled.h4`
+	color: ${(props) => props.theme.colors.text};
+	margin: 0 0 5px 0;
+`;
+
+export const InvestText = styled.p`
+	color: ${(props) => props.theme.colors.text};
+	margin: 0 0 5px 0;
+	font-size: 0.9em;
+`;
+
+export const InvestValue = styled.span`
+	color: ${(props) => props['data-negative'] === "true" ? props.theme.colors.error : props.theme.colors.success};
+	font-weight: bold;
+`;

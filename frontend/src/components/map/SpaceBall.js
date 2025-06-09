@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import BubbleChart from '@mui/icons-material/BubbleChart';
 
 import { BigDialog } from '../reusables/BigDialog';
 import { RoomSpace, Icons } from './Styling';
@@ -18,7 +18,7 @@ export const SpaceBall = () => {
 				aria-label='Spaceball' 
 				onClick={onToggleGameDialog}>
 				<Icons>
-					<BubbleChartIcon fontSize='large' />
+					<BubbleChart fontSize='large' />
 				</Icons>
 			</RoomSpace>
 			<BigDialog

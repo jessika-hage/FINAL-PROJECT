@@ -46,12 +46,12 @@ export const MainContainer = styled.div`
 `;
 
 export const DialogContainer = styled.div`
-	background-color: ${(props) => props.theme.backgroundColor};
-	border: 2px solid ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.colors.background};
+	border: 2px solid ${(props) => props.theme.colors.primary};
 	display: flex;
 	padding: 10px;
 	height: 150px;
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 `;
 
 export const ImageDialogWrapper = styled.div`
@@ -59,7 +59,7 @@ export const ImageDialogWrapper = styled.div`
 `;
 
 export const ImageDialog = styled.img`
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.colors.secondary};
 	padding: 7px 2px;
 	margin-right: 10px;
 	height: 120px;
@@ -75,11 +75,11 @@ export const AddedText = styled.p`
 	font-size: 16px;
 	text-transform: uppercase;
 	padding: 3px;
-	border-bottom: 2px solid ${(props) => props.theme.primary};
+	border-bottom: 2px solid ${(props) => props.theme.colors.primary};
 `;
 
 export const Text = styled.p`
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	margin: 0;
 	padding: 3px 0;
 	font-size: 14px;
@@ -90,7 +90,7 @@ export const Text = styled.p`
 		font-size: 16px;
 	}
 	:focus {
-		color: ${(props) => props.theme.primary};
+		color: ${(props) => props.theme.colors.primary};
 	}
 `;
 
@@ -110,7 +110,7 @@ export const ImageWrapper = styled.div`
 	display: flex;
 	justify-items: center;
 	align-items: center;
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const ProductImage = styled.img`
@@ -134,7 +134,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const TextDescription = styled.p`
-	color: ${(props) => props.theme.textColor};
+	color: ${(props) => props.theme.colors.text};
 	margin: 2px 0;
 	font-size: 12px;
 	display: flex;
@@ -151,12 +151,12 @@ export const AddButton = styled.button`
 	width: fit-content;
 	text-transform: uppercase;
 	font-family: 'Trispace', serif;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.textColor};
-	border: 1px solid ${(props) => props.theme.secondary};
+	background-color: ${(props) => props.theme.colors.primary};
+	color: ${(props) => props.theme.colors.text};
+	border: 1px solid ${(props) => props.theme.colors.secondary};
 	:hover,
 	:focus {
-		background-color: ${(props) => props.theme.secondary};
+		background-color: ${(props) => props.theme.colors.secondary};
 	}
 `;
 

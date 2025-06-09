@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import audio from '../assets/FreezeBee2ch SEG020118.wav';
 import { updateBadges } from '../reducers/profile';
@@ -33,13 +33,13 @@ export const Quiz = () => {
   const accessToken = useSelector((store) => store.profile.accessToken);
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			history.push('/signin');
+			navigate('/signin');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
   // Fetch questions
 	const fetchQuestion = useCallback(() => {
@@ -107,7 +107,7 @@ export const Quiz = () => {
     dispatch(updateBadges(score));
     setAnimation(true);
     setTimeout(() => {
-      history.push('/')
+      navigate('/')
     }, 1000)
   };
 

@@ -2,22 +2,48 @@ import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // Header
-export const Main = styled.div`
+export const HeaderContainer = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: ${props => props.theme.colors.primary};
+	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 60px;
-	background-color: ${(props) => props.theme.primary};
-	position: fixed;
-	margin: 0;
-	width: 100%;
-	bottom: 0;
-	z-index: 2;
-	@media (min-width: 768px) {
-		top: 0;
-		height: 80px;
-		border-bottom: 4px solid ${(props) => props.theme.secondary};
+`;
+
+export const Logo = styled.img`
+	height: 30px;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.8;
 	}
+`;
+
+export const NavContainer = styled.nav`
+	display: flex;
+	align-items: center;
+	gap: 20px;
+`;
+
+export const NavLink = styled(Link)`
+	color: ${props => props.theme.colors.text};
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
+	&:hover {
+		color: ${props => props.theme.colors.accent};
+	}
+`;
+
+export const DrawerContainer = styled.section`
+	height: 100vh;
+	background-color: ${props => props.theme.colors.primary};
+	padding: 20px;
+	color: ${props => props.theme.colors.text};
 `;
 
 export const TitleDate = styled.div`
@@ -25,27 +51,14 @@ export const TitleDate = styled.div`
 	flex-direction: column;
 `;
 
-export const NavLink = styled(Link)`
-	margin: 0;
-	padding: 0 0 2px 14px;
-	color: ${(props) => props.theme.textColor};
-	font-family: 'Trispace';
-	text-transform: uppercase;
-	font-size: 24px;
-	z-index: 3;
-	@media (min-width: 768px) {
-		padding: 0 0 2px 20px;
-	}
-`;
-
 export const Date = styled.p`
-	padding 0 14px;
+	padding: 0 14px;
 	margin: 0;
 	font-size: 12px;
-	color: ${(props) => props.theme.textColor};
+	color: ${props => props.theme.colors.text};
 	@media (min-width: 768px) {
 		font-size: 14px;
-		padding 0 20px;
+		padding: 0 20px;
 	}
 `;
 
@@ -53,23 +66,24 @@ export const IconsContainer = styled.div`
 	display: flex;
 	align-items: center;
 	z-index: 5;
-	color: ${(props) => props.theme.textColor};
+	color: ${props => props.theme.colors.text};
 `;
 
 export const MessageIcon = styled.button`
 	font-size: 26px;
 	border-radius: 50%;
 	padding: 8px;
-	background-color: ${(props) => props.theme.secondary};
-	color: ${(props) => props.theme.textColor};
+	background-color: ${props => props.theme.colors.secondary};
+	color: ${props => props.theme.colors.text};
 	margin-right: 7px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-left: 2px;
-	:hover, :focus {
-		background-color: ${(props) => props.theme.hover};
+	border: none;
+	&:hover, &:focus {
+		background-color: ${props => props.theme.colors.accent};
 		transform: scale(1.05);
 	}
 	@media (min-width: 768px) {
@@ -95,16 +109,11 @@ export const Avatar = styled.img`
 	}
 `;
 
-export const DrawerContainer = styled.section`
-	height: 100vh;
-	background-color: ${(props) => props.theme.primary};
-`;
-
 // Camera
 export const CameraContainer = styled.div`
 	width: 100%;
 	height: 35px;
-	background-color: ${(props) => props.theme.secondary};
+	background-color: ${props => props.theme.colors.secondary};
 	display: flex;
 	justify-content: center;
 	position: fixed;
@@ -120,14 +129,14 @@ export const CameraContainer = styled.div`
 `;
 
 const recording = keyframes`
-  from {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  to {
-    transform: scale(1.2);
-    opacity: 1;
-  },
+	from {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	to {
+		transform: scale(1.2);
+		opacity: 1;
+	}
 `;
 
 export const Circle = styled.div`
@@ -141,7 +150,7 @@ export const Circle = styled.div`
 	position: fixed;
 	top: 20px;
 	cursor: pointer;
-	border: 4px solid ${(props) => props.theme.backgroundColor};
+	border: 4px solid ${props => props.theme.colors.background};
 	@media (min-width: 768px) {
 		top: 65px;
 		width: 38px;
@@ -167,7 +176,7 @@ export const InnerCircle = styled.span`
 
 // Hidden Background
 export const Wrapper = styled.div`
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${props => props.theme.colors.background};
 	width: 100%;
 	height: 100vh;
 	position: relative;

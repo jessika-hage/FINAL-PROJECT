@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-import audio from '../assets/SciFiWhoosh 6040_51_4.wav';
-import { CITIZEN_URL } from '../reusables/urls';
+import audio from '../assets/Whoosh 6110_64_1.wav';
 import { profile } from '../reducers/profile';
 import { ui } from '../reducers/ui';
 import { TextInputSignIn } from '../components/signinupform/TextInput';
@@ -18,92 +17,80 @@ import {
 	ErrorMessage,
 	EyeButton,
 } from '../components/signinupform/Styling';
+import { API_URL } from '../utils/utils';
 
 export const SignIn = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [mode, setMode] = useState(null);
-	const [errorMessage, setErrorMessage] = useState('');
-	const [showPassword, setShowPassword] = useState(true);
+	const [mode] = useState('signin');
 	const accessToken = useSelector((store) => store.profile.accessToken);
+	const errorMessage = useSelector((store) => store.profile.errorMessage);
 	const loading = useSelector((store) => store.ui.isLoading);
+	const [showPassword, setShowPassword] = useState(true);
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		new Audio(audio).play();
 		if (accessToken) {
-			history.push('/');
+			navigate('/');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
-	const handleFormSubmit = (e) => {
-		e.preventDefault();
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
 		dispatch(ui.actions.setLoading(true));
+		
+		try {
+			const options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ username, password })
+			};
 
-		const options = {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ username, password }),
-		};
+			const response = await fetch(API_URL('signin'), options);
+			const data = await response.json();
 
-		setTimeout(() => {
-			fetch(CITIZEN_URL(mode), options)
-				.then((res) => res.json())
-				.then((data) => {
-					if (data.success) {
-						batch(() => {
-							dispatch(profile.actions.setUsername(data.username));
-							dispatch(profile.actions.setAccessToken(data.accessToken));
-							dispatch(profile.actions.setBadges(data.badges));
-							dispatch(profile.actions.setRanking(data.ranking));
-							dispatch(profile.actions.setCoins(data.coins));
-							dispatch(profile.actions.setItems(data.items));
-							dispatch(profile.actions.setAvatar(data.avatar));
-							dispatch(profile.actions.setCreatedAt(data.createdAt));
-							dispatch(profile.actions.setUserId(data.userId));
-							dispatch(profile.actions.setInvestments(data.investments));
-							dispatch(profile.actions.setInvestmentQuantity(data.investmentQuantity));
-							dispatch(profile.actions.setEnergy(data.energy));
-							dispatch(profile.actions.setHighscoreSpaceball(data.highscoreSpaceball));
-							dispatch(profile.actions.setHighscoreFish(data.highscoreFish));
-							dispatch(profile.actions.setHighscoreMath(data.highscoreMath));
-
-							localStorage.setItem(
-								'profile',
-								JSON.stringify({
-									username: data.username,
-									userId: data.userId,
-									accessToken: data.accessToken,
-									badges: data.badges,
-									ranking: data.ranking,
-									coins: data.coins,
-									items: data.items,
-									avatar: data.avatar,
-									createdAt: data.createdAt,
-									investments: data.investments,
-									investmentQuantity: data.investmentQuantity,
-									energy: data.energy,
-									highscoreSpaceball: data.highscoreSpaceball,
-									highscoreFish: data.highscoreFish,
-									highscoreMath: data.highscoreMath,
-								})
-							);
-						});
-					} else {
-						setErrorMessage(data.message);
-					}
-					dispatch(ui.actions.setLoading(false));
-				})
-				.catch();
-		}, 3000);
+			if (data.success) {
+				const sound = new Audio(audio);
+				sound.play().catch(err => console.log('Audio playback failed:', err));
+				
+				batch(() => {
+					dispatch(profile.actions.setUsername(data.username));
+					dispatch(profile.actions.setAccessToken(data.accessToken));
+					dispatch(profile.actions.setItems(data.items));
+					dispatch(profile.actions.setAvatar(data.avatar));
+					dispatch(profile.actions.setBadges(data.badges));
+					dispatch(profile.actions.setRanking(data.ranking));
+					dispatch(profile.actions.setCoins(data.coins));
+					dispatch(profile.actions.setEnergy(data.energy));
+					dispatch(profile.actions.setInvestments({ 
+						quantity: data.investmentQuantity, 
+						amount: data.investments 
+					}));
+					dispatch(profile.actions.setCreatedAt(data.createdAt));
+					dispatch(profile.actions.setErrorMessage(null));
+					dispatch(ui.actions.setAnimation(true));
+				});
+				navigate('/');
+			} else {
+				batch(() => {
+					dispatch(profile.actions.setAccessToken(null));
+					dispatch(profile.actions.setUsername(null));
+					dispatch(profile.actions.setErrorMessage(data.message || 'Login failed'));
+				});
+			}
+		} catch (error) {
+			console.error('Failed to sign in:', error);
+			dispatch(profile.actions.setErrorMessage('Failed to connect to the server. Please try again later.'));
+		} finally {
+			dispatch(ui.actions.setLoading(false));
+		}
 	};
 
 	const togglePassword = () => {
-		if (!showPassword) setShowPassword(true);
-		else setShowPassword(false);
+		setShowPassword(!showPassword);
 	};
 
 	return (
@@ -126,16 +113,11 @@ export const SignIn = () => {
 							onChange={(e) => setPassword(e.target.value)}
 						/>
 						<EyeButton type='button' onClick={togglePassword}>
-							{showPassword ? (
-								<FaEye />
-							) : (
-								<FaEyeSlash />
-							)}
+							{showPassword ? <FaEye /> : <FaEyeSlash />}
 						</EyeButton>
-						<ErrorMessage>{errorMessage}</ErrorMessage>
+						{errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 						<SubmitButtonSignIn
 							type='submit'
-							onClick={() => setMode('signin')}
 							text='Board ship'
 						/>
 						<ChangeSignUp
@@ -147,5 +129,5 @@ export const SignIn = () => {
 				</>
 			)}
 		</MainContainer>
-	)
+	);
 };

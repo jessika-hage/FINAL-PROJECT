@@ -2,7 +2,7 @@ import React from 'react';
 
 import { 
   ButtonContainer, 
-  Label, 
+  AvatarLabel, 
   Radio,
   Avatar } from './Styling';
 
@@ -10,7 +10,7 @@ export const Avatars = ({ avatar, onChange, checked, image }) => {
 
   return (
     <ButtonContainer>
-      <Label  htmlFor={avatar} aria-label={avatar}>
+      <AvatarLabel htmlFor={avatar} aria-label={avatar}>
         <Radio 
           type="radio" 
           name="avatar"
@@ -20,7 +20,7 @@ export const Avatars = ({ avatar, onChange, checked, image }) => {
           checked={checked}
           required />
         <Avatar src={image} />
-      </Label>
+      </AvatarLabel>
     </ButtonContainer>
   )
 };

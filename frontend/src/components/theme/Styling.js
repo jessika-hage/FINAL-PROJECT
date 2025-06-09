@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import { 
+  lightTheme, 
+  blueTheme, 
+  redTheme, 
+  grayTheme, 
+  brownTheme 
+} from '../../styledcomponents/StyledTheme';
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -10,7 +17,7 @@ export const ButtonContainer = styled.div`
 export const ThemeTitle = styled.p`
   font-size: 12px;
   margin-right: 5px;
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.colors.text};
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -22,39 +29,36 @@ export const Buttons = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.button`
-  width: 26px;
-  height: 26px;
+const Button = styled.button`
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
   border-radius: 50%;
+  border: 2px solid ${props => props.theme.colors.secondary};
   cursor: pointer;
-  outline: none;
-  border: 1px solid #fff;
-  margin-right: 6px;
-  :hover, :focus {
-    opacity: 0.7;
-  }
-  @media (min-width: 768px) {
-    width: 32px;
-    height: 32px;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.1);
+    border-color: ${props => props.theme.colors.accent};
   }
 `;
 
 export const LightButton = styled(Button)`
-  background-color: #68825f;
+  background-color: ${lightTheme.colors.primary};
 `;
 
 export const BlueButton = styled(Button)`
-  background-color: #14274e;
+  background-color: ${blueTheme.colors.primary};
 `;
 
 export const RedButton = styled(Button)`
-  background-color: #bb2205;
+  background-color: ${redTheme.colors.primary};
 `;
 
 export const GrayButton = styled(Button)`
-  background-color: #424242;
+  background-color: ${grayTheme.colors.primary};
 `;
 
 export const BrownButton = styled(Button)`
-  background-color: #7d5a50;
+  background-color: ${brownTheme.colors.primary};
 `;

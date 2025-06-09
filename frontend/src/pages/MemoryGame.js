@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { updateBadges } from '../reducers/profile';
 import { MemoryBoard } from '../components/memory/MemoryBoard';
@@ -19,13 +19,13 @@ export const MemoryGame = () => {
 	const accessToken = useSelector((store) => store.profile.accessToken);
 
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			history.push('/signin');
+			navigate('/signin');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
 	// Checking for game updates
 	// If status is finished, set win dialog
@@ -48,7 +48,7 @@ export const MemoryGame = () => {
 			dispatch(updateBadges(10));
 		}
 		setTimeout(() => {
-			history.push('/');
+			navigate('/');
 		}, 2000);
 	};
 

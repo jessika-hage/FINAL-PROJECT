@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import audio from '../../assets/ElectHitZap PE1030530.wav';
@@ -28,13 +28,13 @@ export const GameBall = () => {
   const numOfBadges = Math.round(score / 3);
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
-		if (!accessToken) {
-			history.push('/signin');
-		}
-	}, [accessToken, history]);
+    if (!accessToken) {
+      navigate('/signin');
+    }
+  }, [accessToken, navigate]);
 
   // Initializing timer
   useEffect(() => {
@@ -53,7 +53,7 @@ export const GameBall = () => {
     dispatch(updateBadges(numOfBadges));
     setAnimation(true);
     setTimeout(() => {
-      history.push('/')
+      navigate('/')
     }, 1000)
   };
 

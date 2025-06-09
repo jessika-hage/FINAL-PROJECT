@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@mui/material/Dialog';
 
 import audio from '../../assets/CoinDrop 6103_48_4.wav';
 import { 
@@ -21,6 +21,7 @@ import {
 
 export const InvestmentProfile = () => {
 	const [currency, setCurrency] = useState([]);
+	const [error, setError] = useState(null);
 	const [openConfirm, setOpenConfirm] = useState(false);
 	const investments = useSelector((store) => store.profile.investments);
 	const investmentQuantity = useSelector(
@@ -34,22 +35,42 @@ export const InvestmentProfile = () => {
 	}, []);
 
 	// Fetch one currency
-	const fetchCoin = () => {
-		fetch('https://api.coinlore.net/api/ticker/?id=32360')
-			.then((res) => res.json())
-			.then((json) => {
-				setCurrency(json[0]);
+	const fetchCoin = async () => {
+		try {
+			const response = await fetch('https://api.coinlore.net/api/ticker/?id=32360', {
+				method: 'GET',
+				headers: {
+					'Accept': 'application/json',
+				}
 			});
+			
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			
+			const json = await response.json();
+			if (json && json.length > 0) {
+				setCurrency(json[0]);
+				setError(null);
+			} else {
+				setError('No data available');
+			}
+		} catch (err) {
+			console.error('Failed to fetch currency data:', err);
+			setError('Failed to load currency data');
+			// Set a fallback value to prevent calculation errors
+			setCurrency({ price_usd: investments > 0 ? investments/investmentQuantity : 0 });
+		}
 	};
 
 	const onToggleConfirm = () => {
 		setOpenConfirm(!openConfirm);
 	};
 
-	// Variables to get get different values of investment
-  const totalMarketValue = investmentQuantity * currency.price_usd;
-  const difference = totalMarketValue - investments;
-  const percentDifference = difference/investments * 100;
+	// Variables to get different values of investment
+	const totalMarketValue = investmentQuantity * (currency?.price_usd || 0);
+	const difference = totalMarketValue - investments;
+	const percentDifference = investments > 0 ? (difference/investments * 100) : 0;
 
 	const onSellInvestment = () => {
 		new Audio(audio).play();
@@ -62,7 +83,9 @@ export const InvestmentProfile = () => {
 
 	return (
 		<InvestmentContainer>
-			{investments > 0 ? (
+			{error ? (
+				<InvestmentText>{error}</InvestmentText>
+			) : investments > 0 ? (
 				<>
 					<InvestmentText>Quantity: {investmentQuantity}st</InvestmentText>
 					<InvestmentText>

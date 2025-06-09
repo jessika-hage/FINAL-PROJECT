@@ -4,8 +4,8 @@ import { FaArrowUp, FaArrowDown, FaTimes } from 'react-icons/fa';
 // Card 
 export const Container = styled.div`
   padding: 10px 20px;
-  background: ${props => props.theme.backgroundColor};
-  color: ${props => props.theme.textColor};
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
   position: relative;
   display: flex;
   height: 115px;
@@ -48,7 +48,7 @@ export const CoinChange = styled.span`
   display: flex;
   align-items: center;
   ${props =>
-  props.percent ?
+  props['data-negative'] === "true" ?
   `
   color: #e83715;
   `:  `
@@ -88,13 +88,13 @@ export const SeeMoreButton = styled.button`
 
 // Invest & Exchange Dialogs
 export const DialogContainer = styled.div`
-  background-color: ${props => props.theme.backgroundColor};
-  border: 2px solid ${props => props.theme.primary};
+  background-color: ${props => props.theme.colors.background};
+  border: 2px solid ${props => props.theme.colors.primary};
   display: flex;
   flex-direction: column;
   padding: 15px;
   min-width: 300px;
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.colors.text};
   @media (min-width: 768px) {
     padding: 20px;
   }

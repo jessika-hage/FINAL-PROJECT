@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
-import Drawer from '@material-ui/core/Drawer';
-import { Tooltip } from '@material-ui/core';
+import Drawer from '@mui/material/Drawer';
+import { Tooltip } from '@mui/material';
 import { FaCommentDots } from 'react-icons/fa';
-import Badge from '@material-ui/core/Badge';
+import Badge from '@mui/material/Badge';
 
 import { Profile } from '../profile/Profile';
 import { MessageBoard } from '../messageboard/MessageBoard';
 import {
-	Main,
+	HeaderContainer,
 	TitleDate,
 	NavLink,
 	Date,
@@ -46,7 +46,7 @@ export const Header = () => {
 	}, [averageEnergy]);
 
 	return (
-		<Main>
+		<HeaderContainer>
 			<TitleDate>
 				<NavLink to='/'>Citizen Ship</NavLink>
 				<Date>{today}</Date>
@@ -80,6 +80,6 @@ export const Header = () => {
 					<Profile />
 				</DrawerContainer>
 			</Drawer>
-		</Main>
+		</HeaderContainer>
 	);
 };

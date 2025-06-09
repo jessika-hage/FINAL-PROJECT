@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import audio from '../assets/Water Audio Files_BubblesBigBurstShort.wav'
@@ -90,13 +90,13 @@ export const ProteinFarm = () => {
 	const highscore = useSelector((store) => store.profile.highscoreFish);
 
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			history.push('/signin');
+			navigate('/signin');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
 	// Initialize timer and sound
 	useEffect(() => {
@@ -114,7 +114,7 @@ export const ProteinFarm = () => {
 		dispatch(updateBadges(score));
 		setAnimation(true);
 		setTimeout(() => {
-			history.push('/');
+			navigate('/');
 		}, 1000);
 	};
 

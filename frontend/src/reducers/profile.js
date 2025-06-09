@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { API_URL } from '../utils/utils';
 
 const initialState = localStorage.getItem('profile') 
 ? {
@@ -18,6 +19,7 @@ const initialState = localStorage.getItem('profile')
 	highscoreSpaceball: JSON.parse(localStorage.getItem('profile')).highscoreSpaceball,
 	highscoreFish: JSON.parse(localStorage.getItem('profile')).highscoreFish,
 	highscoreMath: JSON.parse(localStorage.getItem('profile')).highscoreMath,
+	errorMessage: null
 }
 : {
 	username: null,
@@ -36,6 +38,7 @@ const initialState = localStorage.getItem('profile')
 	highscoreSpaceball: null,
 	highscoreFish: null,
 	highscoreMath: null,
+	errorMessage: null
 }
 
 export const profile = createSlice({
@@ -73,7 +76,8 @@ export const profile = createSlice({
 			store.items = action.payload;
 		},
 		setInvestments: (store, action) => {
-			store.investments = action.payload;
+			store.investmentQuantity = action.payload.quantity;
+			store.investments = action.payload.amount;
 		},
 		setInvestmentQuantity: (store, action) => {
 			store.investmentQuantity = action.payload;
@@ -89,6 +93,9 @@ export const profile = createSlice({
 		},
 		setHighscoreMath: (store, action) => {
 			store.highscoreMath = action.payload;
+		},
+		setErrorMessage: (store, action) => {
+			store.errorMessage = action.payload;
 		},
 		setLogOut: () => {
 			localStorage.clear();
@@ -109,6 +116,7 @@ export const profile = createSlice({
 				highscoreSpaceball: null,
 				highscoreFish: null,
 				highscoreMath: null,
+				errorMessage: null
 			};
 		},
 	},
@@ -149,14 +157,22 @@ export const updateBadges = (badges) => {
 			body: JSON.stringify({ badges }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/badges`,
+			API_URL(`citizen/${getState().profile.userId}/badges`),
 			options
 		)
-			.then((res) => res.json())
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error(`HTTP error! status: ${res.status}`);
+				}
+				return res.json();
+			})
 			.then((data) => {
 				dispatch(profile.actions.setBadges(data.badges));
 			})
-			.catch();
+			.catch((error) => {
+				console.error('Failed to update badges:', error);
+				// You might want to dispatch an error action here
+			});
 	};
 };
 
@@ -172,7 +188,7 @@ export const updateRanking = (ranking) => {
 			body: JSON.stringify({ ranking }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/ranking`,
+			API_URL(`citizen/${getState().profile.userId}/ranking`),
 			options
 		)
 			.then((res) => res.json())
@@ -195,7 +211,7 @@ export const updateCoins = (coins) => {
 			body: JSON.stringify({ coins }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/coins`,
+			API_URL(`citizen/${getState().profile.userId}/coins`),
 			options
 		)
 			.then((res) => res.json())
@@ -218,7 +234,7 @@ export const updateItems = (items) => {
 			body: JSON.stringify( { items } ),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/items`,
+			API_URL(`citizen/${getState().profile.userId}/items`),
 			options
 		)
 			.then((res) => res.json())
@@ -241,7 +257,7 @@ export const updateInvestments = (investmentQuantity, investments) => {
 			body: JSON.stringify({ investmentQuantity, investments }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/investments`,
+			API_URL(`citizen/${getState().profile.userId}/investments`),
 			options
 		)
 			.then((res) => res.json())
@@ -265,7 +281,7 @@ export const updateEnergy = (energy) => {
 			body: JSON.stringify({ energy }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/energy`,
+			API_URL(`citizen/${getState().profile.userId}/energy`),
 			options
 		)
 			.then((res) => res.json())
@@ -288,7 +304,7 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 			body: JSON.stringify({ highscoreSpaceball }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreSpaceball`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreSpaceball`),
 			options
 		)
 			.then((res) => res.json())
@@ -311,7 +327,7 @@ export const updateHighscoreFish = (highscoreFish) => {
 			body: JSON.stringify({ highscoreFish }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreFish`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreFish`),
 			options
 		)
 			.then((res) => res.json())
@@ -334,7 +350,7 @@ export const updateHighscoreMath = (highscoreMath) => {
 			body: JSON.stringify({ highscoreMath }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreMath`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreMath`),
 			options
 		)
 			.then((res) => res.json())

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 
 import { CITIZEN_URL } from '../../reusables/urls';
 import { 
@@ -48,7 +48,7 @@ export const HighscoreBoard = () => {
 						<PositionContainer>
 							<Position>{index +1}. </Position>
 							<CitizenAvatar src={require(`../../assets/${citizen.avatar}.png`)} />
-							<Citizen me={user === citizen.username}>
+							<Citizen $isCurrentUser={user === citizen.username}>
 								{citizen.username}
 							</Citizen>
 						</PositionContainer>

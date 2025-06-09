@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import audioTwo from '../assets/ElectronicBeep PS01_62_1.wav';
 import audio from '../assets/BuzzerGameShow MIX64_36_7.wav';
@@ -38,13 +38,13 @@ export const Classroom = () => {
 	const highscore = useSelector((store) => store.profile.highscoreMath);
 
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!accessToken) {
-			history.push('/signin');
+			navigate('/signin');
 		}
-	}, [accessToken, history]);
+	}, [accessToken, navigate]);
 
 	//Initializing the timer
 	useEffect(() => {
@@ -122,10 +122,10 @@ export const Classroom = () => {
 			setAnimation(true);
 			setOpenFinish(false);
 			setTimeout(() => {
-				history.push('/');
+				navigate('/');
 			}, 2000);
 		} else {
-			history.push('/');
+			navigate('/');
 		}
 	};
 

@@ -1,82 +1,233 @@
-import styled, { keyframes } from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // For Sign in and up pages
-export const Form = styled.form`
+export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: ${props => props.theme.colors.background};
 `;
 
-export const MainContainer = styled.main`
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  padding-bottom: 80px;
+export const Form = styled.form`
   display: flex;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: ${props => props.theme.backgroundColor};
-  @media (max-width: 320px) {
-    padding-bottom: 20px;
-  }
-  @media (min-width: 768px) {
-    padding-bottom: 30px;
-  }
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  margin: 0;
 `;
 
 export const Title = styled.h1`
+  color: ${props => props.theme.colors.text};
   text-transform: uppercase;
-  color: ${props => props.theme.textColor};
-  font-size: 40px;
-  display: flex;
-  margin-bottom: 40px;
-  @media (max-width: 320px) {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-`;
-
-export const ChooseText = styled.p`
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-size: 14px;
-  margin: 15px 0 5px 0;
-  @media (max-width: 320px) {
-    font-size: 12px;
-  }
+  font-size: 24px;
+  margin: 0;
   @media (min-width: 768px) {
-    margin: 20px 0 5px 0;
+    font-size: 30px;
   }
 `;
 
-// TextInput for Sign Up
+export const Label = styled.label`
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: ${props => props.theme.secondary};
+  border: 2px solid transparent;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-right: 10px;
+  z-index: 1; 
+  :hover {
+    border: 2px solid ${props => props.theme.hover};
+  }
+`;
+
 export const Input = styled.input`
-  padding: 10px;
-  outline: none;
-  border-bottom: 3px solid ${props => props.theme.primary};
-  border-left: none;
+  padding: 7px;
+  margin: 0;
+  width: 250px;
+  border-bottom: 3px solid ${props => props.theme.colors.primary};
   border-top: none;
   border-right: none;
-  background-color: transparent;
-  font-size: 16px;
-  color: ${props => props.theme.textColor};
-  margin-bottom: 20px;
-  width: 300px;
-  font-family: 'Trispace';
+  border-left: none;
+  color: ${props => props.theme.colors.text};
+  outline: none;
+  font-size: 14px;
+  font-family: 'Trispace', serif;
+  background-color: ${props => props.theme.colors.primary};
+  @media (min-width: 768px) {
+    width: 300px;
+    font-size: 16px;
+  }
+`;
+
+export const Button = styled.button`
+  padding: 10px;
+  margin: 20px 0;
+  width: 250px;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.text};
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Trispace', serif;
+  border: 2px solid ${props => props.theme.colors.accent};
+  :hover {
+    opacity: 0.8;
+  }
+  @media (min-width: 768px) {
+    width: 300px;
+    font-size: 16px;
+  }
+`;
+
+export const Text = styled.p`
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const TextButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 0 5px;
+  font-size: 14px;
+  font-family: 'Trispace', serif;
+  color: ${props => props.theme.colors.secondary};
+  :hover {
+    color: ${props => props.theme.colors.primary};
+  }
   :focus {
-	background-color: ${props => props.theme.primary};
+    color: ${props => props.theme.colors.accent};
   }
-  ::placeholder {
-	text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 16px;
   }
-  @media (max-width: 320px) {
-    font-size: 12px;
-    width: 260px;
+`;
+
+export const ErrorMessage = styled.p`
+  color: ${props => props.theme.colors.text};
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+export const ErrorText = styled.p`
+  color: ${props => props.theme.colors.text};
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  :hover {
+    color: ${props => props.theme.colors.secondary};
+  }
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+// Avatar
+export const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px 0 0 0;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+export const AvatarWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+`;
+
+export const AvatarButton = styled.button`
+  background-color: ${props => props.theme.colors.secondary};
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+`;
+
+export const AvatarImage = styled.img`
+  height: 50px;
+  border: 2px solid ${props => props.theme.colors.accent};
+  padding: 2px;
+`;
+
+export const SelectedAvatar = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+`;
+
+export const SelectedImage = styled.img`
+  height: 70px;
+  border: 2px solid ${props => props.theme.colors.secondary};
+  padding: 5px;
+`;
+
+export const SelectedText = styled.p`
+  margin: 5px 0;
+  padding: 0;
+  font-size: 14px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+// Dialog
+export const DialogContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 300px;
+  border: 2px solid ${props => props.theme.colors.accent};
+`;
+
+export const DialogText = styled.p`
+  font-size: 16px;
+  text-align: center;
+`;
+
+export const DialogButton = styled.button`
+  padding: 8px;
+  margin: 10px 5px;
+  background-color: transparent;
+  border: 2px solid ${props => props.theme.colors.accent};
+  font-size: 14px;
+  font-family: 'Trispace', serif;
+  text-transform: uppercase;
+  :hover {
+    opacity: 0.8;
   }
 `;
 
@@ -92,100 +243,28 @@ export const InputSignIn = styled(Input)`
 	animation: ${input} 3.5s linear;
 `;
 
-// SubmitButton for Sign Up
-export const Button = styled.button`
-  padding: 15px 25px;
-  border: 2px solid transparent;
-  background-color: ${props => props.theme.secondary};
-  color: ${props => props.theme.textColor};
-  text-transform: uppercase;
-  font-family: 'Trispace';
-  margin-top: 25px;
-  font-size: 15px;
-  :hover {
-	opacity: 0.7;
-  }
-  :focus {
-	border: 2px solid ${props => props.theme.hover};
-  }
-  @media (max-width: 320px) {
-    padding: 10px 20px;
-    font-size: 13px;
-  }
-`;
-
 // SubmitButton for Sign In
 export const ButtonSignIn = styled(Button)`
   animation: ${input} 3.7s linear;
 `;
 
-// Error message and show password button
-export const ErrorMessage = styled.p`
-  color: red;
-  margin-top: 10px;
-  font-size: 12px;
-  position: absolute;
-  bottom: 43%;
+// ChooseText
+export const ChooseText = styled.p`
+  color: ${props => props.theme.colors.text};
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 15px 0 5px 0;
   @media (max-width: 320px) {
-    bottom: 41%;
-  }
-`;
-
-export const EyeButton = styled.button`
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: ${props => props.theme.secondary};
-  font-size: 16px;
-  position: absolute;
-  animation: ${input} 3.5s linear;
-  right: 2%;
-  bottom: 62%;
-  :hover {
-    color: ${props => props.theme.primary};
-  }
-  :focus {
-    color: ${props => props.theme.hover};
-  }
-  @media (max-width: 320px) {
-    right: 3%;
-  }
-`;
-
-export const ErrorMessageSignUp = styled.p`
-  color: red;
-  padding-top: 10px;
-  font-size: 12px;
-  margin: 0;
-  position: absolute;
-  bottom: 54%;
-  @media (max-width: 320px) {
-    font-size: 10px;
-    bottom: 52%;
+    font-size: 12px;
   }
   @media (min-width: 768px) {
-    bottom: 57%;
-  }
-`;
-
-export const EyeButtonSignUp = styled(EyeButton)`
-  bottom: 61%;
-  right: 4%;
-  animation: none;
-  @media (max-width: 320px) {
-    right: 6%;
-    bottom: 60%;
-  }
-  @media (min-width: 768px) {
-    bottom: 64%;
-    right: 18%;
+    margin: 20px 0 5px 0;
   }
 `;
 
 // ChangeLogin for Sign Up
 export const ChangeText = styled.p`
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.colors.text};
   text-transform: uppercase;
   font-size: 14px;
   margin-bottom: 25px;
@@ -197,11 +276,11 @@ export const ChangeText = styled.p`
 
 export const ChangeLink = styled(Link)`
   text-decoration: underline;
-  color: ${props => props.theme.textColor};
+  color: ${props => props.theme.colors.text};
   cursor: pointer;
   margin-left: 7px;
   :hover, :focus {
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.colors.secondary};
   }
 `;
 
@@ -212,6 +291,10 @@ export const ChangeTextSignIn = styled(ChangeText)`
 // Title Animation
 export const AnimationTitle = styled(Title)`
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 const letterTop = keyframes`
@@ -235,6 +318,9 @@ const letterLeft = keyframes`
 `;
 
 export const Letter = styled.p`
+  margin: 0;
+  padding: 0;
+  display: inline-block;
 	&:nth-of-type(8) {
 		margin-left: 15px;
 	}
@@ -280,10 +366,7 @@ export const ButtonContainer = styled.div`
   padding: 5px 0 0 0;
 `;
 
-export const AvatarContainer = styled(ButtonContainer)`
-`;
-
-export const Label = styled.label`
+export const AvatarLabel = styled.label`
   display: flex;
   align-items: center;
   border-radius: 50%;
@@ -332,4 +415,46 @@ export const Radio = styled.input`
   &:checked ~ ${Avatar} {
     border: 2px solid ${props => props.theme.hover};
   }
+`;
+
+export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
+`;
+
+export const EyeButton = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: ${props => props.theme.colors.text};
+  font-size: 16px;
+  cursor: pointer;
+  :hover {
+    color: ${props => props.theme.colors.secondary};
+  }
+  :focus {
+    color: ${props => props.theme.colors.accent};
+  }
+`;
+
+export const EyeButtonSignUp = styled(EyeButton)`
+  right: 10px;
+  top: 185px;
+  @media (min-width: 768px) {
+    top: 195px;
+  }
+`;
+
+export const ErrorMessageSignUp = styled(ErrorMessage)`
+  margin: 5px 0;
+  color: #e83715;
 `;

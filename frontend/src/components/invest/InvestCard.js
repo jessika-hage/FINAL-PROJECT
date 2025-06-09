@@ -36,7 +36,7 @@ export const InvestCard = ({ onClick }) => {
         <ChangeText>Exchange rate: 5 badges = {currency.price_usd} $</ChangeText>
         <ChangeContainer>
           <ChangeText>Last hour:</ChangeText>
-          <CoinChange percent={currency.percent_change_1h < 0}>
+          <CoinChange data-negative={currency.percent_change_1h < 0 ? "true" : "false"}>
             {currency.percent_change_1h < 0 ? <IconDown /> : <IconUp />}
             {currency.percent_change_1h === null ? '0' : currency.percent_change_1h} %
           </CoinChange>
