@@ -45,11 +45,16 @@ export const CitizensList = styled.div`
 	margin-bottom: 5px;
 `;
 
+export const CitizenContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 10px;
+`;
+
 export const CitizenAvatar = styled.img`
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
-	margin-right: 10px;
 `;
 
 export const Citizen = styled.p`

@@ -140,19 +140,23 @@ export const ErrorText = styled.p`
 // Avatar
 export const AvatarContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 100%;
   margin: 10px 0;
   padding: 5px 0 0 0;
+  flex-wrap: wrap;
+  gap: 10px;
 `;
 
 export const AvatarWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   width: 100%;
   max-width: 300px;
   margin: 10px 0;
@@ -287,6 +291,10 @@ export const ChangeTextSignIn = styled(ChangeText)`
 // Title Animation
 export const AnimationTitle = styled(Title)`
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 const letterTop = keyframes`
@@ -310,6 +318,9 @@ const letterLeft = keyframes`
 `;
 
 export const Letter = styled.p`
+  margin: 0;
+  padding: 0;
+  display: inline-block;
 	&:nth-of-type(8) {
 		margin-left: 15px;
 	}

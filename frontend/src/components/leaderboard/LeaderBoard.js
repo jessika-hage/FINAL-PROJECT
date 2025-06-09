@@ -14,7 +14,8 @@ import {
 	TableTitle, 
 	TableTitleLinks, 
 	CitizenDaysLink, 
-	CitizensList, 
+	CitizensList,
+	CitizenContainer, 
 	CitizenAvatar, 
 	Citizen,
 	CitizenRank,
@@ -149,17 +150,19 @@ export const LeaderBoard = () => {
 			<TableContainer>
 				{leaderBoard.map((citizen) => (
 					<CitizensList key={citizen._id}>
-						{user === citizen.username ? <Icon /> : ""}
-						<CitizenAvatar src={getAvatarImage(citizen.avatar)} alt={citizen.username} />
-						<Citizen 
-							onClick={() => { 
-								setQuery(citizen.username); 
-								setOpen(true);
-							}} 
-							$isCurrentUser={user === citizen.username}
-						>
-							{citizen.username}
-						</Citizen>
+						<CitizenContainer>
+							{user === citizen.username && <Icon />}
+							<CitizenAvatar src={getAvatarImage(citizen.avatar)} alt={citizen.username} />
+							<Citizen 
+								onClick={() => { 
+									setQuery(citizen.username); 
+									setOpen(true);
+								}} 
+								$isCurrentUser={user === citizen.username}
+							>
+								{citizen.username}
+							</Citizen>
+						</CitizenContainer>
 						<CitizenRank>{safeToFixed(citizen.ranking, 1)}/100</CitizenRank>
 						<CitizenDays>{moment(citizen.createdAt).toNow(true)}</CitizenDays>
 						<Badges>{citizen.badges || 0}</Badges>

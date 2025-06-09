@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 
-import { updateRanking } from 'reducers/profile';
+import { profile } from '../../reducers/profile';
 import { SmallDialog } from '../reusables/SmallDialog';
 import {
 	EnergyContainer,

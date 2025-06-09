@@ -160,11 +160,19 @@ export const updateBadges = (badges) => {
 			API_URL(`citizen/${getState().profile.userId}/badges`),
 			options
 		)
-			.then((res) => res.json())
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error(`HTTP error! status: ${res.status}`);
+				}
+				return res.json();
+			})
 			.then((data) => {
 				dispatch(profile.actions.setBadges(data.badges));
 			})
-			.catch();
+			.catch((error) => {
+				console.error('Failed to update badges:', error);
+				// You might want to dispatch an error action here
+			});
 	};
 };
 
@@ -180,7 +188,7 @@ export const updateRanking = (ranking) => {
 			body: JSON.stringify({ ranking }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/ranking`,
+			API_URL(`citizen/${getState().profile.userId}/ranking`),
 			options
 		)
 			.then((res) => res.json())
@@ -226,7 +234,7 @@ export const updateItems = (items) => {
 			body: JSON.stringify( { items } ),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/items`,
+			API_URL(`citizen/${getState().profile.userId}/items`),
 			options
 		)
 			.then((res) => res.json())
@@ -296,7 +304,7 @@ export const updateHighscoreSpaceball = (highscoreSpaceball) => {
 			body: JSON.stringify({ highscoreSpaceball }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreSpaceball`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreSpaceball`),
 			options
 		)
 			.then((res) => res.json())
@@ -319,7 +327,7 @@ export const updateHighscoreFish = (highscoreFish) => {
 			body: JSON.stringify({ highscoreFish }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreFish`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreFish`),
 			options
 		)
 			.then((res) => res.json())
@@ -342,7 +350,7 @@ export const updateHighscoreMath = (highscoreMath) => {
 			body: JSON.stringify({ highscoreMath }),
 		};
 		fetch(
-			`https://citizen-ship.herokuapp.com/citizen/${getState().profile.userId}/highscoreMath`,
+			API_URL(`citizen/${getState().profile.userId}/highscoreMath`),
 			options
 		)
 			.then((res) => res.json())
